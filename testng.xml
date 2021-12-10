@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium 4 test suite">
+	<test name="selenium 4 Tests with Chrome Browser" enabled="false">
+        <parameter name="browser" value="chrome"/>
+		<classes>
+			<class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
+				<methods>
+					<include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+				</methods>
+			</class>
+            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
+		</classes>
+	</test> <!-- Test -->
+    <test name="selenium 4 Tests with Firefox Browser" enabled="false">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Edge Browser" enabled="false">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Opera Browser" enabled="false">
+        <parameter name="browser" value="opera"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
+        </classes>
+    </test> <!-- Test -->
+
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
+                <methods>
+                    <include name="relativeLocatorsTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->
