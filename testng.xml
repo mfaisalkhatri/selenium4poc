@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium 4 test suite">
-	<test name="selenium 4 Tests with Chrome Browser" enabled="false">
+    <test name="selenium 4 Tests with Chrome Browser" enabled="false">
         <parameter name="browser" value="chrome"/>
-		<classes>
-			<class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
-				<methods>
-					<include name="loginSauceDemoTest"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
                     <include name="logOutSauceDemoTest"/>
-				</methods>
-			</class>
-            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
-		</classes>
-	</test> <!-- Test -->
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
     <test name="selenium 4 Tests with Firefox Browser" enabled="false">
         <parameter name="browser" value="firefox"/>
         <classes>
@@ -22,7 +21,6 @@
                     <include name="logOutSauceDemoTest"/>
                 </methods>
             </class>
-            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
         </classes>
     </test> <!-- Test -->
     <test name="selenium 4 Tests with Edge Browser" enabled="false">
@@ -34,7 +32,6 @@
                     <include name="logOutSauceDemoTest"/>
                 </methods>
             </class>
-            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
         </classes>
     </test> <!-- Test -->
     <test name="selenium 4 Tests with Opera Browser" enabled="false">
@@ -46,11 +43,10 @@
                     <include name="logOutSauceDemoTest"/>
                 </methods>
             </class>
-            <class name="io.github.mfaisalkhatri.saucedemo.BrowserTests"/>
         </classes>
     </test> <!-- Test -->
 
-    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
@@ -60,5 +56,15 @@
             </class>
         </classes>
     </test> <!-- Test -->
-
+    <test name="selenium 4 Tests on the internet website" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
+                <methods>
+                    <include name="checkTitleAndWebsiteUrlTest"/>
+                    <include name="browserNavigationTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
 </suite> <!-- Suite -->

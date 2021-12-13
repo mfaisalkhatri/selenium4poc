@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.saucedemo.saucedemo;
+package io.github.mfaisalkhatri.saucedemo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
  */
 public class LoginPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public LoginPage (WebDriver driver) {
         this.driver = driver;

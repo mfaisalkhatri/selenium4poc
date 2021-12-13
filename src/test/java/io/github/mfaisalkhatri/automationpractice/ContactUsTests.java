@@ -1,9 +1,8 @@
 package io.github.mfaisalkhatri.automationpractice;
 
-import io.github.mfaisalkhatri.saucedemo.automationpractice.*;
-import org.testng.*;
-import org.testng.annotations.*;
-
+import io.github.mfaisalkhatri.driversetup.Setup;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
