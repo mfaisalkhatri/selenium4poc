@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.saucedemo.automationpractice;
+package io.github.mfaisalkhatri.automationpractice;
 
 import org.openqa.selenium.*;
 

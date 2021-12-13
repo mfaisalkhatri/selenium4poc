@@ -1,7 +1,7 @@
 package io.github.mfaisalkhatri.saucedemo;
 
-import io.github.mfaisalkhatri.saucedemo.saucedemo.*;
-import org.testng.annotations.*;
+import io.github.mfaisalkhatri.driversetup.Setup;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 09-12-2021

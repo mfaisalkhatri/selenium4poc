@@ -1,14 +1,17 @@
-package io.github.mfaisalkhatri.automationpractice;
+package io.github.mfaisalkhatri.driversetup;
 
-import io.github.bonigarcia.wdm.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
-import org.openqa.selenium.edge.*;
-import org.openqa.selenium.firefox.*;
-import org.openqa.selenium.opera.*;
-import org.testng.annotations.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
-import java.time.*;
+import java.time.Duration;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
@@ -59,8 +62,8 @@ public class Setup {
 
     private void setupBrowser () {
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 
     }
 }

@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.saucedemo.saucedemo;
+package io.github.mfaisalkhatri.saucedemo;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
