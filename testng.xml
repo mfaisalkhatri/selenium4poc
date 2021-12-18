@@ -56,7 +56,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests on the internet website" enabled="true">
+    <test name="selenium 4 Tests on the internet website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
@@ -67,4 +67,15 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="selenium 4 Tests on the internet website" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
+                <methods>
+                    <include name="alertTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+
 </suite> <!-- Suite -->
