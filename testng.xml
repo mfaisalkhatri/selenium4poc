@@ -73,6 +73,10 @@
             <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
                 <methods>
                     <include name="alertTest"/>
+                    <include name="confirmAlertTest"/>
+                    <include name="dismissAlertTest"/>
+                    <include name="jsPromptTypeAndAcceptTest"/>
+                    <include name="jsPromptDismissTest"/>
                 </methods>
             </class>
         </classes>

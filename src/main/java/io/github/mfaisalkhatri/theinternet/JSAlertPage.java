@@ -55,4 +55,8 @@ public class JSAlertPage {
     public void typeTextInAlert (String text) {
         alert.sendKeys(text);
     }
+
+    public String resultText() {
+        return driver.findElement(By.id("result")).getText();
+    }
 }
