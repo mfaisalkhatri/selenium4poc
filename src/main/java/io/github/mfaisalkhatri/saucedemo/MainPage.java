@@ -10,24 +10,24 @@ import java.time.Duration;
  */
 public class MainPage {
 
-    private WebDriver driver;
+    // private WebDriver driver;
     WebDriverWait wait;
 
-    public MainPage (WebDriver driver) {
-        this.driver = driver;
+    public MainPage(WebDriver driver) {
+        // this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-    public WebElement menuBtn () {
+    public WebElement menuBtn() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("react-burger-menu-btn")));
 
     }
 
-    public WebElement logoutLink () {
+    public WebElement logoutLink() {
         return wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector("#logout_sidebar_link"))));
     }
 
-    public void logoutFromWebSite () {
+    public void logoutFromWebSite() {
         menuBtn().click();
         logoutLink().click();
     }
