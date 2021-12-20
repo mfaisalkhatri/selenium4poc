@@ -67,7 +67,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests on the internet website" enabled="true">
+    <test name="selenium 4 Tests on the internet website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
@@ -77,6 +77,18 @@
                     <include name="dismissAlertTest"/>
                     <include name="jsPromptTypeAndAcceptTest"/>
                     <include name="jsPromptDismissTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests on the internet website" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
+                <methods>
+                    <include name="selectByOptionTest"/>
+                    <include name="selectByIndexText"/>
+                    <include name="selectByValueTest"/>
                 </methods>
             </class>
         </classes>
