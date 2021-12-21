@@ -2,6 +2,7 @@ package io.github.mfaisalkhatri.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -12,10 +13,14 @@ public class BrowserTests extends Setup {
 
     private String websiteLink = "http://the-internet.herokuapp.com/";
 
+    @BeforeClass
+    public void testSetup () {
+        driver.get(websiteLink);
+    }
+
     @Test
     public void checkTitleAndWebsiteUrlTest () {
         String title = "The Internet";
-        driver.get(websiteLink);
         String actualWebsiteLink = driver.getCurrentUrl();
         String actualTitle = driver.getTitle();
 
@@ -26,7 +31,6 @@ public class BrowserTests extends Setup {
 
     @Test
     public void browserNavigationTests () {
-        driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("A/B Testing");
         ABTestingPage abTestingPage = new ABTestingPage(driver);
