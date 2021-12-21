@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium 4 test suite">
     <test name="selenium 4 Tests with Chrome Browser" enabled="false">
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="chromegit"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
                 <methods>
