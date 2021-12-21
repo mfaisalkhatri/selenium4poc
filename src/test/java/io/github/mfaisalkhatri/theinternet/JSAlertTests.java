@@ -2,6 +2,7 @@ package io.github.mfaisalkhatri.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -10,29 +11,28 @@ import org.testng.annotations.Test;
 public class JSAlertTests extends Setup {
 
     private String websiteLink = "http://the-internet.herokuapp.com/";
+    private JSAlertPage jsAlertPage;
 
-    private void openJSAlertMenu () {
+    @BeforeClass
+    private void setupTest () {
         driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("JavaScript Alerts");
+        jsAlertPage = new JSAlertPage(driver);
     }
 
     @Test
     public void alertTest () {
-        openJSAlertMenu();
-        JSAlertPage jsalPage = new JSAlertPage(driver);
-        jsalPage.jsAlertButton().click();
-        jsalPage.checkForAlert();
-        String alertText = jsalPage.getAlertText();
+        jsAlertPage.jsAlertButton().click();
+        jsAlertPage.checkForAlert();
+        String alertText = jsAlertPage.getAlertText();
         Assert.assertEquals(alertText, "I am a JS Alert");
-        jsalPage.acceptAlert();
-        Assert.assertEquals(jsalPage.resultText(), "You successfully clicked an alert");
+        jsAlertPage.acceptAlert();
+        Assert.assertEquals(jsAlertPage.resultText(), "You successfully clicked an alert");
     }
 
     @Test
     public void confirmAlertTest () {
-        openJSAlertMenu();
-        JSAlertPage jsAlertPage = new JSAlertPage(driver);
         jsAlertPage.jsConfirmButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -43,8 +43,6 @@ public class JSAlertTests extends Setup {
 
     @Test
     public void dismissAlertTest () {
-        openJSAlertMenu();
-        JSAlertPage jsAlertPage = new JSAlertPage(driver);
         jsAlertPage.jsConfirmButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -55,8 +53,6 @@ public class JSAlertTests extends Setup {
 
     @Test
     public void jsPromptTypeAndAcceptTest () {
-        openJSAlertMenu();
-        JSAlertPage jsAlertPage = new JSAlertPage(driver);
         jsAlertPage.jspromptButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -64,13 +60,11 @@ public class JSAlertTests extends Setup {
         String text = "Testing by typing text in JS Alert";
         jsAlertPage.typeTextInAlert(text);
         jsAlertPage.acceptAlert();
-        Assert.assertEquals(jsAlertPage.resultText(), "You entered: " +text);
+        Assert.assertEquals(jsAlertPage.resultText(), "You entered: " + text);
     }
 
     @Test
     public void jsPromptDismissTest () {
-        openJSAlertMenu();
-        JSAlertPage jsAlertPage = new JSAlertPage(driver);
         jsAlertPage.jspromptButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();

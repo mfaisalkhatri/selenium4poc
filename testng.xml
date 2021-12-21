@@ -56,7 +56,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests on the internet website" enabled="false">
+    <test name="Browser Navigation Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
@@ -67,7 +67,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests on the internet website" enabled="false">
+    <test name="JS Alert Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
@@ -81,7 +81,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests on the internet website" enabled="true">
+    <test name="Dropdown Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
@@ -93,5 +93,4 @@
             </class>
         </classes>
     </test> <!-- Test -->
-
 </suite> <!-- Suite -->
