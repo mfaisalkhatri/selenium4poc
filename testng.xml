@@ -93,4 +93,14 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Checkboxes Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.CheckboxTests">
+                <methods>
+                    <include name="testCheckboxes"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
 </suite> <!-- Suite -->
