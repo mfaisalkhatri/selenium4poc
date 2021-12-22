@@ -103,4 +103,14 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Right Click Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
+                <methods>
+                    <include name="testRightClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
 </suite> <!-- Suite -->
