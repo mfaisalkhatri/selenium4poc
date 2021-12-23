@@ -1,16 +1,15 @@
 package io.github.mfaisalkhatri.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
- * Created By Faisal Khatri on 22-12-2021
+ * Created By Faisal Khatri on 24-12-2021
  */
-public class RightClickTests extends Setup {
+public class FormAuthenticationTests extends Setup {
 
-    private ContextMenuPage contextMenuPage;
+    private FormAuthenticationPage formAuthenticationPage;
 
     @BeforeClass
     public void testSetup () {
@@ -18,16 +17,12 @@ public class RightClickTests extends Setup {
         driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("Context Menu");
-        contextMenuPage = new ContextMenuPage(driver);
+        formAuthenticationPage = new FormAuthenticationPage(driver);
     }
 
     @Test
-    public void testRightClick() {
-        contextMenuPage.rightClick();
-        contextMenuPage.checkForAlert();
-        Assert.assertEquals(contextMenuPage.getAlertText(), "You selected a context menu");
+    public void loginWithCorrectCredentials () {
+        formAuthenticationPage.login("tomsmith", "SuperSecretPassword!");
+        formAuthenticationPage.flashMessage().getText()
     }
-
-
-
 }
