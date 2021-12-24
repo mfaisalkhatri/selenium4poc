@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium 4 test suite">
-    <test name="selenium 4 Tests with Chrome Browser" enabled="false">
-        <parameter name="browser" value="chromegit"/>
+    <test name="selenium 4 Tests with Chrome Browser" enabled="true">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
                 <methods>
@@ -12,7 +12,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Firefox Browser" enabled="false">
+    <test name="selenium 4 Tests with Firefox Browser" enabled="true">
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -23,7 +23,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Edge Browser" enabled="false">
+    <test name="selenium 4 Tests with Edge Browser" enabled="true">
         <parameter name="browser" value="edge"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -34,7 +34,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Opera Browser" enabled="false">
+    <test name="selenium 4 Tests with Opera Browser" enabled="true">
         <parameter name="browser" value="opera"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -46,7 +46,7 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
@@ -109,6 +109,21 @@
             <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
                 <methods>
                     <include name="testRightClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Form Authentication Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.FormAuthenticationTests">
+                <methods>
+                    <include name="loginWithCorrectCredentials"/>
+                    <include name="logOutTest"/>
+                    <include name="userNameNotValidTest"/>
+                    <include name="passwordNotValidTest"/>
+                    <include name="invalidLoginCredentialsTest"/>
+                    <include name="blankUserAndPasswordTest"/>
                 </methods>
             </class>
         </classes>

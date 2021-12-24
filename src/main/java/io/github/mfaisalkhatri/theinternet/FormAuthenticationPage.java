@@ -16,22 +16,22 @@ public class FormAuthenticationPage {
     }
 
     public WebElement userNameField(){
-        return driver.findElement(By.id("username"))
+        return driver.findElement(By.id("username"));
     }
 
     public WebElement passwordField() {
-        return driver.findElement(By.id("password"))
+        return driver.findElement(By.id("password"));
     }
 
     public WebElement loginBtn () {
         return driver.findElement(By.cssSelector("#login > button"));
     }
 
-    public WebElement flashMessage () {
-        return driver.findElement(By.id("flash"));
+    public String getFlashMessage () {
+        return driver.findElement(By.id("flash")).getText();
     }
 
-    public void login(String userName, String password) {
+    public SecurePage login(String userName, String password) {
         userNameField().click();
         userNameField().clear();
         userNameField().sendKeys(userName);
@@ -39,5 +39,6 @@ public class FormAuthenticationPage {
         passwordField().clear();
         passwordField().sendKeys(password);
         loginBtn().click();
+        return new SecurePage(driver);
     }
 }
