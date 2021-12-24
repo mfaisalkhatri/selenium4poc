@@ -38,30 +38,30 @@ public class Setup {
             // options.addArguments("--websocket-port", "4444");
             //driver = new FirefoxDriver(options);
             driver = new FirefoxDriver();
-            setupBrowser();
 
         } else if (browser.equalsIgnoreCase("edge")) {
             driver = new EdgeDriver();
-            setupBrowser();
-
         } else if (browser.equalsIgnoreCase("opera")) {
             driver = new OperaDriver();
-            setupBrowser();
         } else if (browser.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();
-            setupBrowser();
+
         } else {
+            // FIXME: Throw an Error here.
             System.out.println("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
         }
+        setupBrowser();
     }
 
     @AfterClass
     public void tearDown () {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     private void setupBrowser () {
-        driver.manage().window().maximize();
+        driver.manage().window().maximize();    // FIXME: Maximize does not work in Linux
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 

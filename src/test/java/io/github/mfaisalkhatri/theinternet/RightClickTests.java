@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
  */
 public class RightClickTests extends Setup {
 
-    private String websiteLink = "http://the-internet.herokuapp.com/";
     private ContextMenuPage contextMenuPage;
 
     @BeforeClass
     public void testSetup () {
+        String websiteLink = "http://the-internet.herokuapp.com/";
         driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("Context Menu");

@@ -10,8 +10,7 @@ import org.testng.annotations.Test;
  */
 public class BrowserTests extends Setup {
 
-
-    private String websiteLink = "http://the-internet.herokuapp.com/";
+    private static final String websiteLink = "http://the-internet.herokuapp.com/";
 
     @BeforeClass
     public void testSetup () {
