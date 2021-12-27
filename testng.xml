@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium 4 test suite">
-    <test name="selenium 4 Tests with Chrome Browser" enabled="true">
+    <test name="selenium 4 Tests with Chrome Browser" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -12,7 +12,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Firefox Browser" enabled="true">
+    <test name="selenium 4 Tests with Firefox Browser" enabled="false">
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -23,7 +23,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Edge Browser" enabled="true">
+    <test name="selenium 4 Tests with Edge Browser" enabled="false">
         <parameter name="browser" value="edge"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -34,7 +34,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Opera Browser" enabled="true">
+    <test name="selenium 4 Tests with Opera Browser" enabled="false">
         <parameter name="browser" value="opera"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -46,7 +46,7 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
@@ -56,7 +56,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Browser Navigation Tests" enabled="true">
+    <test name="Browser Navigation Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
@@ -67,7 +67,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="JS Alert Tests" enabled="true">
+    <test name="JS Alert Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
@@ -81,7 +81,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Dropdown Tests" enabled="true">
+    <test name="Dropdown Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
@@ -93,7 +93,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Checkboxes Tests" enabled="true">
+    <test name="Checkboxes Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.CheckboxTests">
@@ -103,7 +103,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Right Click Tests" enabled="true">
+    <test name="Right Click Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
@@ -113,7 +113,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Form Authentication Tests" enabled="true">
+    <test name="Form Authentication Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.FormAuthenticationTests">
@@ -124,6 +124,16 @@
                     <include name="passwordNotValidTest"/>
                     <include name="invalidLoginCredentialsTest"/>
                     <include name="blankUserAndPasswordTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Checkboxes Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.KeyPressTests">
+                <methods>
+                    <include name="keyPressTest"/>
                 </methods>
             </class>
         </classes>

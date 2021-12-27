@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
  */
 public class CheckboxTests extends Setup {
 
-    private String websiteLink = "http://the-internet.herokuapp.com/";
+    private static final String websiteLink = "http://the-internet.herokuapp.com/";
     private CheckboxPage checkboxPage;
 
     @BeforeClass
