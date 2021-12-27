@@ -61,9 +61,9 @@ public class Setup {
     }
 
     private void setupBrowser () {
-        driver.manage().window().maximize();    // FIXME: Maximize does not work in Linux
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        //driver.manage().window().maximize();    // FIXME: Maximize does not work in Linux
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 
     }
 }

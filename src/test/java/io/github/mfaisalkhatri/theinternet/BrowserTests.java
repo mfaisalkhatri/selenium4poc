@@ -31,20 +31,20 @@ public class BrowserTests extends Setup {
     @Test
     public void browserNavigationTests () {
         MainPage mpage = new MainPage(driver);
-        mpage.clickLink("A/B Testing");
+        mpage.clickLink("Challenging DOM");
         ABTestingPage abTestingPage = new ABTestingPage(driver);
         String abTestingPageHeader = abTestingPage.pageHeader();
-        Assert.assertEquals(abTestingPageHeader, "A/B Test Control");
+        Assert.assertEquals(abTestingPageHeader, "Challenging DOM");
 
         driver.navigate().back();
         String mainPageHeader = mpage.mainPageHeader();
         Assert.assertEquals(mainPageHeader, "Available Examples");
 
         driver.navigate().forward();
-        Assert.assertEquals(abTestingPageHeader, "A/B Test Control");
+        Assert.assertEquals(abTestingPageHeader, "Challenging DOM");
 
         driver.navigate().refresh();
-        Assert.assertEquals(abTestingPageHeader, "A/B Test Control");
+        Assert.assertEquals(abTestingPageHeader, "Challenging DOM");
     }
 
 
