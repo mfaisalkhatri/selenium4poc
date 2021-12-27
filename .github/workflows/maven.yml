@@ -35,9 +35,6 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Install Edge
-        uses: browser-actions/setup-edge@latest
-
       - name: Build the project and run the tests
         run: mvn clean install
 
