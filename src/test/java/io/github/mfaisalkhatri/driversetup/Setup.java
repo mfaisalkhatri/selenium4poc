@@ -42,6 +42,7 @@ public class Setup {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1042,580");
             options.addArguments("--headless");
 
             driver = new FirefoxDriver(options);
@@ -54,6 +55,7 @@ public class Setup {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1042,580");
             options.addArguments("--headless");
 
             driver = new ChromeDriver(options);
@@ -73,7 +75,6 @@ public class Setup {
     }
 
     private void setupBrowser () {
-        //driver.manage().window().maximize();    // FIXME: Maximize does not work in Linux
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 
