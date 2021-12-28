@@ -13,7 +13,6 @@ public class ContactUsTests extends Setup {
     @Test
     public void relativeLocatorsTest () {
         driver.get(websiteLink);
-
         MainPage mpage = new MainPage(driver);
         mpage.contactUsLink().click();
 

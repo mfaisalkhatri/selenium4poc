@@ -1,0 +1,47 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches:
+      - master
+      - issue-*
+
+  pull_request:
+    branches:
+      - master
+      - issue-*
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Install Firefox
+        uses: browser-actions/setup-firefox@latest
+
+      - name: Build the project and run the tests
+        run: mvn clean install
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Test Results
+          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+          reporter: java-junit
