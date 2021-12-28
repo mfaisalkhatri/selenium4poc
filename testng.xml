@@ -23,7 +23,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Edge Browser" enabled="false">
+    <test name="selenium 4 Tests with Edge Browser" enabled="true">
         <parameter name="browser" value="edge"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
@@ -34,7 +34,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Opera Browser" enabled="false">
+    <test name="selenium 4 Tests with Opera Browser" enabled="true">
         <parameter name="browser" value="opera"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.Saucedemotests">
