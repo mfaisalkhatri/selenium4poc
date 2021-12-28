@@ -38,10 +38,10 @@ jobs:
       - name: Build the project and run the tests
         run: mvn clean install
 
-      - name: Download target folder
-        uses: actions/download-artifact@v2
-        with:
-          name: target
+#      - name: Download target folder
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: target
 
       - name: Test Report
         uses: dorny/test-reporter@v1
@@ -51,8 +51,8 @@ jobs:
           path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
           reporter: java-junit
 
-      - name: Upload target folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: target
-          path: ${{ github.workspace }}/target
+#      - name: Upload target folder
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: target
+#          path: ${{ github.workspace }}/target
