@@ -42,6 +42,8 @@ public class Setup {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--headless");
+
             driver = new FirefoxDriver(options);
 
         } else if (browser.equalsIgnoreCase("edge")) {
@@ -52,6 +54,8 @@ public class Setup {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--headless");
+
             driver = new ChromeDriver(options);
 
         } else {
