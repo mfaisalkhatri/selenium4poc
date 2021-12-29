@@ -42,7 +42,7 @@ public class Setup {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--window-size=1042,580");
+            options.addArguments("--window-size=1050,600");
             options.addArguments("--headless");
 
             driver = new FirefoxDriver(options);
@@ -55,7 +55,7 @@ public class Setup {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--window-size=1042,580");
+            options.addArguments("--window-size=1050,600");
             options.addArguments("--headless");
 
             driver = new ChromeDriver(options);
@@ -66,6 +66,7 @@ public class Setup {
         }
         setupBrowser();
     }
+
 
     @AfterClass
     public void tearDown () {
