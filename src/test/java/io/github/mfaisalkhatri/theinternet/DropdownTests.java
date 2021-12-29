@@ -10,15 +10,16 @@ import org.testng.annotations.Test;
  */
 public class DropdownTests extends Setup {
 
-    private static final String websiteLink = "http://the-internet.herokuapp.com/";
     private DropdownPage dropdownPage;
 
     @BeforeClass
     public void testSetup () {
+        String websiteLink = "http://the-internet.herokuapp.com/";
         driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("Dropdown");
-        dropdownPage = new DropdownPage(driver);    }
+        dropdownPage = new DropdownPage(driver);
+    }
 
     @Test
     public void selectByOptionTest () {
