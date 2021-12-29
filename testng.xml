@@ -148,4 +148,15 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Drag and Drop Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
+                <methods>
+                    <include name="dragAndDropBoxAToB"/>
+                    <include name="dragAndDropBoxBToA"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
 </suite> <!-- Suite -->
