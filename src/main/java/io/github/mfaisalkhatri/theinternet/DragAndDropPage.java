@@ -11,9 +11,11 @@ import org.openqa.selenium.interactions.Actions;
 public class DragAndDropPage {
 
     private WebDriver driver;
+    private Actions action;
 
     public DragAndDropPage (WebDriver driver) {
         this.driver = driver;
+        action = new Actions(driver);
     }
 
     public WebElement boxA() {
@@ -34,13 +36,11 @@ public class DragAndDropPage {
         return header.getText();
     }
 
-    public void dragBoxAndDropInBoxB () {
-        Actions action = new Actions(driver);
-        action.dragAndDrop(boxA(),boxB());
+    public void dragBoxADropInBoxB () {
+        action.dragAndDrop(boxA(),boxB()).build().perform();
     }
 
-    public void dragBoxBndDropInBoxA () {
-        Actions action = new Actions(driver);
-        action.dragAndDrop(boxB(),boxA());
+    public void dragBoxBDropInBoxA () {
+        action.dragAndDrop(boxB(),boxA()).build().perform();
     }
 }
