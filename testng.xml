@@ -151,7 +151,7 @@
     <test name="Drag and Drop Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
+            <class name="io.github.mfaisalkhatri.theinternet.DragAndDropTests">
                 <methods>
                     <include name="dragAndDropBoxAToB"/>
                     <include name="dragAndDropBoxBToA"/>

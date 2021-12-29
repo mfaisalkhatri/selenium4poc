@@ -29,7 +29,7 @@ public class HoverPage {
 
     public void hoverOnImage (WebElement element) {
         Actions action = new Actions(driver);
-        action.moveToElement(element).perform();
+        action.moveToElement(element).build().perform();
     }
 
     public String getImageName () {
