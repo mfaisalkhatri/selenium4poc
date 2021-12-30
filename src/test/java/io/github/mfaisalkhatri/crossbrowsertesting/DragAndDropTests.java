@@ -13,7 +13,7 @@ public class DragAndDropTests extends Setup {
     DragAndDropPage dragAndDropPage;
 
     @BeforeClass
-    public void setupTests() {
+    public void testSetup() {
         String website = "https://crossbrowsertesting.github.io/drag-and-drop.html";
         driver.get(website);
         dragAndDropPage = new DragAndDropPage(driver);
