@@ -10,11 +10,12 @@ import org.testng.annotations.Test;
  */
 public class CheckboxTests extends Setup {
 
-    private static final String websiteLink = "http://the-internet.herokuapp.com/";
+
     private CheckboxPage checkboxPage;
 
     @BeforeClass
     public void testSetup () {
+        String websiteLink = "http://the-internet.herokuapp.com/";
         driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("Checkboxes");
@@ -22,7 +23,7 @@ public class CheckboxTests extends Setup {
     }
 
     @Test
-    public void testCheckboxes () throws InterruptedException {
+    public void testCheckboxes ()  {
         String pageHeader = checkboxPage.pageHeader();
         Assert.assertEquals(pageHeader, "Checkboxes");
 

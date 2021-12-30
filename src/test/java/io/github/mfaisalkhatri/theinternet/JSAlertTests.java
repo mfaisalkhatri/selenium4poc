@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
  */
 public class JSAlertTests extends Setup {
 
-    private static final String websiteLink = "http://the-internet.herokuapp.com/";
     private JSAlertPage jsAlertPage;
 
     @BeforeClass
     private void setupTest () {
+        String websiteLink = "http://the-internet.herokuapp.com/";
         driver.get(websiteLink);
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("JavaScript Alerts");

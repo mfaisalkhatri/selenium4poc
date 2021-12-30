@@ -138,4 +138,24 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Mouse Hover Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.HoverTests">
+                <methods>
+                    <include name="mouseHoverTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Drag and Drop Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.crossbrowsertesting.DragAndDropTests">
+                <methods>
+                    <include name="testDragAndDrop"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
 </suite> <!-- Suite -->
