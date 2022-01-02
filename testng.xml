@@ -103,7 +103,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Right Click Tests" enabled="true">
+    <test name="Right Click Tests" enabled="true" >
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
@@ -113,7 +113,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Form Authentication Tests" enabled="true">
+    <test name="Form Authentication Tests" enabled="true" >
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.FormAuthenticationTests">
@@ -128,7 +128,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="KeyPress Tests" enabled="true">
+    <test name="KeyPress Tests" enabled="true" >
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.KeyPressTests">
@@ -138,7 +138,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Mouse Hover Tests" enabled="true">
+    <test name="Mouse Hover Tests" enabled="true"   >
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.HoverTests">
@@ -164,6 +164,16 @@
             <class name="io.github.mfaisalkhatri.demoqa.DoubleClickTests">
                 <methods>
                     <include name="testDoubleClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="iFrame Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.IFrameTests">
+                <methods>
+                    <include name="testIFrame"/>
                 </methods>
             </class>
         </classes>
