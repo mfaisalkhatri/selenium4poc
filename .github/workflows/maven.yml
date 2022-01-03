@@ -64,4 +64,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_KEY: ${{ secrets.SONAR_KEY }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=$SONAR_KEY
+          -Dsonar.projectKey=$SONAR_KEY \
+          -Dsonar.branch.name=${{ github.ref }}
