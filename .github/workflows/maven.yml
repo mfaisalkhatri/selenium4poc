@@ -11,13 +11,12 @@ on:
 
 jobs:
   build_and_test:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
       - name: checkout Git repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Install Java and Maven
         uses: actions/setup-java@v2
@@ -44,6 +43,32 @@ jobs:
           reporter: java-junit
           java-version: 11
 
+  code_analysis:
+    name: Code Analysis
+    needs:
+      - build_and_test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout Git repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Install Firefox
+        uses: browser-actions/setup-firefox@latest
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
         with:
@@ -59,7 +84,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Sonar Code Analysis
-        with:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
