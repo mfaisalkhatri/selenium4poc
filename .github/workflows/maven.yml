@@ -65,12 +65,3 @@ jobs:
           SONAR_KEY: ${{ secrets.SONAR_KEY }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=$SONAR_KEY
-
-      - name: Sonar Analysis Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Sonar Code Analysis Results
-          path: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
-          reporter: java-junit
-          java-version: 11
