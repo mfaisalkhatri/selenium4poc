@@ -63,10 +63,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_KEY: ${{ secrets.SONAR_KEY }}
-          SONAR_ORG: ${{ secrets.SONAR_ORG }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=$SONAR_KEY \
-          -Dsonar.organization=$SONAR_ORG
+          -Dsonar.projectKey=$SONAR_KEY
 
       - name: Sonar Analysis Report
         uses: dorny/test-reporter@v1
