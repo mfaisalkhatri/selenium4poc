@@ -20,7 +20,6 @@
         <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent</argLine>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.report>${project.basedir}/reports/jacoco.exec</sonar.report>
-        <sonar.java.libraries>target/classes/**</sonar.java.libraries>
         <sonar.organization>mfaisalkhatri</sonar.organization>
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <jacoco.version>0.8.7</jacoco.version>
