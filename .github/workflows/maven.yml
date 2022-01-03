@@ -13,6 +13,7 @@ on:
     branches:
       - master
       - issue-*
+    types: [ opened, synchronize, reopened ]
 
 jobs:
   build_and_test:
@@ -21,6 +22,8 @@ jobs:
     steps:
       - name: checkout Git repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Install Java and Maven
         uses: actions/setup-java@v2
@@ -35,8 +38,26 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Build the project and run the tests
-        run: mvn clean install
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build the Project and Analyze Code
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_KEY: ${{ secrets.SONAR_KEY }}
+        run: mvn -B clean install org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_KEY
 
       - name: Test Report
         uses: dorny/test-reporter@v1
@@ -45,3 +66,4 @@ jobs:
           name: Test Results
           path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
           reporter: java-junit
+          java-version: 11
