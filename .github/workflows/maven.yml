@@ -9,12 +9,6 @@ on:
       - master
       - issue-*
 
-  pull_request:
-    branches:
-      - master
-      - issue-*
-    types: [ opened, synchronize, reopened ]
-
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
@@ -38,6 +32,18 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
+      - name: Build the Project and run the Tests
+        run: mvn clean install
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Test Results
+          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+          reporter: java-junit
+          java-version: 11
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
         with:
@@ -52,18 +58,21 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build the Project and Analyze Code
+      - name: Analyse Code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_KEY: ${{ secrets.SONAR_KEY }}
-        run: mvn -B clean install org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_KEY
+          SONAR_ORG: ${{ secrets.SONAR_ORG }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+          -Dsonar.projectKey=$SONAR_KEY \
+          -Dsonar.organization=$SONAR_ORG
 
-      - name: Test Report
+      - name: Sonar Analysis Report
         uses: dorny/test-reporter@v1
-        if: success() || failure()
+        if: always()
         with:
-          name: Test Results
-          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+          name: Sonar Code Analysis Results
+          path: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
           reporter: java-junit
           java-version: 11
