@@ -9,14 +9,45 @@ on:
       - master
       - issue-*
 
-  pull_request:
-    branches:
-      - master
-      - issue-*
-    types: [ opened, synchronize, reopened ]
-
 jobs:
   build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Install Firefox
+        uses: browser-actions/setup-firefox@latest
+
+      - name: Build the Project and run the Tests
+        run: mvn clean install
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Test Results
+          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+          reporter: java-junit
+          java-version: 11
+
+  code_analysis:
+    name: Code Analysis
+    needs:
+      - build_and_test
+
     runs-on: ubuntu-latest
 
     steps:
@@ -52,18 +83,12 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build the Project and Analyze Code
+      - name: Sonar Code Analysis
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_KEY: ${{ secrets.SONAR_KEY }}
-        run: mvn -B clean install org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_KEY
-
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
-        with:
-          name: Test Results
-          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
-          reporter: java-junit
-          java-version: 11
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            SONAR_KEY: ${{ secrets.SONAR_KEY }}
+        run: |
+              mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+                -Dsonar.projectKey=$SONAR_KEY \
+                -Dsonar.branch.name=${{ github.ref }}
