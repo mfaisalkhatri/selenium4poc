@@ -38,9 +38,6 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Build the project and run the tests
-        run: mvn clean install
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
         with:
@@ -55,12 +52,12 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Analyze Code
+      - name: Build the Project and Analyze Code
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_ORG: ${{secrets.SONAR_ORG}}
-        run:  mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_KEY
+          SONAR_KEY: ${{secrets.SONAR_ORG}}
+        run:  mvn -B clean install org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$SONAR_KEY
 
       - name: Test Report
         uses: dorny/test-reporter@v1
