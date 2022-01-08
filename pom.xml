@@ -22,11 +22,13 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.report>${project.basedir}/reports/jacoco.exec</sonar.report>
         <sonar.organization>mfaisalkhatri</sonar.organization>
-        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.report>${project.basedir}/reports/jacoco.exec</sonar.report>
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.report>reports/jacoco.exec</sonar.report>
         <jacoco.version>0.8.7</jacoco.version>
+        <sonar.version>5.14.0.18788</sonar.version>
     </properties>
-    
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -107,7 +109,7 @@
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
-                            <phase>test-compile</phase>
+                            <phase>test</phase>
                             <configuration>
                                 <destFile>${sonar.report}</destFile>
                                 <propertyName>surefireArgLine</propertyName>
@@ -121,14 +123,47 @@
                             </goals>
                             <configuration>
                                 <dataFile>${sonar.report}</dataFile>
-                                <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
+                                <outputDirectory>reports/jacoco</outputDirectory>
                             </configuration>
                         </execution>
                     </executions>
                 </plugin>
-
-
             </plugins>
         </pluginManagement>
     </build>
+    <profiles>
+        <profile>
+            <id>coverage-per-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${surefire-version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>${suite-xml}</suiteXmlFile>
+                            </suiteXmlFiles>
+                            <argLine>${argLine}</argLine>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.sonarsource.java</groupId>
+                    <artifactId>sonar-jacoco-listeners</artifactId>
+                    <version>${sonar.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
