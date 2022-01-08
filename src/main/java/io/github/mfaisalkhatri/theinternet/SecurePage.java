@@ -25,7 +25,7 @@ import org.openqa.selenium.WebElement;
 class SecurePage {
 
     private final WebDriver driver;
-    
+
     SecurePage(WebDriver driver) {
         this.driver = driver;
     }
