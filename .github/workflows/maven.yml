@@ -35,8 +35,11 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Build the Project and run the Tests
-        run: mvn clean install
+      - name: Build the Project
+        run: mvn clean install -DskipTests
+
+      - name: Test Execution
+        run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test
 
   code_analysis:
     name: Code Analysis
