@@ -42,7 +42,6 @@ public class HoverTests extends Setup {
         Assert.assertEquals(hoverPage.getImageOneName(), "name: user1");
 
         hoverPage.hoverOnImage(hoverPage.imageTwo());
-        mainPage.takeScreenShot();
         Assert.assertEquals(hoverPage.getImageTwoName(), "name: user2");
 
 
