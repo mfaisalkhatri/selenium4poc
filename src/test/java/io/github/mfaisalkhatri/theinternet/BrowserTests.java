@@ -1,3 +1,17 @@
+/*      Copyright 2022 Mohammad Faisal Khatri
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+*/
 package io.github.mfaisalkhatri.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
@@ -13,13 +27,13 @@ public class BrowserTests extends Setup {
     private static final String websiteLink = "http://the-internet.herokuapp.com/";
 
     @BeforeClass
-    public void testSetup () {
+    public void testSetup() {
         driver.get(websiteLink);
     }
 
     @Test
-    public void checkTitleAndWebsiteUrlTest () {
-        String title = "The Internet";
+    public void checkTitleAndWebsiteUrlTest() {
+        final String title = "The Internet";
         String actualWebsiteLink = driver.getCurrentUrl();
         String actualTitle = driver.getTitle();
 
@@ -29,7 +43,7 @@ public class BrowserTests extends Setup {
     }
 
     @Test
-    public void browserNavigationTests () {
+    public void browserNavigationTests() {
         MainPage mpage = new MainPage(driver);
         mpage.clickLink("Challenging DOM");
         ABTestingPage abTestingPage = new ABTestingPage(driver);

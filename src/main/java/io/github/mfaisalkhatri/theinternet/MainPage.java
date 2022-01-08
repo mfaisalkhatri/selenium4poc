@@ -1,38 +1,42 @@
+/*      Copyright 2022 Mohammad Faisal Khatri
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+*/
+
 package io.github.mfaisalkhatri.theinternet;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-
-import java.io.File;
-import java.io.IOException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created By Faisal Khatri on 13-12-2021
  */
 public class MainPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    public MainPage (WebDriver driver) {
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void clickLink (String linkName) {
+    public void clickLink(String linkName) {
         WebElement link = driver.findElement(By.linkText(linkName));
         link.click();
     }
 
-    public String mainPageHeader () {
+    String mainPageHeader() {
         return driver.findElement(By.tagName("h2")).getText();
-    }
-
-    public void takeScreenShot () {
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(scrFile, new File("./screenshot.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }

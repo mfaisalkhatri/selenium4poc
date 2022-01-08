@@ -12,32 +12,32 @@
         See the License for the specific language governing permissions and
         limitations under the License.
 */
+package io.github.mfaisalkhatri.saucedemo;
 
-package io.github.mfaisalkhatri.automationpractice;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
+import io.github.mfaisalkhatri.driversetup.Setup;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class MainPage {
+public class SauceDemoTests extends Setup {
 
-    private final WebDriver driver;
-
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
+    @BeforeClass
+    public void setupTest() {
+        final String website = "https://www.saucedemo.com";
+        driver.navigate().to(website);
     }
 
-    private WebElement signInBtn() {
-        return driver.findElement(By.className("login"));
+    @Test
+    public void loginSauceDemoTest() {
+        LoginPage lpage = new LoginPage(driver);
+        lpage.websiteLogin("standard_user", "secret_sauce");
     }
 
-    WebElement contactUsLink() {
-        return driver.findElement(with(By.tagName("a")).toLeftOf(signInBtn()));
+    @Test
+    public void logOutSauceDemoTest() {
+        MainPage mpage = new MainPage(driver);
+        mpage.logoutFromWebSite();
     }
-
 }
