@@ -9,6 +9,10 @@ on:
       - master
       - issue-*
 
+  pull_request:
+    branches:
+      - master
+      - issue-*
 jobs:
   build_and_test:
     name: Build and Test
@@ -31,8 +35,19 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Build the Project and run the Tests
-        run: mvn clean install
+      - name: Build the Project
+        run: mvn clean install -DskipTests
+
+      - name: Test Execution
+        run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test
+
+      - name: Upload target folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: target
+          path: |
+          ${{ github.workspace }}/target
+          ${{ github.workspace }}/reports
 
   code_analysis:
     name: Code Analysis
@@ -74,14 +89,19 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Download target folder
+        uses: actions/download-artifact@v2
+        with:
+          name: target
+
       - name: Sonar Code Analysis
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            SONAR_KEY: ${{ secrets.SONAR_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_KEY: ${{ secrets.SONAR_KEY }}
         run: |
-              mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-                -Dsonar.projectKey=$SONAR_KEY
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.projectKey=$SONAR_KEY
 
       - name: Test Report
         uses: dorny/test-reporter@v1

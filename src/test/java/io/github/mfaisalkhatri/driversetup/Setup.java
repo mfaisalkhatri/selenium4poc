@@ -1,3 +1,17 @@
+/*      Copyright 2022 Mohammad Faisal Khatri
+
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+*/
 package io.github.mfaisalkhatri.driversetup;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -47,11 +61,9 @@ public class Setup {
 
             driver = new FirefoxDriver(options);
 
-        } else if (browser.equalsIgnoreCase("edge")) {
-            driver = new EdgeDriver();
-        } else if (browser.equalsIgnoreCase("opera")) {
-            driver = new OperaDriver();
-        } else if (browser.equalsIgnoreCase("chrome")) {
+        } else if (browser.equalsIgnoreCase("edge")) driver = new EdgeDriver();
+        else if (browser.equalsIgnoreCase("opera")) driver = new OperaDriver();
+        else if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
@@ -60,19 +72,16 @@ public class Setup {
 
             driver = new ChromeDriver(options);
 
-        } else {
-            // FIXME: Throw an Error here.
+        } else
+            // FIXME: Throw an Error here
             System.out.println("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
-        }
         setupBrowser();
     }
 
 
     @AfterClass
     public void tearDown () {
-        if (driver != null) {
-            driver.quit();
-        }
+        if (driver != null) driver.quit();
     }
 
     private void setupBrowser () {
