@@ -109,7 +109,6 @@
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
-                            <phase>test</phase>
                             <configuration>
                                 <destFile>${sonar.report}</destFile>
                                 <propertyName>surefireArgLine</propertyName>
