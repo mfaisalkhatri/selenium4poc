@@ -124,6 +124,7 @@
                     <include name="passwordNotValidTest"/>
                     <include name="invalidLoginCredentialsTest"/>
                     <include name="blankUserAndPasswordTest"/>
+                    <include name="loginTests"/>
                 </methods>
             </class>
         </classes>
