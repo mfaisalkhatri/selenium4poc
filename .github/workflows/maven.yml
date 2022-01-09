@@ -46,8 +46,8 @@ jobs:
         with:
           name: target
           path: |
-          ${{ github.workspace }}/target
-          ${{ github.workspace }}/reports
+            ${{ github.workspace }}/target
+            ${{ github.workspace }}/reports
 
   code_analysis:
     name: Code Analysis
