@@ -41,6 +41,14 @@ jobs:
       - name: Test Execution
         run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test
 
+      - name: Upload target folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: target
+          path: |
+          ${{ github.workspace }}/target
+          ${{ github.workspace }}/reports
+
   code_analysis:
     name: Code Analysis
     needs:
@@ -80,6 +88,11 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+
+      - name: Download target folder
+        uses: actions/download-artifact@v2
+        with:
+          name: target
 
       - name: Sonar Code Analysis
         env:
