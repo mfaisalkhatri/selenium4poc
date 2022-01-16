@@ -70,14 +70,16 @@ public class Setup {
             driver = new OperaDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
             HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-            chromePrefs.put("profile.default_content_settings.popups", 0);
             chromePrefs.put("safebrowsing.enabled", "true");
+            chromePrefs.put("download.prompt_for_download", "false");
+
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
-            options.setExperimentalOption("prefs", chromePrefs);
             options.addArguments("--headless");
+            options.addArguments("--safebrowsing-disable-download-protection");
+            options.setExperimentalOption("prefs", chromePrefs);
             driver = new ChromeDriver(options);
 
         } else {
