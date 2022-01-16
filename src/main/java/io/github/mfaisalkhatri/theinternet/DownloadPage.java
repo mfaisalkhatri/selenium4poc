@@ -23,7 +23,7 @@ public class DownloadPage extends BasePage {
     }
 
     private WebElement downloadLink() {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#content > div > a:nth-child(16)")));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#content > div > a:nth-child(2)")));
     }
 
     public String getDownloadLinkText() {
