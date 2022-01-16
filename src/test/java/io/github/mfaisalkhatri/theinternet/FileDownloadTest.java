@@ -4,6 +4,8 @@ import io.github.mfaisalkhatri.driversetup.Setup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.nio.file.Paths;
+
 public class FileDownloadTest extends Setup {
 
     private DownloadPage downloadPage;
@@ -19,8 +21,8 @@ public class FileDownloadTest extends Setup {
 
     @Test
     public void testFileDownlad() {
-        final String fileName = "testcafe.png";
-        downloadPage.downloadFile(fileName);
-        downloadPage.checkFileDownload("C:\\Users\\Faisal Khatri\\Downloads\\", fileName);
+        String fileName = downloadPage.getDownloadLinkText();
+        downloadPage.downloadFile();
+        downloadPage.checkFileDownload(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")), fileName);
     }
 }

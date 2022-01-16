@@ -41,6 +41,4 @@ public class RightClickTests extends Setup {
         contextMenuPage.checkForAlert();
         Assert.assertEquals(contextMenuPage.getAlertText(), "You selected a context menu");
     }
-
-
 }

@@ -15,6 +15,8 @@
 package io.github.mfaisalkhatri.driversetup;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -34,8 +36,8 @@ import java.time.Duration;
  */
 public class Setup {
 
+    private static final Logger log = LogManager.getLogger("Setup.class");
     public WebDriver driver;
-
 
     @BeforeSuite
     public void setupClass() {
@@ -61,27 +63,31 @@ public class Setup {
 
             driver = new FirefoxDriver(options);
 
-        } else if (browser.equalsIgnoreCase("edge")) driver = new EdgeDriver();
-        else if (browser.equalsIgnoreCase("opera")) driver = new OperaDriver();
-        else if (browser.equalsIgnoreCase("chrome")) {
+        } else if (browser.equalsIgnoreCase("edge")) {
+            driver = new EdgeDriver();
+        } else if (browser.equalsIgnoreCase("opera")) {
+            driver = new OperaDriver();
+        } else if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
-            //  options.addArguments("--headless");
+            options.addArguments("--headless");
 
             driver = new ChromeDriver(options);
 
-        } else
-            // FIXME: Throw an Error here
-            System.out.println("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
+        } else {
+            log.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
+        }
         setupBrowser();
     }
 
 
     @AfterClass
     public void tearDown() {
-        if (driver != null) driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     private void setupBrowser() {

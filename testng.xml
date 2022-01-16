@@ -179,7 +179,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="File Download Tests" enabled="false">
+    <test name="File Download Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.FileDownloadTest"/>
