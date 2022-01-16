@@ -27,6 +27,7 @@ public class DownloadPage extends BasePage {
     }
 
     public String getDownloadLinkText() {
+        log.info(downloadLink().getText());
         return downloadLink().getText();
     }
 
