@@ -44,16 +44,16 @@ public class DownloadPage extends BasePage {
             for (int i = 0; i < fileList.length; i++) {
                 String fileName = fileList[i];
                 if (fileName.equalsIgnoreCase(downloadedFileName)) {
-                    log.info("Downloaded file Found: " + fileName);
+                    log.info("Downloaded file Found: " + directory + " " + fileName);
                     flag = 1;
                 }
             }
         } else {
-            log.info("Downloads directory is Empty!");
+            log.info("Downloads directory is Empty!" + directory);
             return false;
         }
         if (flag == 0) {
-            log.info("Error: Downloaded File not found in the path!!");
+            log.info("Error: Downloaded File not found in the path!!" + directory);
             return false;
         }
         return true;
