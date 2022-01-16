@@ -27,13 +27,13 @@ public class DownloadPage extends BasePage {
     }
 
     public String getDownloadLinkText() {
-        log.info(downloadLink().getText());
+        log.info("Downloading Fil: :" + downloadLink().getText());
         return downloadLink().getText();
     }
 
     public void downloadFile() throws InterruptedException {
         downloadLink().click();
-        pause(5000);
+        pause(10000);
     }
 
     public boolean checkFileDownload(String downloadedFileName) {
