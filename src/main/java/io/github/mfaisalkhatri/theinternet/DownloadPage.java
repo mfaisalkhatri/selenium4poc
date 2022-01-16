@@ -15,11 +15,9 @@ import java.time.Duration;
 public class DownloadPage extends BasePage {
 
     private static final Logger log = LogManager.getLogger(DownloadPage.class);
-    private final WebDriver driver;
     private final WebDriverWait wait;
 
     public DownloadPage(WebDriver driver) {
-        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
@@ -41,9 +39,7 @@ public class DownloadPage extends BasePage {
         String[] fileList = directory.list();
 
         int flag = 0;
-        if (fileList == null) {
-            log.info("Downloads directory is Empty!");
-        } else {
+        if (fileList != null) {
             for (int i = 0; i < fileList.length; i++) {
                 String fileName = fileList[i];
                 if (fileName.equalsIgnoreCase(downloadedFileName)) {
@@ -51,10 +47,11 @@ public class DownloadPage extends BasePage {
                     flag = 1;
                 }
             }
+        } else {
+            log.info("Downloads directory is Empty!");
         }
         if (flag == 0) {
             log.info("Error: Downloaded File not found in the path!!");
         }
-
     }
 }
