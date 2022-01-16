@@ -39,7 +39,6 @@ import java.util.HashMap;
 public class Setup {
 
     private static final Logger log = LogManager.getLogger("Setup.class");
-    public static final downloadPath = ;
     public WebDriver driver;
 
     @BeforeSuite
