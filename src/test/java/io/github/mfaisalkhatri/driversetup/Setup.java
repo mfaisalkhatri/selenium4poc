@@ -30,6 +30,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import java.time.Duration;
+import java.util.HashMap;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
@@ -68,12 +69,15 @@ public class Setup {
         } else if (browser.equalsIgnoreCase("opera")) {
             driver = new OperaDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
+            HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+            chromePrefs.put("profile.default_content_settings.popups", 0);
+            chromePrefs.put("safebrowsing.enabled", "true");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
+            options.setExperimentalOption("prefs", chromePrefs);
             options.addArguments("--headless");
-
             driver = new ChromeDriver(options);
 
         } else {

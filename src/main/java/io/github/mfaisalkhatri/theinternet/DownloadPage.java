@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.time.Duration;
 
 public class DownloadPage extends BasePage {
@@ -22,7 +23,7 @@ public class DownloadPage extends BasePage {
     }
 
     private WebElement downloadLink() {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#content > div > a:nth-child(4)")));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#content > div > a:nth-child(16)")));
     }
 
     public String getDownloadLinkText() {
@@ -34,8 +35,8 @@ public class DownloadPage extends BasePage {
         pause(5000);
     }
 
-    public boolean checkFileDownload(String downloadPath, String downloadedFileName) {
-        File directory = new File(downloadPath);
+    public boolean checkFileDownload(String downloadedFileName) {
+        File directory = new File(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")));
         String[] fileList = directory.list();
 
         int flag = 0;
@@ -45,15 +46,16 @@ public class DownloadPage extends BasePage {
                 if (fileName.equalsIgnoreCase(downloadedFileName)) {
                     log.info("Downloaded file Found: " + fileName);
                     flag = 1;
-                    return true;
                 }
             }
         } else {
             log.info("Downloads directory is Empty!");
+            return false;
         }
         if (flag == 0) {
             log.info("Error: Downloaded File not found in the path!!");
+            return false;
         }
-        return false;
+        return true;
     }
 }
