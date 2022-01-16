@@ -29,6 +29,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 
@@ -38,6 +39,7 @@ import java.util.HashMap;
 public class Setup {
 
     private static final Logger log = LogManager.getLogger("Setup.class");
+    public static final downloadPath = ;
     public WebDriver driver;
 
     @BeforeSuite
@@ -72,6 +74,7 @@ public class Setup {
             HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
             chromePrefs.put("safebrowsing.enabled", "true");
             chromePrefs.put("download.prompt_for_download", "false");
+            chromePrefs.put("download.default_directory", String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")));
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--no-sandbox");
