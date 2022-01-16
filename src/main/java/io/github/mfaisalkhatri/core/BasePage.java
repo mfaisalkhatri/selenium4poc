@@ -9,12 +9,8 @@ public class BasePage {
 
     private static final Logger log = LogManager.getLogger(BasePage.class);
 
-    public void pause(long timeInMillis) {
-        try {
-            Thread.sleep(timeInMillis);
-        } catch (InterruptedException e) {
-            log.log(Level.WARN, "Interrupted!", e);
-            Thread.currentThread().interrupt();
+    public void pause(long timeInMillis) throws InterruptedException {
+       Thread.sleep(timeInMillis);
         }
     }
 }

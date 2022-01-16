@@ -21,16 +21,9 @@ public class FileDownloadTest extends Setup {
     }
 
     @Test
-    public void testFileDownlad() {
+    public void testFileDownlad() throws InterruptedException {
         String fileName = downloadPage.getDownloadLinkText();
         downloadPage.downloadFile();
         Assert.assertTrue(downloadPage.checkFileDownload(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")), fileName));
-    }
-
-    @Test(description = "This test was introduced to cover the sonar code coverage issue")
-    public void testInterruptedException() {
-        Thread.currentThread().interrupt();
-        downloadPage.pause(0);
-        Assert.assertTrue(Thread.interrupted());
     }
 }

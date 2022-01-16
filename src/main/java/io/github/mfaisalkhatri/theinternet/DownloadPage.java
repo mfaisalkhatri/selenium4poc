@@ -29,7 +29,7 @@ public class DownloadPage extends BasePage {
         return downloadLink().getText();
     }
 
-    public void downloadFile() {
+    public void downloadFile() throws InterruptedException {
         downloadLink().click();
         pause(5000);
     }
