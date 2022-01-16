@@ -34,7 +34,7 @@ public class DownloadPage extends BasePage {
         pause(5000);
     }
 
-    public void checkFileDownload(String downloadPath, String downloadedFileName) {
+    public boolean checkFileDownload(String downloadPath, String downloadedFileName) {
         File directory = new File(downloadPath);
         String[] fileList = directory.list();
 
@@ -45,6 +45,7 @@ public class DownloadPage extends BasePage {
                 if (fileName.equalsIgnoreCase(downloadedFileName)) {
                     log.info("Downloaded file Found: " + fileName);
                     flag = 1;
+                    return true;
                 }
             }
         } else {
@@ -53,5 +54,6 @@ public class DownloadPage extends BasePage {
         if (flag == 0) {
             log.info("Error: Downloaded File not found in the path!!");
         }
+        return false;
     }
 }

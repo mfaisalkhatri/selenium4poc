@@ -24,13 +24,13 @@ public class FileDownloadTest extends Setup {
     public void testFileDownlad() {
         String fileName = downloadPage.getDownloadLinkText();
         downloadPage.downloadFile();
-        downloadPage.checkFileDownload(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")), fileName);
+        Assert.assertTrue(downloadPage.checkFileDownload(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")), fileName));
     }
 
     @Test(description = "This test was introduced to cover the sonar code coverage issue")
     public void testInterruptedException() {
-        downloadPage.pause(1000);
         Thread.currentThread().interrupt();
+        downloadPage.pause(0);
         Assert.assertTrue(Thread.interrupted());
     }
 }
