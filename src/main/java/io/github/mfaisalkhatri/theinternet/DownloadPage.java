@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.time.Duration;
 
 public class DownloadPage extends BasePage {
@@ -27,7 +26,7 @@ public class DownloadPage extends BasePage {
     }
 
     public String getDownloadLinkText() {
-        log.info("Downloading Fil: :" + downloadLink().getText());
+        log.info("Downloading File :" + downloadLink().getText());
         return downloadLink().getText();
     }
 
@@ -36,8 +35,8 @@ public class DownloadPage extends BasePage {
         pause(10000);
     }
 
-    public boolean checkFileDownload(String downloadedFileName) {
-        File directory = new File(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")));
+    public boolean checkFileDownload(String downloadPath, String downloadedFileName) {
+        File directory = new File(downloadPath);
         String[] fileList = directory.list();
 
         int flag = 0;

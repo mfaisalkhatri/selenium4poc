@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.nio.file.Paths;
+
 public class FileDownloadTest extends Setup {
 
     private DownloadPage downloadPage;
@@ -22,6 +24,6 @@ public class FileDownloadTest extends Setup {
     public void testFileDownlad() throws InterruptedException {
         String fileName = downloadPage.getDownloadLinkText();
         downloadPage.downloadFile();
-        Assert.assertTrue(downloadPage.checkFileDownload(fileName));
+        Assert.assertTrue(downloadPage.checkFileDownload(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")), fileName));
     }
 }
