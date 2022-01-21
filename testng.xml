@@ -46,7 +46,7 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
@@ -159,7 +159,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Double Click on Button Tests" enabled="true">
+    <test name="Double Click on Button Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.demoqa.DoubleClickTests">

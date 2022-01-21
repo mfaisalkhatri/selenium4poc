@@ -32,7 +32,7 @@ public class FileUploadPage {
     public void uploadFile (String filename) {
         log.info("Starting File Upload");
         File directory = new File(String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")));
-        String uploadPath = directory + "\\" + filename;
+        String uploadPath = directory + "/" + filename;
         log.info("Uploading File from path" + uploadPath);
         chooseFile().sendKeys(uploadPath);
         btnUpload().click();
