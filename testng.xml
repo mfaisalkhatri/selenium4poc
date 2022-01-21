@@ -179,10 +179,16 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="File Download Tests" enabled="true">
+    <test name="File Upload and Download Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.theinternet.FileDownloadTest"/>
+            <class name="io.github.mfaisalkhatri.theinternet.FileUploadDownloadTest">
+                <methods>
+                    <include name="testFileDownload"/>
+                    <include name="testFileUpload"/>
+                </methods>
+            </class>
+
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

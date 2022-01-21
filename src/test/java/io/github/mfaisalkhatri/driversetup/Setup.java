@@ -42,7 +42,7 @@ public class Setup {
     public WebDriver driver;
 
     @BeforeSuite
-    public void setupClass() {
+    public void setupClass () {
 
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
@@ -52,7 +52,7 @@ public class Setup {
 
     @Parameters("browser")
     @BeforeClass
-    public void setupTest(String browser) {
+    public void setupTest (String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
             // FirefoxOptions options = new FirefoxOptions();
             // options.addArguments("--websocket-port", "4444");
@@ -70,7 +70,7 @@ public class Setup {
         } else if (browser.equalsIgnoreCase("opera")) {
             driver = new OperaDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
-            HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+            HashMap<String, Object> chromePrefs = new HashMap<>();
             chromePrefs.put("safebrowsing.enabled", "true");
             chromePrefs.put("download.prompt_for_download", "false");
             chromePrefs.put("download.default_directory", String.valueOf(Paths.get(System.getProperty("user.home"), "Downloads")));
@@ -92,13 +92,13 @@ public class Setup {
 
 
     @AfterClass
-    public void tearDown() {
+    public void tearDown () {
         if (driver != null) {
             driver.quit();
         }
     }
 
-    private void setupBrowser() {
+    private void setupBrowser () {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 
