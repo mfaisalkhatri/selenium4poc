@@ -38,7 +38,7 @@ jobs:
       - name: Build the Project
         run: mvn clean install -DskipTests
 
-      - name: Test Execution
+      - name: Coverage per Test Execution
         run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test
 
       - name: Upload target folder
