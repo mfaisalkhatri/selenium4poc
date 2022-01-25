@@ -8,6 +8,7 @@ public class BasePage {
     private static final Logger log = LogManager.getLogger(BasePage.class);
 
     public void pause(long timeInMillis) throws InterruptedException {
+        log.info("Pausing the driver for " + timeInMillis + " ms");
         Thread.sleep(timeInMillis);
     }
 }

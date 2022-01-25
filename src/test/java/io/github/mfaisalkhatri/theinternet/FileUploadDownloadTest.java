@@ -13,7 +13,7 @@ public class FileUploadDownloadTest extends Setup {
     private MainPage mainPage;
 
     @BeforeClass
-    public void testSetup () {
+    public void testSetup() {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         driver.get(websiteLink);
         mainPage = new MainPage(driver);
@@ -22,7 +22,7 @@ public class FileUploadDownloadTest extends Setup {
     }
 
     @Test
-    public void testFileDownload () throws InterruptedException {
+    public void testFileDownload() throws InterruptedException {
         mainPage.clickLink("File Download");
         fileName = downloadPage.getDownloadLinkText();
         downloadPage.downloadFile();
@@ -31,10 +31,10 @@ public class FileUploadDownloadTest extends Setup {
     }
 
     @Test
-    public void testFileUpload () {
+    public void testFileUpload() {
         mainPage.clickLink("File Upload");
         uploadPage.uploadFile(fileName);
-        Assert.assertEquals("File Uploaded!", uploadPage.successHeader());
-        Assert.assertEquals(fileName, uploadPage.uploadedFileName());
+        Assert.assertEquals(uploadPage.successHeader(), "File Uploaded!");
+        Assert.assertEquals(uploadPage.uploadedFileName(), fileName);
     }
 }
