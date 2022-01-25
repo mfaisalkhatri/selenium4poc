@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Selenium 4 test suite">
+<suite name="Sauce Demo Website Tests ">
     <test name="selenium 4 Tests with Chrome Browser" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
@@ -159,7 +159,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Double Click on Button Tests" enabled="false">
+    <test name="Double Click on Button Tests" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.demoqa.DoubleClickTests">
@@ -188,7 +188,16 @@
                     <include name="testFileUpload"/>
                 </methods>
             </class>
-
+        </classes>
+    </test> <!-- Test -->
+    <test name="Multiple Windows Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.MultipleWindowTests">
+                <methods>
+                    <include name="testMultipleWindows"/>
+                </methods>
+            </class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
