@@ -24,7 +24,6 @@ import org.testng.annotations.Test;
  */
 public class CheckboxTests extends Setup {
 
-
     private CheckboxPage checkboxPage;
 
     @BeforeClass
