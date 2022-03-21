@@ -46,7 +46,7 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
@@ -200,4 +200,15 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Data table Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DataTableTests">
+                <methods>
+                    <include name="testDataTable"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+
 </suite> <!-- Suite -->
