@@ -4,38 +4,39 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class DataTablesPage {
 
     private final WebDriver driver;
 
-    public DataTablesPage(WebDriver driver) {
+    public DataTablesPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    public WebElement tableOne() {
+    public WebElement tableOne () {
         return driver.findElement(By.cssSelector("#table1 > tbody"));
     }
 
-    public List<WebElement> tableRows() {
+    public List<WebElement> tableRows () {
         return tableOne().findElements(By.tagName("tr"));
     }
 
-    public int totalRows() {
+    public int totalRows () {
         return tableRows().size();
     }
 
-    public int totalColumns() {
+    public int totalColumns () {
         return driver.findElements(By.cssSelector("#table1 > thead > tr > th")).size();
     }
 
-    public List<WebElement> columnHeaders() {
+    public List<WebElement> columnHeaders () {
         return driver.findElements(By.cssSelector("#table1 > thead > tr > th"));
     }
-
-
-    public void printTableRecords() {
+    
+    public void printTableRecords () {
         for (int i = 0; i < totalRows(); i++) {
             List<WebElement> tableColumns = tableRows().get(i).findElements(By.tagName("td"));
             for (int j = 0; j < totalColumns(); j++) {
@@ -44,31 +45,7 @@ public class DataTablesPage {
         }
     }
 
-    public boolean checkTableRecord(String lastName, String firstName, String email, String due,
-                                    String website) {
-        for (int i = 0; i < totalRows(); i++) {
-            List<WebElement> tableColumns = tableRows().get(i).findElements(By.tagName("td"));
-            Map tableMap = new HashMap<String, String>();
-//            boolean lastNameFound = false;
-            for (int j = 0; j < totalColumns(); j++) {
-                tableMap.put(i, tableColumns.get(j).getText());
-            }
-//                if (tableColumns.get(j).getText().equalsIgnoreCase(lastName)) {
-//                    lastNameFound = true;
-//                    tableColumns.get(j).getText().equalsIgnoreCase(firstName);
-//                    tableColumns.get(j).getText().equalsIgnoreCase(email);
-//                    tableColumns.get(j).getText().equalsIgnoreCase(due);
-//                    tableColumns.get(j).getText().equalsIgnoreCase(website);
-//                }
-//            }
-//            if (lastNameFound == true) {
-//                return true;
-//            }
-        }
-        return false;
-    }
-
-    public void getTableData() {
+    public List<LinkedHashMap<String, String>> getTableData () {
         List<LinkedHashMap<String, String>> allTableData = new ArrayList<>();
         LinkedHashMap<String, String> eachRowData = null;
         for (int i = 0; i < totalRows(); i++) {
@@ -79,9 +56,7 @@ public class DataTablesPage {
                 eachRowData.put(columnHeaders().get(j).getText(), cellValue);
             }
             allTableData.add(eachRowData);
-
         }
-        System.out.println(allTableData);
+        return allTableData;
     }
 }
-
