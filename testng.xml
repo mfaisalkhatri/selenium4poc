@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sauce Demo Website Tests ">
-    <test name="selenium 4 Tests with Chrome Browser" enabled="true">
+    <test name="selenium 4 Tests with Chrome Browser" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.SauceDemoTests">
@@ -12,7 +12,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="selenium 4 Tests with Firefox Browser" enabled="true">
+    <test name="selenium 4 Tests with Firefox Browser" enabled="false">
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.saucedemo.SauceDemoTests">
@@ -46,7 +46,7 @@
         </classes>
     </test> <!-- Test -->
 
-    <test name="selenium 4 Tests on Automation Practice Website" enabled="true">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.automationpractice.ContactUsTests">
@@ -56,7 +56,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Browser Navigation Tests" enabled="true">
+    <test name="Browser Navigation Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
@@ -67,7 +67,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="JS Alert Tests" enabled="true">
+    <test name="JS Alert Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
@@ -81,7 +81,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Dropdown Tests" enabled="true">
+    <test name="Dropdown Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
@@ -93,7 +93,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Checkboxes Tests" enabled="true">
+    <test name="Checkboxes Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.CheckboxTests">
@@ -103,7 +103,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Right Click Tests" enabled="true">
+    <test name="Right Click Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
@@ -113,7 +113,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Form Authentication Tests" enabled="true">
+    <test name="Form Authentication Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.FormAuthenticationTests">
@@ -129,7 +129,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="KeyPress Tests" enabled="true">
+    <test name="KeyPress Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.KeyPressTests">
@@ -139,7 +139,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Mouse Hover Tests" enabled="true">
+    <test name="Mouse Hover Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.HoverTests">
@@ -149,7 +149,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Drag and Drop Tests" enabled="true">
+    <test name="Drag and Drop Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.crossbrowsertesting.DragAndDropTests">
@@ -159,7 +159,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Double Click on Button Tests" enabled="true">
+    <test name="Double Click on Button Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.demoqa.DoubleClickTests">
@@ -169,7 +169,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="iFrame Tests" enabled="true">
+    <test name="iFrame Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.IFrameTests">
@@ -179,7 +179,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="File Upload and Download Tests" enabled="true">
+    <test name="File Upload and Download Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.FileUploadDownloadTest">
@@ -190,7 +190,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Multiple Windows Tests" enabled="true">
+    <test name="Multiple Windows Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.MultipleWindowTests">
@@ -200,7 +200,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Data table Tests" enabled="true">
+    <test name="Data table Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.theinternet.DataTableTests">
@@ -208,6 +208,11 @@
                     <include name="testDataTable"/>
                 </methods>
             </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Chrome Devtools Tests" enabled="true">
+        <classes>
+            <class name="io.github.mfaisalkhatri.devtools.LogTest"/>
         </classes>
     </test> <!-- Test -->
 

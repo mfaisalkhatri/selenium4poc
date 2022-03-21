@@ -83,7 +83,6 @@ public class Setup {
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
             driver = new ChromeDriver(options);
-
         } else {
             log.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
         }
@@ -101,6 +100,5 @@ public class Setup {
     private void setupBrowser () {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-
     }
 }
