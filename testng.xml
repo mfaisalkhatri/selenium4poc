@@ -210,5 +210,10 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Chrome Devtools Tests" enabled="true">
+        <classes>
+            <class name="io.github.mfaisalkhatri.devtools.LogTest"/>
+        </classes>
+    </test> <!-- Test -->
 
 </suite> <!-- Suite -->
