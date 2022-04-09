@@ -29,6 +29,12 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
+      - name: Download Juiceshop app
+        run: docker pull bkimminich/juice-shop
+
+      - name: Bootup JuiceShop Website
+        run: docker run --rm -p 3000:3000 bkimminich/juice-shop
+          -
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
