@@ -43,7 +43,6 @@ public class Setup {
 
     @BeforeSuite
     public void setupClass () {
-
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
         WebDriverManager.edgedriver().setup();
@@ -70,6 +69,7 @@ public class Setup {
         } else if (browser.equalsIgnoreCase("opera")) {
             driver = new OperaDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
+
             HashMap<String, Object> chromePrefs = new HashMap<>();
             chromePrefs.put("safebrowsing.enabled", "true");
             chromePrefs.put("download.prompt_for_download", "false");
@@ -82,6 +82,7 @@ public class Setup {
             options.addArguments("--headless");
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
+
             driver = new ChromeDriver(options);
         } else {
             log.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
