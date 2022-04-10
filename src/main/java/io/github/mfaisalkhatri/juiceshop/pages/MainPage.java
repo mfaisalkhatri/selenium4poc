@@ -12,6 +12,10 @@ public class MainPage {
         this.driver = driver;
     }
 
+    public WebElement meWantThisLink() {
+        return driver.findElement(By.cssSelector(".cc-btn"));
+    }
+
     public WebElement dismissBtn() {
         return driver.findElement(By.cssSelector(".close-dialog"));
     }
@@ -25,6 +29,7 @@ public class MainPage {
     }
 
     public void openLoginPage() {
+        meWantThisLink().click();
         dismissBtn().click();
         accountLink().click();
         loginLink().click();
