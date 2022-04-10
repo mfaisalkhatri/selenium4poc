@@ -23,4 +23,10 @@ public class MainPage {
     public WebElement loginLink() {
         return driver.findElement(By.id("navbarLoginButton"));
     }
+
+    public void openLoginPage() {
+        dismissBtn().click();
+        accountLink().click();
+        loginLink().click();
+    }
 }

@@ -42,7 +42,7 @@ public class Setup {
     public WebDriver driver;
 
     @BeforeSuite
-    public void setupClass () {
+    public void setupClass() {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
         WebDriverManager.edgedriver().setup();
@@ -51,7 +51,7 @@ public class Setup {
 
     @Parameters("browser")
     @BeforeClass
-    public void setupTest (String browser) {
+    public void setupTest(String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
             // FirefoxOptions options = new FirefoxOptions();
             // options.addArguments("--websocket-port", "4444");
@@ -79,7 +79,7 @@ public class Setup {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
-            options.addArguments("--headless");
+            //options.addArguments("--headless");
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
 
@@ -92,13 +92,13 @@ public class Setup {
 
 
     @AfterClass
-    public void tearDown () {
+    public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
 
-    private void setupBrowser () {
+    private void setupBrowser() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
     }

@@ -45,8 +45,8 @@ public class RegistrationPage {
     public void registerUser(String email, String password, String securityQuestion, String securityAnswer) {
         helper.enterText(emailField(), email);
         helper.enterText(passwordField(), password);
-        securityQuestion().selectByVisibleText("Mother's maiden name?");
-        helper.enterText(securityAnswer(), "Jane Doe");
+        securityQuestion().selectByVisibleText(securityQuestion);
+        helper.enterText(securityAnswer(), securityAnswer);
         registrationButton().click();
     }
 }
