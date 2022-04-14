@@ -3,6 +3,9 @@ package io.github.mfaisalkhatri.juiceshop.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import java.time.Duration;
 
 public class MainPage {
 
@@ -28,8 +31,18 @@ public class MainPage {
         return driver.findElement(By.id("navbarLoginButton"));
     }
 
+    public WebElement yourBasketLink() {
+        return driver.findElement(By.cssSelector("button.mat-focus-indicator:nth-child(7)"));
+    }
+
+    public String yourBasketCount() {
+        return driver.findElement(By.cssSelector(".fa-layers-counter")).getText();
+    }
+
     public void openLoginPage() {
+        Actions action = new Actions(driver);
         meWantThisLink().click();
+        action.pause(Duration.ofSeconds(5)).moveToElement(dismissBtn()).click().build().perform();
         dismissBtn().click();
         accountLink().click();
         loginLink().click();

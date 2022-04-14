@@ -13,6 +13,7 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         helper = new Helper(driver);
+
     }
 
     public WebElement notaCustomerLink() {
@@ -31,11 +32,14 @@ public class LoginPage {
         return driver.findElement(By.id("loginButton"));
     }
 
+    public WebElement logOutLink() {
+        return driver.findElement(By.id("navbarLogoutButton"));
+    }
+
     public void loginIntoJuiceShop(String email, String password) {
         helper.enterText(emailField(), email);
         helper.enterText(passwordField(), password);
         loginBtn().click();
     }
-
 
 }

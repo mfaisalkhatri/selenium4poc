@@ -5,18 +5,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class RegistrationPage {
 
     private final WebDriver driver;
     private final Helper helper;
     private final LoginPage loginPage;
+    private final WebDriverWait wait;
+    private final MainPage mainPage;
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         helper = new Helper(driver);
         loginPage = new LoginPage(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        mainPage = new MainPage(driver);
     }
 
     public WebElement emailField() {
@@ -31,29 +37,38 @@ public class RegistrationPage {
         return driver.findElement(By.id("repeatPasswordControl"));
     }
 
-    public Select securityQuestion() {
-        WebElement dropdownBox = driver.findElement(By.cssSelector(".mat-form-field.ng-tns-c118-10 > div"));
-        dropdownBox.click();
-        return new Select(dropdownBox);
+
+    public void securityQuestionDropdown(String securityQuestion) {
+        Actions action = new Actions(driver);
+        WebElement dropdown = driver.findElement(By.name("securityQuestion"));
+        action.pause(Duration.ofSeconds(2)).click(dropdown).perform();
+        WebElement selectOption =
+                driver.findElement(By.xpath("//mat-option/span[contains(text()," + "\"" + securityQuestion + "\")] "));
+        action.pause(Duration.ofSeconds(2)).click(selectOption).perform();
+
     }
 
     public WebElement securityAnswer() {
-        return driver.findElement(By.cssSelector("mat-form-field.ng-tns-c118-12 > div"));
+        return driver.findElement(By.id("securityAnswerControl"));
     }
 
     public WebElement registrationButton() {
         return driver.findElement(By.id("registerButton"));
     }
 
+    public String successMessage() {
+        return driver.findElement(By.cssSelector(".cdk-overlay-pane > snack-bar-container > div > div > " +
+                "simple-snack-bar >span")).getText();
+    }
+
     public void registerUser(String email, String password, String securityQuestion, String securityAnswer) {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(loginPage.notaCustomerLink()).build().perform();
         loginPage.notaCustomerLink().click();
         helper.enterText(emailField(), email);
         helper.enterText(passwordField(), password);
         helper.enterText(repeatPasswordField(), password);
-        securityQuestion().selectByVisibleText(securityQuestion);
+        securityQuestionDropdown(securityQuestion);
         helper.enterText(securityAnswer(), securityAnswer);
         registrationButton().click();
+
     }
 }
