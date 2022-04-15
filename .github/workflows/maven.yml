@@ -29,12 +29,6 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Download Juiceshop app
-        run: docker pull bkimminich/juice-shop
-
-      - name: Bootup JuiceShop Website
-        run: docker run --rm -p 3000:3000 bkimminich/juice-shop
-          -
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
@@ -102,7 +96,7 @@ jobs:
 
       - name: Sonar Code Analysis
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_KEY: ${{ secrets.SONAR_KEY }}
         run: |
