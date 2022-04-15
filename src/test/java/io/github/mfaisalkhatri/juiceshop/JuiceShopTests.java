@@ -21,8 +21,8 @@ public class JuiceShopTests extends Setup {
     private LoginPage loginPage;
 
     @BeforeClass
-    public void setupTests() {
-        final String websiteLink = "http://localhost:3000";
+    public void setupTests () {
+        final String websiteLink = "http://192.168.99.100:3000";
         driver.get(websiteLink);
         mainPage = new MainPage(driver);
         registrationPage = new RegistrationPage(driver);
@@ -33,7 +33,7 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test
-    public void registerUserTest() {
+    public void registerUserTest () {
         mainPage.openLoginPage();
         registrationPage.registerUser(email, pass, "Mother's maiden name?", "Jane Doe");
         assertEquals(registrationPage.successMessage(), "Registration completed successfully. You can now log in.");
@@ -41,7 +41,7 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test
-    public void loginTest() {
+    public void loginTest () {
         loginPage.loginIntoJuiceShop(email, pass);
         mainPage.accountLink().click();
         assertTrue(loginPage.logOutLink().isDisplayed());
