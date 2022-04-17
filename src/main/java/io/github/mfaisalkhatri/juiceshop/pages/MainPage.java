@@ -11,40 +11,41 @@ public class MainPage {
 
     private final WebDriver driver;
 
-    public MainPage(WebDriver driver) {
+    public MainPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    public WebElement meWantThisLink() {
+    public WebElement meWantThisLink () {
         return driver.findElement(By.cssSelector(".cc-btn"));
     }
 
-    public WebElement dismissBtn() {
+    public WebElement dismissBtn () {
         return driver.findElement(By.cssSelector(".close-dialog"));
     }
 
-    public WebElement accountLink() {
+    public WebElement accountLink () {
         return driver.findElement(By.id("navbarAccount"));
     }
 
-    public WebElement loginLink() {
+    public WebElement loginLink () {
         return driver.findElement(By.id("navbarLoginButton"));
     }
 
-    public WebElement yourBasketLink() {
+    public WebElement yourBasketLink () {
         return driver.findElement(By.cssSelector("button.mat-focus-indicator:nth-child(7)"));
     }
 
-    public String yourBasketCount() {
+    public String yourBasketCount () {
         return driver.findElement(By.cssSelector(".fa-layers-counter")).getText();
     }
 
-    public void openLoginPage() {
+    public void openLoginPage () {
         Actions action = new Actions(driver);
         meWantThisLink().click();
-        action.pause(Duration.ofSeconds(5)).moveToElement(dismissBtn()).click().build().perform();
-        dismissBtn().click();
+        action.pause(Duration.ofSeconds(2)).moveToElement(dismissBtn()).click().build().perform();
         accountLink().click();
         loginLink().click();
     }
+
+
 }
