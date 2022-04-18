@@ -79,7 +79,7 @@ public class Setup {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
-            // options.addArguments("--headless");
+            options.addArguments("--headless");
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
 

@@ -14,15 +14,23 @@ public class JuiceShopTests extends Setup {
     Faker faker;
     private String email;
     private String pass;
+    private String appleJuiceText;
+    private String appleJuicePrice;
+    private String bananaJuiceText;
+    private String bananaJuicePrice;
+    private String country;
+    private String name;
+    private String mobileNumber;
+    private String zipcode;
+    private String address;
+    private String city;
+    private String state;
     private MainPage mainPage;
     private RegistrationPage registrationPage;
     private LoginPage loginPage;
     private ProductPage productPage;
     private CheckoutPage checkoutPage;
-    private String appleJuiceText;
-    private String appleJuicePrice;
-    private String bananaJuiceText;
-    private String bananaJuicePrice;
+    private DeliverySelection deliverySelection;
 
 
     @BeforeClass
@@ -34,9 +42,17 @@ public class JuiceShopTests extends Setup {
         loginPage = new LoginPage(driver);
         productPage = new ProductPage(driver);
         checkoutPage = new CheckoutPage(driver);
+        deliverySelection = new DeliverySelection(driver);
         faker = Faker.instance();
         email = faker.internet().emailAddress();
         pass = faker.name().firstName();
+        country = faker.address().country();
+        name = faker.name().fullName();
+        mobileNumber = faker.number().digits(10);
+        zipcode = faker.number().digits(6);
+        address = faker.address().streetAddress();
+        city = faker.address().city();
+        state = faker.address().state();
     }
 
     @Test
@@ -50,14 +66,14 @@ public class JuiceShopTests extends Setup {
     @Test
     public void loginTest () {
         mainPage.openLoginPage();
-        final String email = "fk1@test.com";
-        final String pass = "Pass123";
+//        final String email = "fk1@test.com";
+//        final String pass = "Pass123";
         loginPage.loginIntoJuiceShop(email, pass);
         mainPage.accountLink().click();
         assertTrue(loginPage.logOutLink().isDisplayed());
     }
 
-    @Test
+    @Test(dependsOnMethods = "loginTest")
     public void addProductToCartTest () {
         productPage.addAppleJuiceToCart();
         assertEquals(productPage.successMessage(), "Placed Apple Juice (1000ml) into basket.");
@@ -70,8 +86,8 @@ public class JuiceShopTests extends Setup {
         bananaJuicePrice = productPage.getBananaJuicePrice();
     }
 
-    @Test
-    public void productCheckoutTests () {
+    @Test(dependsOnMethods = "addProductToCartTest")
+    public void productCheckoutTest () {
         productPage.navigateToYourBasket();
         assertEquals(checkoutPage.appleJuiceText(), appleJuiceText);
         assertEquals(checkoutPage.appleJuiceQty(), "1");
@@ -81,5 +97,16 @@ public class JuiceShopTests extends Setup {
         assertEquals(checkoutPage.bananaJuicePrice(), bananaJuicePrice);
         assertEquals(checkoutPage.totalPrice(), "Total Price: 3.98¤");
         checkoutPage.checkoutProduct();
+        checkoutPage.addAddressForDelivery(country, name, mobileNumber, zipcode, address, city, state);
+    }
+
+    @Test(dependsOnMethods = "productCheckoutTest")
+    public void selectDeliveryTest () {
+        String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
+        assertEquals(deliverySelection.getDeliveryAddressName(), name);
+        assertEquals(deliverySelection.getDeliveryAddress(), addressLineTwo);
+        assertEquals(deliverySelection.getDeliveryAddressCountry(), country);
+        assertEquals(deliverySelection.getDeliveryAddressPhoneNumber(), "Phone Number " + mobileNumber);
+        deliverySelection.selectDeliveryOption();
     }
 }

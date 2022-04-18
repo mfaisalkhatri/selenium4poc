@@ -9,7 +9,8 @@
                     <include name="registerUserTest"/>
                     <include name="loginTest"/>
                     <include name="addProductToCartTest"/>
-                    <include name="productCheckoutTests"/>
+                    <include name="productCheckoutTest"/>
+                    <include name="selectDeliveryTest"/>
                 </methods>
             </class>
         </classes>

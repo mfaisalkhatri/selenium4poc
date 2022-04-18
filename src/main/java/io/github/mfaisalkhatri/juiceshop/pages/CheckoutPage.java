@@ -1,5 +1,6 @@
 package io.github.mfaisalkhatri.juiceshop.pages;
 
+import io.github.mfaisalkhatri.juiceshop.utilities.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,10 +15,14 @@ public class CheckoutPage {
 
     private final WebDriver driver;
     private final Actions actions;
+    private final AddressPage addressPage;
+    private final Helper helper;
 
     public CheckoutPage (WebDriver driver) {
         this.driver = driver;
         actions = new Actions(driver);
+        addressPage = new AddressPage(driver);
+        helper = new Helper(driver);
     }
 
     public String appleJuiceText () {
@@ -52,8 +57,25 @@ public class CheckoutPage {
         return driver.findElement(By.id("checkoutButton"));
     }
 
-    public void checkoutProduct () {
-        actions.pause(Duration.ofSeconds(2)).click(checkoutBtn()).build().perform();
+    public WebElement addNewAddressBtn () {
+        return driver.findElement(By.cssSelector("mat-card > div > button"));
     }
 
+    public void checkoutProduct () {
+        actions.pause(Duration.ofSeconds(3)).click(checkoutBtn()).build().perform();
+    }
+
+    public void addAddressForDelivery (String country, String name, String mobileNumber, String zipCode, String address, String city, String state) {
+        addNewAddressBtn().click();
+        helper.enterText(addressPage.countryField(), country);
+        helper.enterText(addressPage.nameField(), name);
+        helper.enterText(addressPage.mobileNumberField(), mobileNumber);
+        helper.enterText(addressPage.zipCodeField(), zipCode);
+        helper.enterText(addressPage.addressField(), address);
+        helper.enterText(addressPage.cityField(), city);
+        helper.enterText(addressPage.stateField(), state);
+        addressPage.submitBtn().click();
+        addressPage.selectAddressRadioBtn().click();
+        addressPage.continueBtn().click();
+    }
 }
