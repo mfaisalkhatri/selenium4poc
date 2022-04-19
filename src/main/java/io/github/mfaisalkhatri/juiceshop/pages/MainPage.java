@@ -42,7 +42,7 @@ public class MainPage {
     public void openLoginPage () {
         Actions action = new Actions(driver);
         meWantThisLink().click();
-        action.pause(Duration.ofSeconds(2)).moveToElement(dismissBtn()).click().build().perform();
+        action.pause(Duration.ofSeconds(3)).moveToElement(dismissBtn()).click().build().perform();
         accountLink().click();
         loginLink().click();
     }

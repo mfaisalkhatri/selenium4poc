@@ -8,11 +8,11 @@ public class Helper {
     private final WebDriver driver;
 
 
-    public Helper(WebDriver driver) {
+    public Helper (WebDriver driver) {
         this.driver = driver;
     }
 
-    public void enterText(WebElement element, String text) {
+    public void enterText (WebElement element, String text) {
         element.click();
         element.clear();
         element.sendKeys(text);

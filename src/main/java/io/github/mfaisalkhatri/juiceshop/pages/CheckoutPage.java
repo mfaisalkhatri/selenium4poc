@@ -65,11 +65,11 @@ public class CheckoutPage {
         actions.pause(Duration.ofSeconds(3)).click(checkoutBtn()).build().perform();
     }
 
-    public void addAddressForDelivery (String country, String name, String mobileNumber, String zipCode, String address, String city, String state) {
+    public void addAddressForDelivery (String country, String name, int mobileNumber, String zipCode, String address, String city, String state) {
         addNewAddressBtn().click();
         helper.enterText(addressPage.countryField(), country);
         helper.enterText(addressPage.nameField(), name);
-        helper.enterText(addressPage.mobileNumberField(), mobileNumber);
+        helper.enterText(addressPage.mobileNumberField(), String.valueOf(mobileNumber));
         helper.enterText(addressPage.zipCodeField(), zipCode);
         helper.enterText(addressPage.addressField(), address);
         helper.enterText(addressPage.cityField(), city);

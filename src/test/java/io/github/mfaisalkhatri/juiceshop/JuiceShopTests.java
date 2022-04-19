@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 
 public class JuiceShopTests extends Setup {
 
-    Faker faker;
+    private Faker faker;
     private String email;
     private String pass;
     private String appleJuiceText;
@@ -20,7 +20,7 @@ public class JuiceShopTests extends Setup {
     private String bananaJuicePrice;
     private String country;
     private String name;
-    private String mobileNumber;
+    private int mobileNumber;
     private String zipcode;
     private String address;
     private String city;
@@ -31,11 +31,15 @@ public class JuiceShopTests extends Setup {
     private ProductPage productPage;
     private CheckoutPage checkoutPage;
     private DeliverySelection deliverySelection;
+    private PaymentPage paymentPage;
+    private OrderSummaryPage orderSummaryPage;
+    private OrderConfirmationPage orderConfirmationPage;
 
 
     @BeforeClass
     public void setupTests () {
-        final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        //final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        final String websiteLink = "http://localhost:3000";
         driver.get(websiteLink);
         mainPage = new MainPage(driver);
         registrationPage = new RegistrationPage(driver);
@@ -43,12 +47,15 @@ public class JuiceShopTests extends Setup {
         productPage = new ProductPage(driver);
         checkoutPage = new CheckoutPage(driver);
         deliverySelection = new DeliverySelection(driver);
+        paymentPage = new PaymentPage(driver);
+        orderSummaryPage = new OrderSummaryPage(driver);
+        orderConfirmationPage = new OrderConfirmationPage(driver);
         faker = Faker.instance();
         email = faker.internet().emailAddress();
-        pass = faker.name().firstName();
+        pass = faker.internet().password(6, 12);
         country = faker.address().country();
         name = faker.name().fullName();
-        mobileNumber = faker.number().digits(10);
+        mobileNumber = faker.number().numberBetween(99900000, 99988888);
         zipcode = faker.number().digits(6);
         address = faker.address().streetAddress();
         city = faker.address().city();
@@ -65,9 +72,6 @@ public class JuiceShopTests extends Setup {
 
     @Test
     public void loginTest () {
-        mainPage.openLoginPage();
-//        final String email = "fk1@test.com";
-//        final String pass = "Pass123";
         loginPage.loginIntoJuiceShop(email, pass);
         mainPage.accountLink().click();
         assertTrue(loginPage.logOutLink().isDisplayed());
@@ -108,5 +112,39 @@ public class JuiceShopTests extends Setup {
         assertEquals(deliverySelection.getDeliveryAddressCountry(), country);
         assertEquals(deliverySelection.getDeliveryAddressPhoneNumber(), "Phone Number " + mobileNumber);
         deliverySelection.selectDeliveryOption();
+    }
+
+    @Test(dependsOnMethods = "selectDeliveryTest")
+    public void makePaymentTest () {
+        paymentPage.makePayment(name, "4012888888881881", "2", "2080");
+    }
+
+    @Test(dependsOnMethods = "makePaymentTest")
+    public void orderSummaryTest () {
+        String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
+        assertEquals(orderSummaryPage.getDeliveryAddressCustomerName(), name);
+        assertEquals(orderSummaryPage.getDeliveryAddress(), addressLineTwo);
+        assertEquals(orderSummaryPage.getDeliveryAddressCountry(), country);
+        assertEquals(orderSummaryPage.getDeliveryAddressPhoneNumber(), "Phone Number " + mobileNumber);
+        assertEquals(orderSummaryPage.getPaymentmethodCardEnding(), "Card ending in 1881");
+        assertEquals(orderSummaryPage.getPaymentmethodCardHolderName(), "Card Holder " + name);
+        assertEquals(orderSummaryPage.getItemsPrice(), "3.98¤");
+        assertEquals(orderSummaryPage.getDeliveryAmount(), "0.99¤");
+        assertEquals(orderSummaryPage.getTotalPrice(), "4.97¤");
+        assertEquals(orderSummaryPage.getAppleJuiceText(), appleJuiceText);
+        assertEquals(orderSummaryPage.getAppleJuiceQty(), "1");
+        assertEquals(orderSummaryPage.getAppleJuicePrice(), appleJuicePrice);
+        assertEquals(orderSummaryPage.getBananaJuiceText(), bananaJuiceText);
+        assertEquals(orderSummaryPage.getBananaJuiceQty(), "1");
+        assertEquals(orderSummaryPage.getBananaJuicePrice(), bananaJuicePrice);
+        orderSummaryPage.placeOrderAndPay();
+    }
+
+    @Test(dependsOnMethods = "orderSummaryTest")
+    public void orderConfirmationTest () {
+        assertEquals(orderConfirmationPage.getThanksMessage(), "Thank you for your purchase!");
+        assertEquals(orderConfirmationPage.getOrderConfirmationMessage(), "Your order has been placed and is being processed. You can check for status updates on our Track Orders page.");
+        assertEquals(orderConfirmationPage.getOrderDeliveryMessage(), "Your order will be delivered in 1 days.");
+        assertEquals(mainPage.yourBasketCount(), "0");
     }
 }

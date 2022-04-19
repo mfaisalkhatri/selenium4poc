@@ -60,6 +60,7 @@ public class ProductPage {
 
     public void addAppleJuiceToCart () {
         overlay().click();
+        actions.pause(Duration.ofSeconds(4)).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(appleJuiceAddtoCartBtn())).click();
     }
 
