@@ -29,14 +29,11 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Docker pull Juice Shop
-        run: docker pull bkimminich/juice-shop
-
-      - name: Run Juice Shop Website
-        run: docker run --rm -p 3000:3000 bkimminich/juice-shop
-        with:
-          wait-on: 'http://localhost:3000'
-
+      - name: Install Juice Shop Website
+      - run: >
+          docker pull bkimminich/juice-shop
+          docker run --rm -p 3000:3000 bkimminich/juice-shop
+        
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
