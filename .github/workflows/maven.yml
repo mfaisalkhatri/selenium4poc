@@ -14,21 +14,10 @@ on:
       - master
       - issue-*
 jobs:
-  juice_shop_deployment:
-    name: Deploy Juice Shop
-    runs-on: ubuntu-latest
-    steps:
-      - name: Pull Juice Shop Image
-        run: docker pull bkimminich/juice-shop
-
-      - name: Run Juice Shop
-        run: docker run --rm -p 3000:3000 bkimminich/juice-shop
-
   build_and_test:
     name: Build and Test
     runs-on: ubuntu-latest
-    needs:
-      - juice_shop_deployment
+
     steps:
       - name: checkout Git repository
         uses: actions/checkout@v2
@@ -39,7 +28,7 @@ jobs:
           java-version: '15'
           distribution: 'adopt'
           cache: maven
-          
+
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
