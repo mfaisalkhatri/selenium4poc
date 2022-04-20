@@ -66,7 +66,7 @@ public class ProductPage {
 
     public void addBananaJuiceToCart () {
         wait.until(ExpectedConditions.elementToBeClickable(bananaJuiceAddtoCartBtn())).click();
-        actions.pause(Duration.ofSeconds(6)).build().perform();
+        actions.pause(Duration.ofSeconds(4)).build().perform();
     }
 
     public void navigateToYourBasket () {
