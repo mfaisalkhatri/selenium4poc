@@ -60,13 +60,13 @@ public class ProductPage {
 
     public void addAppleJuiceToCart () {
         overlay().click();
-        actions.pause(Duration.ofSeconds(4)).build().perform();
+        actions.pause(Duration.ofSeconds(6)).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(appleJuiceAddtoCartBtn())).click();
     }
 
     public void addBananaJuiceToCart () {
         wait.until(ExpectedConditions.elementToBeClickable(bananaJuiceAddtoCartBtn())).click();
-        actions.pause(Duration.ofSeconds(5)).build().perform();
+        actions.pause(Duration.ofSeconds(6)).build().perform();
     }
 
     public void navigateToYourBasket () {
