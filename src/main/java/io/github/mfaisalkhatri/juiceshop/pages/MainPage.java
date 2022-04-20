@@ -15,11 +15,11 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public WebElement meWantThisLink () {
+    private WebElement meWantThisLink () {
         return driver.findElement(By.cssSelector(".cc-btn"));
     }
 
-    public WebElement dismissBtn () {
+    private WebElement dismissBtn () {
         return driver.findElement(By.cssSelector(".close-dialog"));
     }
 
@@ -27,7 +27,7 @@ public class MainPage {
         return driver.findElement(By.id("navbarAccount"));
     }
 
-    public WebElement loginLink () {
+    private WebElement loginLink () {
         return driver.findElement(By.id("navbarLoginButton"));
     }
 

@@ -22,20 +22,20 @@ public class RegistrationPage {
         actions = new Actions(driver);
     }
 
-    public WebElement emailField () {
+    private WebElement emailField () {
         return driver.findElement(By.id("emailControl"));
     }
 
-    public WebElement passwordField () {
+    private WebElement passwordField () {
         return driver.findElement(By.id("passwordControl"));
     }
 
-    public WebElement repeatPasswordField () {
+    private WebElement repeatPasswordField () {
         return driver.findElement(By.id("repeatPasswordControl"));
     }
 
 
-    public void securityQuestionDropdown (String securityQuestion) {
+    private void securityQuestionDropdown (String securityQuestion) {
         Actions action = new Actions(driver);
         WebElement dropdown = driver.findElement(By.name("securityQuestion"));
         action.pause(Duration.ofSeconds(2)).click(dropdown).perform();
@@ -45,11 +45,11 @@ public class RegistrationPage {
 
     }
 
-    public WebElement securityAnswer () {
+    private WebElement securityAnswer () {
         return driver.findElement(By.id("securityAnswerControl"));
     }
 
-    public WebElement registrationButton () {
+    private WebElement registrationButton () {
         return driver.findElement(By.id("registerButton"));
     }
 

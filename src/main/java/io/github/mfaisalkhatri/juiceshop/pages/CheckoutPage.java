@@ -57,7 +57,7 @@ public class CheckoutPage {
         return driver.findElement(By.id("checkoutButton"));
     }
 
-    public WebElement addNewAddressBtn () {
+    private WebElement addNewAddressBtn () {
         return driver.findElement(By.cssSelector("mat-card > div > button"));
     }
 

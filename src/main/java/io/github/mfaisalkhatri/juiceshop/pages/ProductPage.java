@@ -36,9 +36,8 @@ public class ProductPage {
         return driver.findElement(By.cssSelector("mat-grid-tile:nth-child(1) > div > mat-card > .mat-tooltip-trigger.product > div:nth-child(2) > .item-name")).getText();
     }
 
-    public WebElement appleJuiceAddtoCartBtn () {
+    private WebElement appleJuiceAddtoCartBtn () {
         return driver.findElement(By.cssSelector("mat-grid-tile:nth-child(1) > div > mat-card > div:nth-child(2) > button"));
-
     }
 
     public String getBananaJuicePrice () {
@@ -50,11 +49,11 @@ public class ProductPage {
         return driver.findElement(By.cssSelector("mat-grid-tile:nth-child(3) > div > mat-card > .mat-tooltip-trigger.product > div:nth-child(2) > .item-name")).getText();
     }
 
-    public WebElement bananaJuiceAddtoCartBtn () {
+    private WebElement bananaJuiceAddtoCartBtn () {
         return driver.findElement(By.cssSelector("mat-grid-tile:nth-child(3) > div > mat-card > div:nth-child(2) > button"));
     }
 
-    public WebElement overlay () {
+    private WebElement overlay () {
         return driver.findElement(By.cssSelector(".cdk-overlay-backdrop.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing"));
     }
 

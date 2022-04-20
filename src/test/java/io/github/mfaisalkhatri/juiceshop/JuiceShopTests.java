@@ -38,7 +38,7 @@ public class JuiceShopTests extends Setup {
 
     @BeforeClass
     public void setupTests () {
-        // final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        // final String websiteLink = "https://juice-shop.herokuapp.com/#/";it
         final String websiteLink = "http://localhost:3000";
         driver.get(websiteLink);
         mainPage = new MainPage(driver);

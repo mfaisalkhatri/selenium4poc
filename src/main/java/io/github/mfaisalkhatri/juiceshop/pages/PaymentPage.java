@@ -17,24 +17,24 @@ public class PaymentPage {
         this.driver = driver;
         helper = new Helper(driver);
     }
-    
-    public WebElement addNewCard () {
+
+    private WebElement addNewCard () {
         return driver.findElement(By.cssSelector("app-payment-method > div > div > mat-expansion-panel"));
     }
 
-    public WebElement nameField () {
+    private WebElement nameField () {
         return driver.findElement(By.cssSelector("div.mat-expansion-panel-body > div > mat-form-field.mat-form-field:nth-child(1) input"));
     }
 
-    public WebElement cardNumberField () {
+    private WebElement cardNumberField () {
         return driver.findElement(By.cssSelector("div.mat-expansion-panel-body > div > mat-form-field.mat-form-field:nth-child(2) input"));
     }
 
-    public Select expiryMonthField () {
+    private Select expiryMonthField () {
         return new Select(driver.findElement(By.cssSelector("div.mat-expansion-panel-body > div > mat-form-field.mat-form-field:nth-child(3) select")));
     }
 
-    public Select expiryYearField () {
+    private Select expiryYearField () {
         return new Select(driver.findElement(By.cssSelector("div.mat-expansion-panel-body > div > mat-form-field.mat-form-field:nth-child(4) select")));
     }
 
@@ -42,7 +42,7 @@ public class PaymentPage {
         return driver.findElement(By.id("submitButton"));
     }
 
-    public WebElement selectAddressRadioBtn () {
+    private WebElement selectAddressRadioBtn () {
         return driver.findElement(By.cssSelector("mat-cell > mat-radio-button"));
     }
 
