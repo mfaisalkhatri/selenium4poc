@@ -29,6 +29,12 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
+      - name: Pull Juice Shop Image
+        run: docker pull bkimminich/juice-shop
+
+      - name: Run Juice Shop
+        run: docker run -d --rm -p 3000:3000 bkimminich/juice-shop
+
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
