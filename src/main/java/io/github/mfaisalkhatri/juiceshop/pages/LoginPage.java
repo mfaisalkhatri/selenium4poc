@@ -10,33 +10,32 @@ public class LoginPage {
     private final WebDriver driver;
     private final Helper helper;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage (WebDriver driver) {
         this.driver = driver;
         helper = new Helper(driver);
-
     }
 
-    public WebElement notaCustomerLink() {
+    public WebElement notaCustomerLink () {
         return driver.findElement(By.cssSelector("#newCustomerLink > a"));
     }
 
-    private WebElement emailField() {
+    private WebElement emailField () {
         return driver.findElement(By.name("email"));
     }
 
-    private WebElement passwordField() {
+    private WebElement passwordField () {
         return driver.findElement(By.id("password"));
     }
 
-    private WebElement loginBtn() {
+    private WebElement loginBtn () {
         return driver.findElement(By.id("loginButton"));
     }
 
-    public WebElement logOutLink() {
+    public WebElement logOutLink () {
         return driver.findElement(By.id("navbarLogoutButton"));
     }
 
-    public void loginIntoJuiceShop(String email, String password) {
+    public void loginIntoJuiceShop (String email, String password) {
         helper.enterText(emailField(), email);
         helper.enterText(passwordField(), password);
         loginBtn().click();

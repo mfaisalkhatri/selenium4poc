@@ -3,9 +3,6 @@ package io.github.mfaisalkhatri.juiceshop.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /**
  * Created By Faisal Khatri on 18-04-2022
@@ -13,11 +10,9 @@ import java.time.Duration;
 public class AddressPage {
 
     private final WebDriver driver;
-    private final WebDriverWait wait;
 
     public AddressPage (WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public WebElement addressForm () {

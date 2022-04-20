@@ -38,9 +38,8 @@ public class DeliverySelection {
 
     public WebElement oneDayDeliveryOption () {
         return driver.findElement(By.cssSelector("input.mat-radio-input"));
-
     }
-
+    
     public WebElement continueBtn () {
         return driver.findElement(By.cssSelector(".btn.nextButton"));
     }

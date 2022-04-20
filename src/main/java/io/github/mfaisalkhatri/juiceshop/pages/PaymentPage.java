@@ -17,8 +17,7 @@ public class PaymentPage {
         this.driver = driver;
         helper = new Helper(driver);
     }
-
-
+    
     public WebElement addNewCard () {
         return driver.findElement(By.cssSelector("app-payment-method > div > div > mat-expansion-panel"));
     }
