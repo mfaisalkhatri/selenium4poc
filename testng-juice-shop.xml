@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Juice shop Website Tests ">
+    <test name="Juice Shop end to End automation tests ">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.juiceshop.JuiceShopTests">
+                <methods>
+                    <include name="registerUserTest"/>
+                    <include name="loginTest"/>
+                    <include name="addProductToCartTest"/>
+                    <include name="productCheckoutTest"/>
+                    <include name="selectDeliveryTest"/>
+                    <include name="makePaymentTest"/>
+                    <include name="orderSummaryTest"/>
+                    <include name="orderConfirmationTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

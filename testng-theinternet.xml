@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="The-internet Website Tests ">
+    <test name="Browser Navigation Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
+                <methods>
+                    <include name="checkTitleAndWebsiteUrlTest"/>
+                    <include name="browserNavigationTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="JS Alert Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
+                <methods>
+                    <include name="alertTest"/>
+                    <include name="confirmAlertTest"/>
+                    <include name="dismissAlertTest"/>
+                    <include name="jsPromptTypeAndAcceptTest"/>
+                    <include name="jsPromptDismissTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Dropdown Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
+                <methods>
+                    <include name="selectByOptionTest"/>
+                    <include name="selectByIndexText"/>
+                    <include name="selectByValueTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Checkboxes Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.CheckboxTests">
+                <methods>
+                    <include name="testCheckboxes"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Right Click Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
+                <methods>
+                    <include name="testRightClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Form Authentication Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.FormAuthenticationTests">
+                <methods>
+                    <include name="loginWithCorrectCredentials"/>
+                    <include name="logOutTest"/>
+                    <include name="userNameNotValidTest"/>
+                    <include name="passwordNotValidTest"/>
+                    <include name="invalidLoginCredentialsTest"/>
+                    <include name="blankUserAndPasswordTest"/>
+                    <include name="loginTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="KeyPress Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.KeyPressTests">
+                <methods>
+                    <include name="keyPressTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Mouse Hover Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.HoverTests">
+                <methods>
+                    <include name="mouseHoverTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Drag and Drop Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.crossbrowsertesting.DragAndDropTests">
+                <methods>
+                    <include name="testDragAndDrop"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Double Click on Button Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.demoqa.DoubleClickTests">
+                <methods>
+                    <include name="testDoubleClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="iFrame Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.IFrameTests">
+                <methods>
+                    <include name="testIFrame"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="File Upload and Download Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.FileUploadDownloadTest">
+                <methods>
+                    <include name="testFileDownload"/>
+                    <include name="testFileUpload"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Multiple Windows Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.MultipleWindowTests">
+                <methods>
+                    <include name="testMultipleWindows"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Data table Tests" enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DataTableTests">
+                <methods>
+                    <include name="testDataTable"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Chrome Devtools Tests" enabled="true">
+        <classes>
+            <class name="io.github.mfaisalkhatri.devtools.LogTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
