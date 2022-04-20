@@ -46,7 +46,7 @@ public class DeliverySelection {
     }
 
     public void selectDeliveryOption () {
-        actions.pause(Duration.ofSeconds(2)).click(oneDayDeliveryOption()).build().perform();
+        actions.pause(Duration.ofSeconds(5)).click(oneDayDeliveryOption()).build().perform();
         continueBtn().click();
     }
 }

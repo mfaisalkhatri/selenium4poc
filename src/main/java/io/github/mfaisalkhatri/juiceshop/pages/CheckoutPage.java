@@ -62,7 +62,7 @@ public class CheckoutPage {
     }
 
     public void checkoutProduct () {
-        actions.pause(Duration.ofSeconds(3)).click(checkoutBtn()).build().perform();
+        actions.pause(Duration.ofSeconds(5)).click(checkoutBtn()).build().perform();
     }
 
     public void addAddressForDelivery (String country, String name, int mobileNumber, String zipCode, String address, String city, String state) {

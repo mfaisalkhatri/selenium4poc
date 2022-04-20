@@ -59,7 +59,7 @@ public class RegistrationPage {
     }
 
     public void registerUser (String email, String password, String securityQuestion, String securityAnswer) {
-        actions.pause(Duration.ofSeconds(3)).click(loginPage.notaCustomerLink()).build().perform();
+        actions.pause(Duration.ofSeconds(5)).click(loginPage.notaCustomerLink()).build().perform();
         helper.enterText(emailField(), email);
         helper.enterText(passwordField(), password);
         helper.enterText(repeatPasswordField(), password);

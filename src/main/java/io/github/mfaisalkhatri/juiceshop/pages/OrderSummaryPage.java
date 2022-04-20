@@ -85,7 +85,7 @@ public class OrderSummaryPage {
     }
 
     public void placeOrderAndPay () {
-        actions.pause(Duration.ofSeconds(4)).build().perform();
+        actions.pause(Duration.ofSeconds(5)).build().perform();
         placeOrderButton().click();
     }
 }
