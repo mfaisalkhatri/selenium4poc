@@ -27,16 +27,16 @@ public class CheckboxTests extends Setup {
     private CheckboxPage checkboxPage;
 
     @BeforeClass
-    public void testSetup() {
+    public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Checkboxes");
-        checkboxPage = new CheckboxPage(driver);
+        checkboxPage = new CheckboxPage(getDriver());
     }
 
     @Test
-    public void testCheckboxes() {
+    public void testCheckboxes () {
         String pageHeader = checkboxPage.pageHeader();
         Assert.assertEquals(pageHeader, "Checkboxes");
 

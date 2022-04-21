@@ -12,10 +12,10 @@ public class DataTableTests extends Setup {
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Sortable Data Tables");
-        dataTablesPage = new DataTablesPage(driver);
+        dataTablesPage = new DataTablesPage(getDriver());
     }
 
     @Test

@@ -10,16 +10,16 @@ public class MultipleWindowTests extends Setup {
     private MultipleWindowsPage multipleWindowPage;
 
     @BeforeClass
-    public void testSetup() {
+    public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Multiple Windows");
-        multipleWindowPage = new MultipleWindowsPage(driver);
+        multipleWindowPage = new MultipleWindowsPage(getDriver());
     }
 
     @Test
-    public void testMultipleWindows() throws InterruptedException {
+    public void testMultipleWindows () throws InterruptedException {
         multipleWindowPage.openLinkInNewWindow("Click Here");
         Assert.assertTrue(multipleWindowPage.checkNewWindowTitle("New Window"));
     }

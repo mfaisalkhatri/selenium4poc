@@ -24,17 +24,17 @@ import org.testng.annotations.Test;
  */
 public class ContactUsTests extends Setup {
     @BeforeClass
-    public void setupTests() {
+    public void setupTests () {
         final String websiteLink = "http://automationpractice.com/index.php";
-        driver.get(websiteLink);
-        MainPage mainPage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(getDriver());
         mainPage.contactUsLink().click();
     }
 
     @Test
-    public void relativeLocatorsTest() {
+    public void relativeLocatorsTest () {
 
-        ContactUs contact = new ContactUs(driver);
+        ContactUs contact = new ContactUs(getDriver());
         final String actualPageHeader = "CUSTOMER SERVICE - CONTACT US";
         String expectedPageHeader = contact.pageHeading();
         Assert.assertEquals(actualPageHeader, expectedPageHeader);

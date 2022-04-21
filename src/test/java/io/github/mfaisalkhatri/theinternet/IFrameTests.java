@@ -27,17 +27,17 @@ public class IFrameTests extends Setup {
     private IFramePage iframe;
 
     @BeforeClass
-    public void setupTests() {
+    public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
-        driver.get(website);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(website);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Frames");
         mpage.clickLink("iFrame");
-        iframe = new IFramePage(driver);
+        iframe = new IFramePage(getDriver());
     }
 
     @Test
-    public void testIFrame() {
+    public void testIFrame () {
         iframe.switchToiFrame();
         final String text = "Hello 123, entering value in iFrame!!";
         iframe.enterTextInIFrame(text);

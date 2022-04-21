@@ -28,14 +28,14 @@ public class DoubleClickTests extends Setup {
 
 
     @BeforeClass
-    public void testSetup() {
-        final String webSite = "https://demoqa.com/buttons";
-        driver.get(webSite);
-        buttonsPage = new ButtonsPage(driver);
+    public void testSetup () {
+        final String website = "https://demoqa.com/buttons";
+        getDriver().get(website);
+        buttonsPage = new ButtonsPage(getDriver());
     }
 
     @Test
-    public void testDoubleClick() {
+    public void testDoubleClick () {
         buttonsPage.doubleClickonButton();
         Assert.assertEquals(buttonsPage.getTextOnClick(), "You have done a double click");
     }

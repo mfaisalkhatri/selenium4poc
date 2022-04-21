@@ -39,7 +39,15 @@ import java.util.HashMap;
 public class Setup {
 
     private static final Logger log = LogManager.getLogger("Setup.class");
-    public WebDriver driver;
+    public static ThreadLocal<WebDriver> driver;
+
+    public Setup () {
+        driver = new ThreadLocal<>();
+    }
+
+    public WebDriver getDriver () {
+        return driver.get();
+    }
 
     @BeforeSuite
     public void setupClass () {
@@ -62,12 +70,12 @@ public class Setup {
             options.addArguments("--window-size=1050,600");
             options.addArguments("--headless");
 
-            driver = new FirefoxDriver(options);
+            driver.set(new FirefoxDriver(options));
 
         } else if (browser.equalsIgnoreCase("edge")) {
-            driver = new EdgeDriver();
+            driver.set(new EdgeDriver());
         } else if (browser.equalsIgnoreCase("opera")) {
-            driver = new OperaDriver();
+            driver.set(new OperaDriver());
         } else if (browser.equalsIgnoreCase("chrome")) {
 
             HashMap<String, Object> chromePrefs = new HashMap<>();
@@ -83,7 +91,7 @@ public class Setup {
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
 
-            driver = new ChromeDriver(options);
+            driver.set(new ChromeDriver(options));
         } else {
             log.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
         }
@@ -94,13 +102,13 @@ public class Setup {
     @AfterClass(alwaysRun = true)
     public void tearDown () {
         if (driver != null) {
-            driver.quit();
+            getDriver().quit();
         }
     }
 
     private void setupBrowser () {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
     }
 }

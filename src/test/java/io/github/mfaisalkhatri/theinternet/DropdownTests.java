@@ -27,29 +27,29 @@ public class DropdownTests extends Setup {
     private DropdownPage dropdownPage;
 
     @BeforeClass
-    public void testSetup() {
+    public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Dropdown");
-        dropdownPage = new DropdownPage(driver);
+        dropdownPage = new DropdownPage(getDriver());
     }
 
     @Test
-    public void selectByOptionTest() {
+    public void selectByOptionTest () {
         final String visibleText = "Option 1";
         dropdownPage.dropDownbox().selectByVisibleText("Option 1");
         Assert.assertEquals(dropdownPage.getSelectedOption(), visibleText);
     }
 
     @Test
-    public void selectByIndexText() {
+    public void selectByIndexText () {
         dropdownPage.dropDownbox().selectByIndex(1);
         Assert.assertEquals(dropdownPage.getSelectedOption(), "Option 1");
     }
 
     @Test
-    public void selectByValueTest() {
+    public void selectByValueTest () {
         dropdownPage.dropDownbox().selectByValue("1");
         Assert.assertEquals(dropdownPage.getSelectedOption(), "Option 1");
     }

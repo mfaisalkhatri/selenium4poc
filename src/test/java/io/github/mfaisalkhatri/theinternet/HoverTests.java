@@ -28,16 +28,16 @@ public class HoverTests extends Setup {
     private MainPage mainPage;
 
     @BeforeClass
-    public void testSetup() {
+    public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        mainPage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        mainPage = new MainPage(getDriver());
         mainPage.clickLink("Hovers");
-        hoverPage = new HoverPage(driver);
+        hoverPage = new HoverPage(getDriver());
     }
 
     @Test
-    public void mouseHoverTests() {
+    public void mouseHoverTests () {
         hoverPage.hoverOnImage(hoverPage.imageOne());
         Assert.assertEquals(hoverPage.getImageOneName(), "name: user1");
 
