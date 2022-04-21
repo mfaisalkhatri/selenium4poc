@@ -27,23 +27,23 @@ public class DragAndDropTests extends Setup {
     private DragAndDropPage dragAndDropPage;
 
     @BeforeClass
-    public void setupTests() {
+    public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
-        driver.get(website);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(website);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Drag and Drop");
-        dragAndDropPage = new DragAndDropPage(driver);
+        dragAndDropPage = new DragAndDropPage(getDriver());
     }
 
     @Test
-    public void dragAndDropBoxAToB() {
+    public void dragAndDropBoxAToB () {
         dragAndDropPage.dragBoxADropInBoxB();
         Assert.assertEquals(dragAndDropPage.getHeaderOfBoxA(), "B");
         Assert.assertEquals(dragAndDropPage.getHeaderOfBoxB(), "A");
     }
 
     @Test
-    public void dragAndDropBoxBToA() {
+    public void dragAndDropBoxBToA () {
         dragAndDropPage.dragBoxBDropInBoxA();
         Assert.assertEquals(dragAndDropPage.getHeaderOfBoxA(), "A");
         Assert.assertEquals(dragAndDropPage.getHeaderOfBoxB(), "B");

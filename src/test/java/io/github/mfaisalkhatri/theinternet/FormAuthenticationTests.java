@@ -37,11 +37,11 @@ public class FormAuthenticationTests extends Setup {
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Form Authentication");
-        formAuthenticationPage = new FormAuthenticationPage(driver);
-        securePage = new SecurePage(driver);
+        formAuthenticationPage = new FormAuthenticationPage(getDriver());
+        securePage = new SecurePage(getDriver());
     }
 
     @Test

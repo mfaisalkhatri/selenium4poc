@@ -27,16 +27,16 @@ public class JSAlertTests extends Setup {
     private JSAlertPage jsAlertPage;
 
     @BeforeClass
-    private void setupTest() {
+    private void setupTest () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driver.get(websiteLink);
-        MainPage mpage = new MainPage(driver);
+        getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("JavaScript Alerts");
-        jsAlertPage = new JSAlertPage(driver);
+        jsAlertPage = new JSAlertPage(getDriver());
     }
 
     @Test
-    public void alertTest() {
+    public void alertTest () {
         jsAlertPage.jsAlertButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -46,7 +46,7 @@ public class JSAlertTests extends Setup {
     }
 
     @Test
-    public void confirmAlertTest() {
+    public void confirmAlertTest () {
         jsAlertPage.jsConfirmButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -56,7 +56,7 @@ public class JSAlertTests extends Setup {
     }
 
     @Test
-    public void dismissAlertTest() {
+    public void dismissAlertTest () {
         jsAlertPage.jsConfirmButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -66,7 +66,7 @@ public class JSAlertTests extends Setup {
     }
 
     @Test
-    public void jsPromptTypeAndAcceptTest() {
+    public void jsPromptTypeAndAcceptTest () {
         jsAlertPage.jspromptButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();
@@ -78,7 +78,7 @@ public class JSAlertTests extends Setup {
     }
 
     @Test
-    public void jsPromptDismissTest() {
+    public void jsPromptDismissTest () {
         jsAlertPage.jspromptButton().click();
         jsAlertPage.checkForAlert();
         String alertText = jsAlertPage.getAlertText();

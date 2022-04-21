@@ -27,14 +27,14 @@ public class DragAndDropTests extends Setup {
     private DragAndDropPage dragAndDropPage;
 
     @BeforeClass
-    public void testSetup() {
+    public void testSetup () {
         final String website = "https://crossbrowsertesting.github.io/drag-and-drop.html";
-        driver.get(website);
-        dragAndDropPage = new DragAndDropPage(driver);
+        getDriver().get(website);
+        dragAndDropPage = new DragAndDropPage(getDriver());
     }
 
     @Test
-    public void testDragAndDrop() {
+    public void testDragAndDrop () {
         dragAndDropPage.dragAndDropBox();
         Assert.assertEquals(dragAndDropPage.getDroppableBoxText(), "Dropped!");
     }

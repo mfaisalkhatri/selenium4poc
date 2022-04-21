@@ -40,16 +40,16 @@ public class JuiceShopTests extends Setup {
     public void setupTests () {
         // final String websiteLink = "https://juice-shop.herokuapp.com/#/";it
         final String websiteLink = "http://localhost:3000";
-        driver.get(websiteLink);
-        mainPage = new MainPage(driver);
-        registrationPage = new RegistrationPage(driver);
-        loginPage = new LoginPage(driver);
-        productPage = new ProductPage(driver);
-        checkoutPage = new CheckoutPage(driver);
-        deliverySelection = new DeliverySelection(driver);
-        paymentPage = new PaymentPage(driver);
-        orderSummaryPage = new OrderSummaryPage(driver);
-        orderConfirmationPage = new OrderConfirmationPage(driver);
+        getDriver().get(websiteLink);
+        mainPage = new MainPage(getDriver());
+        registrationPage = new RegistrationPage(getDriver());
+        loginPage = new LoginPage(getDriver());
+        productPage = new ProductPage(getDriver());
+        checkoutPage = new CheckoutPage(getDriver());
+        deliverySelection = new DeliverySelection(getDriver());
+        paymentPage = new PaymentPage(getDriver());
+        orderSummaryPage = new OrderSummaryPage(getDriver());
+        orderConfirmationPage = new OrderConfirmationPage(getDriver());
         faker = Faker.instance();
         email = faker.internet().emailAddress();
         pass = faker.internet().password(6, 12);

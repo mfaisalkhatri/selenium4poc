@@ -27,15 +27,15 @@ public class BrowserTests extends Setup {
     private static final String websiteLink = "http://the-internet.herokuapp.com/";
 
     @BeforeClass
-    public void testSetup() {
-        driver.get(websiteLink);
+    public void testSetup () {
+        getDriver().get(websiteLink);
     }
 
     @Test
-    public void checkTitleAndWebsiteUrlTest() {
+    public void checkTitleAndWebsiteUrlTest () {
         final String title = "The Internet";
-        String actualWebsiteLink = driver.getCurrentUrl();
-        String actualTitle = driver.getTitle();
+        String actualWebsiteLink = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
 
         Assert.assertEquals(actualWebsiteLink, websiteLink);
         Assert.assertEquals(actualTitle, title);
@@ -43,21 +43,21 @@ public class BrowserTests extends Setup {
     }
 
     @Test
-    public void browserNavigationTests() {
-        MainPage mpage = new MainPage(driver);
+    public void browserNavigationTests () {
+        MainPage mpage = new MainPage(getDriver());
         mpage.clickLink("Challenging DOM");
-        ABTestingPage abTestingPage = new ABTestingPage(driver);
+        ABTestingPage abTestingPage = new ABTestingPage(getDriver());
         String abTestingPageHeader = abTestingPage.pageHeader();
         Assert.assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        driver.navigate().back();
+        getDriver().navigate().back();
         String mainPageHeader = mpage.mainPageHeader();
         Assert.assertEquals(mainPageHeader, "Available Examples");
 
-        driver.navigate().forward();
+        getDriver().navigate().forward();
         Assert.assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        driver.navigate().refresh();
+        getDriver().navigate().refresh();
         Assert.assertEquals(abTestingPageHeader, "Challenging DOM");
     }
 

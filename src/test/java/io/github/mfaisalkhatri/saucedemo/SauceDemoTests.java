@@ -24,20 +24,20 @@ import org.testng.annotations.Test;
 public class SauceDemoTests extends Setup {
 
     @BeforeClass
-    public void setupTest() {
+    public void setupTest () {
         final String website = "https://www.saucedemo.com";
-        driver.navigate().to(website);
+        getDriver().navigate().to(website);
     }
 
     @Test
-    public void loginSauceDemoTest() {
-        LoginPage lpage = new LoginPage(driver);
+    public void loginSauceDemoTest () {
+        LoginPage lpage = new LoginPage(getDriver());
         lpage.websiteLogin("standard_user", "secret_sauce");
     }
 
     @Test
-    public void logOutSauceDemoTest() {
-        MainPage mpage = new MainPage(driver);
+    public void logOutSauceDemoTest () {
+        MainPage mpage = new MainPage(getDriver());
         mpage.logoutFromWebSite();
     }
 }
