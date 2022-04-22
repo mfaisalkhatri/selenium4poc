@@ -103,6 +103,7 @@ public class Setup {
     public void tearDown () {
         if (driver != null) {
             getDriver().quit();
+            driver.remove();
         }
     }
 
