@@ -45,11 +45,12 @@
 8. User will continue further to Card for Payment and select the card added to make payment.
 9. On the Order Summary page, user will verify all the details like Name, Address, Order details and total amount to be
    paid and place order.
-10. USer will re-check the details on Order confirmation page and check for `Thank You` message order confirmation and
+10. User will re-check the details on Order confirmation page and check for `Thank You` message order confirmation and
     delivery message.
 
 - End to End tests for Juice Shop Website are running on 'http://localhost:3000' inside the container in github actions.
-- CI/CD Pipeline has been added using Github Actions.
+- CI/CD Pipeline has been added using Github Actions. Checkout the blog [How to setup Github Actions for Java with Maven project?][bloggithubactions] for detailed explanation of how to setup pipeline using github actions.
+- Checkout the blog [End to End testing using Selenium WebDriver and Java][seleniumblogmedium] to get better understanding of how to write end to end tests.
 
 ## :question: Need Assistance?
 
@@ -76,3 +77,5 @@
 [juice-shop]: https://github.com/juice-shop/juice-shop
 
 [website]: https://mfaisalkhatri.github.io
+[bloggithubactions]:https://mfaisalkhatri.github.io/2022/04/26/githubactions-for-java-maven-project/
+[seleniumblogmedium]: https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca
