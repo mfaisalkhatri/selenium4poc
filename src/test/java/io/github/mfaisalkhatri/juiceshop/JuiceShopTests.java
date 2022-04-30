@@ -37,9 +37,9 @@ public class JuiceShopTests extends Setup {
 
 
     @BeforeClass
-    public void setupTests () {
-        // final String websiteLink = "https://juice-shop.herokuapp.com/#/";it
-        final String websiteLink = "http://localhost:3000";
+    public void setupTests() {
+        final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        //final String websiteLink = "http://localhost:3000";
         getDriver().get(websiteLink);
         mainPage = new MainPage(getDriver());
         registrationPage = new RegistrationPage(getDriver());
@@ -63,7 +63,7 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test
-    public void registerUserTest () {
+    public void registerUserTest() {
         mainPage.openLoginPage();
         registrationPage.registerUser(email, pass, "Mother's maiden name?", "Jane Doe");
         assertEquals(registrationPage.successMessage(), "Registration completed successfully. You can now log in.");
@@ -71,14 +71,14 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test
-    public void loginTest () {
+    public void loginTest() {
         loginPage.loginIntoJuiceShop(email, pass);
         mainPage.accountLink().click();
         assertTrue(loginPage.logOutLink().isDisplayed());
     }
 
     @Test(dependsOnMethods = "loginTest")
-    public void addProductToCartTest () {
+    public void addProductToCartTest() {
         productPage.addAppleJuiceToCart();
         assertEquals(productPage.successMessage(), "Placed Apple Juice (1000ml) into basket.");
         productPage.addBananaJuiceToCart();
@@ -91,7 +91,7 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test(dependsOnMethods = "addProductToCartTest")
-    public void productCheckoutTest () {
+    public void productCheckoutTest() {
         productPage.navigateToYourBasket();
         assertEquals(checkoutPage.appleJuiceText(), appleJuiceText);
         assertEquals(checkoutPage.appleJuiceQty(), "1");
@@ -105,7 +105,7 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test(dependsOnMethods = "productCheckoutTest")
-    public void selectDeliveryTest () {
+    public void selectDeliveryTest() {
         String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
         assertEquals(deliverySelection.getDeliveryAddressName(), name);
         assertEquals(deliverySelection.getDeliveryAddress(), addressLineTwo);
@@ -115,12 +115,12 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test(dependsOnMethods = "selectDeliveryTest")
-    public void makePaymentTest () {
+    public void makePaymentTest() {
         paymentPage.makePayment(name, "4012888888881881", "2", "2080");
     }
 
     @Test(dependsOnMethods = "makePaymentTest")
-    public void orderSummaryTest () {
+    public void orderSummaryTest() {
         String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
         assertEquals(orderSummaryPage.getDeliveryAddressCustomerName(), name);
         assertEquals(orderSummaryPage.getDeliveryAddress(), addressLineTwo);
@@ -141,7 +141,7 @@ public class JuiceShopTests extends Setup {
     }
 
     @Test(dependsOnMethods = "orderSummaryTest")
-    public void orderConfirmationTest () {
+    public void orderConfirmationTest() {
         assertEquals(orderConfirmationPage.getThanksMessage(), "Thank you for your purchase!");
         assertEquals(orderConfirmationPage.getOrderConfirmationMessage(), "Your order has been placed and is being processed. You can check for status updates on our Track Orders page.");
         assertEquals(orderConfirmationPage.getOrderDeliveryMessage(), "Your order will be delivered in 1 days.");

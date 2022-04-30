@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel Execution of Tests using Selenium Grid" parallel="tests" thread-count="17">
+    <test name="Browser Navigation Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.BrowserTests">
+                <methods>
+                    <include name="checkTitleAndWebsiteUrlTest"/>
+                    <include name="browserNavigationTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="JS Alert Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.JSAlertTests">
+                <methods>
+                    <include name="alertTest"/>
+                    <include name="confirmAlertTest"/>
+                    <include name="dismissAlertTest"/>
+                    <include name="jsPromptTypeAndAcceptTest"/>
+                    <include name="jsPromptDismissTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Dropdown Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DropdownTests">
+                <methods>
+                    <include name="selectByOptionTest"/>
+                    <include name="selectByIndexText"/>
+                    <include name="selectByValueTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Checkboxes Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.CheckboxTests">
+                <methods>
+                    <include name="testCheckboxes"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Right Click Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.RightClickTests">
+                <methods>
+                    <include name="testRightClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Form Authentication Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.FormAuthenticationTests">
+                <methods>
+                    <include name="loginWithCorrectCredentials"/>
+                    <include name="logOutTest"/>
+                    <include name="userNameNotValidTest"/>
+                    <include name="passwordNotValidTest"/>
+                    <include name="invalidLoginCredentialsTest"/>
+                    <include name="blankUserAndPasswordTest"/>
+                    <include name="loginTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="KeyPress Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.KeyPressTests">
+                <methods>
+                    <include name="keyPressTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Mouse Hover Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.HoverTests">
+                <methods>
+                    <include name="mouseHoverTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Drag and Drop Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.crossbrowsertesting.DragAndDropTests">
+                <methods>
+                    <include name="testDragAndDrop"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Double Click on Button Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.demoqa.DoubleClickTests">
+                <methods>
+                    <include name="testDoubleClick"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="iFrame Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.IFrameTests">
+                <methods>
+                    <include name="testIFrame"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Multiple Windows Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.MultipleWindowTests">
+                <methods>
+                    <include name="testMultipleWindows"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Data table Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.theinternet.DataTableTests">
+                <methods>
+                    <include name="testDataTable"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Chrome Browser">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Firefox Browser">
+        <parameter name="browser" value="remote-firefox"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Edge Browser">
+        <parameter name="browser" value="remote-edge"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
