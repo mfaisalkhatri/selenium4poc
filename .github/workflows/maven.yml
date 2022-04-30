@@ -42,12 +42,7 @@ jobs:
         uses: browser-actions/setup-firefox@latest
 
       - name: Start Selenium Grid 4
-        uses: actions/upload-artifact@v2
-        with:
-          name: Checkout docker compose file
-          path: |
-            ${{ github.workspace }}/docker-compose-v3.yml
-        run: docker compose -f ./docker-compose-v3.yml up --scale chrome =4
+        run: docker compose -d -f   ${{ github.workspace }}/docker-compose-v3.yml up --scale chrome =4
 
       - name: Build the Project
         run: mvn clean install -DskipTests
