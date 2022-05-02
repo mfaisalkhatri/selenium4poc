@@ -155,7 +155,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Chrome Devtools Tests">
+    <test name="chrome Devtools Tests">
         <classes>
             <class name="io.github.mfaisalkhatri.devtools.LogTest"/>
         </classes>
