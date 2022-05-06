@@ -41,8 +41,8 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Start Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml up --scale chrome=4 -d
+      #      - name: Start Selenium Grid 4
+      #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml up --scale chrome=4 -d
 
       - name: Build the Project
         run: mvn clean install -DskipTests
@@ -58,8 +58,8 @@ jobs:
             ${{ github.workspace }}/target
             ${{ github.workspace }}/reports
 
-      - name: Stop Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml down
+  #      - name: Stop Selenium Grid 4
+  #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml down
 
 
   code_analysis:
@@ -94,8 +94,8 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Start Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml up --scale chrome=4 -d
+      #      - name: Start Selenium Grid 4
+      #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml up --scale chrome=4 -d
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
@@ -125,8 +125,8 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
             -Dsonar.projectKey=$SONAR_KEY
 
-      - name: Stop Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml down
+      #      - name: Stop Selenium Grid 4
+      #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3.yml down
 
       - name: Test Report
         uses: dorny/test-reporter@v1
