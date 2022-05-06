@@ -14,7 +14,7 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_MAX_INSTANCES=4
       - SE_NODE_MAX_SESSIONS=4
-      - SE_NODE_SESSION_TIMEOUT=10
+      - SE_NODE_SESSION_TIMEOUT=60
 
   edge:
     image: selenium/node-edge:4.1.4-20220427
@@ -27,7 +27,7 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_MAX_INSTANCES=1
       - SE_NODE_MAX_SESSIONS=1
-      - SE_NODE_SESSION_TIMEOUT=10
+      - SE_NODE_SESSION_TIMEOUT=60
 
   firefox:
     image: selenium/node-firefox:4.1.4-20220427
@@ -40,7 +40,7 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_MAX_INSTANCES=1
       - SE_NODE_MAX_SESSIONS=1
-      - SE_NODE_SESSION_TIMEOUT=10
+      - SE_NODE_SESSION_TIMEOUT=60
 
   selenium-hub:
     image: selenium/hub:4.1.4-20220427
