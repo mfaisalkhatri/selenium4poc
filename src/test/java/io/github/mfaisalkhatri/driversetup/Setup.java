@@ -101,7 +101,7 @@ public class Setup {
             try {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.CHROME.browserName());
-                caps.setVersion("4");
+                caps.setVersion("101");
                 driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
             } catch (MalformedURLException e) {
                 log.error(e.getMessage());
@@ -110,7 +110,7 @@ public class Setup {
             try {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.FIREFOX.browserName());
-                caps.setVersion("4");
+                caps.setVersion("99");
                 driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
             } catch (MalformedURLException e) {
                 log.error(e.getMessage());
@@ -119,7 +119,7 @@ public class Setup {
             try {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.EDGE.browserName());
-                caps.setVersion("4");
+                caps.setVersion("100");
                 driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
             } catch (MalformedURLException e) {
                 log.error(e.getMessage());
