@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="The-internet Website Tests" parallel="tests" thread-count="10">
+<suite name="The-internet Website Tests" parallel="tests" thread-count="10" verbose="2">
     <test name="Browser Navigation Tests">
         <parameter name="browser" value="chrome"/>
         <classes>
@@ -155,7 +155,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Chrome Devtools Tests">
+    <test name="chrome Devtools Tests">
         <classes>
             <class name="io.github.mfaisalkhatri.devtools.LogTest"/>
         </classes>

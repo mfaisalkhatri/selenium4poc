@@ -24,11 +24,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.Browser;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
@@ -41,16 +46,16 @@ public class Setup {
     private static final Logger log = LogManager.getLogger("Setup.class");
     public static ThreadLocal<WebDriver> driver;
 
-    public Setup () {
+    public Setup() {
         driver = new ThreadLocal<>();
     }
 
-    public WebDriver getDriver () {
+    public WebDriver getDriver() {
         return driver.get();
     }
 
     @BeforeSuite
-    public void setupClass () {
+    public void setupClass() {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
         WebDriverManager.edgedriver().setup();
@@ -59,7 +64,7 @@ public class Setup {
 
     @Parameters("browser")
     @BeforeClass
-    public void setupTest (String browser) {
+    public void setupTest(String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
             // FirefoxOptions options = new FirefoxOptions();
             // options.addArguments("--websocket-port", "4444");
@@ -92,22 +97,48 @@ public class Setup {
             options.setExperimentalOption("prefs", chromePrefs);
 
             driver.set(new ChromeDriver(options));
+        } else if (browser.equalsIgnoreCase("remote-chrome")) {
+            try {
+                DesiredCapabilities caps = new DesiredCapabilities();
+                caps.setBrowserName(Browser.CHROME.browserName());
+                caps.setVersion("101");
+                driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+            } catch (MalformedURLException e) {
+                log.error(e.getMessage());
+            }
+        } else if (browser.equalsIgnoreCase("remote-firefox")) {
+            try {
+                DesiredCapabilities caps = new DesiredCapabilities();
+                caps.setBrowserName(Browser.FIREFOX.browserName());
+                caps.setVersion("99");
+                driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+            } catch (MalformedURLException e) {
+                log.error(e.getMessage());
+            }
+        } else if (browser.equalsIgnoreCase("remote-edge")) {
+            try {
+                DesiredCapabilities caps = new DesiredCapabilities();
+                caps.setBrowserName(Browser.EDGE.browserName());
+                caps.setVersion("100");
+                driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+            } catch (MalformedURLException e) {
+                log.error(e.getMessage());
+            }
         } else {
             log.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
         }
         setupBrowser();
     }
 
-
     @AfterClass(alwaysRun = true)
-    public void tearDown () {
+    public void tearDown() {
         if (driver != null) {
             getDriver().quit();
             driver.remove();
         }
     }
 
-    private void setupBrowser () {
+    private void setupBrowser() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
