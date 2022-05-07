@@ -29,6 +29,7 @@
         <sonar.java.source>15</sonar.java.source>
         <jacoco.version>0.8.7</jacoco.version>
         <sonar.version>5.14.0.18788</sonar.version>
+        <threads>10</threads>
     </properties>
 
     <dependencies>
@@ -123,6 +124,10 @@
                             <name>usedefaultlisteners</name>
                             <value>false</value>
                         </property>
+                        <property>
+                        <name>suitethreadpoolsize</name>
+                        <value>${threads}</value>
+                    </property>
                     </properties>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite-xml}</suiteXmlFile>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Juice Shop tests on Selenium Grid 4" parallel="tests" thread-count="3">
+<suite name="Juice Shop tests on Selenium Grid 4" parallel="tests" thread-count="3" verbose="2">
     <test name="Juice Shop end to End automation tests on Remote Chrome ">
         <parameter name="browser" value="remote-chrome"/>
         <classes>

@@ -49,3 +49,11 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    ports: 
+      - "3000:3000"
+    expose:
+      - "3000"
