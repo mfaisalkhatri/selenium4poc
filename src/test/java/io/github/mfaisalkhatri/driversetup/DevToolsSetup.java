@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v85.log.Log;
+import org.openqa.selenium.devtools.v100.log.Log;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -15,8 +15,7 @@ import org.testng.annotations.BeforeClass;
  */
 public class DevToolsSetup {
 
-    private static final Logger log = LogManager.getLogger("DevToolsSetup.class");
-    private static DevTools chromDevTools;
+    private static final Logger LOG = LogManager.getLogger("DevToolsSetup.class");
     public ChromeDriver chromeDriver;
 
     @BeforeClass
@@ -30,18 +29,18 @@ public class DevToolsSetup {
         options.addArguments("--safebrowsing-disable-download-protection");
 
         chromeDriver = new ChromeDriver(options);
-        chromDevTools = chromeDriver.getDevTools();
-        chromDevTools.createSession();
-        chromDevTools.send(Log.enable());
-        chromDevTools.addListener(Log.entryAdded(), logEntry -> {
-            log.error(logEntry.getText());
-            log.error(logEntry.getLevel());
+        DevTools chromeDevTools = chromeDriver.getDevTools();
+        chromeDevTools.createSession();
+        chromeDevTools.send(Log.enable());
+        chromeDevTools.addListener(Log.entryAdded(), logEntry -> {
+            LOG.error(logEntry.getText());
+            LOG.error(logEntry.getLevel());
         });
     }
 
     @AfterClass
     public void tearDown () {
-        if (chromeDriver != null) {
+        if (null != chromeDriver) {
             chromeDriver.quit();
         }
     }

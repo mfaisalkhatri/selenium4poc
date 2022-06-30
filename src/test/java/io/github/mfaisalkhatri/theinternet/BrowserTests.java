@@ -26,6 +26,10 @@ public class BrowserTests extends Setup {
 
     private static final String websiteLink = "http://the-internet.herokuapp.com/";
 
+    public static String getWebsiteLink () {
+        return websiteLink;
+    }
+
     @BeforeClass
     public void testSetup () {
         getDriver().get(websiteLink);
