@@ -18,18 +18,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
@@ -43,44 +38,43 @@ import java.util.HashMap;
  */
 public class Setup {
 
-    private static final Logger log = LogManager.getLogger("Setup.class");
-    public static ThreadLocal<WebDriver> driver;
+    private static final Logger LOG = LogManager.getLogger("Setup.class");
+    private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
-    public Setup() {
-        driver = new ThreadLocal<>();
+    public static WebDriver getDriver () {
+        return DRIVER.get();
     }
 
-    public WebDriver getDriver() {
-        return driver.get();
-    }
-
-    @BeforeSuite
-    public void setupClass() {
-        WebDriverManager.chromedriver().setup();
-        WebDriverManager.firefoxdriver().setup();
-        WebDriverManager.edgedriver().setup();
-        WebDriverManager.operadriver().setup();
-    }
+//    @BeforeSuite
+//    public void setupClass () {
+//        WebDriverManager.chromedriver().setup();
+//        WebDriverManager.firefoxdriver().setup();
+//        WebDriverManager.edgedriver().setup();
+//        WebDriverManager.operadriver().setup();
+//    }
 
     @Parameters("browser")
     @BeforeClass
-    public void setupTest(String browser) {
+    public void setupTest (String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
             // FirefoxOptions options = new FirefoxOptions();
             // options.addArguments("--websocket-port", "4444");
-            //driver = new FirefoxDriver(options);
+            //DRIVER = new FirefoxDriver(options);
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
             options.addArguments("--headless");
 
-            driver.set(new FirefoxDriver(options));
+            //  DRIVER.set(new FirefoxDriver(options));
+            DRIVER.set(WebDriverManager.firefoxdriver().capabilities(options).create());
 
         } else if (browser.equalsIgnoreCase("edge")) {
-            driver.set(new EdgeDriver());
+            //DRIVER.set(new EdgeDriver());
+            DRIVER.set(WebDriverManager.edgedriver().create());
         } else if (browser.equalsIgnoreCase("opera")) {
-            driver.set(new OperaDriver());
+            //DRIVER.set(new OperaDriver());
+            DRIVER.set(WebDriverManager.operadriver().create());
         } else if (browser.equalsIgnoreCase("chrome")) {
 
             HashMap<String, Object> chromePrefs = new HashMap<>();
@@ -96,49 +90,50 @@ public class Setup {
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
 
-            driver.set(new ChromeDriver(options));
+            //DRIVER.set(new ChromeDriver(options));
+            DRIVER.set(WebDriverManager.chromedriver().capabilities(options).create());
         } else if (browser.equalsIgnoreCase("remote-chrome")) {
             try {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.CHROME.browserName());
                 caps.setVersion("101");
-                driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+                DRIVER.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
             } catch (MalformedURLException e) {
-                log.error(e.getMessage());
+                LOG.error(e.getMessage());
             }
         } else if (browser.equalsIgnoreCase("remote-firefox")) {
             try {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.FIREFOX.browserName());
                 caps.setVersion("99");
-                driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+                DRIVER.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
             } catch (MalformedURLException e) {
-                log.error(e.getMessage());
+                LOG.error(e.getMessage());
             }
         } else if (browser.equalsIgnoreCase("remote-edge")) {
             try {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.EDGE.browserName());
                 caps.setVersion("100");
-                driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+                DRIVER.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
             } catch (MalformedURLException e) {
-                log.error(e.getMessage());
+                LOG.error(e.getMessage());
             }
         } else {
-            log.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
+            LOG.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
         }
         setupBrowser();
     }
 
     @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        if (driver != null) {
+    public void tearDown () {
+        if (null != DRIVER) {
             getDriver().quit();
-            driver.remove();
+            DRIVER.remove();
         }
     }
 
-    private void setupBrowser() {
+    private void setupBrowser () {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
