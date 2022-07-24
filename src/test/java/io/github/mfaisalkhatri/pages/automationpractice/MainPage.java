@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.automationpractice;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
@@ -26,18 +26,18 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
  */
 public class MainPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public MainPage (WebDriver driver) {
-        this.driver = driver;
+    public MainPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     private WebElement signInBtn () {
-        return driver.findElement(By.className("login"));
+        return driverManager.getDriver().findElement(By.className("login"));
     }
 
     public WebElement contactUsLink () {
-        return driver.findElement(with(By.tagName("a")).toLeftOf(signInBtn()));
+        return driverManager.getDriver().findElement(with(By.tagName("a")).toLeftOf(signInBtn()));
     }
 
 }

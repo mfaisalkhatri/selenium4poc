@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.automationpractice;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.automationpractice.ContactUs;
 import io.github.mfaisalkhatri.pages.automationpractice.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,18 +24,19 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class ContactUsTests extends Setup {
+public class ContactUsTests extends BaseTest {
+
     @BeforeClass
     public void setupTests () {
         final String websiteLink = "http://automationpractice.com/index.php";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.contactUsLink().click();
     }
 
     @Test
     public void relativeLocatorsTest () {
-        ContactUs contact = new ContactUs(getDriver());
+        ContactUs contact = new ContactUs(driverManager);
         final String actualPageHeader = "CUSTOMER SERVICE - CONTACT US";
         String expectedPageHeader = contact.pageHeading();
         Assert.assertEquals(actualPageHeader, expectedPageHeader);

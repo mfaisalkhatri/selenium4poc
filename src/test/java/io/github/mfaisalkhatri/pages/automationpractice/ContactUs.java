@@ -15,8 +15,9 @@
 
 package io.github.mfaisalkhatri.pages.automationpractice;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
+import io.github.mfaisalkhatri.utilities.Helper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -27,19 +28,21 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
  */
 public class ContactUs {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
+    private final Helper helper;
 
-    public ContactUs (WebDriver driver) {
-        this.driver = driver;
+    public ContactUs (DriverManager drivermanager) {
+        driverManager = drivermanager;
+        helper = new Helper();
     }
 
     public String pageHeading () {
-        return driver.findElement(By.tagName("h1")).getText();
+        return driverManager.getDriver().findElement(By.tagName("h1")).getText();
     }
 
 
     private WebElement subjectHeadingDropdown () {
-        return driver.findElement(By.id("id_contact"));
+        return driverManager.getDriver().findElement(By.id("id_contact"));
     }
 
     private Select subjectHeading () {
@@ -47,27 +50,27 @@ public class ContactUs {
     }
 
     private WebElement emailAddress () {
-        return driver.findElement(with(By.tagName("input")).below(subjectHeadingDropdown()));
+        return driverManager.getDriver().findElement(with(By.tagName("input")).below(subjectHeadingDropdown()));
     }
 
     private WebElement attachFileLabel () {
-        return driver.findElement(By.cssSelector("p:nth-child(7) > label"));
+        return driverManager.getDriver().findElement(By.cssSelector("p:nth-child(7) > label"));
     }
 
     private WebElement orderReference () {
-        return driver.findElement(with(By.tagName("input")).above(attachFileLabel()));
+        return driverManager.getDriver().findElement(with(By.tagName("input")).above(attachFileLabel()));
     }
 
     private WebElement message () {
-        return driver.findElement(with(By.tagName("textarea")).toRightOf(subjectHeadingDropdown()));
+        return driverManager.getDriver().findElement(with(By.tagName("textarea")).toRightOf(subjectHeadingDropdown()));
     }
 
     private WebElement sendBtn () {
-        return driver.findElement(By.id("submitMessage"));
+        return driverManager.getDriver().findElement(By.id("submitMessage"));
     }
 
     public String successSentMessage () {
-        return driver.findElement(By.cssSelector("#center_column > p")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("#center_column > p")).getText();
     }
 
     public void fillContactForm (String subjectHeading, String emailId, String orderRef, String message) {

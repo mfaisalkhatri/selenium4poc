@@ -22,6 +22,7 @@
         <orgjson.version>20220320</orgjson.version>
         <javafaker.version>1.0.2</javafaker.version>
         <seleniumdevtoolsv101.version>4.3.0</seleniumdevtoolsv101.version>
+        <lombok.version>1.18.24</lombok.version>
         <maven.compiler.version>3.10.1</maven.compiler.version>
         <surefire-version>3.0.0-M7</surefire-version>
         <java.release.version>15</java.release.version>
@@ -65,7 +66,6 @@
                     <artifactId>guava</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -102,6 +102,14 @@
             <artifactId>selenium-devtools-v101</artifactId>
             <version>${seleniumdevtoolsv101.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
