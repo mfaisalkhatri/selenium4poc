@@ -23,20 +23,20 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Created By Faisal Khatri on 20-12-2021
  */
-class DropdownPage {
+public class DropdownPage {
 
     private final WebDriver driver;
 
-    DropdownPage(WebDriver driver) {
+    public DropdownPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    Select dropDownbox() {
+    public Select dropDownbox () {
         WebElement dropdown = driver.findElement(By.id("dropdown"));
         return new Select(dropdown);
     }
 
-    String getSelectedOption() {
+    public String getSelectedOption () {
         return dropDownbox().getFirstSelectedOption().getText();
     }
 }

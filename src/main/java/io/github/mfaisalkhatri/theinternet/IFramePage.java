@@ -22,31 +22,31 @@ import org.openqa.selenium.WebElement;
 /**
  * Created By Faisal Khatri on 02-01-2022
  */
-class IFramePage {
+public class IFramePage {
 
     private final WebDriver driver;
 
-    IFramePage(WebDriver driver) {
+    public IFramePage (WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement iFrame() {
+    private WebElement iFrame () {
         return driver.findElement(By.id("mce_0_ifr"));
     }
 
-    void switchToiFrame() {
+    public void switchToiFrame () {
         driver.switchTo().frame(iFrame());
     }
 
-    private WebElement textArea() {
+    private WebElement textArea () {
         return driver.findElement(By.id("tinymce"));
     }
 
-    String getTextValue() {
+    public String getTextValue () {
         return driver.findElement(By.cssSelector("#tinymce > p")).getText();
     }
 
-    void enterTextInIFrame(String text) {
+    public void enterTextInIFrame (String text) {
         textArea().click();
         textArea().clear();
         textArea().sendKeys(text);

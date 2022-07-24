@@ -23,39 +23,39 @@ import org.openqa.selenium.interactions.Actions;
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
-class DragAndDropPage {
+public class DragAndDropPage {
 
     private final WebDriver driver;
     private final Actions action;
 
-    DragAndDropPage(WebDriver driver) {
+    public DragAndDropPage (WebDriver driver) {
         this.driver = driver;
         action = new Actions(driver);
     }
 
-    private WebElement boxA() {
+    private WebElement boxA () {
         return driver.findElement(By.id("column-a"));
     }
 
-    private WebElement boxB() {
+    private WebElement boxB () {
         return driver.findElement(By.id("column-b"));
     }
 
-    String getHeaderOfBoxA() {
+    public String getHeaderOfBoxA () {
         WebElement header = driver.findElement(By.cssSelector("#column-a > header"));
         return header.getText();
     }
 
-    String getHeaderOfBoxB() {
+    public String getHeaderOfBoxB () {
         WebElement header = driver.findElement(By.cssSelector("#column-b > header"));
         return header.getText();
     }
 
-    void dragBoxADropInBoxB() {
+    public void dragBoxADropInBoxB () {
         action.dragAndDrop(boxA(), boxB()).build().perform();
     }
 
-    void dragBoxBDropInBoxA() {
+    public void dragBoxBDropInBoxA () {
         action.dragAndDrop(boxB(), boxA()).build().perform();
     }
 }

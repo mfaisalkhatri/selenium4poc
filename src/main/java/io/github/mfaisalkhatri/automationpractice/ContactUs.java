@@ -25,52 +25,52 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-class ContactUs {
+public class ContactUs {
 
     private final WebDriver driver;
 
-    ContactUs(WebDriver driver) {
+    public ContactUs (WebDriver driver) {
         this.driver = driver;
     }
 
-    String pageHeading() {
+    public String pageHeading () {
         return driver.findElement(By.tagName("h1")).getText();
     }
 
 
-    private WebElement subjectHeadingDropdown() {
+    private WebElement subjectHeadingDropdown () {
         return driver.findElement(By.id("id_contact"));
     }
 
-    private Select subjectHeading() {
+    private Select subjectHeading () {
         return new Select(subjectHeadingDropdown());
     }
 
-    private WebElement emailAddress() {
+    private WebElement emailAddress () {
         return driver.findElement(with(By.tagName("input")).below(subjectHeadingDropdown()));
     }
 
-    private WebElement attachFileLabel() {
+    private WebElement attachFileLabel () {
         return driver.findElement(By.cssSelector("p:nth-child(7) > label"));
     }
 
-    private WebElement orderReference() {
+    private WebElement orderReference () {
         return driver.findElement(with(By.tagName("input")).above(attachFileLabel()));
     }
 
-    private WebElement message() {
+    private WebElement message () {
         return driver.findElement(with(By.tagName("textarea")).toRightOf(subjectHeadingDropdown()));
     }
 
-    private WebElement sendBtn() {
+    private WebElement sendBtn () {
         return driver.findElement(By.id("submitMessage"));
     }
 
-    String successSentMessage() {
+    public String successSentMessage () {
         return driver.findElement(By.cssSelector("#center_column > p")).getText();
     }
 
-    void fillContactForm(String subjectHeading, String emailId, String orderRef, String message) {
+    public void fillContactForm (String subjectHeading, String emailId, String orderRef, String message) {
         subjectHeading().selectByVisibleText(subjectHeading);
         emailAddress().click();
         emailAddress().clear();

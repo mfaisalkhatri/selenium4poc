@@ -21,15 +21,15 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created By Faisal Khatri on 13-12-2021
  */
-class ABTestingPage {
+public class ABTestingPage {
 
     private final WebDriver driver;
 
-    ABTestingPage(WebDriver driver) {
+    public ABTestingPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    String pageHeader() {
+    public String pageHeader () {
         return driver.findElement(By.tagName("h3")).getText();
     }
 

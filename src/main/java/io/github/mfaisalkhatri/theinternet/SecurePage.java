@@ -22,27 +22,27 @@ import org.openqa.selenium.WebElement;
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
-class SecurePage {
+public class SecurePage {
 
     private final WebDriver driver;
 
-    SecurePage(WebDriver driver) {
+    public SecurePage (WebDriver driver) {
         this.driver = driver;
     }
 
-    WebElement logoutBtn() {
+    public WebElement logoutBtn () {
         return driver.findElement(By.linkText("Logout"));
     }
 
-    String getFlashMessage() {
+    public String getFlashMessage () {
         return driver.findElement(By.id("flash")).getText();
     }
 
-    String getHeaderText() {
+    public String getHeaderText () {
         return driver.findElement(By.tagName("h2")).getText();
     }
 
-    String getSubHeaderText() {
+    public String getSubHeaderText () {
         return driver.findElement(By.tagName("h4")).getText();
     }
 

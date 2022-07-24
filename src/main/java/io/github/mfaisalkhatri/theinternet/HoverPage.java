@@ -23,43 +23,43 @@ import org.openqa.selenium.interactions.Actions;
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
-class HoverPage {
+public class HoverPage {
 
     private final WebDriver driver;
 
 
-    HoverPage(WebDriver driver) {
+    public HoverPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    WebElement imageOne() {
+    public WebElement imageOne () {
         return driver.findElement(By.cssSelector("div:nth-child(3) > img"));
     }
 
-    WebElement imageTwo() {
+    public WebElement imageTwo () {
         return driver.findElement(By.cssSelector("div:nth-child(4) > img"));
     }
 
-    WebElement imageThree() {
+    public WebElement imageThree () {
         return driver.findElement(By.cssSelector("div:nth-child(5) > img"));
     }
 
-    void hoverOnImage(WebElement element) {
+    public void hoverOnImage (WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element).click().build().perform();
     }
 
-    String getImageOneName() {
+    public String getImageOneName () {
         return driver.findElement(By.cssSelector("div:nth-child(3) > div > h5")).getText();
 
     }
 
-    String getImageTwoName() {
+    public String getImageTwoName () {
         return driver.findElement(By.cssSelector("div:nth-child(4) > div > h5")).getText();
 
     }
 
-    String getImageThreeName() {
+    public String getImageThreeName () {
         return driver.findElement(By.cssSelector("div:nth-child(5) > div > h5")).getText();
 
     }

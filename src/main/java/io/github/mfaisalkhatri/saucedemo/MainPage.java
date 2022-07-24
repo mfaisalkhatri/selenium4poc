@@ -30,20 +30,20 @@ public class MainPage {
 
     private final WebDriverWait wait;
 
-    public MainPage(WebDriver driver) {
+    public MainPage (WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-    private WebElement menuBtn() {
+    private WebElement menuBtn () {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("react-burger-menu-btn")));
 
     }
 
-    private WebElement logoutLink() {
+    private WebElement logoutLink () {
         return wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector("#logout_sidebar_link"))));
     }
 
-    void logoutFromWebSite() {
+    public void logoutFromWebSite () {
         menuBtn().click();
         logoutLink().click();
     }

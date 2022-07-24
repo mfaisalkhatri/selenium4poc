@@ -20,27 +20,27 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-class KeyPressPage {
+public class KeyPressPage {
 
     private final WebDriver driver;
 
-    KeyPressPage(WebDriver driver) {
+    public KeyPressPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement textBox() {
+    private WebElement textBox () {
         return driver.findElement(By.id("target"));
     }
 
-    private WebElement result() {
+    private WebElement result () {
         return driver.findElement(By.id("result"));
     }
 
-    void pressKeys(Keys keys) {
+    public void pressKeys (Keys keys) {
         textBox().sendKeys(keys);
     }
 
-    String resultText() {
+    public String resultText () {
         return result().getText();
     }
 }

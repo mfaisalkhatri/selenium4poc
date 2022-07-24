@@ -28,33 +28,33 @@ import java.time.Duration;
 /**
  * Created By Faisal Khatri on 22-12-2021
  */
-class ContextMenuPage {
+public class ContextMenuPage {
 
+    private final WebDriver driver;
     private WebDriverWait wait;
     private Alert alert;
     private Actions actions;
-    private final WebDriver driver;
 
-    ContextMenuPage(WebDriver driver) {
+    public ContextMenuPage (WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
     }
 
-    private WebElement box() {
+    private WebElement box () {
         return driver.findElement(By.id("hot-spot"));
     }
 
-    void checkForAlert() {
+    public void checkForAlert () {
         wait.until(ExpectedConditions.alertIsPresent());
         alert = driver.switchTo().alert();
     }
 
-    String getAlertText() {
+    public String getAlertText () {
         return alert.getText();
     }
 
-    void rightClick() {
+    public void rightClick () {
         actions.contextClick(box()).perform();
     }
 }

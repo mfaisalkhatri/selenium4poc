@@ -24,28 +24,28 @@ import java.util.List;
 /**
  * Created By Faisal Khatri on 21-12-2021
  */
-class CheckboxPage {
+public class CheckboxPage {
 
     private final WebDriver driver;
 
-    CheckboxPage(WebDriver driver) {
+    public CheckboxPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    String pageHeader() {
+    public String pageHeader () {
         return driver.findElement(By.tagName("h3")).getText();
     }
 
-    private List<WebElement> checkboxes() {
+    private List<WebElement> checkboxes () {
         return driver.findElements(By.cssSelector("#checkboxes > input[type=checkbox]"));
 
     }
 
-    WebElement checkboxOne() {
+    public WebElement checkboxOne () {
         return checkboxes().get(0);
     }
 
-    WebElement checkboxTwo() {
+    public WebElement checkboxTwo () {
         return checkboxes().get(1);
     }
 }

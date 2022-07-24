@@ -27,51 +27,51 @@ import java.time.Duration;
 /**
  * Created By Faisal Khatri on 18-12-2021
  */
-class JSAlertPage {
+public class JSAlertPage {
 
+    private final WebDriver driver;
     private WebDriverWait wait;
     private Alert alert;
-    private final WebDriver driver;
 
-    JSAlertPage(WebDriver driver) {
+    public JSAlertPage (WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    WebElement jsAlertButton() {
+    public WebElement jsAlertButton () {
         return driver.findElement(By.cssSelector("ul > li:nth-child(1) > button"));
     }
 
-    WebElement jsConfirmButton() {
+    public WebElement jsConfirmButton () {
         return driver.findElement(By.cssSelector("ul > li:nth-child(2) > button"));
     }
 
-    WebElement jspromptButton() {
+    public WebElement jspromptButton () {
         return driver.findElement(By.cssSelector("ul > li:nth-child(3) > button"));
     }
 
-    void checkForAlert() {
+    public void checkForAlert () {
         wait.until(ExpectedConditions.alertIsPresent());
         alert = driver.switchTo().alert();
     }
 
-    void acceptAlert() {
+    public void acceptAlert () {
         alert.accept();
     }
 
-    void dismissAlert() {
+    public void dismissAlert () {
         alert.dismiss();
     }
 
-    String getAlertText() {
+    public String getAlertText () {
         return alert.getText();
     }
 
-    void typeTextInAlert(String text) {
+    public void typeTextInAlert (String text) {
         alert.sendKeys(text);
     }
 
-    String resultText() {
+    public String resultText () {
         return driver.findElement(By.id("result")).getText();
     }
 }

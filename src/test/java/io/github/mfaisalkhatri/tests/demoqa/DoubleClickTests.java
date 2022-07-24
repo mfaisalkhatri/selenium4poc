@@ -12,35 +12,31 @@
         See the License for the specific language governing permissions and
         limitations under the License.
 */
+package io.github.mfaisalkhatri.tests.demoqa;
 
-package io.github.mfaisalkhatri.demoqa;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import io.github.mfaisalkhatri.demoqa.ButtonsPage;
+import io.github.mfaisalkhatri.driversetup.Setup;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 30-12-2021
  */
-public class ButtonsPage {
+public class DoubleClickTests extends Setup {
 
-    private final WebDriver driver;
 
-    public ButtonsPage (WebDriver driver) {
-        this.driver = driver;
+    @BeforeClass
+    public void testSetup () {
+        final String website = "https://demoqa.com/buttons";
+        getDriver().get(website);
     }
 
-    private WebElement btnDoubleCLick () {
-        return driver.findElement(By.id("doubleClickBtn"));
+    @Test
+    public void testDoubleClick () {
+        ButtonsPage buttonsPage = new ButtonsPage(getDriver());
+        buttonsPage.doubleClickonButton();
+        Assert.assertEquals(buttonsPage.getTextOnClick(), "You have done a double click");
     }
 
-    public String getTextOnClick () {
-        return driver.findElement(By.id("doubleClickMessage")).getText();
-    }
-
-    public void doubleClickonButton () {
-        Actions action = new Actions(driver);
-        action.doubleClick(btnDoubleCLick()).perform();
-    }
 }

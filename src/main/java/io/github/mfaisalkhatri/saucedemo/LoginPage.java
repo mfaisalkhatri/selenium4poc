@@ -24,28 +24,28 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-class LoginPage {
+public class LoginPage {
 
     private final WebDriver driver;
 
-    LoginPage(WebDriver driver) {
+    public LoginPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement username() {
+    private WebElement username () {
         return driver.findElement(By.id("user-name"));
     }
 
-    private WebElement password() {
+    private WebElement password () {
         return driver.findElement(with(By.tagName("input")).below(username()));
 
     }
 
-    private WebElement loginBtn() {
+    private WebElement loginBtn () {
         return driver.findElement(with(By.tagName("input")).below(password()));
     }
 
-    void websiteLogin(String userName, String pswd) {
+    public void websiteLogin (String userName, String pswd) {
         username().click();
         username().clear();
         username().sendKeys(userName);

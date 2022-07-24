@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v100.log.Log;
+import org.openqa.selenium.devtools.v101.log.Log;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 

@@ -23,28 +23,28 @@ import org.openqa.selenium.interactions.Actions;
 /**
  * Created By Faisal Khatri on 30-12-2021
  */
-class DragAndDropPage {
+public class DragAndDropPage {
 
     private final WebDriver driver;
 
-    DragAndDropPage(WebDriver driver) {
+    public DragAndDropPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement draggable() {
+    private WebElement draggable () {
         return driver.findElement(By.id("draggable"));
     }
 
-    private WebElement droppable() {
+    private WebElement droppable () {
         return driver.findElement(By.id("droppable"));
     }
 
-    String getDroppableBoxText() {
+    public String getDroppableBoxText () {
         return driver.findElement(By.cssSelector("#droppable > p")).getText();
 
     }
 
-    void dragAndDropBox() {
+    public void dragAndDropBox () {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(draggable(), droppable()).build().perform();
     }

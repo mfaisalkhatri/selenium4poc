@@ -28,15 +28,15 @@ public class MainPage {
 
     private final WebDriver driver;
 
-    public MainPage(WebDriver driver) {
+    public MainPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement signInBtn() {
+    private WebElement signInBtn () {
         return driver.findElement(By.className("login"));
     }
 
-    WebElement contactUsLink() {
+    public WebElement contactUsLink () {
         return driver.findElement(with(By.tagName("a")).toLeftOf(signInBtn()));
     }
 

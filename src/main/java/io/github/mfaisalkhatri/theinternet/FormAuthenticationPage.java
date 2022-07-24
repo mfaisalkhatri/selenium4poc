@@ -22,31 +22,31 @@ import org.openqa.selenium.WebElement;
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
-class FormAuthenticationPage {
+public class FormAuthenticationPage {
 
     private final WebDriver driver;
 
-    FormAuthenticationPage(WebDriver driver) {
+    public FormAuthenticationPage (WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement userNameField() {
+    private WebElement userNameField () {
         return driver.findElement(By.id("username"));
     }
 
-    private WebElement passwordField() {
+    private WebElement passwordField () {
         return driver.findElement(By.id("password"));
     }
 
-    private WebElement loginBtn() {
+    private WebElement loginBtn () {
         return driver.findElement(By.cssSelector("#login > button"));
     }
 
-    String getFlashMessage() {
+    public String getFlashMessage () {
         return driver.findElement(By.id("flash")).getText();
     }
 
-    SecurePage login(String userName, String password) {
+    public SecurePage login (String userName, String password) {
         userNameField().click();
         userNameField().clear();
         userNameField().sendKeys(userName);
