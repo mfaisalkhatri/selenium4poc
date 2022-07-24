@@ -31,9 +31,9 @@ public class JuiceShopTests extends Setup {
 
     @BeforeClass
     public void setupTests () {
-        final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        //final String websiteLink = "https://juice-shop.herokuapp.com/#/";
         //final String websiteLink = "http://host.docker.internal:3000/#/";
-        //final String websiteLink = "http://localhost:3000/#/";
+        final String websiteLink = "http://localhost:3000/#/";
         getDriver().get(websiteLink);
         mainPage = new MainPage(getDriver());
         loginPage = new LoginPage(getDriver());
