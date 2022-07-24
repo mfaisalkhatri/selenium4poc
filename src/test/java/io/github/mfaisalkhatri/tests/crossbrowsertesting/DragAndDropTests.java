@@ -14,8 +14,8 @@
 */
 package io.github.mfaisalkhatri.tests.crossbrowsertesting;
 
-import io.github.mfaisalkhatri.crossbrowsertesting.DragAndDropPage;
 import io.github.mfaisalkhatri.driversetup.Setup;
+import io.github.mfaisalkhatri.pages.crossbrowsertesting.DragAndDropPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

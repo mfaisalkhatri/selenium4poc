@@ -15,8 +15,8 @@
 package io.github.mfaisalkhatri.tests.saucedemo;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.saucedemo.LoginPage;
-import io.github.mfaisalkhatri.saucedemo.MainPage;
+import io.github.mfaisalkhatri.pages.saucedemo.LoginPage;
+import io.github.mfaisalkhatri.pages.saucedemo.MainPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

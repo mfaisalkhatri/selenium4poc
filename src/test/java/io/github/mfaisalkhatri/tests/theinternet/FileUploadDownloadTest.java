@@ -1,9 +1,9 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.theinternet.DownloadPage;
-import io.github.mfaisalkhatri.theinternet.FileUploadPage;
-import io.github.mfaisalkhatri.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.DownloadPage;
+import io.github.mfaisalkhatri.pages.theinternet.FileUploadPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

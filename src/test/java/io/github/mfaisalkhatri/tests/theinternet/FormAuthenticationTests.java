@@ -15,9 +15,9 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.theinternet.FormAuthenticationPage;
-import io.github.mfaisalkhatri.theinternet.MainPage;
-import io.github.mfaisalkhatri.theinternet.SecurePage;
+import io.github.mfaisalkhatri.pages.theinternet.FormAuthenticationPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.SecurePage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

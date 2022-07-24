@@ -14,8 +14,8 @@
 */
 package io.github.mfaisalkhatri.tests.demoqa;
 
-import io.github.mfaisalkhatri.demoqa.ButtonsPage;
 import io.github.mfaisalkhatri.driversetup.Setup;
+import io.github.mfaisalkhatri.pages.demoqa.ButtonsPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

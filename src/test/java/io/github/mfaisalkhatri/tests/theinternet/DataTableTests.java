@@ -1,15 +1,15 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.theinternet.DataTablesPage;
-import io.github.mfaisalkhatri.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.DataTablesPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class DataTableTests extends Setup {
-    
+
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";

@@ -15,8 +15,8 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.theinternet.HoverPage;
-import io.github.mfaisalkhatri.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.HoverPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,7 +26,7 @@ import static org.testng.Assert.assertEquals;
  * Created By Faisal Khatri on 29-12-2021
  */
 public class HoverTests extends Setup {
-    
+
     private MainPage mainPage;
 
     @BeforeClass

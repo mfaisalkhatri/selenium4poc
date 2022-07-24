@@ -15,8 +15,8 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.theinternet.ContextMenuPage;
-import io.github.mfaisalkhatri.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.ContextMenuPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,7 +26,7 @@ import static org.testng.Assert.assertEquals;
  * Created By Faisal Khatri on 22-12-2021
  */
 public class RightClickTests extends Setup {
-    
+
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";

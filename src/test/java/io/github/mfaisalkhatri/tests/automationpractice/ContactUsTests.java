@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.automationpractice;
 
-import io.github.mfaisalkhatri.automationpractice.ContactUs;
-import io.github.mfaisalkhatri.automationpractice.MainPage;
 import io.github.mfaisalkhatri.driversetup.Setup;
+import io.github.mfaisalkhatri.pages.automationpractice.ContactUs;
+import io.github.mfaisalkhatri.pages.automationpractice.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

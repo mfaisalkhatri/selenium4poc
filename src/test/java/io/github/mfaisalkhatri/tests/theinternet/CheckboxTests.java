@@ -15,8 +15,8 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.driversetup.Setup;
-import io.github.mfaisalkhatri.theinternet.CheckboxPage;
-import io.github.mfaisalkhatri.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.CheckboxPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
