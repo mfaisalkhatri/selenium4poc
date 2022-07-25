@@ -10,6 +10,6 @@ public class LogTest extends DevToolsBaseTest {
 
     @Test
     public void checkChromeLogs () {
-        devToolsManager.chromeDriver.get("https://testersplayground.herokuapp.com/console-5d63b2b2-3822-4a01-8197-acd8aa7e1343.php");
+        devToolsManager.getDriver().get("https://testersplayground.herokuapp.com/console-5d63b2b2-3822-4a01-8197-acd8aa7e1343.php");
     }
 }

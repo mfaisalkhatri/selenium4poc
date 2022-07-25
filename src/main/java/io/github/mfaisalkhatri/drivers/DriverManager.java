@@ -25,6 +25,7 @@ import java.util.HashMap;
 public class DriverManager {
     private static final Logger LOG = LogManager.getLogger("DriverManager.class");
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
+    private static final String HUB_URL = "http://localhost:4444/wd/hub";
     private final String browser;
 
     public <D extends WebDriver> D getDriver () {
@@ -77,7 +78,7 @@ public class DriverManager {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.CHROME.browserName());
                 caps.setVersion("101");
-                DRIVER.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+                DRIVER.set(new RemoteWebDriver(new URL(HUB_URL), caps));
             } catch (MalformedURLException e) {
                 LOG.error("Error setting remote-chrome", e);
             }
@@ -86,7 +87,7 @@ public class DriverManager {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.FIREFOX.browserName());
                 caps.setVersion("99");
-                DRIVER.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+                DRIVER.set(new RemoteWebDriver(new URL(HUB_URL), caps));
             } catch (MalformedURLException e) {
                 LOG.error("Error setting remote-firefox", e);
             }
@@ -95,7 +96,7 @@ public class DriverManager {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setBrowserName(Browser.EDGE.browserName());
                 caps.setVersion("100");
-                DRIVER.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+                DRIVER.set(new RemoteWebDriver(new URL(HUB_URL), caps));
             } catch (MalformedURLException e) {
                 LOG.error("Error setting remote-edge", e);
             }

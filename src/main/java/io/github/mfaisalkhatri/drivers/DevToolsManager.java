@@ -16,7 +16,11 @@ import org.openqa.selenium.devtools.v101.log.Log;
 public class DevToolsManager {
 
     private static final Logger LOG = LogManager.getLogger("DevToolsSetup.class");
-    public ChromeDriver chromeDriver;
+    private ChromeDriver chromeDriver;
+
+    public ChromeDriver getDriver () {
+        return chromeDriver;
+    }
 
     public DevToolsManager createDriver () {
         WebDriverManager.chromedriver().setup();
