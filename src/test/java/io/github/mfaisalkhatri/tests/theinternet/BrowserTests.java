@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.ABTestingPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,7 +25,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class BrowserTests extends Setup {
+public class BrowserTests extends BaseTest {
 
     private static final String websiteLink = "http://the-internet.herokuapp.com/";
 
@@ -35,14 +35,14 @@ public class BrowserTests extends Setup {
 
     @BeforeClass
     public void testSetup () {
-        getDriver().get(websiteLink);
+        driverManager.getDriver().get(websiteLink);
     }
 
     @Test
     public void checkTitleAndWebsiteUrlTest () {
         final String title = "The Internet";
-        String actualWebsiteLink = getDriver().getCurrentUrl();
-        String actualTitle = getDriver().getTitle();
+        String actualWebsiteLink = driverManager.getDriver().getCurrentUrl();
+        String actualTitle = driverManager.getDriver().getTitle();
 
         assertEquals(actualWebsiteLink, websiteLink);
         assertEquals(actualTitle, title);
@@ -51,20 +51,20 @@ public class BrowserTests extends Setup {
 
     @Test
     public void browserNavigationTests () {
-        MainPage mainPage = new MainPage(getDriver());
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Challenging DOM");
-        ABTestingPage abTestingPage = new ABTestingPage(getDriver());
+        ABTestingPage abTestingPage = new ABTestingPage(driverManager);
         String abTestingPageHeader = abTestingPage.pageHeader();
         assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        getDriver().navigate().back();
+        driverManager.getDriver().navigate().back();
         String mainPageHeader = mainPage.mainPageHeader();
         assertEquals(mainPageHeader, "Available Examples");
 
-        getDriver().navigate().forward();
+        driverManager.getDriver().navigate().forward();
         assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        getDriver().navigate().refresh();
+        driverManager.getDriver().navigate().refresh();
         assertEquals(abTestingPageHeader, "Challenging DOM");
     }
 

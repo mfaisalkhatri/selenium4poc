@@ -1,8 +1,8 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import io.github.mfaisalkhatri.utilities.Helper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -10,51 +10,51 @@ import java.time.Duration;
 
 public class RegistrationPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
     private final Helper helper;
     private final LoginPage loginPage;
     private final Actions actions;
 
-    public RegistrationPage (WebDriver driver) {
-        this.driver = driver;
+    public RegistrationPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
         helper = new Helper();
-        loginPage = new LoginPage(driver);
-        actions = new Actions(driver);
+        loginPage = new LoginPage(driverManager);
+        actions = new Actions(driverManager.getDriver());
     }
 
     private WebElement emailField () {
-        return driver.findElement(By.id("emailControl"));
+        return driverManager.getDriver().findElement(By.id("emailControl"));
     }
 
     private WebElement passwordField () {
-        return driver.findElement(By.id("passwordControl"));
+        return driverManager.getDriver().findElement(By.id("passwordControl"));
     }
 
     private WebElement repeatPasswordField () {
-        return driver.findElement(By.id("repeatPasswordControl"));
+        return driverManager.getDriver().findElement(By.id("repeatPasswordControl"));
     }
 
 
     private void securityQuestionDropdown (String securityQuestion) {
-        Actions action = new Actions(driver);
-        WebElement dropdown = driver.findElement(By.name("securityQuestion"));
+        Actions action = new Actions(driverManager.getDriver());
+        WebElement dropdown = driverManager.getDriver().findElement(By.name("securityQuestion"));
         action.pause(Duration.ofSeconds(2)).click(dropdown).perform();
         WebElement selectOption =
-                driver.findElement(By.xpath("//mat-option/span[contains(text()," + "\"" + securityQuestion + "\")] "));
+                driverManager.getDriver().findElement(By.xpath("//mat-option/span[contains(text()," + "\"" + securityQuestion + "\")] "));
         action.pause(Duration.ofSeconds(2)).click(selectOption).perform();
 
     }
 
     private WebElement securityAnswer () {
-        return driver.findElement(By.id("securityAnswerControl"));
+        return driverManager.getDriver().findElement(By.id("securityAnswerControl"));
     }
 
     private WebElement registrationButton () {
-        return driver.findElement(By.id("registerButton"));
+        return driverManager.getDriver().findElement(By.id("registerButton"));
     }
 
     public String successMessage () {
-        return driver.findElement(By.cssSelector(".cdk-overlay-pane > snack-bar-container > div > div > " +
+        return driverManager.getDriver().findElement(By.cssSelector(".cdk-overlay-pane > snack-bar-container > div > div > " +
                 "simple-snack-bar >span")).getText();
     }
 

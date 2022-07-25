@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -26,18 +26,18 @@ import java.util.List;
  */
 public class CheckboxPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public CheckboxPage (WebDriver driver) {
-        this.driver = driver;
+    public CheckboxPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     public String pageHeader () {
-        return driver.findElement(By.tagName("h3")).getText();
+        return driverManager.getDriver().findElement(By.tagName("h3")).getText();
     }
 
     private List<WebElement> checkboxes () {
-        return driver.findElements(By.cssSelector("#checkboxes > input[type=checkbox]"));
+        return driverManager.getDriver().findElements(By.cssSelector("#checkboxes > input[type=checkbox]"));
 
     }
 

@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.CheckboxPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,19 +25,19 @@ import static org.testng.Assert.*;
 /**
  * Created By Faisal Khatri on 21-12-2021
  */
-public class CheckboxTests extends Setup {
+public class CheckboxTests extends BaseTest {
 
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Checkboxes");
     }
 
     @Test
     public void testCheckboxes () {
-        CheckboxPage checkboxPage = new CheckboxPage(getDriver());
+        CheckboxPage checkboxPage = new CheckboxPage(driverManager);
         String pageHeader = checkboxPage.pageHeader();
         assertEquals(pageHeader, "Checkboxes");
 

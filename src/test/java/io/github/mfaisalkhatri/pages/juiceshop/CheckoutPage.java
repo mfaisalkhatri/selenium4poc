@@ -1,8 +1,8 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import io.github.mfaisalkhatri.utilities.Helper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -13,52 +13,52 @@ import java.time.Duration;
  */
 public class CheckoutPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
     private final Actions actions;
     private final AddressPage addressPage;
     private final Helper helper;
 
-    public CheckoutPage (WebDriver driver) {
-        this.driver = driver;
-        actions = new Actions(driver);
-        addressPage = new AddressPage(driver);
+    public CheckoutPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
+        actions = new Actions(driverManager.getDriver());
+        addressPage = new AddressPage(driverManager);
         helper = new Helper();
     }
 
     public String appleJuiceText () {
-        return driver.findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-column-product")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-column-product")).getText();
     }
 
     public String appleJuiceQty () {
-        return driver.findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-quantity > span")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-quantity > span")).getText();
     }
 
     public String appleJuicePrice () {
-        return driver.findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-price")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-price")).getText();
     }
 
     public String bananaJuiceText () {
-        return driver.findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-column-product")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-column-product")).getText();
     }
 
     public String bananaJuiceQty () {
-        return driver.findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-quantity > span")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-quantity > span")).getText();
     }
 
     public String bananaJuicePrice () {
-        return driver.findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-price")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-price")).getText();
     }
 
     public String totalPrice () {
-        return driver.findElement(By.id("price")).getText();
+        return driverManager.getDriver().findElement(By.id("price")).getText();
     }
 
     public WebElement checkoutBtn () {
-        return driver.findElement(By.id("checkoutButton"));
+        return driverManager.getDriver().findElement(By.id("checkoutButton"));
     }
 
     private WebElement addNewAddressBtn () {
-        return driver.findElement(By.cssSelector("mat-card > div > button"));
+        return driverManager.getDriver().findElement(By.cssSelector("mat-card > div > button"));
     }
 
     public void checkoutProduct () {

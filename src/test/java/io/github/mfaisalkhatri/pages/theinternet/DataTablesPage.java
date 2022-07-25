@@ -1,7 +1,7 @@
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -10,14 +10,14 @@ import java.util.List;
 
 public class DataTablesPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public DataTablesPage (WebDriver driver) {
-        this.driver = driver;
+    public DataTablesPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     public WebElement tableOne () {
-        return driver.findElement(By.cssSelector("#table1 > tbody"));
+        return driverManager.getDriver().findElement(By.cssSelector("#table1 > tbody"));
     }
 
     public List<WebElement> tableRows () {
@@ -29,11 +29,11 @@ public class DataTablesPage {
     }
 
     public int totalColumns () {
-        return driver.findElements(By.cssSelector("#table1 > thead > tr > th")).size();
+        return driverManager.getDriver().findElements(By.cssSelector("#table1 > thead > tr > th")).size();
     }
 
     public List<WebElement> columnHeaders () {
-        return driver.findElements(By.cssSelector("#table1 > thead > tr > th"));
+        return driverManager.getDriver().findElements(By.cssSelector("#table1 > thead > tr > th"));
     }
 
     public void printTableRecords () {

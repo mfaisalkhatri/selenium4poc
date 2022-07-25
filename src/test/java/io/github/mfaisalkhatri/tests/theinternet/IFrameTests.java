@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.IFramePage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,21 +24,20 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 02-01-2022
  */
-public class IFrameTests extends Setup {
-
+public class IFrameTests extends BaseTest {
 
     @BeforeClass
     public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
-        getDriver().get(website);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(website);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Frames");
         mainPage.clickLink("iFrame");
     }
 
     @Test
     public void testIFrame () {
-        IFramePage iframe = new IFramePage(getDriver());
+        IFramePage iframe = new IFramePage(driverManager);
         iframe.switchToiFrame();
         final String text = "Hello 123, entering value in iFrame!!";
         iframe.enterTextInIFrame(text);

@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.DropdownPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,17 +25,17 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 20-12-2021
  */
-public class DropdownTests extends Setup {
+public class DropdownTests extends BaseTest {
 
     private DropdownPage dropdownPage;
 
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Dropdown");
-        dropdownPage = new DropdownPage(getDriver());
+        dropdownPage = new DropdownPage(driverManager);
     }
 
     @Test

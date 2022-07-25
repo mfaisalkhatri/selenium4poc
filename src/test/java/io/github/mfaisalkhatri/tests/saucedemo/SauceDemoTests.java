@@ -14,32 +14,32 @@
 */
 package io.github.mfaisalkhatri.tests.saucedemo;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.saucedemo.LoginPage;
 import io.github.mfaisalkhatri.pages.saucedemo.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class SauceDemoTests extends Setup {
+public class SauceDemoTests extends BaseTest {
 
     @BeforeClass
     public void setupTest () {
         final String website = "https://www.saucedemo.com";
-        getDriver().navigate().to(website);
+        driverManager.getDriver().navigate().to(website);
     }
 
     @Test
     public void loginSauceDemoTest () {
-        LoginPage loginPage = new LoginPage(getDriver());
+        LoginPage loginPage = new LoginPage(driverManager);
         loginPage.websiteLogin("standard_user", "secret_sauce");
     }
 
     @Test
     public void logOutSauceDemoTest () {
-        MainPage mainPage = new MainPage(getDriver());
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.logoutFromWebSite();
     }
 }

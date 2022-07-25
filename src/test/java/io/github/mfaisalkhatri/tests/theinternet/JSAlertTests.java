@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.JSAlertPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,17 +25,17 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 18-12-2021
  */
-public class JSAlertTests extends Setup {
+public class JSAlertTests extends BaseTest {
 
     private JSAlertPage jsAlertPage;
 
     @BeforeClass
     private void setupTest () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("JavaScript Alerts");
-        jsAlertPage = new JSAlertPage(getDriver());
+        jsAlertPage = new JSAlertPage(driverManager);
     }
 
     @Test

@@ -1,16 +1,16 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.DownloadPage;
 import io.github.mfaisalkhatri.pages.theinternet.FileUploadPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class FileUploadDownloadTest extends Setup {
+public class FileUploadDownloadTest extends BaseTest {
 
     private String fileName;
     private MainPage mainPage;
@@ -18,24 +18,24 @@ public class FileUploadDownloadTest extends Setup {
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        mainPage = new MainPage(driverManager);
     }
 
     @Test
     public void testFileDownload () throws InterruptedException {
-        DownloadPage downloadPage = new DownloadPage(getDriver());
+        DownloadPage downloadPage = new DownloadPage(driverManager);
         mainPage.clickLink("File Download");
         fileName = downloadPage.getDownloadLinkText();
         downloadPage.downloadFile();
         assertTrue(downloadPage.checkFileDownload(fileName));
-        getDriver().navigate().back();
+        driverManager.getDriver().navigate().back();
     }
 
     @Test
     public void testFileUpload () {
         mainPage.clickLink("File Upload");
-        FileUploadPage uploadPage = new FileUploadPage(getDriver());
+        FileUploadPage uploadPage = new FileUploadPage(driverManager);
         uploadPage.uploadFile(fileName);
         assertEquals(uploadPage.successHeader(), "File Uploaded!");
         assertEquals(uploadPage.uploadedFileName(), fileName);

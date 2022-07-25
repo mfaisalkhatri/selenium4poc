@@ -14,10 +14,10 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.FormAuthenticationPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import io.github.mfaisalkhatri.pages.theinternet.SecurePage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -32,7 +32,7 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
-public class FormAuthenticationTests extends Setup {
+public class FormAuthenticationTests extends BaseTest {
 
     private static final String userName = "tomsmith";
     private static final String password = "SuperSecretPassword!";
@@ -42,11 +42,11 @@ public class FormAuthenticationTests extends Setup {
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Form Authentication");
-        formAuthenticationPage = new FormAuthenticationPage(getDriver());
-        securePage = new SecurePage(getDriver());
+        formAuthenticationPage = new FormAuthenticationPage(driverManager);
+        securePage = new SecurePage(driverManager);
     }
 
     @Test

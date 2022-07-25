@@ -15,9 +15,9 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,30 +29,30 @@ import java.time.Duration;
  */
 public class JSAlertPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
     private WebDriverWait wait;
     private Alert alert;
 
-    public JSAlertPage (WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public JSAlertPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
+        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(10));
     }
 
     public WebElement jsAlertButton () {
-        return driver.findElement(By.cssSelector("ul > li:nth-child(1) > button"));
+        return driverManager.getDriver().findElement(By.cssSelector("ul > li:nth-child(1) > button"));
     }
 
     public WebElement jsConfirmButton () {
-        return driver.findElement(By.cssSelector("ul > li:nth-child(2) > button"));
+        return driverManager.getDriver().findElement(By.cssSelector("ul > li:nth-child(2) > button"));
     }
 
     public WebElement jspromptButton () {
-        return driver.findElement(By.cssSelector("ul > li:nth-child(3) > button"));
+        return driverManager.getDriver().findElement(By.cssSelector("ul > li:nth-child(3) > button"));
     }
 
     public void checkForAlert () {
         wait.until(ExpectedConditions.alertIsPresent());
-        alert = driver.switchTo().alert();
+        alert = driverManager.getDriver().switchTo().alert();
     }
 
     public void acceptAlert () {
@@ -72,6 +72,6 @@ public class JSAlertPage {
     }
 
     public String resultText () {
-        return driver.findElement(By.id("result")).getText();
+        return driverManager.getDriver().findElement(By.id("result")).getText();
     }
 }

@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -25,42 +25,42 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class HoverPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
 
-    public HoverPage (WebDriver driver) {
-        this.driver = driver;
+    public HoverPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     public WebElement imageOne () {
-        return driver.findElement(By.cssSelector("div:nth-child(3) > img"));
+        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(3) > img"));
     }
 
     public WebElement imageTwo () {
-        return driver.findElement(By.cssSelector("div:nth-child(4) > img"));
+        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(4) > img"));
     }
 
     public WebElement imageThree () {
-        return driver.findElement(By.cssSelector("div:nth-child(5) > img"));
+        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(5) > img"));
     }
 
     public void hoverOnImage (WebElement element) {
-        Actions action = new Actions(driver);
+        Actions action = new Actions(driverManager.getDriver());
         action.moveToElement(element).click().build().perform();
     }
 
     public String getImageOneName () {
-        return driver.findElement(By.cssSelector("div:nth-child(3) > div > h5")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(3) > div > h5")).getText();
 
     }
 
     public String getImageTwoName () {
-        return driver.findElement(By.cssSelector("div:nth-child(4) > div > h5")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(4) > div > h5")).getText();
 
     }
 
     public String getImageThreeName () {
-        return driver.findElement(By.cssSelector("div:nth-child(5) > div > h5")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(5) > div > h5")).getText();
 
     }
 }

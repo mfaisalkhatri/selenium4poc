@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -24,26 +24,26 @@ import org.openqa.selenium.WebElement;
  */
 public class IFramePage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public IFramePage (WebDriver driver) {
-        this.driver = driver;
+    public IFramePage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     private WebElement iFrame () {
-        return driver.findElement(By.id("mce_0_ifr"));
+        return driverManager.getDriver().findElement(By.id("mce_0_ifr"));
     }
 
     public void switchToiFrame () {
-        driver.switchTo().frame(iFrame());
+        driverManager.getDriver().switchTo().frame(iFrame());
     }
 
     private WebElement textArea () {
-        return driver.findElement(By.id("tinymce"));
+        return driverManager.getDriver().findElement(By.id("tinymce"));
     }
 
     public String getTextValue () {
-        return driver.findElement(By.cssSelector("#tinymce > p")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("#tinymce > p")).getText();
     }
 
     public void enterTextInIFrame (String text) {

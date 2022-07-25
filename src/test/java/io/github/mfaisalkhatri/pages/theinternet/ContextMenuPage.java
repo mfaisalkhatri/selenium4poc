@@ -15,9 +15,9 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,24 +30,24 @@ import java.time.Duration;
  */
 public class ContextMenuPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
     private WebDriverWait wait;
     private Alert alert;
     private Actions actions;
 
-    public ContextMenuPage (WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        actions = new Actions(driver);
+    public ContextMenuPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
+        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(10));
+        actions = new Actions(driverManager.getDriver());
     }
 
     private WebElement box () {
-        return driver.findElement(By.id("hot-spot"));
+        return driverManager.getDriver().findElement(By.id("hot-spot"));
     }
 
     public void checkForAlert () {
         wait.until(ExpectedConditions.alertIsPresent());
-        alert = driver.switchTo().alert();
+        alert = driverManager.getDriver().switchTo().alert();
     }
 
     public String getAlertText () {

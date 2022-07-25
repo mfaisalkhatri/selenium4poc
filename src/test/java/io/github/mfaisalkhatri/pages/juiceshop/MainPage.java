@@ -1,7 +1,7 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -9,38 +9,38 @@ import java.time.Duration;
 
 public class MainPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public MainPage (WebDriver driver) {
-        this.driver = driver;
+    public MainPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     private WebElement meWantThisLink () {
-        return driver.findElement(By.cssSelector(".cc-btn"));
+        return driverManager.getDriver().findElement(By.cssSelector(".cc-btn"));
     }
 
     private WebElement dismissBtn () {
-        return driver.findElement(By.cssSelector(".close-dialog"));
+        return driverManager.getDriver().findElement(By.cssSelector(".close-dialog"));
     }
 
     public WebElement accountLink () {
-        return driver.findElement(By.id("navbarAccount"));
+        return driverManager.getDriver().findElement(By.id("navbarAccount"));
     }
 
     private WebElement loginLink () {
-        return driver.findElement(By.id("navbarLoginButton"));
+        return driverManager.getDriver().findElement(By.id("navbarLoginButton"));
     }
 
     public WebElement yourBasketLink () {
-        return driver.findElement(By.cssSelector("button.mat-focus-indicator:nth-child(7)"));
+        return driverManager.getDriver().findElement(By.cssSelector("button.mat-focus-indicator:nth-child(7)"));
     }
 
     public String yourBasketCount () {
-        return driver.findElement(By.cssSelector(".fa-layers-counter")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector(".fa-layers-counter")).getText();
     }
 
     public void openLoginPage () {
-        Actions action = new Actions(driver);
+        Actions action = new Actions(driverManager.getDriver());
         meWantThisLink().click();
         action.pause(Duration.ofSeconds(5)).moveToElement(dismissBtn()).click().build().perform();
         accountLink().click();

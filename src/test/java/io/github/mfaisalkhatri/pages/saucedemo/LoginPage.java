@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.saucedemo;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
@@ -26,23 +26,23 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
  */
 public class LoginPage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public LoginPage (WebDriver driver) {
-        this.driver = driver;
+    public LoginPage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     private WebElement username () {
-        return driver.findElement(By.id("user-name"));
+        return driverManager.getDriver().findElement(By.id("user-name"));
     }
 
     private WebElement password () {
-        return driver.findElement(with(By.tagName("input")).below(username()));
+        return driverManager.getDriver().findElement(with(By.tagName("input")).below(username()));
 
     }
 
     private WebElement loginBtn () {
-        return driver.findElement(with(By.tagName("input")).below(password()));
+        return driverManager.getDriver().findElement(with(By.tagName("input")).below(password()));
     }
 
     public void websiteLogin (String userName, String pswd) {

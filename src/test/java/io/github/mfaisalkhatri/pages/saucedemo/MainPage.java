@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.saucedemo;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,8 +30,8 @@ public class MainPage {
 
     private final WebDriverWait wait;
 
-    public MainPage (WebDriver driver) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    public MainPage (DriverManager driverManager) {
+        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(5));
     }
 
     private WebElement menuBtn () {

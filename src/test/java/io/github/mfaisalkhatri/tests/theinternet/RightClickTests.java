@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.ContextMenuPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,19 +25,19 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 22-12-2021
  */
-public class RightClickTests extends Setup {
+public class RightClickTests extends BaseTest {
 
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        MainPage mpage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mpage = new MainPage(driverManager);
         mpage.clickLink("Context Menu");
     }
 
     @Test
     public void testRightClick () {
-        ContextMenuPage contextMenuPage = new ContextMenuPage(getDriver());
+        ContextMenuPage contextMenuPage = new ContextMenuPage(driverManager);
         contextMenuPage.rightClick();
         contextMenuPage.checkForAlert();
         assertEquals(contextMenuPage.getAlertText(), "You selected a context menu");

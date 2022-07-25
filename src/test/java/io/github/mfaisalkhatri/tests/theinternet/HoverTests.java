@@ -14,9 +14,9 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.HoverPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,22 +25,20 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
-public class HoverTests extends Setup {
-
-    private MainPage mainPage;
-
+public class HoverTests extends BaseTest {
+    
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Hovers");
 
     }
 
     @Test
     public void mouseHoverTests () {
-        HoverPage hoverPage = new HoverPage(getDriver());
+        HoverPage hoverPage = new HoverPage(driverManager);
         hoverPage.hoverOnImage(hoverPage.imageOne());
         assertEquals(hoverPage.getImageOneName(), "name: user1");
 

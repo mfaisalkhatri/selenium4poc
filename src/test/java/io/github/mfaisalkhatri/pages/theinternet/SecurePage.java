@@ -15,8 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -24,26 +24,26 @@ import org.openqa.selenium.WebElement;
  */
 public class SecurePage {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
 
-    public SecurePage (WebDriver driver) {
-        this.driver = driver;
+    public SecurePage (DriverManager driverManager) {
+        this.driverManager = driverManager;
     }
 
     public WebElement logoutBtn () {
-        return driver.findElement(By.linkText("Logout"));
+        return driverManager.getDriver().findElement(By.linkText("Logout"));
     }
 
     public String getFlashMessage () {
-        return driver.findElement(By.id("flash")).getText();
+        return driverManager.getDriver().findElement(By.id("flash")).getText();
     }
 
     public String getHeaderText () {
-        return driver.findElement(By.tagName("h2")).getText();
+        return driverManager.getDriver().findElement(By.tagName("h2")).getText();
     }
 
     public String getSubHeaderText () {
-        return driver.findElement(By.tagName("h4")).getText();
+        return driverManager.getDriver().findElement(By.tagName("h4")).getText();
     }
 
 }

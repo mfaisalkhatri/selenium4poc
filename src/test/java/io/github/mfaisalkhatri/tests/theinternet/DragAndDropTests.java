@@ -15,9 +15,9 @@
 package io.github.mfaisalkhatri.tests.theinternet;
 
 
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.theinternet.DragAndDropPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,17 +26,17 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
-public class DragAndDropTests extends Setup {
+public class DragAndDropTests extends BaseTest {
 
     private DragAndDropPage dragAndDropPage;
 
     @BeforeClass
     public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
-        getDriver().get(website);
-        MainPage mainPage = new MainPage(getDriver());
+        driverManager.getDriver().get(website);
+        MainPage mainPage = new MainPage(driverManager);
         mainPage.clickLink("Drag and Drop");
-        dragAndDropPage = new DragAndDropPage(getDriver());
+        dragAndDropPage = new DragAndDropPage(driverManager);
     }
 
     @Test

@@ -1,7 +1,7 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -12,36 +12,36 @@ import java.time.Duration;
  */
 public class DeliverySelection {
 
-    private final WebDriver driver;
+    private final DriverManager driverManager;
     private final Actions actions;
 
-    public DeliverySelection (WebDriver driver) {
-        this.driver = driver;
-        actions = new Actions(driver);
+    public DeliverySelection (DriverManager driverManager) {
+        this.driverManager = driverManager;
+        actions = new Actions(driverManager.getDriver());
     }
 
     public String getDeliveryAddressName () {
-        return driver.findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(2)")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(2)")).getText();
     }
 
     public String getDeliveryAddress () {
-        return driver.findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(3)")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(3)")).getText();
     }
 
     public String getDeliveryAddressCountry () {
-        return driver.findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(4)")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(4)")).getText();
     }
 
     public String getDeliveryAddressPhoneNumber () {
-        return driver.findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(5)")).getText();
+        return driverManager.getDriver().findElement(By.cssSelector("mat-card > div.addressCont > div:nth-child(5)")).getText();
     }
 
     public WebElement oneDayDeliveryOption () {
-        return driver.findElement(By.cssSelector("input.mat-radio-input"));
+        return driverManager.getDriver().findElement(By.cssSelector("input.mat-radio-input"));
     }
 
     public WebElement continueBtn () {
-        return driver.findElement(By.cssSelector(".btn.nextButton"));
+        return driverManager.getDriver().findElement(By.cssSelector(".btn.nextButton"));
     }
 
     public void selectDeliveryOption () {

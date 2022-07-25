@@ -1,10 +1,10 @@
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import io.github.mfaisalkhatri.drivers.DriverManager;
 import io.github.mfaisalkhatri.utilities.Helper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,13 +15,12 @@ import java.time.Duration;
 
 public class DownloadPage {
 
-    private static final Logger log = LogManager.getLogger(DownloadPage.class);
+    private static final Logger LOG = LogManager.getLogger(DownloadPage.class);
     private final WebDriverWait wait;
     private Helper helper;
 
-    public DownloadPage (WebDriver driver) {
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    public DownloadPage (DriverManager driverManager) {
+        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(30));
         helper = new Helper();
     }
 
@@ -30,7 +29,7 @@ public class DownloadPage {
     }
 
     public String getDownloadLinkText () {
-        log.info("Downloading File :" + downloadLink().getText());
+        LOG.info("Downloading File :" + downloadLink().getText());
         return downloadLink().getText();
     }
 
@@ -48,16 +47,16 @@ public class DownloadPage {
             for (int i = 0; i < fileList.length; i++) {
                 String fileName = fileList[i];
                 if (fileName.equalsIgnoreCase(downloadedFileName)) {
-                    log.info("Downloaded file Found: " + directory + " " + fileName);
+                    LOG.info("Downloaded file Found: " + directory + " " + fileName);
                     flag = 1;
                 }
             }
         } else {
-            log.info("Downloads directory is Empty!" + directory);
+            LOG.info("Downloads directory is Empty!" + directory);
             return false;
         }
         if (flag == 0) {
-            log.info("Error: Downloaded File not found in the path!!" + directory);
+            LOG.info("Error: Downloaded File not found in the path!!" + directory);
             return false;
         }
         return true;

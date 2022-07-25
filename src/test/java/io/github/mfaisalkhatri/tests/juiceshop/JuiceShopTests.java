@@ -1,15 +1,15 @@
 package io.github.mfaisalkhatri.tests.juiceshop;
 
 import com.github.javafaker.Faker;
-import io.github.mfaisalkhatri.driversetup.Setup;
 import io.github.mfaisalkhatri.pages.juiceshop.*;
+import io.github.mfaisalkhatri.tests.Base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class JuiceShopTests extends Setup {
+public class JuiceShopTests extends BaseTest {
 
     private Faker faker;
     private String email;
@@ -31,13 +31,13 @@ public class JuiceShopTests extends Setup {
 
     @BeforeClass
     public void setupTests () {
-        //final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        final String websiteLink = "https://juice-shop.herokuapp.com/#/";
         //final String websiteLink = "http://host.docker.internal:3000/#/";
-        final String websiteLink = "http://localhost:3000/#/";
-        getDriver().get(websiteLink);
-        mainPage = new MainPage(getDriver());
-        loginPage = new LoginPage(getDriver());
-        productPage = new ProductPage(getDriver());
+        //final String websiteLink = "http://localhost:3000/#/";
+        driverManager.getDriver().get(websiteLink);
+        mainPage = new MainPage(driverManager);
+        loginPage = new LoginPage(driverManager);
+        productPage = new ProductPage(driverManager);
         faker = Faker.instance();
         email = faker.internet()
                 .emailAddress();
@@ -61,7 +61,7 @@ public class JuiceShopTests extends Setup {
 
     @Test
     public void registerUserTest () {
-        RegistrationPage registrationPage = new RegistrationPage(getDriver());
+        RegistrationPage registrationPage = new RegistrationPage(driverManager);
         mainPage.openLoginPage();
         registrationPage.registerUser(email, pass, "Mother's maiden name?", "Jane Doe");
         assertEquals(registrationPage.successMessage(), "Registration completed successfully. You can now log in.");
@@ -93,7 +93,7 @@ public class JuiceShopTests extends Setup {
     public void productCheckoutTest () {
         productPage.navigateToYourBasket();
 
-        CheckoutPage checkoutPage = new CheckoutPage(getDriver());
+        CheckoutPage checkoutPage = new CheckoutPage(driverManager);
 
         assertEquals(checkoutPage.appleJuiceText(), appleJuiceText);
         assertEquals(checkoutPage.appleJuiceQty(), "1");
@@ -108,7 +108,7 @@ public class JuiceShopTests extends Setup {
 
     @Test(dependsOnMethods = "productCheckoutTest")
     public void selectDeliveryTest () {
-        DeliverySelection deliverySelection = new DeliverySelection(getDriver());
+        DeliverySelection deliverySelection = new DeliverySelection(driverManager);
         String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
         assertEquals(deliverySelection.getDeliveryAddressName(), name);
         assertEquals(deliverySelection.getDeliveryAddress(), addressLineTwo);
@@ -119,13 +119,13 @@ public class JuiceShopTests extends Setup {
 
     @Test(dependsOnMethods = "selectDeliveryTest")
     public void makePaymentTest () {
-        PaymentPage paymentPage = new PaymentPage(getDriver());
+        PaymentPage paymentPage = new PaymentPage(driverManager);
         paymentPage.makePayment(name, "4012888888881881", "2", "2080");
     }
 
     @Test(dependsOnMethods = "makePaymentTest")
     public void orderSummaryTest () {
-        OrderSummaryPage orderSummaryPage = new OrderSummaryPage(getDriver());
+        OrderSummaryPage orderSummaryPage = new OrderSummaryPage(driverManager);
         String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
         assertEquals(orderSummaryPage.getDeliveryAddressCustomerName(), name);
         assertEquals(orderSummaryPage.getDeliveryAddress(), addressLineTwo);
@@ -147,7 +147,7 @@ public class JuiceShopTests extends Setup {
 
     @Test(dependsOnMethods = "orderSummaryTest")
     public void orderConfirmationTest () {
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(getDriver());
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driverManager);
         assertEquals(orderConfirmationPage.getThanksMessage(), "Thank you for your purchase!");
         assertEquals(orderConfirmationPage.getOrderConfirmationMessage(),
                 "Your order has been placed and is being processed. You can check for status updates on our Track Orders page.");

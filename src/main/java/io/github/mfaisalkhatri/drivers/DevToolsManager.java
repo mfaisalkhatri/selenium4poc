@@ -1,25 +1,24 @@
-package io.github.mfaisalkhatri.driversetup;
+package io.github.mfaisalkhatri.drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Builder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v101.log.Log;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 /**
  * Created By Faisal Khatri on 21-03-2022
  */
-public class DevToolsSetup {
+@Builder
+public class DevToolsManager {
 
     private static final Logger LOG = LogManager.getLogger("DevToolsSetup.class");
     public ChromeDriver chromeDriver;
 
-    @BeforeClass
-    public void setupTest () {
+    public DevToolsManager createDriver () {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
@@ -36,10 +35,10 @@ public class DevToolsSetup {
             LOG.error(logEntry.getText());
             LOG.error(logEntry.getLevel());
         });
+        return this;
     }
 
-    @AfterClass
-    public void tearDown () {
+    public void quitDriver () {
         if (null != chromeDriver) {
             chromeDriver.quit();
         }
