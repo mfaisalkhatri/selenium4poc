@@ -16,7 +16,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.pages.theinternet.HoverPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.Base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,7 +26,7 @@ import static org.testng.Assert.assertEquals;
  * Created By Faisal Khatri on 29-12-2021
  */
 public class HoverTests extends BaseTest {
-    
+
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";

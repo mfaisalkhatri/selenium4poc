@@ -1,6 +1,6 @@
 package io.github.mfaisalkhatri.tests.devtools;
 
-import io.github.mfaisalkhatri.tests.Base.DevToolsBaseTest;
+import io.github.mfaisalkhatri.tests.base.DevToolsBaseTest;
 import org.testng.annotations.Test;
 
 /**

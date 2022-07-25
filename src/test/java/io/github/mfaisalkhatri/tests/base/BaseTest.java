@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.tests.Base;
+package io.github.mfaisalkhatri.tests.base;
 
 import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.testng.annotations.AfterClass;

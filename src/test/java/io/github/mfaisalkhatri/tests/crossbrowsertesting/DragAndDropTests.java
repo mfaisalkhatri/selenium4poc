@@ -15,7 +15,7 @@
 package io.github.mfaisalkhatri.tests.crossbrowsertesting;
 
 import io.github.mfaisalkhatri.pages.crossbrowsertesting.DragAndDropPage;
-import io.github.mfaisalkhatri.tests.Base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

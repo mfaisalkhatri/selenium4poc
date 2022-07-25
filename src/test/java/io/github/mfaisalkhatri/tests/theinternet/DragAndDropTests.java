@@ -17,7 +17,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.pages.theinternet.DragAndDropPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.Base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
