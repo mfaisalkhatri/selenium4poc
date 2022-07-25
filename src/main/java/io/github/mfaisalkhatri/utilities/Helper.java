@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 public class Helper {
 
     private static final Logger LOG = LogManager.getLogger(Helper.class);
-    
-    public void enterText (WebElement element, String text) {
+
+    public static void enterText (WebElement element, String text) {
         element.click();
         element.clear();
         element.sendKeys(text);
