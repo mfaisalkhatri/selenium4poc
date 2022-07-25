@@ -3,14 +3,14 @@ package io.github.mfaisalkhatri.tests.theinternet;
 import io.github.mfaisalkhatri.pages.theinternet.DownloadPage;
 import io.github.mfaisalkhatri.pages.theinternet.FileUploadPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class FileUploadDownloadTest extends BaseTest {
+public class FileUploadDownloadTest extends BaseSuiteSetup {
 
     private String fileName;
     private MainPage mainPage;

@@ -16,7 +16,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.pages.theinternet.CheckboxPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,7 +25,7 @@ import static org.testng.Assert.*;
 /**
  * Created By Faisal Khatri on 21-12-2021
  */
-public class CheckboxTests extends BaseTest {
+public class CheckboxTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void testSetup () {

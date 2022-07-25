@@ -17,7 +17,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 import io.github.mfaisalkhatri.pages.theinternet.FormAuthenticationPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import io.github.mfaisalkhatri.pages.theinternet.SecurePage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -32,7 +32,7 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
-public class FormAuthenticationTests extends BaseTest {
+public class FormAuthenticationTests extends BaseSuiteSetup {
 
     private static final String userName = "tomsmith";
     private static final String password = "SuperSecretPassword!";

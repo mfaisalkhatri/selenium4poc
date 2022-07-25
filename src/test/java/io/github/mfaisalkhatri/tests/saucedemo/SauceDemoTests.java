@@ -16,14 +16,14 @@ package io.github.mfaisalkhatri.tests.saucedemo;
 
 import io.github.mfaisalkhatri.pages.saucedemo.LoginPage;
 import io.github.mfaisalkhatri.pages.saucedemo.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class SauceDemoTests extends BaseTest {
+public class SauceDemoTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void setupTest () {

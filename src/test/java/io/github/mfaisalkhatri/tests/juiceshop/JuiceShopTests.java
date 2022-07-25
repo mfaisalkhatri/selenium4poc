@@ -2,14 +2,14 @@ package io.github.mfaisalkhatri.tests.juiceshop;
 
 import com.github.javafaker.Faker;
 import io.github.mfaisalkhatri.pages.juiceshop.*;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class JuiceShopTests extends BaseTest {
+public class JuiceShopTests extends BaseSuiteSetup {
 
     private Faker faker;
     private String email;

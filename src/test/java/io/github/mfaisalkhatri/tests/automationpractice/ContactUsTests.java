@@ -16,7 +16,7 @@ package io.github.mfaisalkhatri.tests.automationpractice;
 
 import io.github.mfaisalkhatri.pages.automationpractice.ContactUs;
 import io.github.mfaisalkhatri.pages.automationpractice.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class ContactUsTests extends BaseTest {
+public class ContactUsTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void setupTests () {

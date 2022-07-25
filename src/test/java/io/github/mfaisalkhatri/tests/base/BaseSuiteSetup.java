@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 /**
  * Created By Faisal Khatri on 24-07-2022
  */
-public class BaseTest {
+public class BaseSuiteSetup {
 
     protected DriverManager driverManager;
 

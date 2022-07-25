@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 /**
  * Created By Faisal Khatri on 25-07-2022
  */
-public class DevToolsBaseTest {
+public class DevToolsBaseSuiteSetup {
 
     protected DevToolsManager devToolsManager;
 

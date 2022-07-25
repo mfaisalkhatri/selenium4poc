@@ -16,7 +16,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.pages.theinternet.DropdownPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,7 +25,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 20-12-2021
  */
-public class DropdownTests extends BaseTest {
+public class DropdownTests extends BaseSuiteSetup {
 
     private DropdownPage dropdownPage;
 

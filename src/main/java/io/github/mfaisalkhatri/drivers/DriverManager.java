@@ -37,9 +37,6 @@ public class DriverManager {
 
     public DriverManager createDriver () {
         if (browser.equalsIgnoreCase("firefox")) {
-            // FirefoxOptions options = new FirefoxOptions();
-            // options.addArguments("--websocket-port", "4444");
-            //DRIVER = new FirefoxDriver(options);
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");

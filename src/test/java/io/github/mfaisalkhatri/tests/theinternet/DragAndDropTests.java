@@ -17,7 +17,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.pages.theinternet.DragAndDropPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,7 +26,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
-public class DragAndDropTests extends BaseTest {
+public class DragAndDropTests extends BaseSuiteSetup {
 
     private DragAndDropPage dragAndDropPage;
 

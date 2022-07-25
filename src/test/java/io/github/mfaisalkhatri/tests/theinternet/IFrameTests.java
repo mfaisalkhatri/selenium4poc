@@ -16,7 +16,7 @@ package io.github.mfaisalkhatri.tests.theinternet;
 
 import io.github.mfaisalkhatri.pages.theinternet.IFramePage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 02-01-2022
  */
-public class IFrameTests extends BaseTest {
+public class IFrameTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void setupTests () {

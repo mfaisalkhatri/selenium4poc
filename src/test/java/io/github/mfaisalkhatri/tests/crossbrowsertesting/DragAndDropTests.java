@@ -15,7 +15,7 @@
 package io.github.mfaisalkhatri.tests.crossbrowsertesting;
 
 import io.github.mfaisalkhatri.pages.crossbrowsertesting.DragAndDropPage;
-import io.github.mfaisalkhatri.tests.base.BaseTest;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 /**
  * Created By Faisal Khatri on 30-12-2021
  */
-public class DragAndDropTests extends BaseTest {
+public class DragAndDropTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void testSetup () {

@@ -1,12 +1,12 @@
 package io.github.mfaisalkhatri.tests.devtools;
 
-import io.github.mfaisalkhatri.tests.base.DevToolsBaseTest;
+import io.github.mfaisalkhatri.tests.base.DevToolsBaseSuiteSetup;
 import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 21-03-2022
  */
-public class LogTest extends DevToolsBaseTest {
+public class LogTest extends DevToolsBaseSuiteSetup {
 
     @Test
     public void checkChromeLogs () {
