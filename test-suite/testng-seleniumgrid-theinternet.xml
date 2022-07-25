@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="The internet tests on Selenium Grid 4" parallel="tests" thread-count="3" verbose="2">
+    <test name="Form Authentication Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.theinternet.FormAuthenticationTests">
+                <methods>
+                    <include name="loginWithCorrectCredentials"/>
+                    <include name="logOutTest"/>
+                    <include name="userNameNotValidTest"/>
+                    <include name="passwordNotValidTest"/>
+                    <include name="invalidLoginCredentialsTest"/>
+                    <include name="blankUserAndPasswordTest"/>
+                    <include name="loginTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Multiple Windows Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.theinternet.MultipleWindowTests">
+                <methods>
+                    <include name="testMultipleWindows"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Data table Tests">
+        <parameter name="browser" value="remote-chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.theinternet.DataTableTests">
+                <methods>
+                    <include name="testDataTable"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

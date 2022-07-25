@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sauce Demo Website Tests" parallel="tests" thread-count="4" verbose="2">
+    <test name="selenium 4 Tests with Chrome Browser">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Firefox Browser">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Edge Browser" enabled="false">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="selenium 4 Tests with Opera Browser" enabled="false">
+        <parameter name="browser" value="opera"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.saucedemo.SauceDemoTests">
+                <methods>
+                    <include name="loginSauceDemoTest"/>
+                    <include name="logOutSauceDemoTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

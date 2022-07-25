@@ -13,11 +13,21 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <surefire-version>3.0.0-M5</surefire-version>
+        <selenium.java.version>4.3.0</selenium.java.version>
+        <testng.version>7.6.1</testng.version>
+        <webdrivermanager.version>5.2.1</webdrivermanager.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <log4jcore.version>2.18.0</log4jcore.version>
+        <log4japi.version>2.18.0</log4japi.version>
+        <orgjson.version>20220320</orgjson.version>
+        <javafaker.version>1.0.2</javafaker.version>
+        <seleniumdevtoolsv101.version>4.3.0</seleniumdevtoolsv101.version>
+        <lombok.version>1.18.24</lombok.version>
+        <maven.compiler.version>3.10.1</maven.compiler.version>
+        <surefire-version>3.0.0-M7</surefire-version>
         <java.release.version>15</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
-        <suite-xml>testng.xml</suite-xml>
+        <suite-xml>test-suite/testng.xml</suite-xml>
         <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent</argLine>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.report>${project.basedir}/target/reports/jacoco.exec</sonar.report>
@@ -28,8 +38,8 @@
         </sonar.coverage.jacoco.xmlReportPaths>
         <sonar.java.source>15</sonar.java.source>
         <jacoco.version>0.8.7</jacoco.version>
-        <sonar.version>5.14.0.18788</sonar.version>
-        <threads>10</threads>
+        <sonarjacocolistener.version>5.14.0.18788</sonarjacocolistener.version>
+        <sonarmavenplugin.version>3.9.1.2184</sonarmavenplugin.version>
     </properties>
 
     <dependencies>
@@ -37,62 +47,69 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.1.4</version>
+            <version>${selenium.java.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.0.3</version>
+            <version>${webdrivermanager.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.17.1</version>
+            <version>${log4jcore.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.17.1</version>
+            <version>${log4japi.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20211205</version>
+            <version>${orgjson.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <version>${javafaker.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v101 -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-devtools-v101</artifactId>
-            <version>4.1.4</version>
+            <version>${seleniumdevtoolsv101.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -124,10 +141,6 @@
                             <name>usedefaultlisteners</name>
                             <value>false</value>
                         </property>
-                        <property>
-                        <name>suitethreadpoolsize</name>
-                        <value>${threads}</value>
-                    </property>
                     </properties>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite-xml}</suiteXmlFile>
@@ -138,7 +151,7 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.1.2184</version>
+                <version>${sonarmavenplugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -199,7 +212,7 @@
                 <dependency>
                     <groupId>org.sonarsource.java</groupId>
                     <artifactId>sonar-jacoco-listeners</artifactId>
-                    <version>${sonar.version}</version>
+                    <version>${sonarjacocolistener.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
