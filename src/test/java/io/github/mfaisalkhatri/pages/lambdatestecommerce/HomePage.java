@@ -27,10 +27,9 @@ public class HomePage {
         return driverManager.getDriver().findElement(By.linkText("Register"));
     }
 
-    public void openUserRegistrationPage () {
+    public RegistrationPage openUserRegistrationPage () {
         myAccountLink().click();
         registerLink().click();
+        return new RegistrationPage(driverManager);
     }
-
-
 }
