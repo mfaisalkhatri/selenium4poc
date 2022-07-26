@@ -11,6 +11,11 @@ import static org.testng.Assert.assertEquals;
  * Created By Faisal Khatri on 26-07-2022
  */
 public class ProductPage {
+
+    public static ProductPage productPage () {
+        return new ProductPage();
+    }
+
     private WebElement palmTreoCameraLens () {
         return getDriver().findElement(By.cssSelector("#entry_212408 > div > div:nth-child(2)"));
     }
@@ -24,7 +29,11 @@ public class ProductPage {
     }
 
     public ProductPage verifySuccessMessage () {
-        assertEquals(notificationPopUp().findElement(By.tagName("p")).getText(), "Success: You have added Palm Treo Pro to your shopping cart!");
+        assertEquals(notificationPopUp().findElement(By.tagName("p")).getText(), "Success: You have added\n" +
+                "Palm Treo Pro\n" +
+                "to your\n" +
+                "shopping cart\n" +
+                "!");
         return this;
     }
 
@@ -32,13 +41,13 @@ public class ProductPage {
         return notificationPopUp().findElement(By.cssSelector("div.form-row > div:nth-child(2) > a"));
     }
 
-    public String getpriceOfPalmTreoPro () {
+    public String getpriceOfPalmTreoProLens () {
         return getDriver().findElement(By.cssSelector("div:nth-child(2) > div > div.caption > div > span")).getText();
     }
 
-    public ProductPage addProductToCart () {
+    public ProductPage addPalmTreoCameraLensToCart () {
         Actions actions = new Actions(getDriver());
-        actions.moveToElement(palmTreoCameraLens()).moveToElement(addToCartBtn()).perform();
+        actions.moveToElement(palmTreoCameraLens()).pause(500).moveToElement(addToCartBtn()).pause(200).click().perform();
         return this;
     }
 

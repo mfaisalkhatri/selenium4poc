@@ -14,4 +14,5 @@ public class MyAccountPage {
         assertEquals(getDriver().findElement(By.tagName("h2")).getText(), "My Account");
         return this;
     }
+    
 }

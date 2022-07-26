@@ -7,6 +7,7 @@
             <class name="io.github.mfaisalkhatri.tests.lambdatestecommerce.EndToEndWebsiteTests">
                 <methods>
                     <include name="testRegisterUser"/>
+                    <include name="testAddProductToCart"/>
                 </methods>
             </class>
         </classes>

@@ -6,11 +6,14 @@ import org.testng.annotations.Test;
 
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static io.github.mfaisalkhatri.pages.lambdatestecommerce.HomePage.homePage;
+import static io.github.mfaisalkhatri.pages.lambdatestecommerce.ProductPage.productPage;
 
 /**
  * Created By Faisal Khatri on 25-07-2022
  */
 public class EndToEndWebsiteTests extends BaseSuiteSetup {
+
+    private String unitPriceOfCameraLens;
 
     @BeforeClass
     public void setupTests () {
@@ -26,5 +29,17 @@ public class EndToEndWebsiteTests extends BaseSuiteSetup {
                 .verifySuccessfulRegistration()
                 .continueToMyAccount()
                 .verifyPageHeader();
+    }
+
+    @Test
+    public void testAddProductToCart () {
+        unitPriceOfCameraLens = homePage()
+                .shopByCategory("Components")
+                .getpriceOfPalmTreoProLens();
+        
+        productPage()
+                .addPalmTreoCameraLensToCart()
+                .verifySuccessMessage()
+                .checkoutProduct();
     }
 }

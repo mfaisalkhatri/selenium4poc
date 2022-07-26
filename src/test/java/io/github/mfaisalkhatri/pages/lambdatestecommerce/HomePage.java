@@ -12,42 +12,42 @@ import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 public class HomePage {
 
     private HomePage () {
-        
     }
 
     public static HomePage homePage () {
         return new HomePage();
     }
 
-    public WebElement myAccountLink () {
-        return getDriver().findElement(By.linkText("My account"));
+    private HomePage openMyAccountMenu () {
+        getDriver().findElement(By.linkText("My account")).click();
+        return this;
     }
 
-    public WebElement loginLink () {
+    private WebElement loginLink () {
         return getDriver().findElement(By.linkText("Login"));
     }
 
-    public WebElement registerLink () {
+    private WebElement registerLink () {
         return getDriver().findElement(By.linkText("Register"));
     }
 
-    public WebElement shopByCategoryLink () {
-        return getDriver().findElement(By.linkText("Shop by Category"));
+    private HomePage shopByCategory () {
+        getDriver().findElement(By.linkText("Shop by Category")).click();
+        return this;
     }
 
-    public WebElement selectCategory (String linkName) {
+    private WebElement selectCategory (String linkName) {
         return getDriver().findElement(By.linkText(linkName));
     }
 
     public RegistrationPage openUserRegistrationPage () {
-        myAccountLink().click();
-        registerLink().click();
+        openMyAccountMenu().registerLink().click();
         return new RegistrationPage();
     }
 
-//    public ProductPage shopByCategory (String linkName) {
-//        selectCategory(linkName).click();
-//        return new ProductPage(driverManager);
-//    }
+    public ProductPage shopByCategory (String linkName) {
+        shopByCategory().selectCategory(linkName).click();
+        return new ProductPage();
+    }
 
 }
