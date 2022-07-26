@@ -15,13 +15,14 @@
 
 package io.github.mfaisalkhatri.pages.saucedemo;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
@@ -30,13 +31,12 @@ public class MainPage {
 
     private final WebDriverWait wait;
 
-    public MainPage (DriverManager driverManager) {
-        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(5));
+    public MainPage () {
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
     }
 
     private WebElement menuBtn () {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("react-burger-menu-btn")));
-
     }
 
     private WebElement logoutLink () {

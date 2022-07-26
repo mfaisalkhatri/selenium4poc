@@ -1,7 +1,5 @@
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
-import io.github.mfaisalkhatri.utilities.Helper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -13,15 +11,16 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.time.Duration;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.pause;
+
 public class DownloadPage {
 
     private static final Logger LOG = LogManager.getLogger(DownloadPage.class);
     private final WebDriverWait wait;
-    private Helper helper;
 
-    public DownloadPage (DriverManager driverManager) {
-        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(30));
-        helper = new Helper();
+    public DownloadPage () {
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
     }
 
     private WebElement downloadLink () {
@@ -35,7 +34,7 @@ public class DownloadPage {
 
     public void downloadFile () throws InterruptedException {
         downloadLink().click();
-        helper.pause(5000);
+        pause(5000);
     }
 
     public boolean checkFileDownload (String downloadedFileName) {

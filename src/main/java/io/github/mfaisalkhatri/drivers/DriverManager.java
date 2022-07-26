@@ -1,7 +1,6 @@
 package io.github.mfaisalkhatri.drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.Builder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -21,21 +20,16 @@ import java.util.HashMap;
  * @author Faisal Khatri
  * @since 24/07/2022
  */
-@Builder
 public class DriverManager {
     private static final Logger LOG = LogManager.getLogger("DriverManager.class");
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
     private static final String HUB_URL = "http://localhost:4444/wd/hub";
-    private final String browser;
 
-    public <D extends WebDriver> D getDriver () {
-        if (null == DriverManager.DRIVER.get()) {
-            createDriver();
-        }
+    public static <D extends WebDriver> D getDriver () {
         return (D) DriverManager.DRIVER.get();
     }
 
-    public DriverManager createDriver () {
+    public static void createDriver (String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
@@ -64,7 +58,7 @@ public class DriverManager {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1050,600");
-            // options.addArguments("--headless");
+            options.addArguments("--headless");
             options.addArguments("--safebrowsing-disable-download-protection");
             options.setExperimentalOption("prefs", chromePrefs);
 
@@ -101,20 +95,19 @@ public class DriverManager {
             LOG.error("Browser value is not defined correctly! It should be either chrome, firefox, edge or opera!");
         }
         setupBrowserTimeouts();
-        return this;
     }
 
-    public void quitDriver () {
-        if (null != DriverManager.DRIVER.get()) {
-            LOG.info("Closing the driver...");
-            getDriver().quit();
-            DriverManager.DRIVER.remove();
-        }
-    }
-
-    private void setupBrowserTimeouts () {
+    private static void setupBrowserTimeouts () {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+    }
+
+    public static void quitDriver () {
+        if (null != DRIVER.get()) {
+            LOG.info("Closing the driver...");
+            getDriver().quit();
+            DRIVER.remove();
+        }
     }
 }

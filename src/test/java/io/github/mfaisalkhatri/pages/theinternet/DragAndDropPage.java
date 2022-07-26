@@ -15,39 +15,38 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
 public class DragAndDropPage {
 
-    private final DriverManager driverManager;
     private final Actions action;
 
-    public DragAndDropPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-        action = new Actions(driverManager.getDriver());
+    public DragAndDropPage () {
+        action = new Actions(getDriver());
     }
 
     private WebElement boxA () {
-        return driverManager.getDriver().findElement(By.id("column-a"));
+        return getDriver().findElement(By.id("column-a"));
     }
 
     private WebElement boxB () {
-        return driverManager.getDriver().findElement(By.id("column-b"));
+        return getDriver().findElement(By.id("column-b"));
     }
 
     public String getHeaderOfBoxA () {
-        WebElement header = driverManager.getDriver().findElement(By.cssSelector("#column-a > header"));
+        WebElement header = getDriver().findElement(By.cssSelector("#column-a > header"));
         return header.getText();
     }
 
     public String getHeaderOfBoxB () {
-        WebElement header = driverManager.getDriver().findElement(By.cssSelector("#column-b > header"));
+        WebElement header = getDriver().findElement(By.cssSelector("#column-b > header"));
         return header.getText();
     }
 

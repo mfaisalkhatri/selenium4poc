@@ -15,52 +15,43 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 29-12-2021
  */
 public class HoverPage {
 
-    private final DriverManager driverManager;
-
-
-    public HoverPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
     public WebElement imageOne () {
-        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(3) > img"));
+        return getDriver().findElement(By.cssSelector("div:nth-child(3) > img"));
     }
 
     public WebElement imageTwo () {
-        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(4) > img"));
+        return getDriver().findElement(By.cssSelector("div:nth-child(4) > img"));
     }
 
     public WebElement imageThree () {
-        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(5) > img"));
+        return getDriver().findElement(By.cssSelector("div:nth-child(5) > img"));
     }
 
     public void hoverOnImage (WebElement element) {
-        Actions action = new Actions(driverManager.getDriver());
+        Actions action = new Actions(getDriver());
         action.moveToElement(element).click().build().perform();
     }
 
     public String getImageOneName () {
-        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(3) > div > h5")).getText();
-
+        return getDriver().findElement(By.cssSelector("div:nth-child(3) > div > h5")).getText();
     }
 
     public String getImageTwoName () {
-        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(4) > div > h5")).getText();
-
+        return getDriver().findElement(By.cssSelector("div:nth-child(4) > div > h5")).getText();
     }
 
     public String getImageThreeName () {
-        return driverManager.getDriver().findElement(By.cssSelector("div:nth-child(5) > div > h5")).getText();
-
+        return getDriver().findElement(By.cssSelector("div:nth-child(5) > div > h5")).getText();
     }
 }

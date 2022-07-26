@@ -15,7 +15,6 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -25,29 +24,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 /**
  * Created By Faisal Khatri on 22-12-2021
  */
 public class ContextMenuPage {
 
-    private final DriverManager driverManager;
-    private WebDriverWait wait;
     private Alert alert;
-    private Actions actions;
-
-    public ContextMenuPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(10));
-        actions = new Actions(driverManager.getDriver());
-    }
 
     private WebElement box () {
-        return driverManager.getDriver().findElement(By.id("hot-spot"));
+        return getDriver().findElement(By.id("hot-spot"));
     }
 
     public void checkForAlert () {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.alertIsPresent());
-        alert = driverManager.getDriver().switchTo().alert();
+        alert = getDriver().switchTo().alert();
     }
 
     public String getAlertText () {
@@ -55,6 +48,7 @@ public class ContextMenuPage {
     }
 
     public void rightClick () {
+        Actions actions = new Actions(getDriver());
         actions.contextClick(box()).perform();
     }
 }

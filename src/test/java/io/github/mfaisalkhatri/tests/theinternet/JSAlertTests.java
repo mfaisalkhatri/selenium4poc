@@ -20,6 +20,7 @@ import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -32,10 +33,10 @@ public class JSAlertTests extends BaseSuiteSetup {
     @BeforeClass
     private void setupTest () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driverManager.getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(driverManager);
+        getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage();
         mainPage.clickLink("JavaScript Alerts");
-        jsAlertPage = new JSAlertPage(driverManager);
+        jsAlertPage = new JSAlertPage();
     }
 
     @Test

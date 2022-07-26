@@ -21,6 +21,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 /**
  * Created By Faisal Khatri on 02-01-2022
  */
@@ -29,20 +31,18 @@ public class IFrameTests extends BaseSuiteSetup {
     @BeforeClass
     public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
-        driverManager.getDriver().get(website);
-        MainPage mainPage = new MainPage(driverManager);
+        getDriver().get(website);
+        MainPage mainPage = new MainPage();
         mainPage.clickLink("Frames");
         mainPage.clickLink("iFrame");
     }
 
     @Test
     public void testIFrame () {
-        IFramePage iframe = new IFramePage(driverManager);
+        IFramePage iframe = new IFramePage();
         iframe.switchToiFrame();
         final String text = "Hello 123, entering value in iFrame!!";
         iframe.enterTextInIFrame(text);
         Assert.assertEquals(iframe.getTextValue(), text);
     }
-
-
 }

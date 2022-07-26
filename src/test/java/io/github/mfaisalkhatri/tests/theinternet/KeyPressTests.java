@@ -21,22 +21,27 @@ import org.openqa.selenium.Keys;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 
+/**
+ * @author Faisal Khatri
+ * @since 1812/2021
+ */
 
 public class KeyPressTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driverManager.getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(driverManager);
+        getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage();
         mainPage.clickLink("Key Presses");
     }
 
     @Test
     public void keyPressTest () {
-        KeyPressPage keyPressPage = new KeyPressPage(driverManager);
+        KeyPressPage keyPressPage = new KeyPressPage();
         keyPressPage.pressKeys(Keys.ARROW_DOWN);
         assertEquals(keyPressPage.resultText(), "You entered: DOWN");
         keyPressPage.pressKeys(Keys.F3);

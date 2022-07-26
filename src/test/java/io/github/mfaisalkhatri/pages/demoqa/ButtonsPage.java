@@ -15,32 +15,27 @@
 
 package io.github.mfaisalkhatri.pages.demoqa;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 30-12-2021
  */
 public class ButtonsPage {
 
-    private final DriverManager driverManager;
-
-    public ButtonsPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
     private WebElement btnDoubleCLick () {
-        return driverManager.getDriver().findElement(By.id("doubleClickBtn"));
+        return getDriver().findElement(By.id("doubleClickBtn"));
     }
 
     public String getTextOnClick () {
-        return driverManager.getDriver().findElement(By.id("doubleClickMessage")).getText();
+        return getDriver().findElement(By.id("doubleClickMessage")).getText();
     }
 
     public void doubleClickonButton () {
-        Actions action = new Actions(driverManager.getDriver());
+        Actions action = new Actions(getDriver());
         action.doubleClick(btnDoubleCLick()).perform();
     }
 }

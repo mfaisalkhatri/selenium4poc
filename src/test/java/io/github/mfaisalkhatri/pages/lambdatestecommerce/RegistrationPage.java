@@ -1,13 +1,14 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import io.github.mfaisalkhatri.testdata.RegisterUserData;
 import io.github.mfaisalkhatri.testdata.RegistrationTestDataBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static io.github.mfaisalkhatri.utilities.Helper.enterText;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 25-07-2022
@@ -15,18 +16,14 @@ import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 public class RegistrationPage {
 
     private static final String PASSWORD = "Password123#";
-    private DriverManager driverManager;
-
-    public RegistrationPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
-    public String pageHeader () {
-        return driverManager.getDriver().findElement(By.tagName("h1")).getText();
+    
+    public RegistrationPage verifyPageHeader () {
+        assertEquals(getDriver().findElement(By.tagName("h1")).getText(), "Register Account");
+        return this;
     }
 
     public WebElement registrationForm () {
-        return driverManager.getDriver().findElement(By.id("content"));
+        return getDriver().findElement(By.id("content"));
     }
 
     public WebElement firstNameField () {
@@ -72,10 +69,10 @@ public class RegistrationPage {
         enterText(telephoneField(), registerUser.getTelephone());
         enterText(passwordField(), PASSWORD);
         enterText(confirmPasswordField(), PASSWORD);
-        Actions actions = new Actions(driverManager.getDriver());
+        Actions actions = new Actions(getDriver());
         actions.moveToElement(agreePrivacyPolicyField()).click().perform();
         continueBtn().click();
-        return new RegistrationSuccessPage(driverManager);
+        return new RegistrationSuccessPage();
     }
 
 }

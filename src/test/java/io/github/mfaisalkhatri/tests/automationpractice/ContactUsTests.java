@@ -21,6 +21,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
@@ -29,14 +31,14 @@ public class ContactUsTests extends BaseSuiteSetup {
     @BeforeClass
     public void setupTests () {
         final String websiteLink = "http://automationpractice.com/index.php";
-        driverManager.getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(driverManager);
+        getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage();
         mainPage.contactUsLink().click();
     }
 
     @Test
     public void relativeLocatorsTest () {
-        ContactUs contact = new ContactUs(driverManager);
+        ContactUs contact = new ContactUs();
         final String actualPageHeader = "CUSTOMER SERVICE - CONTACT US";
         String expectedPageHeader = contact.pageHeading();
         Assert.assertEquals(actualPageHeader, expectedPageHeader);

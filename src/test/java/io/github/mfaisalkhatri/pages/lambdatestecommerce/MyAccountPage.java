@@ -1,21 +1,17 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 25-07-2022
  */
 public class MyAccountPage {
 
-    private DriverManager driverManager;
-
-    public MyAccountPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
+    public MyAccountPage verifyPageHeader () {
+        assertEquals(getDriver().findElement(By.tagName("h2")).getText(), "My Account");
+        return this;
     }
-
-    public String pageHeader () {
-        return driverManager.getDriver().findElement(By.tagName("h2")).getText();
-    }
-
 }

@@ -15,12 +15,12 @@
 
 package io.github.mfaisalkhatri.pages.automationpractice;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import io.github.mfaisalkhatri.utilities.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 /**
@@ -28,21 +28,18 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
  */
 public class ContactUs {
 
-    private final DriverManager driverManager;
     private final Helper helper;
 
-    public ContactUs (DriverManager drivermanager) {
-        driverManager = drivermanager;
+    public ContactUs () {
         helper = new Helper();
     }
 
     public String pageHeading () {
-        return driverManager.getDriver().findElement(By.tagName("h1")).getText();
+        return getDriver().findElement(By.tagName("h1")).getText();
     }
 
-
     private WebElement subjectHeadingDropdown () {
-        return driverManager.getDriver().findElement(By.id("id_contact"));
+        return getDriver().findElement(By.id("id_contact"));
     }
 
     private Select subjectHeading () {
@@ -50,27 +47,27 @@ public class ContactUs {
     }
 
     private WebElement emailAddress () {
-        return driverManager.getDriver().findElement(with(By.tagName("input")).below(subjectHeadingDropdown()));
+        return getDriver().findElement(with(By.tagName("input")).below(subjectHeadingDropdown()));
     }
 
     private WebElement attachFileLabel () {
-        return driverManager.getDriver().findElement(By.cssSelector("p:nth-child(7) > label"));
+        return getDriver().findElement(By.cssSelector("p:nth-child(7) > label"));
     }
 
     private WebElement orderReference () {
-        return driverManager.getDriver().findElement(with(By.tagName("input")).above(attachFileLabel()));
+        return getDriver().findElement(with(By.tagName("input")).above(attachFileLabel()));
     }
 
     private WebElement message () {
-        return driverManager.getDriver().findElement(with(By.tagName("textarea")).toRightOf(subjectHeadingDropdown()));
+        return getDriver().findElement(with(By.tagName("textarea")).toRightOf(subjectHeadingDropdown()));
     }
 
     private WebElement sendBtn () {
-        return driverManager.getDriver().findElement(By.id("submitMessage"));
+        return getDriver().findElement(By.id("submitMessage"));
     }
 
     public String successSentMessage () {
-        return driverManager.getDriver().findElement(By.cssSelector("#center_column > p")).getText();
+        return getDriver().findElement(By.cssSelector("#center_column > p")).getText();
     }
 
     public void fillContactForm (String subjectHeading, String emailId, String orderRef, String message) {

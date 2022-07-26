@@ -15,25 +15,20 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 public class KeyPressPage {
 
-    private final DriverManager driverManager;
-
-    public KeyPressPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
     private WebElement textBox () {
-        return driverManager.getDriver().findElement(By.id("target"));
+        return getDriver().findElement(By.id("target"));
     }
 
     private WebElement result () {
-        return driverManager.getDriver().findElement(By.id("result"));
+        return getDriver().findElement(By.id("result"));
     }
 
     public void pressKeys (Keys keys) {

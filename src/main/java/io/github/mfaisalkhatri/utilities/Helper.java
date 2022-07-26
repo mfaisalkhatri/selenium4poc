@@ -14,7 +14,7 @@ public class Helper {
         element.sendKeys(text);
     }
 
-    public void pause (long timeInMillis) throws InterruptedException {
+    public static void pause (long timeInMillis) throws InterruptedException {
         LOG.info("Pausing the driver for " + timeInMillis + " ms");
         Thread.sleep(timeInMillis);
     }

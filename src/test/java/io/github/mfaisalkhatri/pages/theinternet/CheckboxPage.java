@@ -15,29 +15,24 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 /**
  * Created By Faisal Khatri on 21-12-2021
  */
 public class CheckboxPage {
-
-    private final DriverManager driverManager;
-
-    public CheckboxPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
+    
     public String pageHeader () {
-        return driverManager.getDriver().findElement(By.tagName("h3")).getText();
+        return getDriver().findElement(By.tagName("h3")).getText();
     }
 
     private List<WebElement> checkboxes () {
-        return driverManager.getDriver().findElements(By.cssSelector("#checkboxes > input[type=checkbox]"));
+        return getDriver().findElements(By.cssSelector("#checkboxes > input[type=checkbox]"));
 
     }
 

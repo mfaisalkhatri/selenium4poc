@@ -20,21 +20,22 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 /**
  * Created By Faisal Khatri on 30-12-2021
  */
 public class DoubleClickTests extends BaseSuiteSetup {
-
-
+    
     @BeforeClass
     public void testSetup () {
         final String website = "https://demoqa.com/buttons";
-        driverManager.getDriver().get(website);
+        getDriver().get(website);
     }
 
     @Test
     public void testDoubleClick () {
-        ButtonsPage buttonsPage = new ButtonsPage(driverManager);
+        ButtonsPage buttonsPage = new ButtonsPage();
         buttonsPage.doubleClickonButton();
         Assert.assertEquals(buttonsPage.getTextOnClick(), "You have done a double click");
     }

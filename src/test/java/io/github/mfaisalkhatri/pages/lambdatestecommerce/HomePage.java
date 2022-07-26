@@ -1,35 +1,53 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 
 /**
  * Created By Faisal Khatri on 25-07-2022
  */
 public class HomePage {
 
-    private DriverManager driverManager;
+    private HomePage () {
+        
+    }
 
-    public HomePage (DriverManager driverManager) {
-        this.driverManager = driverManager;
+    public static HomePage homePage () {
+        return new HomePage();
     }
 
     public WebElement myAccountLink () {
-        return driverManager.getDriver().findElement(By.linkText("My account"));
+        return getDriver().findElement(By.linkText("My account"));
     }
 
     public WebElement loginLink () {
-        return driverManager.getDriver().findElement(By.linkText("Login"));
+        return getDriver().findElement(By.linkText("Login"));
     }
 
     public WebElement registerLink () {
-        return driverManager.getDriver().findElement(By.linkText("Register"));
+        return getDriver().findElement(By.linkText("Register"));
+    }
+
+    public WebElement shopByCategoryLink () {
+        return getDriver().findElement(By.linkText("Shop by Category"));
+    }
+
+    public WebElement selectCategory (String linkName) {
+        return getDriver().findElement(By.linkText(linkName));
     }
 
     public RegistrationPage openUserRegistrationPage () {
         myAccountLink().click();
         registerLink().click();
-        return new RegistrationPage(driverManager);
+        return new RegistrationPage();
     }
+
+//    public ProductPage shopByCategory (String linkName) {
+//        selectCategory(linkName).click();
+//        return new ProductPage(driverManager);
+//    }
+
 }

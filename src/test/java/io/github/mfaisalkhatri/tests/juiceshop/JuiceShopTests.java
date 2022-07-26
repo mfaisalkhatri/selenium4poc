@@ -6,8 +6,10 @@ import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+
 
 public class JuiceShopTests extends BaseSuiteSetup {
 
@@ -31,13 +33,13 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void setupTests () {
-        //final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        final String websiteLink = "https://juice-shop.herokuapp.com/#/";
         //final String websiteLink = "http://host.docker.internal:3000/#/";
-        final String websiteLink = "http://localhost:3000/#/";
-        driverManager.getDriver().get(websiteLink);
-        mainPage = new MainPage(driverManager);
-        loginPage = new LoginPage(driverManager);
-        productPage = new ProductPage(driverManager);
+        //final String websiteLink = "http://localhost:3000/#/";
+        getDriver().get(websiteLink);
+        mainPage = new MainPage();
+        loginPage = new LoginPage();
+        productPage = new ProductPage();
         faker = Faker.instance();
         email = faker.internet()
                 .emailAddress();
@@ -61,7 +63,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @Test
     public void registerUserTest () {
-        RegistrationPage registrationPage = new RegistrationPage(driverManager);
+        RegistrationPage registrationPage = new RegistrationPage();
         mainPage.openLoginPage();
         registrationPage.registerUser(email, pass, "Mother's maiden name?", "Jane Doe");
         assertEquals(registrationPage.successMessage(), "Registration completed successfully. You can now log in.");
@@ -93,7 +95,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
     public void productCheckoutTest () {
         productPage.navigateToYourBasket();
 
-        CheckoutPage checkoutPage = new CheckoutPage(driverManager);
+        CheckoutPage checkoutPage = new CheckoutPage();
 
         assertEquals(checkoutPage.appleJuiceText(), appleJuiceText);
         assertEquals(checkoutPage.appleJuiceQty(), "1");
@@ -108,7 +110,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @Test(dependsOnMethods = "productCheckoutTest")
     public void selectDeliveryTest () {
-        DeliverySelection deliverySelection = new DeliverySelection(driverManager);
+        DeliverySelection deliverySelection = new DeliverySelection();
         String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
         assertEquals(deliverySelection.getDeliveryAddressName(), name);
         assertEquals(deliverySelection.getDeliveryAddress(), addressLineTwo);
@@ -119,13 +121,13 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @Test(dependsOnMethods = "selectDeliveryTest")
     public void makePaymentTest () {
-        PaymentPage paymentPage = new PaymentPage(driverManager);
+        PaymentPage paymentPage = new PaymentPage();
         paymentPage.makePayment(name, "4012888888881881", "2", "2080");
     }
 
     @Test(dependsOnMethods = "makePaymentTest")
     public void orderSummaryTest () {
-        OrderSummaryPage orderSummaryPage = new OrderSummaryPage(driverManager);
+        OrderSummaryPage orderSummaryPage = new OrderSummaryPage();
         String addressLineTwo = address + ", " + city + ", " + state + ", " + zipcode;
         assertEquals(orderSummaryPage.getDeliveryAddressCustomerName(), name);
         assertEquals(orderSummaryPage.getDeliveryAddress(), addressLineTwo);
@@ -147,7 +149,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @Test(dependsOnMethods = "orderSummaryTest")
     public void orderConfirmationTest () {
-        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driverManager);
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage();
         assertEquals(orderConfirmationPage.getThanksMessage(), "Thank you for your purchase!");
         assertEquals(orderConfirmationPage.getOrderConfirmationMessage(),
                 "Your order has been placed and is being processed. You can check for status updates on our Track Orders page.");

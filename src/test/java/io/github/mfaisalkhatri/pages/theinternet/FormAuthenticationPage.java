@@ -15,35 +15,30 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
 public class FormAuthenticationPage {
 
-    private final DriverManager driverManager;
-
-    public FormAuthenticationPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
     private WebElement userNameField () {
-        return driverManager.getDriver().findElement(By.id("username"));
+        return getDriver().findElement(By.id("username"));
     }
 
     private WebElement passwordField () {
-        return driverManager.getDriver().findElement(By.id("password"));
+        return getDriver().findElement(By.id("password"));
     }
 
     private WebElement loginBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("#login > button"));
+        return getDriver().findElement(By.cssSelector("#login > button"));
     }
 
     public String getFlashMessage () {
-        return driverManager.getDriver().findElement(By.id("flash")).getText();
+        return getDriver().findElement(By.id("flash")).getText();
     }
 
     public SecurePage login (String userName, String password) {
@@ -54,6 +49,6 @@ public class FormAuthenticationPage {
         passwordField().clear();
         passwordField().sendKeys(password);
         loginBtn().click();
-        return new SecurePage(driverManager);
+        return new SecurePage();
     }
 }

@@ -1,22 +1,18 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 18-04-2022
  */
 public class AddressPage {
 
-    private final DriverManager driverManager;
-
-    public AddressPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
 
     public WebElement addressForm () {
-        return driverManager.getDriver().findElement(By.id("address-form"));
+        return getDriver().findElement(By.id("address-form"));
     }
 
     public WebElement countryField () {
@@ -48,14 +44,14 @@ public class AddressPage {
     }
 
     public WebElement submitBtn () {
-        return driverManager.getDriver().findElement(By.id("submitButton"));
+        return getDriver().findElement(By.id("submitButton"));
     }
 
     public WebElement selectAddressRadioBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-cell > mat-radio-button"));
+        return getDriver().findElement(By.cssSelector("mat-cell > mat-radio-button"));
     }
 
     public WebElement continueBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector(".btn.btn-next"));
+        return getDriver().findElement(By.cssSelector(".btn.btn-next"));
     }
 }

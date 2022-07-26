@@ -15,10 +15,10 @@
 
 package io.github.mfaisalkhatri.pages.saucedemo;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 /**
@@ -26,34 +26,28 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
  */
 public class LoginPage {
 
-    private final DriverManager driverManager;
-
-    public LoginPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
     private WebElement username () {
-        return driverManager.getDriver().findElement(By.id("user-name"));
+        return getDriver().findElement(By.id("user-name"));
     }
 
     private WebElement password () {
-        return driverManager.getDriver().findElement(with(By.tagName("input")).below(username()));
-
+        return getDriver().findElement(with(By.tagName("input")).below(username()));
     }
 
     private WebElement loginBtn () {
-        return driverManager.getDriver().findElement(with(By.tagName("input")).below(password()));
+        return getDriver().findElement(with(By.tagName("input")).below(password()));
     }
 
-    public void websiteLogin (String userName, String pswd) {
+    public void websiteLogin (String userName, String pass) {
         username().click();
         username().clear();
         username().sendKeys(userName);
         password().click();
         password().clear();
-        password().sendKeys(pswd);
+        password().sendKeys(pass);
         loginBtn().click();
 
     }
+
 
 }
