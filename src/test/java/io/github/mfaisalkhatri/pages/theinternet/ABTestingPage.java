@@ -15,7 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 
 /**
@@ -23,14 +24,8 @@ import org.openqa.selenium.By;
  */
 public class ABTestingPage {
 
-    private final DriverManager driverManager;
-
-    public ABTestingPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
     public String pageHeader () {
-        return driverManager.getDriver().findElement(By.tagName("h3")).getText();
+        return getDriver ().findElement (By.tagName ("h3"))
+            .getText ();
     }
-
 }

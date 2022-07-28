@@ -15,7 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -24,36 +25,31 @@ import org.openqa.selenium.WebElement;
  */
 public class FormAuthenticationPage {
 
-    private final DriverManager driverManager;
-
-    public FormAuthenticationPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
+    public String getFlashMessage () {
+        return getDriver ().findElement (By.id ("flash"))
+            .getText ();
     }
-
-    private WebElement userNameField () {
-        return driverManager.getDriver().findElement(By.id("username"));
-    }
-
-    private WebElement passwordField () {
-        return driverManager.getDriver().findElement(By.id("password"));
+    
+    public SecurePage login (final String userName, final String password) {
+        userNameField ().click ();
+        userNameField ().clear ();
+        userNameField ().sendKeys (userName);
+        passwordField ().click ();
+        passwordField ().clear ();
+        passwordField ().sendKeys (password);
+        loginBtn ().click ();
+        return new SecurePage ();
     }
 
     private WebElement loginBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("#login > button"));
+        return getDriver ().findElement (By.cssSelector ("#login > button"));
     }
 
-    public String getFlashMessage () {
-        return driverManager.getDriver().findElement(By.id("flash")).getText();
+    private WebElement passwordField () {
+        return getDriver ().findElement (By.id ("password"));
     }
 
-    public SecurePage login (String userName, String password) {
-        userNameField().click();
-        userNameField().clear();
-        userNameField().sendKeys(userName);
-        passwordField().click();
-        passwordField().clear();
-        passwordField().sendKeys(password);
-        loginBtn().click();
-        return new SecurePage(driverManager);
+    private WebElement userNameField () {
+        return getDriver ().findElement (By.id ("username"));
     }
 }

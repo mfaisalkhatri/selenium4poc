@@ -21,6 +21,7 @@ import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -33,10 +34,10 @@ public class DragAndDropTests extends BaseSuiteSetup {
     @BeforeClass
     public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
-        driverManager.getDriver().get(website);
-        MainPage mainPage = new MainPage(driverManager);
+        getDriver().get(website);
+        MainPage mainPage = new MainPage();
         mainPage.clickLink("Drag and Drop");
-        dragAndDropPage = new DragAndDropPage(driverManager);
+        dragAndDropPage = new DragAndDropPage();
     }
 
     @Test

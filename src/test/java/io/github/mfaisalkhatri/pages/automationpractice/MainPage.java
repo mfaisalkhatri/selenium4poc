@@ -15,29 +15,23 @@
 
 package io.github.mfaisalkhatri.pages.automationpractice;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
 public class MainPage {
 
-    private final DriverManager driverManager;
-
-    public MainPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
-    private WebElement signInBtn () {
-        return driverManager.getDriver().findElement(By.className("login"));
-    }
-
     public WebElement contactUsLink () {
-        return driverManager.getDriver().findElement(with(By.tagName("a")).toLeftOf(signInBtn()));
+        return getDriver ().findElement (with (By.tagName ("a")).toLeftOf (signInBtn ()));
+    }
+    
+    private WebElement signInBtn () {
+        return getDriver ().findElement (By.className ("login"));
     }
 
 }

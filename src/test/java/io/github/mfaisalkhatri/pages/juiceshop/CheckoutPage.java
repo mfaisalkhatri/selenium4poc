@@ -1,81 +1,98 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
-import io.github.mfaisalkhatri.utilities.Helper;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.enterText;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
-import java.time.Duration;
 
 /**
  * Created By Faisal Khatri on 17-04-2022
  */
 public class CheckoutPage {
 
-    private final DriverManager driverManager;
-    private final Actions actions;
+    private final Actions     actions;
     private final AddressPage addressPage;
-    private final Helper helper;
 
-    public CheckoutPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-        actions = new Actions(driverManager.getDriver());
-        addressPage = new AddressPage(driverManager);
-        helper = new Helper();
+    public CheckoutPage () {
+        this.actions = new Actions (getDriver ());
+        this.addressPage = new AddressPage ();
     }
 
-    public String appleJuiceText () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-column-product")).getText();
-    }
-
-    public String appleJuiceQty () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-quantity > span")).getText();
+    public void addAddressForDelivery (final String country, final String name, final int mobileNumber,
+        final String zipCode, final String address, final String city, final String state) {
+        addNewAddressBtn ().click ();
+        enterText (this.addressPage.countryField (), country);
+        enterText (this.addressPage.nameField (), name);
+        enterText (this.addressPage.mobileNumberField (), String.valueOf (mobileNumber));
+        enterText (this.addressPage.zipCodeField (), zipCode);
+        enterText (this.addressPage.addressField (), address);
+        enterText (this.addressPage.cityField (), city);
+        enterText (this.addressPage.stateField (), state);
+        this.addressPage.submitBtn ()
+            .click ();
+        this.addressPage.selectAddressRadioBtn ()
+            .click ();
+        this.addressPage.continueBtn ()
+            .click ();
     }
 
     public String appleJuicePrice () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-price")).getText();
+        return getDriver ().findElement (
+                By.cssSelector ("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-price"))
+            .getText ();
     }
 
-    public String bananaJuiceText () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-column-product")).getText();
+    public String appleJuiceQty () {
+        return getDriver ().findElement (
+                By.cssSelector ("mat-table > mat-row:nth-child(2) > mat-cell.mat-cell.mat-column-quantity > span"))
+            .getText ();
     }
 
-    public String bananaJuiceQty () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-quantity > span")).getText();
+    public String appleJuiceText () {
+        return getDriver ().findElement (
+                By.cssSelector ("mat-table > mat-row:nth-child(2) > mat-cell.mat-column-product"))
+            .getText ();
     }
 
     public String bananaJuicePrice () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-price")).getText();
+        return getDriver ().findElement (
+                By.cssSelector ("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-price"))
+            .getText ();
     }
 
-    public String totalPrice () {
-        return driverManager.getDriver().findElement(By.id("price")).getText();
+    public String bananaJuiceQty () {
+        return getDriver ().findElement (
+                By.cssSelector ("mat-table > mat-row:nth-child(3) > mat-cell.mat-cell.mat-column-quantity > span"))
+            .getText ();
+    }
+
+    public String bananaJuiceText () {
+        return getDriver ().findElement (
+                By.cssSelector ("mat-table > mat-row:nth-child(3) > mat-cell.mat-column-product"))
+            .getText ();
     }
 
     public WebElement checkoutBtn () {
-        return driverManager.getDriver().findElement(By.id("checkoutButton"));
-    }
-
-    private WebElement addNewAddressBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-card > div > button"));
+        return getDriver ().findElement (By.id ("checkoutButton"));
     }
 
     public void checkoutProduct () {
-        actions.pause(Duration.ofSeconds(5)).click(checkoutBtn()).build().perform();
+        this.actions.pause (Duration.ofSeconds (5))
+            .click (checkoutBtn ())
+            .build ()
+            .perform ();
     }
 
-    public void addAddressForDelivery (String country, String name, int mobileNumber, String zipCode, String address, String city, String state) {
-        addNewAddressBtn().click();
-        helper.enterText(addressPage.countryField(), country);
-        helper.enterText(addressPage.nameField(), name);
-        helper.enterText(addressPage.mobileNumberField(), String.valueOf(mobileNumber));
-        helper.enterText(addressPage.zipCodeField(), zipCode);
-        helper.enterText(addressPage.addressField(), address);
-        helper.enterText(addressPage.cityField(), city);
-        helper.enterText(addressPage.stateField(), state);
-        addressPage.submitBtn().click();
-        addressPage.selectAddressRadioBtn().click();
-        addressPage.continueBtn().click();
+    public String totalPrice () {
+        return getDriver ().findElement (By.id ("price"))
+            .getText ();
+    }
+
+    private WebElement addNewAddressBtn () {
+        return getDriver ().findElement (By.cssSelector ("mat-card > div > button"));
     }
 }

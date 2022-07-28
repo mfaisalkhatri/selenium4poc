@@ -1,6 +1,7 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -9,53 +10,47 @@ import org.openqa.selenium.WebElement;
  */
 public class AddressPage {
 
-    private final DriverManager driverManager;
-
-    public AddressPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
+    public WebElement addressField () {
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(5) textarea"));
     }
 
     public WebElement addressForm () {
-        return driverManager.getDriver().findElement(By.id("address-form"));
-    }
-
-    public WebElement countryField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(1) input"));
-    }
-
-    public WebElement nameField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(2) input"));
-    }
-
-    public WebElement mobileNumberField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(3) input"));
-    }
-
-    public WebElement zipCodeField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(4) input"));
-    }
-
-    public WebElement addressField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(5) textarea"));
+        return getDriver ().findElement (By.id ("address-form"));
     }
 
     public WebElement cityField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(6) input"));
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(6) input"));
+    }
+    
+    public WebElement continueBtn () {
+        return getDriver ().findElement (By.cssSelector (".btn.btn-next"));
     }
 
-    public WebElement stateField () {
-        return addressForm().findElement(By.cssSelector(".mat-form-field:nth-child(7) input"));
+    public WebElement countryField () {
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(1) input"));
     }
 
-    public WebElement submitBtn () {
-        return driverManager.getDriver().findElement(By.id("submitButton"));
+    public WebElement mobileNumberField () {
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(3) input"));
+    }
+
+    public WebElement nameField () {
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(2) input"));
     }
 
     public WebElement selectAddressRadioBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-cell > mat-radio-button"));
+        return getDriver ().findElement (By.cssSelector ("mat-cell > mat-radio-button"));
     }
 
-    public WebElement continueBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector(".btn.btn-next"));
+    public WebElement stateField () {
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(7) input"));
+    }
+
+    public WebElement submitBtn () {
+        return getDriver ().findElement (By.id ("submitButton"));
+    }
+
+    public WebElement zipCodeField () {
+        return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(4) input"));
     }
 }

@@ -15,36 +15,36 @@
 
 package io.github.mfaisalkhatri.pages.saucedemo;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
 public class MainPage {
-
+    
     private final WebDriverWait wait;
 
-    public MainPage (DriverManager driverManager) {
-        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(5));
-    }
-
-    private WebElement menuBtn () {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("react-burger-menu-btn")));
-
-    }
-
-    private WebElement logoutLink () {
-        return wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector("#logout_sidebar_link"))));
+    public MainPage () {
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (5));
     }
 
     public void logoutFromWebSite () {
-        menuBtn().click();
-        logoutLink().click();
+        menuBtn ().click ();
+        logoutLink ().click ();
+    }
+
+    private WebElement logoutLink () {
+        return this.wait.until (ExpectedConditions.elementToBeClickable ((By.cssSelector ("#logout_sidebar_link"))));
+    }
+
+    private WebElement menuBtn () {
+        return this.wait.until (ExpectedConditions.elementToBeClickable (By.id ("react-burger-menu-btn")));
     }
 }

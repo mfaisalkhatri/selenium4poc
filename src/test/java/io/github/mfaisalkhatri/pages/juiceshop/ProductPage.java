@@ -1,76 +1,90 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class ProductPage {
 
-    private final DriverManager driverManager;
+    private final Actions       actions;
     private final WebDriverWait wait;
-    private final Actions actions;
-    private final MainPage mainPage;
 
-    public ProductPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-        wait = new WebDriverWait(driverManager.getDriver(), Duration.ofSeconds(30));
-        actions = new Actions(driverManager.getDriver());
-        mainPage = new MainPage(driverManager);
-    }
-
-    public String successMessage () {
-        return driverManager.getDriver().findElement(By.cssSelector(".mat-simple-snack-bar-content")).getText();
-    }
-
-    public String getAppleJuicePrice () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-grid-tile:nth-child(1) > div > mat-card > div" +
-                ".mat-tooltip-trigger.product > div:nth-child(2) > div.item-price > span")).getText();
-    }
-
-    public String getAppleJuiceText () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-grid-tile:nth-child(1) > div > mat-card > .mat-tooltip-trigger.product > div:nth-child(2) > .item-name")).getText();
-    }
-
-    private WebElement appleJuiceAddtoCartBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-grid-tile:nth-child(1) > div > mat-card > div:nth-child(2) > button"));
-    }
-
-    public String getBananaJuicePrice () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-grid-tile:nth-child(3) > div > mat-card > div" +
-                ".mat-tooltip-trigger.product > div:nth-child(2) > div.item-price > span")).getText();
-    }
-
-    public String getBananaJuiceText () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-grid-tile:nth-child(3) > div > mat-card > .mat-tooltip-trigger.product > div:nth-child(2) > .item-name")).getText();
-    }
-
-    private WebElement bananaJuiceAddtoCartBtn () {
-        return driverManager.getDriver().findElement(By.cssSelector("mat-grid-tile:nth-child(3) > div > mat-card > div:nth-child(2) > button"));
-    }
-
-    private WebElement overlay () {
-        return driverManager.getDriver().findElement(By.cssSelector(".cdk-overlay-backdrop.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing"));
+    public ProductPage () {
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (30));
+        this.actions = new Actions (getDriver ());
     }
 
     public void addAppleJuiceToCart () {
-        overlay().click();
-        actions.pause(Duration.ofSeconds(6)).build().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(appleJuiceAddtoCartBtn())).click();
+        overlay ().click ();
+        this.actions.pause (Duration.ofSeconds (6))
+            .build ()
+            .perform ();
+        this.wait.until (ExpectedConditions.elementToBeClickable (appleJuiceAddtoCartBtn ()))
+            .click ();
+    }
+    
+    public void addBananaJuiceToCart () {
+        this.wait.until (ExpectedConditions.elementToBeClickable (bananaJuiceAddtoCartBtn ()))
+            .click ();
+        this.actions.pause (Duration.ofSeconds (4))
+            .build ()
+            .perform ();
     }
 
-    public void addBananaJuiceToCart () {
-        wait.until(ExpectedConditions.elementToBeClickable(bananaJuiceAddtoCartBtn())).click();
-        actions.pause(Duration.ofSeconds(4)).build().perform();
+    public String getAppleJuicePrice () {
+        return getDriver ().findElement (By.cssSelector (
+                "mat-grid-tile:nth-child(1) > div > mat-card > div" + ".mat-tooltip-trigger.product > div:nth-child(2) > div.item-price > span"))
+            .getText ();
+    }
+
+    public String getAppleJuiceText () {
+        return getDriver ().findElement (By.cssSelector (
+                "mat-grid-tile:nth-child(1) > div > mat-card > .mat-tooltip-trigger.product > div:nth-child(2) > .item-name"))
+            .getText ();
+    }
+
+    public String getBananaJuicePrice () {
+        return getDriver ().findElement (By.cssSelector (
+                "mat-grid-tile:nth-child(3) > div > mat-card > div" + ".mat-tooltip-trigger.product > div:nth-child(2) > div.item-price > span"))
+            .getText ();
+    }
+
+    public String getBananaJuiceText () {
+        return getDriver ().findElement (By.cssSelector (
+                "mat-grid-tile:nth-child(3) > div > mat-card > .mat-tooltip-trigger.product > div:nth-child(2) > .item-name"))
+            .getText ();
     }
 
     public void navigateToYourBasket () {
-        mainPage.yourBasketLink().click();
+        final MainPage mainPage = new MainPage ();
+        mainPage.yourBasketLink ()
+            .click ();
     }
 
+    public String successMessage () {
+        return getDriver ().findElement (By.cssSelector (".mat-simple-snack-bar-content"))
+            .getText ();
+    }
+
+    private WebElement appleJuiceAddtoCartBtn () {
+        return getDriver ().findElement (
+            By.cssSelector ("mat-grid-tile:nth-child(1) > div > mat-card > div:nth-child(2) > button"));
+    }
+
+    private WebElement bananaJuiceAddtoCartBtn () {
+        return getDriver ().findElement (
+            By.cssSelector ("mat-grid-tile:nth-child(3) > div > mat-card > div:nth-child(2) > button"));
+    }
+
+    private WebElement overlay () {
+        return getDriver ().findElement (
+            By.cssSelector (".cdk-overlay-backdrop.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing"));
+    }
 
 }

@@ -6,14 +6,14 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
                 <methods>
-                    <include name="registerUserTest"/>
-                    <include name="loginTest"/>
-                    <include name="addProductToCartTest"/>
-                    <include name="productCheckoutTest"/>
-                    <include name="selectDeliveryTest"/>
-                    <include name="makePaymentTest"/>
-                    <include name="orderSummaryTest"/>
-                    <include name="orderConfirmationTest"/>
+                    <include name="testRegisterUser"/>
+                    <include name="testLogin"/>
+                    <include name="testAddProductToCart"/>
+                    <include name="testProductCheckout"/>
+                    <include name="testSelectDelivery"/>
+                    <include name="testMakePayment"/>
+                    <include name="testOrderSummary"/>
+                    <include name="testOrderConfirmation"/>
                 </methods>
             </class>
         </classes>
@@ -24,14 +24,14 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
                 <methods>
-                    <include name="registerUserTest"/>
-                    <include name="loginTest"/>
-                    <include name="addProductToCartTest"/>
-                    <include name="productCheckoutTest"/>
-                    <include name="selectDeliveryTest"/>
-                    <include name="makePaymentTest"/>
-                    <include name="orderSummaryTest"/>
-                    <include name="orderConfirmationTest"/>
+                    <include name="testRegisterUser"/>
+                    <include name="testLogin"/>
+                    <include name="testAddProductToCart"/>
+                    <include name="testProductCheckout"/>
+                    <include name="testSelectDelivery"/>
+                    <include name="testMakePayment"/>
+                    <include name="testOrderSummary"/>
+                    <include name="testOrderConfirmation"/>
                 </methods>
             </class>
         </classes>
@@ -41,14 +41,14 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
                 <methods>
-                    <include name="registerUserTest"/>
-                    <include name="loginTest"/>
-                    <include name="addProductToCartTest"/>
-                    <include name="productCheckoutTest"/>
-                    <include name="selectDeliveryTest"/>
-                    <include name="makePaymentTest"/>
-                    <include name="orderSummaryTest"/>
-                    <include name="orderConfirmationTest"/>
+                    <include name="testRegisterUser"/>
+                    <include name="testLogin"/>
+                    <include name="testAddProductToCart"/>
+                    <include name="testProductCheckout"/>
+                    <include name="testSelectDelivery"/>
+                    <include name="testMakePayment"/>
+                    <include name="testOrderSummary"/>
+                    <include name="testOrderConfirmation"/>
                 </methods>
             </class>
         </classes>

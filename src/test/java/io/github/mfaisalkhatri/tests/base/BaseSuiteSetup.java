@@ -1,6 +1,8 @@
 package io.github.mfaisalkhatri.tests.base;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.createDriver;
+import static io.github.mfaisalkhatri.drivers.DriverManager.quitDriver;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -10,16 +12,14 @@ import org.testng.annotations.Parameters;
  */
 public class BaseSuiteSetup {
 
-    protected DriverManager driverManager;
-
-    @Parameters("browser")
-    @BeforeClass(alwaysRun = true)
-    public void setupTest (String browserName) {
-        driverManager = DriverManager.builder().browser(browserName).build().createDriver();
+    @Parameters ("browser")
+    @BeforeClass (alwaysRun = true)
+    public void setupTest (final String browserName) {
+        createDriver (browserName);
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass (alwaysRun = true)
     public void tearDown () {
-        driverManager.quitDriver();
+        quitDriver ();
     }
 }

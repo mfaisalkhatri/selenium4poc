@@ -14,6 +14,8 @@
 */
 package io.github.mfaisalkhatri.tests.demoqa;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import io.github.mfaisalkhatri.pages.demoqa.ButtonsPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.Assert;
@@ -25,18 +27,17 @@ import org.testng.annotations.Test;
  */
 public class DoubleClickTests extends BaseSuiteSetup {
 
-
     @BeforeClass
-    public void testSetup () {
+    public void setupTest () {
         final String website = "https://demoqa.com/buttons";
-        driverManager.getDriver().get(website);
+        getDriver ().get (website);
     }
 
     @Test
     public void testDoubleClick () {
-        ButtonsPage buttonsPage = new ButtonsPage(driverManager);
-        buttonsPage.doubleClickonButton();
-        Assert.assertEquals(buttonsPage.getTextOnClick(), "You have done a double click");
+        final ButtonsPage buttonsPage = new ButtonsPage ();
+        buttonsPage.doubleClickonButton ();
+        Assert.assertEquals (buttonsPage.getTextOnClick (), "You have done a double click");
     }
 
 }

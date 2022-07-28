@@ -15,7 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.crossbrowsertesting;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,28 +26,24 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class DragAndDropPage {
 
-    private final DriverManager driverManager;
-
-    public DragAndDropPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
+    public void dragAndDropBox () {
+        final Actions actions = new Actions (getDriver ());
+        actions.dragAndDrop (draggable (), droppable ())
+            .build ()
+            .perform ();
+    }
+    
+    public String getDroppableBoxText () {
+        return getDriver ().findElement (By.cssSelector ("#droppable > p"))
+            .getText ();
     }
 
     private WebElement draggable () {
-        return driverManager.getDriver().findElement(By.id("draggable"));
+        return getDriver ().findElement (By.id ("draggable"));
     }
 
     private WebElement droppable () {
-        return driverManager.getDriver().findElement(By.id("droppable"));
-    }
-
-    public String getDroppableBoxText () {
-        return driverManager.getDriver().findElement(By.cssSelector("#droppable > p")).getText();
-
-    }
-
-    public void dragAndDropBox () {
-        Actions actions = new Actions(driverManager.getDriver());
-        actions.dragAndDrop(draggable(), droppable()).build().perform();
+        return getDriver ().findElement (By.id ("droppable"));
     }
 
 }

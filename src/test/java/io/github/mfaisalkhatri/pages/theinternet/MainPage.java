@@ -15,7 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -24,19 +25,14 @@ import org.openqa.selenium.WebElement;
  */
 public class MainPage {
 
-    private final DriverManager driverManager;
-
-    public MainPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
+    public void clickLink (final String linkName) {
+        final WebElement link = getDriver ().findElement (By.linkText (linkName));
+        link.click ();
     }
-
-    public void clickLink (String linkName) {
-        WebElement link = driverManager.getDriver().findElement(By.linkText(linkName));
-        link.click();
-    }
-
+    
     public String mainPageHeader () {
-        return driverManager.getDriver().findElement(By.tagName("h2")).getText();
+        return getDriver ().findElement (By.tagName ("h2"))
+            .getText ();
     }
 
 }

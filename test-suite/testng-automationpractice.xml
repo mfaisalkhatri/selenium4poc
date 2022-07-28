@@ -6,7 +6,7 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.automationpractice.ContactUsTests">
                 <methods>
-                    <include name="relativeLocatorsTest"/>
+                    <include name="testRelativeLocators"/>
                 </methods>
             </class>
         </classes>

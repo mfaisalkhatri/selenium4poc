@@ -6,16 +6,20 @@ import org.openqa.selenium.WebElement;
 
 public class Helper {
 
-    private static final Logger LOG = LogManager.getLogger(Helper.class);
-    
-    public void enterText (WebElement element, String text) {
-        element.click();
-        element.clear();
-        element.sendKeys(text);
+    private static final Logger LOG = LogManager.getLogger (Helper.class);
+
+    public static void enterText (WebElement element, String text) {
+        element.click ();
+        element.clear ();
+        element.sendKeys (text);
     }
 
-    public void pause (long timeInMillis) throws InterruptedException {
-        LOG.info("Pausing the driver for " + timeInMillis + " ms");
-        Thread.sleep(timeInMillis);
+    public static void pause (long timeInMillis) throws InterruptedException {
+        LOG.info ("Pausing the driver for " + timeInMillis + " ms");
+        Thread.sleep (timeInMillis);
+    }
+
+    private Helper () {
+        
     }
 }

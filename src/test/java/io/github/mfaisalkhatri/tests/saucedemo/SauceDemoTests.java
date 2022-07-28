@@ -20,6 +20,8 @@ import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
@@ -28,18 +30,18 @@ public class SauceDemoTests extends BaseSuiteSetup {
     @BeforeClass
     public void setupTest () {
         final String website = "https://www.saucedemo.com";
-        driverManager.getDriver().navigate().to(website);
+        getDriver().navigate().to(website);
     }
 
     @Test
     public void loginSauceDemoTest () {
-        LoginPage loginPage = new LoginPage(driverManager);
+        LoginPage loginPage = new LoginPage();
         loginPage.websiteLogin("standard_user", "secret_sauce");
     }
 
     @Test
     public void logOutSauceDemoTest () {
-        MainPage mainPage = new MainPage(driverManager);
+        MainPage mainPage = new MainPage();
         mainPage.logoutFromWebSite();
     }
 }

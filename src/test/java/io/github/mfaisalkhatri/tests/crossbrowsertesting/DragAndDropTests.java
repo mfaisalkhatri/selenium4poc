@@ -14,6 +14,8 @@
 */
 package io.github.mfaisalkhatri.tests.crossbrowsertesting;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import io.github.mfaisalkhatri.pages.crossbrowsertesting.DragAndDropPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.Assert;
@@ -26,15 +28,15 @@ import org.testng.annotations.Test;
 public class DragAndDropTests extends BaseSuiteSetup {
 
     @BeforeClass
-    public void testSetup () {
+    public void setupTest () {
         final String website = "https://crossbrowsertesting.github.io/drag-and-drop.html";
-        driverManager.getDriver().get(website);
+        getDriver ().get (website);
     }
 
     @Test
     public void testDragAndDrop () {
-        DragAndDropPage dragAndDropPage = new DragAndDropPage(driverManager);
-        dragAndDropPage.dragAndDropBox();
-        Assert.assertEquals(dragAndDropPage.getDroppableBoxText(), "Dropped!");
+        final DragAndDropPage dragAndDropPage = new DragAndDropPage ();
+        dragAndDropPage.dragAndDropBox ();
+        Assert.assertEquals (dragAndDropPage.getDroppableBoxText (), "Dropped!");
     }
 }

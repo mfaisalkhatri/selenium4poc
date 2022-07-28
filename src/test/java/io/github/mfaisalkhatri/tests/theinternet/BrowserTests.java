@@ -20,6 +20,7 @@ import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -35,14 +36,14 @@ public class BrowserTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void testSetup () {
-        driverManager.getDriver().get(websiteLink);
+        getDriver().get(websiteLink);
     }
 
     @Test
     public void checkTitleAndWebsiteUrlTest () {
         final String title = "The Internet";
-        String actualWebsiteLink = driverManager.getDriver().getCurrentUrl();
-        String actualTitle = driverManager.getDriver().getTitle();
+        String actualWebsiteLink = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
 
         assertEquals(actualWebsiteLink, websiteLink);
         assertEquals(actualTitle, title);
@@ -51,20 +52,20 @@ public class BrowserTests extends BaseSuiteSetup {
 
     @Test
     public void browserNavigationTests () {
-        MainPage mainPage = new MainPage(driverManager);
+        MainPage mainPage = new MainPage();
         mainPage.clickLink("Challenging DOM");
-        ABTestingPage abTestingPage = new ABTestingPage(driverManager);
+        ABTestingPage abTestingPage = new ABTestingPage();
         String abTestingPageHeader = abTestingPage.pageHeader();
         assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        driverManager.getDriver().navigate().back();
+        getDriver().navigate().back();
         String mainPageHeader = mainPage.mainPageHeader();
         assertEquals(mainPageHeader, "Available Examples");
 
-        driverManager.getDriver().navigate().forward();
+        getDriver().navigate().forward();
         assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        driverManager.getDriver().navigate().refresh();
+        getDriver().navigate().refresh();
         assertEquals(abTestingPageHeader, "Challenging DOM");
     }
 

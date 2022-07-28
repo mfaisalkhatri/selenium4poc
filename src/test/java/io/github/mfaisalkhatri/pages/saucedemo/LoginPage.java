@@ -15,45 +15,38 @@
 
 package io.github.mfaisalkhatri.pages.saucedemo;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
 public class LoginPage {
-
-    private final DriverManager driverManager;
-
-    public LoginPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
-    private WebElement username () {
-        return driverManager.getDriver().findElement(By.id("user-name"));
-    }
-
-    private WebElement password () {
-        return driverManager.getDriver().findElement(with(By.tagName("input")).below(username()));
+    
+    public void websiteLogin (final String userName, final String pass) {
+        username ().click ();
+        username ().clear ();
+        username ().sendKeys (userName);
+        password ().click ();
+        password ().clear ();
+        password ().sendKeys (pass);
+        loginBtn ().click ();
 
     }
 
     private WebElement loginBtn () {
-        return driverManager.getDriver().findElement(with(By.tagName("input")).below(password()));
+        return getDriver ().findElement (with (By.tagName ("input")).below (password ()));
     }
 
-    public void websiteLogin (String userName, String pswd) {
-        username().click();
-        username().clear();
-        username().sendKeys(userName);
-        password().click();
-        password().clear();
-        password().sendKeys(pswd);
-        loginBtn().click();
+    private WebElement password () {
+        return getDriver ().findElement (with (By.tagName ("input")).below (username ()));
+    }
 
+    private WebElement username () {
+        return getDriver ().findElement (By.id ("user-name"));
     }
 
 }

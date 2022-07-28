@@ -15,7 +15,8 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import io.github.mfaisalkhatri.drivers.DriverManager;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -24,19 +25,14 @@ import org.openqa.selenium.support.ui.Select;
  * Created By Faisal Khatri on 20-12-2021
  */
 public class DropdownPage {
-
-    private final DriverManager driverManager;
-
-    public DropdownPage (DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
-
+    
     public Select dropDownbox () {
-        WebElement dropdown = driverManager.getDriver().findElement(By.id("dropdown"));
-        return new Select(dropdown);
+        final WebElement dropdown = getDriver ().findElement (By.id ("dropdown"));
+        return new Select (dropdown);
     }
 
     public String getSelectedOption () {
-        return dropDownbox().getFirstSelectedOption().getText();
+        return dropDownbox ().getFirstSelectedOption ()
+            .getText ();
     }
 }

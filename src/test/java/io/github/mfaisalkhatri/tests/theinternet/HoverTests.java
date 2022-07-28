@@ -20,6 +20,7 @@ import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -30,15 +31,15 @@ public class HoverTests extends BaseSuiteSetup {
     @BeforeClass
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
-        driverManager.getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage(driverManager);
+        getDriver().get(websiteLink);
+        MainPage mainPage = new MainPage();
         mainPage.clickLink("Hovers");
 
     }
 
     @Test
     public void mouseHoverTests () {
-        HoverPage hoverPage = new HoverPage(driverManager);
+        HoverPage hoverPage = new HoverPage();
         hoverPage.hoverOnImage(hoverPage.imageOne());
         assertEquals(hoverPage.getImageOneName(), "name: user1");
 
