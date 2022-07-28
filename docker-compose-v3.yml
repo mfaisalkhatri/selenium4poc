@@ -53,7 +53,7 @@ services:
   juice-shop:
     image: bkimminich/juice-shop
     container_name: juice-shop
-    ports: 
-      - "3000:3000"
+    ports:
+      - "3001:3001"
     expose:
-      - "3000"
+      - "3001"
