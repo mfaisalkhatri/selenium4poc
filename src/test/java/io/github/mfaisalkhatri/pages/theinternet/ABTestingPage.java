@@ -15,17 +15,17 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import org.openqa.selenium.By;
-
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
+import org.openqa.selenium.By;
 
 /**
  * Created By Faisal Khatri on 13-12-2021
  */
 public class ABTestingPage {
-    
-    public String pageHeader () {
-        return getDriver().findElement(By.tagName("h3")).getText();
-    }
 
+    public String pageHeader () {
+        return getDriver ().findElement (By.tagName ("h3"))
+            .getText ();
+    }
 }

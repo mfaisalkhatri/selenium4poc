@@ -15,40 +15,41 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
 public class FormAuthenticationPage {
 
-    private WebElement userNameField () {
-        return getDriver().findElement(By.id("username"));
+    public String getFlashMessage () {
+        return getDriver ().findElement (By.id ("flash"))
+            .getText ();
     }
-
-    private WebElement passwordField () {
-        return getDriver().findElement(By.id("password"));
+    
+    public SecurePage login (final String userName, final String password) {
+        userNameField ().click ();
+        userNameField ().clear ();
+        userNameField ().sendKeys (userName);
+        passwordField ().click ();
+        passwordField ().clear ();
+        passwordField ().sendKeys (password);
+        loginBtn ().click ();
+        return new SecurePage ();
     }
 
     private WebElement loginBtn () {
-        return getDriver().findElement(By.cssSelector("#login > button"));
+        return getDriver ().findElement (By.cssSelector ("#login > button"));
     }
 
-    public String getFlashMessage () {
-        return getDriver().findElement(By.id("flash")).getText();
+    private WebElement passwordField () {
+        return getDriver ().findElement (By.id ("password"));
     }
 
-    public SecurePage login (String userName, String password) {
-        userNameField().click();
-        userNameField().clear();
-        userNameField().sendKeys(userName);
-        passwordField().click();
-        passwordField().clear();
-        passwordField().sendKeys(password);
-        loginBtn().click();
-        return new SecurePage();
+    private WebElement userNameField () {
+        return getDriver ().findElement (By.id ("username"));
     }
 }

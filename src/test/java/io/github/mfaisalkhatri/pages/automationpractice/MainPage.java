@@ -15,23 +15,23 @@
 
 package io.github.mfaisalkhatri.pages.automationpractice;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
 public class MainPage {
 
-    private WebElement signInBtn () {
-        return getDriver().findElement(By.className("login"));
-    }
-
     public WebElement contactUsLink () {
-        return getDriver().findElement(with(By.tagName("a")).toLeftOf(signInBtn()));
+        return getDriver ().findElement (with (By.tagName ("a")).toLeftOf (signInBtn ()));
+    }
+    
+    private WebElement signInBtn () {
+        return getDriver ().findElement (By.className ("login"));
     }
 
 }

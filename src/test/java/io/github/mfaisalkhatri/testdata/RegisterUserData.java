@@ -9,10 +9,10 @@ import lombok.Getter;
 @Builder
 @Getter
 public class RegisterUserData {
-
+    
+    private String email;
     private String firstName;
     private String lastName;
-    private String email;
-    private String telephone;
     private String password;
+    private String telephone;
 }

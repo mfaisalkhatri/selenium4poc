@@ -15,35 +15,37 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 02-01-2022
  */
 public class IFramePage {
     
-    private WebElement iFrame () {
-        return getDriver().findElement(By.id("mce_0_ifr"));
-    }
-
-    public void switchToiFrame () {
-        getDriver().switchTo().frame(iFrame());
-    }
-
-    private WebElement textArea () {
-        return getDriver().findElement(By.id("tinymce"));
+    public void enterTextInIFrame (final String text) {
+        textArea ().click ();
+        textArea ().clear ();
+        textArea ().sendKeys (text);
     }
 
     public String getTextValue () {
-        return getDriver().findElement(By.cssSelector("#tinymce > p")).getText();
+        return getDriver ().findElement (By.cssSelector ("#tinymce > p"))
+            .getText ();
     }
 
-    public void enterTextInIFrame (String text) {
-        textArea().click();
-        textArea().clear();
-        textArea().sendKeys(text);
+    public void switchToiFrame () {
+        getDriver ().switchTo ()
+            .frame (iFrame ());
+    }
+
+    private WebElement iFrame () {
+        return getDriver ().findElement (By.id ("mce_0_ifr"));
+    }
+
+    private WebElement textArea () {
+        return getDriver ().findElement (By.id ("tinymce"));
     }
 }

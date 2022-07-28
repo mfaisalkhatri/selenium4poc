@@ -8,6 +8,9 @@
                 <methods>
                     <include name="testRegisterUser"/>
                     <include name="testAddProductToCart"/>
+                    <include name="testCheckoutProduct"/>
+                    <include name="testConfirmOrder"/>
+                    <include name="testOrderSuccess"/>
                 </methods>
             </class>
         </classes>

@@ -15,32 +15,32 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 import java.util.List;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created By Faisal Khatri on 21-12-2021
  */
 public class CheckboxPage {
-    
-    public String pageHeader () {
-        return getDriver().findElement(By.tagName("h3")).getText();
-    }
-
-    private List<WebElement> checkboxes () {
-        return getDriver().findElements(By.cssSelector("#checkboxes > input[type=checkbox]"));
-
-    }
 
     public WebElement checkboxOne () {
-        return checkboxes().get(0);
+        return checkboxes ().get (0);
     }
 
     public WebElement checkboxTwo () {
-        return checkboxes().get(1);
+        return checkboxes ().get (1);
+    }
+
+    public String pageHeader () {
+        return getDriver ().findElement (By.tagName ("h3"))
+            .getText ();
+    }
+
+    private List<WebElement> checkboxes () {
+        return getDriver ().findElements (By.cssSelector ("#checkboxes > input[type=checkbox]"));
     }
 }

@@ -14,6 +14,8 @@
 */
 package io.github.mfaisalkhatri.tests.automationpractice;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import io.github.mfaisalkhatri.pages.automationpractice.ContactUs;
 import io.github.mfaisalkhatri.pages.automationpractice.MainPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
@@ -21,32 +23,30 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
 public class ContactUsTests extends BaseSuiteSetup {
 
     @BeforeClass
-    public void setupTests () {
+    public void setupTest () {
         final String websiteLink = "http://automationpractice.com/index.php";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
-        mainPage.contactUsLink().click();
+        getDriver ().get (websiteLink);
+        final MainPage mainPage = new MainPage ();
+        mainPage.contactUsLink ()
+            .click ();
     }
 
     @Test
-    public void relativeLocatorsTest () {
-        ContactUs contact = new ContactUs();
+    public void testRelativeLocators () {
+        final ContactUs contact = new ContactUs ();
         final String actualPageHeader = "CUSTOMER SERVICE - CONTACT US";
-        String expectedPageHeader = contact.pageHeading();
-        Assert.assertEquals(actualPageHeader, expectedPageHeader);
+        final String expectedPageHeader = contact.pageHeading ();
+        Assert.assertEquals (actualPageHeader, expectedPageHeader);
 
-        contact.fillContactForm("Customer service", "abc@gg.com", "123456",
-                "This is an automated test message");
+        contact.fillContactForm ("Customer service", "abc@gg.com", "123456", "This is an automated test message");
         final String expectedSentMessageText = "Your message has been successfully sent to our team.";
-        Assert.assertEquals(contact.successSentMessage(), expectedSentMessageText);
+        Assert.assertEquals (contact.successSentMessage (), expectedSentMessageText);
     }
 
 }

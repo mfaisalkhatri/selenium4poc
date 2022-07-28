@@ -15,23 +15,24 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 13-12-2021
  */
 public class MainPage {
 
-    public void clickLink (String linkName) {
-        WebElement link = getDriver().findElement(By.linkText(linkName));
-        link.click();
+    public void clickLink (final String linkName) {
+        final WebElement link = getDriver ().findElement (By.linkText (linkName));
+        link.click ();
     }
-
+    
     public String mainPageHeader () {
-        return getDriver().findElement(By.tagName("h2")).getText();
+        return getDriver ().findElement (By.tagName ("h2"))
+            .getText ();
     }
 
 }
