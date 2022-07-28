@@ -40,8 +40,8 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void setupTests () {
-        //final String websiteLink = "https://juice-shop.herokuapp.com/#/";
-        //final String websiteLink = "http://host.docker.internal:3000/#/";
+        // final String websiteLink = "https://juice-shop.herokuapp.com/#/";
+        // final String websiteLink = "http://host.docker.internal:3000/#/";
         final String websiteLink = "http://localhost:3000/#/";
         getDriver ().get (websiteLink);
         this.mainPage = new MainPage ();
@@ -68,7 +68,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
             .state ();
     }
 
-    @Test (dependsOnMethods = "loginTest")
+    @Test (dependsOnMethods = "testLogin")
     public void testAddProductToCart () {
         this.productPage.addAppleJuiceToCart ();
         assertEquals (this.productPage.successMessage (), "Placed Apple Juice (1000ml) into basket.");
@@ -90,13 +90,13 @@ public class JuiceShopTests extends BaseSuiteSetup {
             .isDisplayed ());
     }
 
-    @Test (dependsOnMethods = "selectDeliveryTest")
+    @Test (dependsOnMethods = "testSelectDelivery")
     public void testMakePayment () {
         final PaymentPage paymentPage = new PaymentPage ();
         paymentPage.makePayment (this.name, "4012888888881881", "2", "2080");
     }
 
-    @Test (dependsOnMethods = "orderSummaryTest")
+    @Test (dependsOnMethods = "testOrderSummary")
     public void testOrderConfirmation () {
         final OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage ();
         assertEquals (orderConfirmationPage.getThanksMessage (), "Thank you for your purchase!");
@@ -106,7 +106,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
         assertEquals (this.mainPage.yourBasketCount (), "0");
     }
 
-    @Test (dependsOnMethods = "makePaymentTest")
+    @Test (dependsOnMethods = "testMakePayment")
     public void testOrderSummary () {
         final OrderSummaryPage orderSummaryPage = new OrderSummaryPage ();
         final String addressLineTwo = this.address + ", " + this.city + ", " + this.state + ", " + this.zipcode;
@@ -128,10 +128,9 @@ public class JuiceShopTests extends BaseSuiteSetup {
         orderSummaryPage.placeOrderAndPay ();
     }
 
-    @Test (dependsOnMethods = "addProductToCartTest")
+    @Test (dependsOnMethods = "testAddProductToCart")
     public void testProductCheckout () {
         this.productPage.navigateToYourBasket ();
-
         final CheckoutPage checkoutPage = new CheckoutPage ();
 
         assertEquals (checkoutPage.appleJuiceText (), this.appleJuiceText);
@@ -154,7 +153,7 @@ public class JuiceShopTests extends BaseSuiteSetup {
         assertEquals (registrationPage.successMessage (), "Registration completed successfully. You can now log in.");
     }
 
-    @Test (dependsOnMethods = "productCheckoutTest")
+    @Test (dependsOnMethods = "testProductCheckout")
     public void testSelectDelivery () {
         final DeliverySelection deliverySelection = new DeliverySelection ();
         final String addressLineTwo = this.address + ", " + this.city + ", " + this.state + ", " + this.zipcode;
