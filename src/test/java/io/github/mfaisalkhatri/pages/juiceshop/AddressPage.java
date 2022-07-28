@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
  * Created By Faisal Khatri on 18-04-2022
  */
 public class AddressPage {
-    
+
     public WebElement addressField () {
         return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(5) textarea"));
     }
@@ -21,7 +21,7 @@ public class AddressPage {
     public WebElement cityField () {
         return addressForm ().findElement (By.cssSelector (".mat-form-field:nth-child(6) input"));
     }
-
+    
     public WebElement continueBtn () {
         return getDriver ().findElement (By.cssSelector (".btn.btn-next"));
     }
