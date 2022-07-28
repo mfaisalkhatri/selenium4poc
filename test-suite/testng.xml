@@ -7,7 +7,7 @@
         <suite-file path="testng-theinternet.xml"/>
         <suite-file path="testng-juice-shop.xml"/>
         <suite-file path="testng-lambdatestecommerce.xml"/>
-        <suite-file path="testng-seleniumgrid-juiceshop.xml"/>
-        <suite-file path="testng-seleniumgrid-theinternet.xml"/>
+        <!--        <suite-file path="testng-seleniumgrid-juiceshop.xml"/>-->
+        <!--        <suite-file path="testng-seleniumgrid-theinternet.xml"/>-->
     </suite-files>
 </suite> <!-- Suite -->
