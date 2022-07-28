@@ -123,4 +123,7 @@ public class DriverManager {
             .timeouts ()
             .scriptTimeout (Duration.ofSeconds (30));
     }
+
+    private DriverManager () {
+    }
 }
