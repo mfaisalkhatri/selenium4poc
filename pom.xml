@@ -19,7 +19,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <log4jcore.version>2.18.0</log4jcore.version>
         <log4japi.version>2.18.0</log4japi.version>
-        <slf4j.version>2.18.0</slf4j.version>
+        <slf4j.version>1.7.36</slf4j.version>
         <orgjson.version>20220320</orgjson.version>
         <javafaker.version>1.0.2</javafaker.version>
         <seleniumdevtoolsv101.version>4.3.0</seleniumdevtoolsv101.version>
