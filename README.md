@@ -8,8 +8,7 @@
 
 - This repo has example codes with Selenium 4 features.
 - Websites used for testing are: [automationpractice.com][automationpractice], [saucedemo.com][saucedemo],
-  [the-internet][the-internet] [owasp-juice-shop][juice-shop] [Lambdatest E-Commerce Playground]
-  [lambdatestecommerceplayground]
+  [the-internet][the-internet] [owasp-juice-shop][juice-shop] and [Lambdatest E-Commerce Playground][lambdatestecommerceplayground]
 - This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests.
 
 ## Talking more about the Scenarios Covered in this project:
