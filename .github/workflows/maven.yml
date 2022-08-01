@@ -25,22 +25,17 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-#      - name: Pull Juice Shop Image
-#        run: docker pull bkimminich/juice-shop
-#
-#      - name: Run Juice Shop
-#        run: docker run -d --rm -p 3000:3000 bkimminich/juice-shop
       - name: Setup Juice Shop using docker compose
         run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+
+      - name: Start Selenium Grid 4
+        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
 
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
-
-      #      - name: Start Selenium Grid 4
-      #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
 
       - name: Build the Project
         run: mvn clean install -DskipTests
@@ -51,6 +46,9 @@ jobs:
       - name: Stop Juice Shop website
         run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down
 
+      - name: Stop Selenium Grid 4
+        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
+
       - name: Upload target folder
         uses: actions/upload-artifact@v2
         with:
@@ -59,8 +57,6 @@ jobs:
             ${{ github.workspace }}/target
             ${{ github.workspace }}/reports
 
-  #      - name: Stop Selenium Grid 4
-  #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
 
   code_analysis:
     name: Code Analysis
@@ -82,22 +78,17 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-#      - name: Pull Juice Shop Image
-#        run: docker pull bkimminich/juice-shop
-#
-#      - name: Run Juice Shop
-#        run: docker run -d --rm -p 3000:3000 bkimminich/juice-shop
       - name: Setup Juice Shop using docker compose
         run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+
+      - name: Start Selenium Grid 4
+        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
 
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
 
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
-
-      #      - name: Start Selenium Grid 4
-      #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
@@ -127,10 +118,11 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
             -Dsonar.projectKey=$SONAR_KEY -Dheadless=true
 
-      #      - name: Stop Selenium Grid 4
-      #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
       - name: Stop Juice Shop website
         run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down
+
+      - name: Stop Selenium Grid 4
+        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
 
       - name: Test Report
         uses: dorny/test-reporter@v1
