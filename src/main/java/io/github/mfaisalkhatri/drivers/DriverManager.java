@@ -117,7 +117,7 @@ public class DriverManager {
 
     private static void setupChromeDriver () {
         LOG.info ("Setting up Chrome Driver....");
-        boolean is_headless = Boolean.parseBoolean (
+        boolean isHeadless = Boolean.parseBoolean (
             Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
         final HashMap<String, Object> chromePrefs = new HashMap<> ();
         chromePrefs.put ("safebrowsing.enabled", "true");
@@ -129,7 +129,7 @@ public class DriverManager {
         options.addArguments ("--no-sandbox");
         options.addArguments ("--disable-dev-shm-usage");
         options.addArguments ("--window-size=1050,600");
-        if (is_headless) {
+        if (isHeadless) {
             options.addArguments ("--headless");
         }
         options.addArguments ("--safebrowsing-disable-download-protection");
