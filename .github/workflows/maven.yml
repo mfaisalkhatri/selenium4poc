@@ -43,11 +43,8 @@ jobs:
       - name: Coverage per Test Execution
         run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test -Dheadless=true
 
-      - name: Stop Juice Shop website
-        run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down
-
-      - name: Stop Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
+      - name: Stop docker compose for Juice Shop and Selenium grid
+        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
 
       - name: Upload target folder
         uses: actions/upload-artifact@v2
