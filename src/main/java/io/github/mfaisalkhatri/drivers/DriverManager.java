@@ -17,7 +17,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -26,11 +25,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  * @since 24/07/2022
  */
 public class DriverManager {
-    private static final ThreadLocal<WebDriver> DRIVER      = new ThreadLocal<> ();
-    private static final String                 HUB_URL     = "http://localhost:4444/wd/hub";
-    private static final Logger                 LOG         = LogManager.getLogger ("DriverManager.class");
-    private static final boolean                IS_HEADLESS = Boolean.parseBoolean (
-        Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
+    private static final ThreadLocal<WebDriver> DRIVER  = new ThreadLocal<> ();
+    private static final String                 HUB_URL = "http://localhost:4444/wd/hub";
+    private static final Logger                 LOG     = LogManager.getLogger ("DriverManager.class");
 
     public static void createDriver (Browsers browser) {
         switch (browser) {
@@ -120,6 +117,8 @@ public class DriverManager {
 
     private static void setupChromeDriver () {
         LOG.info ("Setting up Chrome Driver....");
+        boolean is_headless = Boolean.parseBoolean (
+            Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
         final HashMap<String, Object> chromePrefs = new HashMap<> ();
         chromePrefs.put ("safebrowsing.enabled", "true");
         chromePrefs.put ("download.prompt_for_download", "false");
@@ -130,7 +129,7 @@ public class DriverManager {
         options.addArguments ("--no-sandbox");
         options.addArguments ("--disable-dev-shm-usage");
         options.addArguments ("--window-size=1050,600");
-        if (IS_HEADLESS) {
+        if (is_headless) {
             options.addArguments ("--headless");
         }
         options.addArguments ("--safebrowsing-disable-download-protection");
@@ -147,11 +146,10 @@ public class DriverManager {
             LOG.info ("Setting up Remote Chrome Driver....");
             final DesiredCapabilities caps = new DesiredCapabilities ();
             caps.setBrowserName (CHROME.browserName ());
-            caps.setVersion ("101");
-            DRIVER.set (new RemoteWebDriver (new URL (HUB_URL), caps));
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
             LOG.info ("Remote Chrome Driver created successfully!");
         } catch (final MalformedURLException e) {
-            LOG.error ("Error setting remote-chrome", e);
+            LOG.error ("Error setting remote_chrome", e);
         }
     }
 
@@ -160,12 +158,11 @@ public class DriverManager {
 
             LOG.info ("Setting up Remote Firefox Driver....");
             final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName (Browser.FIREFOX.browserName ());
-            caps.setVersion ("99");
-            DRIVER.set (new RemoteWebDriver (new URL (HUB_URL), caps));
+            caps.setBrowserName ("firefox");
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
             LOG.info ("Remote Firefox Driver created successfully!");
         } catch (final MalformedURLException e) {
-            LOG.error ("Error setting remote-firefox", e);
+            LOG.error ("Error setting remote_firefox", e);
         }
     }
 
@@ -173,12 +170,11 @@ public class DriverManager {
         try {
             LOG.info ("Setting up Remote Edge Driver....");
             final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName (EDGE.browserName ());
-            caps.setVersion ("100");
-            DRIVER.set (new RemoteWebDriver (new URL (HUB_URL), caps));
+            caps.setBrowserName ("MicrosoftEdge");
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
             LOG.info ("Remote Edge Driver created successfully!");
         } catch (final MalformedURLException e) {
-            LOG.error ("Error setting remote-edge", e);
+            LOG.error ("Error setting remote_edge", e);
         }
     }
 }

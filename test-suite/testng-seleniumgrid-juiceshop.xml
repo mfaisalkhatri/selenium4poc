@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Juice Shop tests on Selenium Grid 4" parallel="tests" thread-count="3" verbose="2">
     <test name="Juice Shop end to End automation tests on Remote Chrome ">
-        <parameter name="browser" value="remote-chrome"/>
+        <parameter name="browser" value="remote_chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
                 <methods>
@@ -20,7 +20,7 @@
     </test> <!-- Test -->
 
     <test name="Juice Shop end to End automation tests on Remote Firefox ">
-        <parameter name="browser" value="remote-firefox"/>
+        <parameter name="browser" value="remote_firefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
                 <methods>
@@ -37,7 +37,7 @@
         </classes>
     </test> <!-- Test -->
     <test name="Juice Shop end to End automation tests on Remote Edge">
-        <parameter name="browser" value="remote-edge"/>
+        <parameter name="browser" value="remote_edge"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
                 <methods>
@@ -53,4 +53,4 @@
             </class>
         </classes>
     </test> <!-- Test -->
-</suite> <!-- Suite -->
+</suite>

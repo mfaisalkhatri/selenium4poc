@@ -41,7 +41,6 @@
         <sonarjacocolistener.version>5.14.0.18788</sonarjacocolistener.version>
         <sonarmavenplugin.version>3.9.1.2184</sonarmavenplugin.version>
     </properties>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
