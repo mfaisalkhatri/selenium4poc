@@ -40,6 +40,7 @@
         <jacoco.version>0.8.7</jacoco.version>
         <sonarjacocolistener.version>5.14.0.18788</sonarjacocolistener.version>
         <sonarmavenplugin.version>3.9.1.2184</sonarmavenplugin.version>
+<!--        <headless>true</headless>-->
     </properties>
 
     <dependencies>

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.Optional;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +24,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class DriverManager {
     private static final ThreadLocal<WebDriver> DRIVER  = new ThreadLocal<> ();
     private static final String                 HUB_URL = "http://localhost:4444/wd/hub";
-    private static final Logger                 LOG     = LogManager.getLogger ("DriverManager.class");
+    private static final Logger LOG        = LogManager.getLogger ("DriverManager.class");
+    private static final boolean isHeadless = Boolean.parseBoolean (Optional.of(System.getProperty ("headless")).orElse ("true"));
 
     public static void createDriver (final String browser) {
         if (browser.equalsIgnoreCase ("firefox")) {
@@ -59,7 +61,9 @@ public class DriverManager {
             options.addArguments ("--no-sandbox");
             options.addArguments ("--disable-dev-shm-usage");
             options.addArguments ("--window-size=1050,600");
-            options.addArguments ("--headless");
+            if(isHeadless) {
+                options.addArguments ("--headless");
+            }
             options.addArguments ("--safebrowsing-disable-download-protection");
             options.setExperimentalOption ("prefs", chromePrefs);
 
