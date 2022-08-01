@@ -118,12 +118,9 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
             -Dsonar.projectKey=$SONAR_KEY -Dheadless=true
 
-      - name: Stop Juice Shop website
-        run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down
-
-      - name: Stop Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
-
+      - name: Stop docker compose for Juice Shop and Selenium grid
+        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+      
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
