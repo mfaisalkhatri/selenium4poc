@@ -62,8 +62,6 @@ jobs:
   #      - name: Stop Selenium Grid 4
   #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
 
-
-
   code_analysis:
     name: Code Analysis
     needs:
