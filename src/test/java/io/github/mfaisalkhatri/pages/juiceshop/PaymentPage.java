@@ -3,9 +3,14 @@ package io.github.mfaisalkhatri.pages.juiceshop;
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created By Faisal Khatri on 18-04-2022
@@ -21,7 +26,8 @@ public class PaymentPage {
         expiryYearField ().selectByValue (expiryYear);
         submitBtn ().click ();
         selectAddressRadioBtn ().click ();
-        continueBtn ().click ();
+        Actions actions = new Actions (getDriver ());
+        actions.moveToElement (continueBtn ()).click ().perform ();
     }
 
     private WebElement addNewCard () {
@@ -34,8 +40,10 @@ public class PaymentPage {
     }
 
     private WebElement continueBtn () {
-        return getDriver ().findElement (By.cssSelector (".btn.nextButton"));
+        WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (20));
+        return wait.until (ExpectedConditions.elementToBeClickable (By.cssSelector (".btn.nextButton")));
     }
+
 
     private Select expiryMonthField () {
         return new Select (getDriver ().findElement (

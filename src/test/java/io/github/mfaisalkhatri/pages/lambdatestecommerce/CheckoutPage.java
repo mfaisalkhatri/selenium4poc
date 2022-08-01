@@ -15,68 +15,72 @@ import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 public class CheckoutPage {
 
     public static CheckoutPage checkoutPage () {
-        return new CheckoutPage();
+        return new CheckoutPage ();
     }
 
     public String getUnitPriceOfCameraLens () {
-        return getDriver().findElement(By.cssSelector("#checkout-total > tbody > tr:nth-child(1) > td.text-right")).getText();
+        return getDriver ().findElement (By.cssSelector ("#checkout-total > tbody > tr:nth-child(1) > td.text-right"))
+            .getText ();
     }
 
     private WebElement paymentAddressForm () {
-        return getDriver().findElement(By.id("payment-address"));
+        return getDriver ().findElement (By.id ("payment-address"));
     }
 
     private WebElement firstNameField () {
-        return paymentAddressForm().findElement(By.id("input-payment-firstname"));
+        return paymentAddressForm ().findElement (By.id ("input-payment-firstname"));
     }
 
     private WebElement lastNameField () {
-        return paymentAddressForm().findElement(By.id("input-payment-lastname"));
+        return paymentAddressForm ().findElement (By.id ("input-payment-lastname"));
     }
 
     private WebElement addressLineOneField () {
-        return paymentAddressForm().findElement(By.id("input-payment-address-1"));
+        return paymentAddressForm ().findElement (By.id ("input-payment-address-1"));
     }
 
     private WebElement cityField () {
-        return paymentAddressForm().findElement(By.id("input-payment-city"));
+        return paymentAddressForm ().findElement (By.id ("input-payment-city"));
     }
 
     private WebElement postCodeField () {
-        return paymentAddressForm().findElement(By.id("input-payment-postcode"));
+        return paymentAddressForm ().findElement (By.id ("input-payment-postcode"));
     }
 
     private Select countryField () {
-        return new Select(paymentAddressForm().findElement(By.id("input-payment-country")));
+        return new Select (paymentAddressForm ().findElement (By.id ("input-payment-country")));
     }
 
     private Select stateField () {
-        return new Select(paymentAddressForm().findElement(By.id("input-payment-zone")));
+        return new Select (paymentAddressForm ().findElement (By.id ("input-payment-zone")));
     }
 
     private WebElement agreeTermsAndConditionsField () {
-        return getDriver().findElement(By.id("input-agree"));
+        return getDriver ().findElement (By.id ("input-agree"));
     }
 
     private WebElement continueBtn () {
-        return getDriver().findElement(By.cssSelector("button#button-save"));
+        return getDriver ().findElement (By.id ("button-save"));
     }
 
     public CheckoutPage setBillingAddress (final BillingData billingData) {
-        enterText(firstNameField(), billingData.getFirstName());
-        enterText(lastNameField(), billingData.getLastName());
-        enterText(addressLineOneField(), billingData.getAddressLineOne());
-        enterText(cityField(), billingData.getCity());
-        enterText(postCodeField(), billingData.getPostCode());
-        countryField().selectByVisibleText(billingData.getCountry());
-        stateField().selectByVisibleText(billingData.getState());
+        enterText (firstNameField (), billingData.getFirstName ());
+        enterText (lastNameField (), billingData.getLastName ());
+        enterText (addressLineOneField (), billingData.getAddressLineOne ());
+        enterText (cityField (), billingData.getCity ());
+        enterText (postCodeField (), billingData.getPostCode ());
+        countryField ().selectByVisibleText (billingData.getCountry ());
+        stateField ().selectByVisibleText (billingData.getState ());
         return this;
     }
-    
+
     public ConfirmOrderPage checkoutProduct () {
-        final Actions actions = new Actions(getDriver());
-        actions.moveToElement(agreeTermsAndConditionsField()).click().perform();
-        continueBtn().click();
-        return ConfirmOrderPage.confirmOrderPage();
+        final Actions actions = new Actions (getDriver ());
+        actions.moveToElement (agreeTermsAndConditionsField ())
+            .click ()
+            .moveToElement (continueBtn ())
+            .click ()
+            .perform ();
+        return ConfirmOrderPage.confirmOrderPage ();
     }
 }

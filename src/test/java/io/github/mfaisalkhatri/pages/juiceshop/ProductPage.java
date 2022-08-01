@@ -16,7 +16,7 @@ public class ProductPage {
     private final WebDriverWait wait;
 
     public ProductPage () {
-        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (30));
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (40));
         this.actions = new Actions (getDriver ());
     }
 
@@ -28,7 +28,7 @@ public class ProductPage {
         this.wait.until (ExpectedConditions.elementToBeClickable (appleJuiceAddtoCartBtn ()))
             .click ();
     }
-    
+
     public void addBananaJuiceToCart () {
         this.wait.until (ExpectedConditions.elementToBeClickable (bananaJuiceAddtoCartBtn ()))
             .click ();
@@ -68,7 +68,8 @@ public class ProductPage {
     }
 
     public String successMessage () {
-        return getDriver ().findElement (By.cssSelector (".mat-simple-snack-bar-content"))
+        return wait.until (
+                ExpectedConditions.visibilityOfElementLocated (By.cssSelector (".mat-simple-snack-bar-content")))
             .getText ();
     }
 

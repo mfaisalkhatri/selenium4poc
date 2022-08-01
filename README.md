@@ -8,8 +8,9 @@
 
 - This repo has example codes with Selenium 4 features.
 - Websites used for testing are: [automationpractice.com][automationpractice], [saucedemo.com][saucedemo],
-  [the-internet][the-internet] and [owasp-juice-shop][juice-shop]
-- This repo uses Maven as build tool and TestNG testing framework to run the tests.
+  [the-internet][the-internet] [owasp-juice-shop][juice-shop] [Lambdatest E-Commerce Playground]
+  [lambdatestecommerceplayground]
+- This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests.
 
 ## Talking more about the Scenarios Covered in this project:
 
@@ -30,13 +31,13 @@
 13. How do I double click using Selenium WebDriver?
 14. How to check for chrome generated logs when selenium tests are run?
 
-### End to End Tests for [owasp-juice-shop][juice-shop]
+### End-to-End Tests for [owasp-juice-shop][juice-shop]
 
-### Following is the Automation Test Strategy used for writing End to End Tests:
+### Following is the Automation Test Strategy used for writing End-to-End Tests:
 
-1. User will navigate to the website and close all the pop up first.
+1. User will navigate to the website and close all the pop-up first.
 2. User will click on Login link and click on `Not yet a customer link` and register himself on the website.
-3. Once the Registration is successful, User will Login with that username and password.
+3. Once the Registration is successful, User will Log in with that username and password.
 4. After successful Login, User will Add AppleJuice and BananaJuice to the Basket.
 5. After asserting the messages for items added to basket, user will check for the count of items displayed on top
    of `Your Basket` link.
@@ -48,9 +49,85 @@
 10. User will re-check the details on Order confirmation page and check for `Thank You` message order confirmation and
     delivery message.
 
-- End to End tests for Juice Shop Website are running on 'http://localhost:3000' inside the container in github actions.
-- CI/CD Pipeline has been added using Github Actions. Checkout the blog [How to setup Github Actions for Java with Maven project?][bloggithubactions] for detailed explanation of how to setup pipeline using github actions.
-- Checkout the blog [End to End testing using Selenium WebDriver and Java][seleniumblogmedium] to get better understanding of how to write end to end tests.
+- End-to-End tests for Juice Shop Website are running on 'http://localhost:3000' inside the container in GitHub actions.
+- CI/CD Pipeline has been added using Github Actions. Checkout the
+  blog [How to setup Github Actions for Java with Maven project?][bloggithubactions] for detailed explanation of how to
+  setup pipeline using github actions.
+- Checkout the blog [End to End testing using Selenium WebDriver and Java][seleniumblogmedium] to get better
+  understanding of how to write end to end tests.
+
+## How to run the Tests?
+
+### Running Juice Shop Tests in local
+
+- Start `Juice-Shop` website locally, for doing this we will make use of `docker-compose-v3-juiceshop.yml` which is
+  available in the root folder of this project.
+- Open terminal/command prompt and navigate to the root folder of the project and run the following command:
+
+  `docker-compose -f docker-compose-v3-juiceshop.yml up -d`
+
+- Once the `Juice-Shop` website is up and running, we are good to run the end-to-end tests using the juice shop website.
+- There are 2 ways to run the tests, those are as follows:
+  ### 1. TestNG:
+    - Right-Click on the `test-suite\testng-juice-shop.xml` and select `Run ...\test-suite\testng-juice-shop.xml`
+  ### 2. Maven:
+    - To run the tests in headless mode update the value for `headless` property variable to `true`
+
+      `mvn clean install -Dsuite-xml=test-suite\testng-juice-shop.xml -Dheadless=true`
+
+    - To run the tests without headless mode(to see the test running in browser) update the value for headless property
+      variable to
+      `false`
+
+      `mvn clean install -Dsuite-xml=test-suite\testng-juice-shop.xml -Dheadless=false`
+
+
+- Stopping the Juice Shop website running in local
+
+  `docker-compose -f docker-compose-v3-juiceshop.yml down`
+
+### Running Selenium Grid in local and running tests using Selenium Grid
+
+- Start the Selenium Grid in local using the `docker-compose-v3-seleniumgrid.yml` file.
+- Run the following command:
+  `docker-compose -f docker-compose-v3-seleniumgrid.yml up -d`
+
+  This will start the selenium grid which can be access using `http://localhost:4444`.
+
+    - To run the tests on Selenium Grid using `TestNG`:
+
+      Right click on `test-suite\testng-seleniumgrid-theinternet.xml` and
+      select `Run test-suite\testng-seleniumgrid-theinternet.xml`
+
+    - To run the tests on Selenium Grid using `Maven`:
+
+      `mvn clean install -Dsuite-xml=test-suite\testng-seleniumgrid-theinternet.xml`
+
+- Stopping the Selenium Grid:
+
+  `docker-compose -f docker-compose-v3-seleniumgrid.yml down`
+
+### Running all the tests in one go:
+
+- Start the `Juice -Shop` website using following command:
+
+     `docker-compose -f docker-compose-v3-juiceshop.yml up -d`
+
+- Start `Selenium Grid` using following command:
+
+    `docker-compose -f docker-compose-v3-seleniumgrid.yml up -d`
+
+- Run the tests using `TestNG`:
+
+    Right click on `test-suite\testng.xml` and select `Run test-suite\testng.xml`
+
+- Run the tests using `Maven` in headless mode: 
+
+    `mvn clean install -Dheadless=true`
+
+- Stopping the `Juice-Shop` website and `Selenium Grid`:
+
+  `docker-compose -f docker-compose-v3-juiceshop.yml down --remove-orphan`
 
 ## :question: Need Assistance?
 
@@ -77,5 +154,9 @@
 [juice-shop]: https://github.com/juice-shop/juice-shop
 
 [website]: https://mfaisalkhatri.github.io
+
 [bloggithubactions]:https://mfaisalkhatri.github.io/2022/04/26/githubactions-for-java-maven-project/
+
 [seleniumblogmedium]: https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca
+
+[lambdatestecommerceplayground]: https://ecommerce-playground.lambdatest.io/
