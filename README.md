@@ -107,6 +107,28 @@
 
   `docker-compose -f docker-compose-v3-seleniumgrid.yml down`
 
+### Running all the tests in one go:
+
+- Start the `Juice -Shop` website using following command:
+
+     `docker-compose -f docker-compose-v3-juiceshop.yml up -d`
+
+- Start `Selenium Grid` using following command:
+
+    `docker-compose -f docker-compose-v3-seleniumgrid.yml up -d`
+
+- Run the tests using `TestNG`:
+
+    Right click on `test-suite\testng.xml` and select `Run test-suite\testng.xml`
+
+- Run the tests using `Maven` in headless mode: 
+
+    `mvn clean install -Dheadless=true`
+
+- Stopping the `Juice-Shop` website and `Selenium Grid`:
+
+  `docker-compose -f docker-compose-v3-juiceshop.yml down --remove-orphan`
+
 ## :question: Need Assistance?
 
 - Discuss your queries by writing to me @ [mohammadfaisalkhatri@gmail.com][mail] OR you can ping me on the following
