@@ -31,7 +31,7 @@ jobs:
 #      - name: Run Juice Shop
 #        run: docker run -d --rm -p 3000:3000 bkimminich/juice-shop
       - name: Setup Juice Shop using docker compose
-        run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up
+        run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
 
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
@@ -87,8 +87,8 @@ jobs:
 #
 #      - name: Run Juice Shop
 #        run: docker run -d --rm -p 3000:3000 bkimminich/juice-shop
-      - name: Stop Juice Shop website
-        run : docker-compose -f {{ github.workspace }}/docker-compose-v3-juiceshop.yml down
+      - name: Setup Juice Shop using docker compose
+        run : docker-compose -f {{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
 
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
