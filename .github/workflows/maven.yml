@@ -120,7 +120,7 @@ jobs:
 
       - name: Stop docker compose for Juice Shop and Selenium grid
         run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
-      
+
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="The internet tests on Selenium Grid 4" parallel="tests" thread-count="3" verbose="2">
     <test name="Form Authentication Tests">
-        <parameter name="browser" value="remote-chrome"/>
+        <parameter name="browser" value="remote_chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.FormAuthenticationTests">
                 <methods>
@@ -18,7 +18,7 @@
         </classes>
     </test> <!-- Test -->
     <test name="Multiple Windows Tests">
-        <parameter name="browser" value="remote-chrome"/>
+        <parameter name="browser" value="remote_chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.MultipleWindowTests">
                 <methods>
@@ -28,7 +28,7 @@
         </classes>
     </test> <!-- Test -->
     <test name="Data table Tests">
-        <parameter name="browser" value="remote-chrome"/>
+        <parameter name="browser" value="remote_chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.DataTableTests">
                 <methods>

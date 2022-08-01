@@ -42,14 +42,14 @@ public class JuiceShopTests extends BaseSuiteSetup {
     @BeforeClass
     public void setupTests () {
         // final String websiteLink = "https://juice-shop.herokuapp.com/#/";
-        final String dockerWebsiteLink = "http://host.docker.internal:3000/#/";
+     //   final String dockerWebsiteLink = "http://host.docker.internal:3000/#/";
         final String websiteLink = "http://localhost:3000/#/";
-        System.out.println (getDriver ().toString ());
-        if (getDriver ().toString ().contains ("RemoteWebDriver")) {
-            getDriver ().get (dockerWebsiteLink);
-        } else {
+//        System.out.println (getDriver ().toString ());
+//        if (getDriver ().toString ().contains ("RemoteWebDriver")) {
+//            getDriver ().get (dockerWebsiteLink);
+//        } else {
             getDriver ().get (websiteLink);
-        }
+        //}
         this.mainPage = new MainPage ();
         this.loginPage = new LoginPage ();
         this.productPage = new ProductPage ();
