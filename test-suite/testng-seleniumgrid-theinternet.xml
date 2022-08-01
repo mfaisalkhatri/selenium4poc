@@ -18,7 +18,7 @@
         </classes>
     </test> <!-- Test -->
     <test name="Multiple Windows Tests">
-        <parameter name="browser" value="remote_chrome"/>
+        <parameter name="browser" value="remote_edge"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.MultipleWindowTests">
                 <methods>
@@ -28,7 +28,7 @@
         </classes>
     </test> <!-- Test -->
     <test name="Data table Tests">
-        <parameter name="browser" value="remote_chrome"/>
+        <parameter name="browser" value="remote_firefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.DataTableTests">
                 <methods>
