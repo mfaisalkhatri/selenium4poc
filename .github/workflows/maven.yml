@@ -46,7 +46,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Coverage per Test Execution
-        run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test
+        run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test -Dheadless=true
 
       - name: Stop Juice Shop website
         run : docker-compose -f {{ github.workspace }}/docker-compose-v3-juiceshop.yml down
@@ -125,7 +125,7 @@ jobs:
           SONAR_KEY: ${{ secrets.SONAR_KEY }}
         run: |
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.projectKey=$SONAR_KEY
+            -Dsonar.projectKey=$SONAR_KEY -Dheadless=true
 
       #      - name: Stop Selenium Grid 4
       #        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down
