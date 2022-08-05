@@ -13,40 +13,38 @@
         limitations under the License.
 */
 
-package io.github.mfaisalkhatri.pages.saucedemo;
+package io.github.mfaisalkhatri.tests.saucedemo;
 
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
  */
-public class LoginPage {
+public class MainPage {
     
-    public void websiteLogin (final String userName, final String pass) {
-        username ().click ();
-        username ().clear ();
-        username ().sendKeys (userName);
-        password ().click ();
-        password ().clear ();
-        password ().sendKeys (pass);
-        loginBtn ().click ();
+    private final WebDriverWait wait;
 
+    public MainPage () {
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (5));
     }
 
-    private WebElement loginBtn () {
-        return getDriver ().findElement (with (By.tagName ("input")).below (password ()));
+    public void logoutFromWebSite () {
+        menuBtn ().click ();
+        logoutLink ().click ();
     }
 
-    private WebElement password () {
-        return getDriver ().findElement (with (By.tagName ("input")).below (username ()));
+    private WebElement logoutLink () {
+        return this.wait.until (ExpectedConditions.elementToBeClickable ((By.cssSelector ("#logout_sidebar_link"))));
     }
 
-    private WebElement username () {
-        return getDriver ().findElement (By.id ("user-name"));
+    private WebElement menuBtn () {
+        return this.wait.until (ExpectedConditions.elementToBeClickable (By.id ("react-burger-menu-btn")));
     }
-
 }

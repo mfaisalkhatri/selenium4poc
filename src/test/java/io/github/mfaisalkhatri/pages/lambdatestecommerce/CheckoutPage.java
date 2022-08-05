@@ -3,11 +3,14 @@ package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
+import java.time.Duration;
+
 import io.github.mfaisalkhatri.data.BillingData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created By Faisal Khatri on 26-07-2022
@@ -18,14 +21,16 @@ public class CheckoutPage {
         return new CheckoutPage ();
     }
 
+    private final WebDriverWait wait;
+
+    private CheckoutPage () {
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (10));
+    }
+
     public ConfirmOrderPage checkoutProduct () {
-        final Actions actions = new Actions (getDriver ());
-        actions.moveToElement (agreeTermsAndConditionsField ())
-            .click ()
-            .moveToElement (continueBtn ())
-            .click ()
-            .perform ();
-        return ConfirmOrderPage.confirmOrderPage ();
+        agreeTermsAndConditionsField ().click ();
+        continueBtn ().click ();
+        return new ConfirmOrderPage ();
     }
 
     public String getUnitPriceOfCameraLens () {
@@ -49,7 +54,7 @@ public class CheckoutPage {
     }
 
     private WebElement agreeTermsAndConditionsField () {
-        return getDriver ().findElement (By.id ("input-agree"));
+        return getDriver ().findElement (By.cssSelector ("#input-agree +label"));
     }
 
     private WebElement cityField () {
@@ -57,7 +62,7 @@ public class CheckoutPage {
     }
 
     private WebElement continueBtn () {
-        return getDriver ().findElement (By.id ("button-save"));
+        return this.wait.until (ExpectedConditions.elementToBeClickable (By.cssSelector ("button#button-save")));
     }
 
     private Select countryField () {
