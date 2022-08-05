@@ -49,7 +49,7 @@ public class ProductPage {
     private WebElement notificationPopUp () {
         return getDriver ().findElement (By.id ("notification-box-top"));
     }
-    
+
     private WebElement palmTreoCameraLens () {
         return getDriver ().findElement (By.cssSelector ("#entry_212408 > div > div:nth-child(2)"));
     }

@@ -4,8 +4,8 @@ import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 import static org.testng.Assert.assertEquals;
 
-import io.github.mfaisalkhatri.testdata.RegisterUserData;
-import io.github.mfaisalkhatri.testdata.TestDataBuilder;
+import io.github.mfaisalkhatri.data.RegisterUserData;
+import io.github.mfaisalkhatri.data.TestDataBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,34 +20,6 @@ public class RegistrationPage {
 
     public RegistrationPage () {
         this.registerUserData = TestDataBuilder.getRegisterUserData ();
-    }
-
-    public WebElement agreePrivacyPolicyField () {
-        return registrationForm ().findElement (By.id ("input-agree"));
-    }
-
-    public WebElement confirmPasswordField () {
-        return registrationForm ().findElement (By.id ("input-confirm"));
-    }
-
-    public WebElement continueBtn () {
-        return registrationForm ().findElement (By.cssSelector ("input.btn-primary"));
-    }
-
-    public WebElement emailField () {
-        return registrationForm ().findElement (By.id ("input-email"));
-    }
-
-    public WebElement firstNameField () {
-        return registrationForm ().findElement (By.id ("input-firstname"));
-    }
-
-    public WebElement lastNameField () {
-        return registrationForm ().findElement (By.id ("input-lastname"));
-    }
-
-    public WebElement passwordField () {
-        return registrationForm ().findElement (By.id ("input-password"));
     }
 
     public RegistrationSuccessPage registerUser () {
@@ -65,18 +37,46 @@ public class RegistrationPage {
         return new RegistrationSuccessPage ();
     }
 
-    public WebElement registrationForm () {
-        return getDriver ().findElement (By.id ("content"));
-    }
-    
-    public WebElement telephoneField () {
-        return registrationForm ().findElement (By.id ("input-telephone"));
-    }
-
     public RegistrationPage verifyPageHeader () {
         assertEquals (getDriver ().findElement (By.tagName ("h1"))
             .getText (), "Register Account");
         return this;
+    }
+
+    private WebElement agreePrivacyPolicyField () {
+        return registrationForm ().findElement (By.id ("input-agree"));
+    }
+
+    private WebElement confirmPasswordField () {
+        return registrationForm ().findElement (By.id ("input-confirm"));
+    }
+
+    private WebElement continueBtn () {
+        return registrationForm ().findElement (By.cssSelector ("input.btn-primary"));
+    }
+
+    private WebElement emailField () {
+        return registrationForm ().findElement (By.id ("input-email"));
+    }
+
+    private WebElement firstNameField () {
+        return registrationForm ().findElement (By.id ("input-firstname"));
+    }
+
+    private WebElement lastNameField () {
+        return registrationForm ().findElement (By.id ("input-lastname"));
+    }
+
+    private WebElement passwordField () {
+        return registrationForm ().findElement (By.id ("input-password"));
+    }
+
+    private WebElement registrationForm () {
+        return getDriver ().findElement (By.id ("content"));
+    }
+
+    private WebElement telephoneField () {
+        return registrationForm ().findElement (By.id ("input-telephone"));
     }
 
 }

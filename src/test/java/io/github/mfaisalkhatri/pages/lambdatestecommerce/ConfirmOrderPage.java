@@ -5,7 +5,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
 
-import io.github.mfaisalkhatri.testdata.BillingData;
+import io.github.mfaisalkhatri.data.BillingData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -24,13 +24,11 @@ public class ConfirmOrderPage {
     public OrderSuccessPage confirmOrder () {
         final Actions actions = new Actions (getDriver ());
         confirmOrderBtn ().click ();
-        actions.pause (700)
-            .perform ();
         return new OrderSuccessPage ();
     }
 
     public ConfirmOrderPage verifyPageHeader () {
-        WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (20));
+        final WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (20));
         assertEquals (wait.until (ExpectedConditions.visibilityOfElementLocated (By.tagName ("h1")))
             .getText (), "Confirm Order");
         return this;

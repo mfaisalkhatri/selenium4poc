@@ -19,7 +19,7 @@ public class HomePage {
             .click ();
         return new RegistrationPage ();
     }
-    
+
     public ProductPage shopByCategory (final String linkName) {
         shopByCategory ().selectCategory (linkName)
             .click ();
