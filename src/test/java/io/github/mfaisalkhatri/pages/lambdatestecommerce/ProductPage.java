@@ -3,6 +3,8 @@ package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 
+import java.text.MessageFormat;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,9 +21,9 @@ public class ProductPage {
     public ProductPage addPalmTreoCameraLensToCart () {
         final Actions actions = new Actions (getDriver ());
         actions.moveToElement (palmTreoCameraLens ())
-            .pause (500)
-            .moveToElement (addToCartBtn ())
             .pause (200)
+            .moveToElement (addToCartBtn ())
+            .pause (100)
             .click ()
             .perform ();
         return this;
@@ -33,8 +35,10 @@ public class ProductPage {
     }
 
     public ProductPage verifySuccessMessage () {
+        final String expectedMessage = "{0}\n{1}\n{2}\n{3}\n{4}";
         assertEquals (notificationPopUp ().findElement (By.tagName ("p"))
-            .getText (), "Success: You have added\n" + "Palm Treo Pro\n" + "to your\n" + "shopping cart\n" + "!");
+            .getText (), MessageFormat.format (expectedMessage, "Success: You have added", "Palm Treo Pro", "to your",
+            "shopping cart", "!"));
         return this;
     }
 
@@ -49,7 +53,7 @@ public class ProductPage {
     private WebElement notificationPopUp () {
         return getDriver ().findElement (By.id ("notification-box-top"));
     }
-    
+
     private WebElement palmTreoCameraLens () {
         return getDriver ().findElement (By.cssSelector ("#entry_212408 > div > div:nth-child(2)"));
     }

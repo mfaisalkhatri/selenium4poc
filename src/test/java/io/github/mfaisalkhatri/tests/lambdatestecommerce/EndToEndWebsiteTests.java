@@ -6,8 +6,8 @@ import static io.github.mfaisalkhatri.pages.lambdatestecommerce.ConfirmOrderPage
 import static io.github.mfaisalkhatri.pages.lambdatestecommerce.HomePage.homePage;
 import static io.github.mfaisalkhatri.pages.lambdatestecommerce.OrderSuccessPage.orderSuccessPage;
 
-import io.github.mfaisalkhatri.testdata.BillingData;
-import io.github.mfaisalkhatri.testdata.TestDataBuilder;
+import io.github.mfaisalkhatri.data.BillingData;
+import io.github.mfaisalkhatri.data.TestDataBuilder;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

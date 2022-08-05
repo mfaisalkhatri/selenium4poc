@@ -22,10 +22,12 @@ public class OrderSuccessPage {
     public void continueToHomePage () {
         continueBtn ().click ();
     }
-    
+
     public OrderSuccessPage verifySuccessMessage () {
-        final WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (10));
-        assertEquals (wait.until (ExpectedConditions.visibilityOfElementLocated (By.tagName ("h1")))
+        final WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (20));
+        wait.until (
+            ExpectedConditions.textToBePresentInElementLocated (By.tagName ("h1"), "Your order has been placed!"));
+        assertEquals (getDriver ().findElement (By.tagName ("h1"))
             .getText (), "Your order has been placed!");
         return this;
     }

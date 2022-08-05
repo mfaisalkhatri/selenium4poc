@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.testdata;
+package io.github.mfaisalkhatri.data;
 
 import com.github.javafaker.Faker;
 
