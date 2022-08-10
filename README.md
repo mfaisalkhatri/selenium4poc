@@ -1,4 +1,5 @@
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java CI with Maven](https://github.com/mfaisalkhatri/selenium4poc/actions/workflows/maven.yml/badge.svg)](https://github.com/mfaisalkhatri/selenium4poc/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/mfaisalkhatri/selenium4poc/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mfaisalkhatri/selenium4poc/actions/workflows/codeql-analysis.yml)
 
@@ -8,7 +9,8 @@
 
 - This repo has example codes with Selenium 4 features.
 - Websites used for testing are: [automationpractice.com][automationpractice], [saucedemo.com][saucedemo],
-  [the-internet][the-internet] [owasp-juice-shop][juice-shop] and [Lambdatest E-Commerce Playground][lambdatestecommerceplayground]
+  [the-internet][the-internet] [owasp-juice-shop][juice-shop]
+  and [LambdaTest E-Commerce Playground][lambdatestecommerceplayground]
 - This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests.
 
 ## Talking more about the Scenarios Covered in this project:
@@ -17,9 +19,9 @@
 
 1. How do I select a value from Table?
 2. How do I tick and untick checkboxes using selenium
-3. How do I right click using selenium?
+3. How do I right-click using selenium?
 4. How do I drag and drop using selenium?
-5. How do I write code to login and logout using Selenium?
+5. How do I write code to log in and logout using Selenium?
 6. How do I pass multiple test data value using DataProvider in tests?
 7. How do I mouse hover an element using selenium?
 8. How do I download a file using Selenium?
@@ -27,10 +29,10 @@
 10. How do I press keys using selenium?
 11. How do I work with multiple Tab windows in selenium?
 12. How do I work with iFrames using Selenium?
-13. How do I double click using Selenium WebDriver?
+13. How do I double-click using Selenium WebDriver?
 14. How to check for chrome generated logs when selenium tests are run?
 
-### End-to-End Tests for [owasp-juice-shop][juice-shop]
+## End-to-End Tests for [owasp-juice-shop][juice-shop]
 
 ### Following is the Automation Test Strategy used for writing End-to-End Tests:
 
@@ -49,15 +51,35 @@
     delivery message.
 
 - End-to-End tests for Juice Shop Website are running on 'http://localhost:3000' inside the container in GitHub actions.
-- CI/CD Pipeline has been added using Github Actions. Checkout the
-  blog [How to setup Github Actions for Java with Maven project?][bloggithubactions] for detailed explanation of how to
-  setup pipeline using github actions.
+- CI/CD Pipeline has been added using GitHub Actions. Checkout the
+  blog [How to setup GitHub Actions for Java with Maven project?][bloggithubactions] for detailed explanation of how to
+  set up pipeline using GitHub actions.
 - Checkout the blog [End to End testing using Selenium WebDriver and Java][seleniumblogmedium] to get better
-  understanding of how to write end to end tests.
+  understanding of how to write end-to-end tests.
+
+## End-to-End Tests for [LambdaTest ECommerce Playground Website][lambdatestecommerceplayground]
+
+### Following is the automation test strategy used for writing end-to-end tests:
+
+1. The User will navigate to the website.
+2. From the Home Page of the screen, user will navigate to the Registration Page and register himself. Verification will
+   be done by asserting the registration successful message.
+3. User will click on the Shop by Category option on the top left and select a category for selecting the product to
+   purchase.
+4. From the Product Page, the user will hover on any product which he likes and select the Add to cart option. Once a
+   product is added to cart, assertions will be performed to check the success message displayed.
+5. On the Checkout page, user will provide the billing address details and also assertion will be made for product name
+   and its respective price.
+6. Once a product is checked out, the user lands on the Order Confirmation page, where product name, price and shipping
+   address will be asserted and after that Order would be marked as confirmed.
+7. Finally, an Order confirmation message would be verified in the tests which marks the end of the test journey.
+
+- Checkout the blog [Writing Selenium Web Automation tests in Fluent way!][seleniummediumfleuntblog] to get better
+  understanding of how to write end-to-end tests using fluent pattern.
 
 ## How to run the Tests?
 
-### Running Juice Shop Tests in local
+### Running Juice Shop Tests on your local machine:
 
 - Start `Juice-Shop` website locally, for doing this we will make use of `docker-compose-v3-juiceshop.yml` which is
   available in the root folder of this project.
@@ -85,7 +107,7 @@
 
   `docker-compose -f docker-compose-v3-juiceshop.yml down`
 
-### Running Selenium Grid in local and running tests using Selenium Grid
+### Running Selenium Grid on local and running tests using Selenium Grid
 
 - Start the Selenium Grid in local using the `docker-compose-v3-seleniumgrid.yml` file.
 - Run the following command:
@@ -110,23 +132,42 @@
 
 - Start the `Juice -Shop` website using following command:
 
-     `docker-compose -f docker-compose-v3-juiceshop.yml up -d`
+  `docker-compose -f docker-compose-v3-juiceshop.yml up -d`
 
 - Start `Selenium Grid` using following command:
 
-    `docker-compose -f docker-compose-v3-seleniumgrid.yml up -d`
+  `docker-compose -f docker-compose-v3-seleniumgrid.yml up -d`
 
 - Run the tests using `TestNG`:
 
-    Right click on `test-suite\testng.xml` and select `Run test-suite\testng.xml`
+  Right click on `test-suite\testng.xml` and select `Run test-suite\testng.xml`
 
-- Run the tests using `Maven` in headless mode: 
+- Run the tests using `Maven` in headless mode:
 
-    `mvn clean install -Dheadless=true`
+  `mvn clean install -Dheadless=true`
 
 - Stopping the `Juice-Shop` website and `Selenium Grid`:
 
   `docker-compose -f docker-compose-v3-juiceshop.yml down --remove-orphan`
+
+### Running LambdaTest ECommerce Playground Tests on your local machine:
+
+- There are 2 ways to run the tests, those are as follows:
+
+  ### 1. TestNG:
+    - Right-Click on the `test-suite\testng-lambdatestecommerce.xml` and
+      select `Run ...\test-suite\testng-lambdatestecommerce.xml`
+
+  ### 2. Maven:
+    - To run the tests in headless mode update the value for `headless` property variable to `true`
+
+      `mvn clean install -Dsuite-xml=test-suite\testng-lambdatestecommerce.xml -Dheadless=true`
+
+    - To run the tests without headless mode(to see the test running in browser) update the value for headless property
+      variable to
+      `false`
+
+      `mvn clean install -Dsuite-xml=test-suite\testng-lambdatestecommerce.xml -Dheadless=false`
 
 ## :question: Need Assistance?
 
@@ -134,7 +175,7 @@
   social media sites:
 - Twitter: [mfaisal_khatri][twitter]
 - LinkedIn: [Mohammad Faisal Khatri][linkedin]
-- Contact me for 1:1 trainings related to Testing and Test Automation.
+- Contact me for 1:1 training related to Testing and Test Automation.
 
 ## :thought_balloon: Checkout the blogs related to Testing on my [website][]
 
@@ -159,3 +200,5 @@
 [seleniumblogmedium]: https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca
 
 [lambdatestecommerceplayground]: https://ecommerce-playground.lambdatest.io/
+
+[seleniummediumfleuntblog]: https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a
