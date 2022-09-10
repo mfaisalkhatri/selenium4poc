@@ -203,7 +203,7 @@ public class DriverManager {
                 new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_TOKEN, GRID_URL)),
                     browserOptions));
         } catch (final MalformedURLException e) {
-            throw new Error (e);
+            LOG.error ("Error setting up cloud browser in LambdaTest", e);
         }
 
     }
