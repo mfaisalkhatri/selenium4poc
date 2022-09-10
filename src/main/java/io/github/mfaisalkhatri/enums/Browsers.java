@@ -26,12 +26,18 @@ public enum Browsers {
      */
     REMOTE_CHROME,
     /**
-     * Remote Grid / cloud Chrome browser.
+     * Remote Grid / cloud Firefox browser.
      */
     REMOTE_FIREFOX,
 
     /**
-     * Remote Grid / cloud Chrome browser.
+     * Remote Grid / cloud Edge browser.
      */
-    REMOTE_EDGE;
+    REMOTE_EDGE,
+
+    /**
+     * LambdaTest Chrome browser.
+     */
+    REMOTE_CHROME_LAMBDATEST
+
 }
