@@ -34,6 +34,9 @@
 
 ## End-to-End Tests for [owasp-juice-shop][juice-shop]
 
+- End-to-End tests for Juice Shop Website are running on `http://localhost:3000` inside the container in GitHub actions.
+- GitHub Actions is used for setting up CI/CD Pipeline
+
 ### Following is the Automation Test Strategy used for writing End-to-End Tests:
 
 1. User will navigate to the website and close all the pop-up first.
@@ -49,13 +52,6 @@
    paid and place order.
 10. User will re-check the details on Order confirmation page and check for `Thank You` message order confirmation and
     delivery message.
-
-- End-to-End tests for Juice Shop Website are running on 'http://localhost:3000' inside the container in GitHub actions.
-- CI/CD Pipeline has been added using GitHub Actions. Checkout the
-  blog [How to setup GitHub Actions for Java with Maven project?][bloggithubactions] for detailed explanation of how to
-  set up pipeline using GitHub actions.
-- Checkout the blog [End to End testing using Selenium WebDriver and Java][seleniumblogmedium] to get better
-  understanding of how to write end-to-end tests.
 
 ## End-to-End Tests for [LambdaTest ECommerce Playground Website][lambdatestecommerceplayground]
 
@@ -73,9 +69,6 @@
 6. Once a product is checked out, the user lands on the Order Confirmation page, where product name, price and shipping
    address will be asserted and after that Order would be marked as confirmed.
 7. Finally, an Order confirmation message would be verified in the tests which marks the end of the test journey.
-
-- Checkout the blog [Writing Selenium Web Automation tests in Fluent way!][seleniummediumfleuntblog] to get better
-  understanding of how to write end-to-end tests using fluent pattern.
 
 ## How to run the Tests?
 
@@ -169,21 +162,35 @@
 
       `mvn clean install -Dsuite-xml=test-suite\testng-lambdatestecommerce.xml -Dheadless=false`
 
+## :writing_hand: Blog Links
+
+- [How to setup GitHub Actions for Java with Maven project?][bloggithubactions]
+- [End to End testing using Selenium WebDriver and Java][seleniumblogmedium]
+- [Writing Selenium Web Automation tests in Fluent way!][seleniummediumfleuntblog]
+- [Transition from Manual to Automation Testing][manualtoautomation]
+
 ## :question: Need Assistance?
 
-- Discuss your queries by writing to me @ [mohammadfaisalkhatri@gmail.com][mail] OR you can ping me on the following
-  social media sites:
-- Twitter: [mfaisal_khatri][twitter]
-- LinkedIn: [Mohammad Faisal Khatri][linkedin]
-- Contact me for 1:1 training related to Testing and Test Automation.
+- Discuss your queries by writing to me @ `mohammadfaisalkhatri@gmail.com`
+  OR ping me on any of the social media sites using the below link:
+    - [Linktree][linktree]
+  
+## :computer: Paid Trainings
+
+Contact me for Paid trainings related to Test Automation and Software Testing,
+mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn][linkedin]
 
 ## :thought_balloon: Checkout the blogs related to Testing on my [website][]
 
-[mail]: mohammadfaisalkhatri@gmail.com
+## :bulb: Cloud platform supporter
+
+### Big thanks to **LambdaTest** for their support to the project with their open source license:
+
+<a href="http://www.lambdatest.com?fp_ref=faisal58" target="_blank" style="outline:none;border:none;"><img src="https://d2gdx5nv84sdx2.cloudfront.net/uploads/n3ufe5o3/marketing_asset/banner/6476/728_x_90.png" alt="lambdatest" border="0"/></a>
+
+[linktree]: https://linktr.ee/faisalkhatri
 
 [linkedin]: https://www.linkedin.com/in/faisalkhatri/
-
-[twitter]: https://twitter.com/mfaisal_khatri
 
 [automationpractice]:http://automationpractice.com/index.php
 
@@ -202,3 +209,5 @@
 [lambdatestecommerceplayground]: https://ecommerce-playground.lambdatest.io/
 
 [seleniummediumfleuntblog]: https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a
+
+[manualtoautomation]:https://mfaisalkhatri.github.io/2022/03/13/transitionmanualtoautomation/
