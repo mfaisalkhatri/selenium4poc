@@ -15,15 +15,23 @@ public class HomePage {
         return new HomePage ();
     }
 
+    public LoginPage navigateToLoginPage () {
+        openMyAccountMenu ().loginLink ()
+            .click ();
+        return new LoginPage ();
+
+    }
+
     public RegistrationPage openUserRegistrationPage () {
         openMyAccountMenu ().registerLink ()
             .click ();
         return new RegistrationPage ();
     }
 
-    public void searchProduct (final String productName) {
+    public SearchResultPage searchProduct (final String productName) {
         enterText (searchBox (), productName);
-        searchBox ().click ();
+        searchButton ().click ();
+        return new SearchResultPage ();
     }
 
     public ProductPage shopByCategory (final String linkName) {
