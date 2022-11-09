@@ -1,6 +1,7 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,11 @@ public class HomePage {
         openMyAccountMenu ().registerLink ()
             .click ();
         return new RegistrationPage ();
+    }
+
+    public void searchProduct (final String productName) {
+        enterText (searchBox (), productName);
+        searchBox ().click ();
     }
 
     public ProductPage shopByCategory (final String linkName) {
@@ -38,6 +44,14 @@ public class HomePage {
 
     private WebElement registerLink () {
         return getDriver ().findElement (By.linkText ("Register"));
+    }
+
+    private WebElement searchBox () {
+        return getDriver ().findElement (By.name ("search"));
+    }
+
+    private WebElement searchButton () {
+        return getDriver ().findElement (By.cssSelector (".search-button"));
     }
 
     private WebElement selectCategory (final String linkName) {
