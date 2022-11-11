@@ -13,13 +13,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.java.version>4.3.0</selenium.java.version>
+        <selenium.java.version>4.6.0</selenium.java.version>
         <testng.version>7.6.1</testng.version>
-        <webdrivermanager.version>5.2.1</webdrivermanager.version>
+        <webdrivermanager.version>5.3.1</webdrivermanager.version>
         <commons-io.version>2.11.0</commons-io.version>
-        <log4jcore.version>2.18.0</log4jcore.version>
-        <log4japi.version>2.18.0</log4japi.version>
-        <orgjson.version>20220320</orgjson.version>
+        <log4jcore.version>2.19.0</log4jcore.version>
+        <log4japi.version>2.19.0</log4japi.version>
+        <orgjson.version>20220924</orgjson.version>
         <javafaker.version>1.0.2</javafaker.version>
         <seleniumdevtoolsv101.version>4.3.0</seleniumdevtoolsv101.version>
         <lombok.version>1.18.24</lombok.version>
