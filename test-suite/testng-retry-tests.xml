@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LambdaTest ecommerce playground website test suite ">
+    <listeners>
+        <listener class-name="io.github.mfaisalkhatri.listeners.RetryListener"/>
+    </listeners>
+    <test name="Search Product tests ">
+        <parameter name="browser" value="remote_chrome_lambdatest"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.retrytests.RetryFailedTests">
+                <methods>
+                    <include name="testNavigationToLoginPage"/>
+                    <include name="testSearchProduct"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

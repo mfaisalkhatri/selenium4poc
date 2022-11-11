@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Automation Practice Website Tests " verbose="2">
-    <test name="selenium 4 Tests on Automation Practice Website">
+    <test name="selenium 4 Tests on Automation Practice Website" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.automationpractice.ContactUsTests">
