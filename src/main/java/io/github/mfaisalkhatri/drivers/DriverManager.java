@@ -26,11 +26,11 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  */
 public class DriverManager {
     private static final ThreadLocal<WebDriver> DRIVER          = new ThreadLocal<> ();
+    private static final String                 GRID_URL        = "@hub.lambdatest.com/wd/hub";
     private static final String                 HUB_URL         = "http://localhost:4444/wd/hub";
     private static final Logger                 LOG             = LogManager.getLogger ("DriverManager.class");
-    private static final String                 LT_USERNAME     = System.getProperty ("username");
     private static final String                 LT_ACCESS_TOKEN = System.getProperty ("accessKey");
-    private static final String                 GRID_URL        = "@hub.lambdatest.com/wd/hub";
+    private static final String                 LT_USERNAME     = System.getProperty ("username");
 
     public static void createDriver (final Browsers browser) {
         switch (browser) {
@@ -66,16 +66,16 @@ public class DriverManager {
         return (D) DriverManager.DRIVER.get ();
     }
 
-    private static void setDriver (final WebDriver driver) {
-        DriverManager.DRIVER.set (driver);
-    }
-
     public static void quitDriver () {
         if (null != DRIVER.get ()) {
             LOG.info ("Closing the driver...");
             getDriver ().quit ();
             DRIVER.remove ();
         }
+    }
+
+    private static void setDriver (final WebDriver driver) {
+        DriverManager.DRIVER.set (driver);
     }
 
     private static void setupBrowserTimeouts () {
@@ -89,36 +89,6 @@ public class DriverManager {
         getDriver ().manage ()
             .timeouts ()
             .scriptTimeout (Duration.ofSeconds (30));
-    }
-
-    private DriverManager () {
-    }
-
-    private static void setupFirefoxDriver () {
-        LOG.info ("Setting up Firefox Driver....");
-        final FirefoxOptions options = new FirefoxOptions ();
-        options.addArguments ("--no-sandbox");
-        options.addArguments ("--disable-dev-shm-usage");
-        options.addArguments ("--window-size=1050,600");
-        options.addArguments ("--headless");
-        setDriver (WebDriverManager.firefoxdriver ()
-            .capabilities (options)
-            .create ());
-        LOG.info ("Firefox Driver created successfully!");
-    }
-
-    private static void setupEdgeDriver () {
-        LOG.info ("Setting up Edge Driver....");
-        setDriver (WebDriverManager.edgedriver ()
-            .create ());
-        LOG.info ("Edge Driver created successfully!");
-    }
-
-    private static void setupOperaDriver () {
-        LOG.info ("Setting up Opera Driver....");
-        setDriver (WebDriverManager.operadriver ()
-            .create ());
-        LOG.info ("Opera Driver created successfully!");
     }
 
     private static void setupChromeDriver () {
@@ -147,43 +117,6 @@ public class DriverManager {
         LOG.info ("Chrome Driver created successfully!");
     }
 
-    private static void setupRemoteChrome () {
-        try {
-            LOG.info ("Setting up Remote Chrome Driver....");
-            final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName (CHROME.browserName ());
-            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
-            LOG.info ("Remote Chrome Driver created successfully!");
-        } catch (final MalformedURLException e) {
-            LOG.error ("Error setting remote_chrome", e);
-        }
-    }
-
-    private static void setupRemoteFirefox () {
-        try {
-
-            LOG.info ("Setting up Remote Firefox Driver....");
-            final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName ("firefox");
-            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
-            LOG.info ("Remote Firefox Driver created successfully!");
-        } catch (final MalformedURLException e) {
-            LOG.error ("Error setting remote_firefox", e);
-        }
-    }
-
-    private static void setupRemoteEdge () {
-        try {
-            LOG.info ("Setting up Remote Edge Driver....");
-            final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName ("MicrosoftEdge");
-            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
-            LOG.info ("Remote Edge Driver created successfully!");
-        } catch (final MalformedURLException e) {
-            LOG.error ("Error setting remote_edge", e);
-        }
-    }
-
     private static void setupChromeInLambdaTest () {
         final ChromeOptions browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
@@ -206,5 +139,73 @@ public class DriverManager {
             LOG.error ("Error setting up cloud browser in LambdaTest", e);
         }
 
+    }
+
+    private static void setupEdgeDriver () {
+        LOG.info ("Setting up Edge Driver....");
+        setDriver (WebDriverManager.edgedriver ()
+            .create ());
+        LOG.info ("Edge Driver created successfully!");
+    }
+
+    private static void setupFirefoxDriver () {
+        LOG.info ("Setting up Firefox Driver....");
+        final FirefoxOptions options = new FirefoxOptions ();
+        options.addArguments ("--no-sandbox");
+        options.addArguments ("--disable-dev-shm-usage");
+        options.addArguments ("--window-size=1050,600");
+        options.addArguments ("--headless");
+        setDriver (WebDriverManager.firefoxdriver ()
+            .capabilities (options)
+            .create ());
+        LOG.info ("Firefox Driver created successfully!");
+    }
+
+    private static void setupOperaDriver () {
+        LOG.info ("Setting up Opera Driver....");
+        setDriver (WebDriverManager.operadriver ()
+            .create ());
+        LOG.info ("Opera Driver created successfully!");
+
+    }
+
+    private static void setupRemoteChrome () {
+        try {
+            LOG.info ("Setting up Remote Chrome Driver....");
+            final DesiredCapabilities caps = new DesiredCapabilities ();
+            caps.setBrowserName (CHROME.browserName ());
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
+            LOG.info ("Remote Chrome Driver created successfully!");
+        } catch (final MalformedURLException e) {
+            LOG.error ("Error setting remote_chrome", e);
+        }
+    }
+
+    private static void setupRemoteEdge () {
+        try {
+            LOG.info ("Setting up Remote Edge Driver....");
+            final DesiredCapabilities caps = new DesiredCapabilities ();
+            caps.setBrowserName ("MicrosoftEdge");
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
+            LOG.info ("Remote Edge Driver created successfully!");
+        } catch (final MalformedURLException e) {
+            LOG.error ("Error setting remote_edge", e);
+        }
+    }
+
+    private static void setupRemoteFirefox () {
+        try {
+
+            LOG.info ("Setting up Remote Firefox Driver....");
+            final DesiredCapabilities caps = new DesiredCapabilities ();
+            caps.setBrowserName ("firefox");
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
+            LOG.info ("Remote Firefox Driver created successfully!");
+        } catch (final MalformedURLException e) {
+            LOG.error ("Error setting remote_firefox", e);
+        }
+    }
+
+    private DriverManager () {
     }
 }
