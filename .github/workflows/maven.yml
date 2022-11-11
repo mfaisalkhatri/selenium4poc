@@ -8,6 +8,11 @@ on:
     branches:
       - master
       - issue-*
+      -
+  push:
+    branches:
+      - master
+      - issue-*
 
 jobs:
   build_and_test:
@@ -26,7 +31,7 @@ jobs:
           cache: maven
 
       - name: Setup Juice Shop using docker compose
-        run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
 
       - name: Start Selenium Grid 4
         run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
@@ -76,7 +81,7 @@ jobs:
           cache: maven
 
       - name: Setup Juice Shop using docker compose
-        run : docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
 
       - name: Start Selenium Grid 4
         run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
