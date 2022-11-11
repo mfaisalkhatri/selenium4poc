@@ -9,8 +9,8 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.retrytests.RetryFailedTests">
                 <methods>
-                    <include name="testSearchProduct"/>
                     <include name="testNavigationToLoginPage"/>
+                    <include name="testSearchProduct"/>
                 </methods>
             </class>
         </classes>
