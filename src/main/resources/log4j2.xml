@@ -6,7 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="io.github.mfaisalkhatri" level="debug" additivity="false">
+        <Logger name="io.github.mfaisalkhatri" level="error" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
         <Root level="error">
