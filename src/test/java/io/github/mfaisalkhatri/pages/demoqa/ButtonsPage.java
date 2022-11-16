@@ -32,7 +32,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ButtonsPage {
 
     public void doubleClickOnButton () {
-        final JavascriptExecutor js = (JavascriptExecutor) getDriver ();
+        final JavascriptExecutor js = getDriver ();
         js.executeScript ("arguments[0].scrollIntoView();", btnDoubleCLick ());
 
         final Actions action = new Actions (getDriver ());
