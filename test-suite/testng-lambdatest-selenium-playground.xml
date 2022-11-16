@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lambdatest e-commerce Website Tests " verbose="2">
+    <test name="selenium 4 Tests on Lambdatest ecommerce Website">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.SingleDropdownTests">
+                <methods>
+                    <include name="testDropDownAllowsMultipleSelection"/>
+                    <include name="testSelectDayUsingIndex"/>
+                    <include name="testSelectDayUsingVisibleText"/>
+                    <include name="testSelectDayUsingValue"/>
+                    <include name="testGetAlLOptionsInDropdownField"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
