@@ -33,7 +33,7 @@ public class ButtonsPage {
 
     public void doubleClickOnButton () {
         final JavascriptExecutor js = getDriver ();
-        js.executeScript ("arguments[0].scrollIntoView();", btnDoubleCLick ());
+        js.executeScript ("arguments[0].scrollIntoView(true);", btnDoubleCLick ());
 
         final Actions action = new Actions (getDriver ());
         action.doubleClick (btnDoubleCLick ())
@@ -42,7 +42,7 @@ public class ButtonsPage {
 
     public String getTextOnClick () {
         final WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (10));
-        return wait.until (ExpectedConditions.visibilityOfElementLocated (By.id ("doubleClickMessage")))
+        return wait.until (ExpectedConditions.presenceOfElementLocated (By.id ("doubleClickMessage")))
             .getText ();
     }
 
