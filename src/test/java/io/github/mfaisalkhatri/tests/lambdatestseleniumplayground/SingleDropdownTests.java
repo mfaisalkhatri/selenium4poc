@@ -34,7 +34,9 @@ public class SingleDropdownTests extends BaseSuiteSetup {
 
     @Test
     public void testGetAlLOptionsInDropdownField () {
-        assertEquals (this.dropdownPage.getOptions (), this.dropdownPage.expectedDropdownOptions ());
+        assertEquals (this.dropdownPage.getOptions (), this.dropdownPage.expectedValues (
+            new String[] { "Please select", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+                "Saturday" }));
     }
 
     @Test

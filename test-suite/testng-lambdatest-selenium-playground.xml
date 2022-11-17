@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lambdatest e-commerce Website Tests " verbose="2">
-    <test name="selenium 4 Tests on Lambdatest ecommerce Website">
+<suite name="Lambdatest Selemnium Playground Tests " verbose="2">
+    <test name="Single dropdown selection tests">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.SingleDropdownTests">
@@ -15,4 +15,18 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Multi dropdown selection tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.MultiSelectListTests">
+                <methods>
+                    <include name="testCheckIfDropdownIsMultiSelect"/>
+                    <include name="testBySelectingMultipleValuesByVisibleText"/>
+                    <include name="testBySelectingMultipleValuesByIndex"/>
+                    <include name="testBySelectingMultipleValues"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+
 </suite> <!-- Suite -->

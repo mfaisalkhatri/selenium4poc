@@ -39,31 +39,21 @@ public class DropdownPage {
         multiSelectDropdownList ().deselectByVisibleText (text);
     }
 
-    public ArrayList<String> expectedDropdownOptions () {
+    public ArrayList<String> expectedValues (String[] values) {
         ArrayList<String> expectedOptions = new ArrayList<> ();
-        expectedOptions.add ("Please select");
-        expectedOptions.add ("Sunday");
-        expectedOptions.add ("Monday");
-        expectedOptions.add ("Tuesday");
-        expectedOptions.add ("Wednesday");
-        expectedOptions.add ("Thursday");
-        expectedOptions.add ("Friday");
-        expectedOptions.add ("Saturday");
+        expectedOptions.addAll (List.of (values));
         return expectedOptions;
     }
 
-    //Fix Me - Add a loop to return all the values!!
-    public String getAllSelectedOptions () {
-        return multiSelectDropdownList ().getAllSelectedOptions ()
-            .get (1)
-            .getText ();
-    }
-
-    public String getAllSelectedValues () {
-        btnGetAllSelected ().click ();
-        return getDriver ().findElement (By.cssSelector ("p.text-size-14:nth-child(2)"))
-            .getText ();
-
+    public List<String> getAllSelectedOptions () {
+        final List<WebElement> allOptions = multiSelectDropdownList ().getAllSelectedOptions ();
+        final int size = allOptions.size ();
+        ArrayList<String> options = new ArrayList<> ();
+        for (int i = 0; i < size; i++) {
+            options.add (allOptions.get (i)
+                .getText ());
+        }
+        return options;
     }
 
     public String getFirstSelectedOption () {
@@ -93,20 +83,34 @@ public class DropdownPage {
             .getText ();
     }
 
+    public void multiSelectByValues (String[] values) {
+        refreshPage ();
+        for (int i = 0; i < values.length; i++) {
+            multiSelectDropdownList ().selectByValue (values[i]);
+        }
+    }
+
+    public void refreshPage () {
+        getDriver ().navigate ()
+            .refresh ();
+    }
+
     public void selectDayByVisibleText (final String visibleText) {
         singleSelectDropdownList ().selectByVisibleText (visibleText);
     }
 
-    public void selectMultipleOptionByIndex (int index) {
-        multiSelectDropdownList ().selectByIndex (index);
+    public void selectMultipleOptionByIndex (int[] index) {
+        refreshPage ();
+        for (int i = 0; i < index.length; i++) {
+            multiSelectDropdownList ().selectByIndex (index[i]);
+        }
     }
 
-    public void selectMultipleOptionByVisibleText (String text) {
-        multiSelectDropdownList ().selectByVisibleText (text);
-    }
-
-    public void selectMultipleValue (String value) {
-        multiSelectDropdownList ().selectByValue (value);
+    public void selectMultipleOptionByVisibleText (String[] text) {
+        refreshPage ();
+        for (int i = 0; i < text.length; i++) {
+            multiSelectDropdownList ().selectByVisibleText (text[i]);
+        }
     }
 
     public void selectSingleDayIndex (final int index) {
