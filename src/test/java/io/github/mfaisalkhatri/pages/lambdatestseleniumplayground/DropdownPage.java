@@ -88,6 +88,7 @@ public class DropdownPage {
         for (int i = 0; i < values.length; i++) {
             multiSelectDropdownList ().selectByValue (values[i]);
         }
+
     }
 
     public void refreshPage () {

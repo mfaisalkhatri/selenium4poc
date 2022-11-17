@@ -104,7 +104,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Double Click on Button Tests">
+    <test name="Double Click on Button Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.demoqa.DoubleClickTests">

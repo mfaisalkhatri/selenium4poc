@@ -55,5 +55,45 @@ public class MultiSelectListTests extends BaseSuiteSetup {
     public void testCheckIfDropdownIsMultiSelect () {
         assertTrue (this.dropdownPage.checkIfMultipleDropdown ());
     }
+
+    @Test
+    public void testDeselectAll () {
+        this.dropdownPage.selectMultipleOptionByVisibleText (new String[] { "New York", "New Jersey", "Washington" });
+        this.dropdownPage.deselectAllValues ();
+        assertEquals (this.dropdownPage.getAllSelectedOptions (), this.dropdownPage.expectedValues (new String[] {}));
+
+    }
+
+    @Test
+    public void testDeselectByIndex () {
+        this.dropdownPage.selectMultipleOptionByVisibleText (new String[] { "New York", "New Jersey", "Washington" });
+        this.dropdownPage.deselectByIndex (3);
+        this.dropdownPage.deselectByIndex (7);
+        assertEquals (this.dropdownPage.getAllSelectedOptions (),
+            this.dropdownPage.expectedValues (new String[] { "New Jersey" }));
+    }
+
+    @Test
+    public void testDeselectByValue () {
+        this.dropdownPage.selectMultipleOptionByVisibleText (new String[] { "New York", "New Jersey", "Washington" });
+        this.dropdownPage.deselectByValue ("New York");
+        assertEquals (this.dropdownPage.getAllSelectedOptions (),
+            this.dropdownPage.expectedValues (new String[] { "New Jersey", "Washington" }));
+    }
+
+    @Test
+    public void testDeselectByVisibleText () {
+        this.dropdownPage.selectMultipleOptionByVisibleText (new String[] { "New York", "New Jersey", "Washington" });
+        this.dropdownPage.deselectByVisibleText ("Washington");
+        this.dropdownPage.deselectByVisibleText ("New Jersey");
+        assertEquals (this.dropdownPage.getAllSelectedOptions (),
+            this.dropdownPage.expectedValues (new String[] { "New York" }));
+    }
+
+    @Test
+    public void testFirstSelectedOption () {
+        this.dropdownPage.selectMultipleOptionByVisibleText (new String[] { "Florida", "Ohio", "Texas" });
+        assertEquals (this.dropdownPage.getFirstSelectedOption (), "Florida");
+    }
 }
 

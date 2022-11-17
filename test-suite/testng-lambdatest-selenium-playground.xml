@@ -24,6 +24,11 @@
                     <include name="testBySelectingMultipleValuesByVisibleText"/>
                     <include name="testBySelectingMultipleValuesByIndex"/>
                     <include name="testBySelectingMultipleValues"/>
+                    <include name="testDeselectAll"/>
+                    <include name="testDeselectByIndex"/>
+                    <include name="testDeselectByValue"/>
+                    <include name="testDeselectByVisibleText"/>
+                    <include name="testFirstSelectedOption"/>
                 </methods>
             </class>
         </classes>
