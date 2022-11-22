@@ -15,11 +15,11 @@ import org.openqa.selenium.support.ui.Select;
  **/
 public class DropdownPage {
 
-    public boolean checkIfMultiple () {
+    public boolean checkIfDropdownAllowsMultipleSelection () {
         return singleSelectDropdownList ().isMultiple ();
     }
 
-    public boolean checkIfMultipleDropdown () {
+    public boolean checkIfMultipleDropdownSelectionIsAllowed () {
         return multiSelectDropdownList ().isMultiple ();
     }
 
@@ -88,7 +88,6 @@ public class DropdownPage {
         for (int i = 0; i < values.length; i++) {
             multiSelectDropdownList ().selectByValue (values[i]);
         }
-
     }
 
     public void refreshPage () {

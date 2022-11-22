@@ -126,8 +126,8 @@ public class DriverManager {
         ltOptions.put ("accessKey", LT_ACCESS_TOKEN);
         ltOptions.put ("resolution", "2560x1440");
         ltOptions.put ("selenium_version", "4.0.0");
-        ltOptions.put ("build", "LambdaTest ECommerce Playground Build");
-        ltOptions.put ("name", "End to End LambdaTest ECommerce Playground Tests");
+        ltOptions.put ("build", "LambdaTest Playground Build");
+        ltOptions.put ("name", "LambdaTest Playground Tests");
         ltOptions.put ("w3c", true);
         ltOptions.put ("plugin", "java-testNG");
         browserOptions.setCapability ("LT:Options", ltOptions);

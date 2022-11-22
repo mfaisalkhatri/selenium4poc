@@ -53,7 +53,7 @@ public class MultiSelectListTests extends BaseSuiteSetup {
 
     @Test
     public void testCheckIfDropdownIsMultiSelect () {
-        assertTrue (this.dropdownPage.checkIfMultipleDropdown ());
+        assertTrue (this.dropdownPage.checkIfMultipleDropdownSelectionIsAllowed ());
     }
 
     @Test
