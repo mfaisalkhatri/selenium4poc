@@ -51,7 +51,7 @@ public class DataTablesPage {
     public List<WebElement> tableRows () {
         return tableOne ().findElements (By.tagName ("tr"));
     }
-    
+
     public int totalColumns () {
         return getDriver ().findElements (By.cssSelector ("#table1 > thead > tr > th"))
             .size ();

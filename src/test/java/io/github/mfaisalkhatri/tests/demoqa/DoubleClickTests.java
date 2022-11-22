@@ -36,7 +36,7 @@ public class DoubleClickTests extends BaseSuiteSetup {
     @Test
     public void testDoubleClick () {
         final ButtonsPage buttonsPage = new ButtonsPage ();
-        buttonsPage.doubleClickonButton ();
+        buttonsPage.doubleClickOnButton ();
         Assert.assertEquals (buttonsPage.getTextOnClick (), "You have done a double click");
     }
 

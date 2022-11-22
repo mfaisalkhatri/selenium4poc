@@ -17,23 +17,32 @@ package io.github.mfaisalkhatri.pages.demoqa;
 
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created By Faisal Khatri on 30-12-2021
  */
 public class ButtonsPage {
 
-    public void doubleClickonButton () {
+    public void doubleClickOnButton () {
+        final JavascriptExecutor js = getDriver ();
+        js.executeScript ("arguments[0].scrollIntoView(true);", btnDoubleCLick ());
+
         final Actions action = new Actions (getDriver ());
         action.doubleClick (btnDoubleCLick ())
             .perform ();
     }
-    
+
     public String getTextOnClick () {
-        return getDriver ().findElement (By.id ("doubleClickMessage"))
+        final WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (10));
+        return wait.until (ExpectedConditions.presenceOfElementLocated (By.id ("doubleClickMessage")))
             .getText ();
     }
 
