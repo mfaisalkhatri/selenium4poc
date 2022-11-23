@@ -29,8 +29,8 @@ public class DriverManager {
     private static final String                 GRID_URL        = "@hub.lambdatest.com/wd/hub";
     private static final String                 HUB_URL         = "http://localhost:4444/wd/hub";
     private static final Logger                 LOG             = LogManager.getLogger ("DriverManager.class");
-    private static final String                 LT_ACCESS_TOKEN = System.getProperty ("accessKey");
-    private static final String                 LT_USERNAME     = System.getProperty ("username");
+    private static final String                 LT_ACCESS_TOKEN = System.getProperty ("LT_ACCESS_KEY");
+    private static final String                 LT_USERNAME     = System.getProperty ("LT_USERNAME");
 
     public static void createDriver (final Browsers browser) {
         switch (browser) {
