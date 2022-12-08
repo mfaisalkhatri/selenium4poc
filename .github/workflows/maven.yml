@@ -125,7 +125,8 @@ jobs:
           LMT_USER: ${{ secrets.LMT_USER }}
         run: |
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.projectKey=$SONAR_KEY -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS 
+            -Dsonar.projectKey=$SONAR_KEY -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
+          echo $LMT_USER $LTM_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
         run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
