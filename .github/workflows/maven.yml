@@ -50,8 +50,7 @@ jobs:
           LMT_ACCESS: ${{ secrets.LMT_ACCESS }}
           LMT_USER: ${{ secrets.LMT_USER }}
         run: |
-          mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test -Dheadless=true 
-          -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
+          mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
         run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
@@ -126,7 +125,6 @@ jobs:
         run: |
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
             -Dsonar.projectKey=$SONAR_KEY -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
-          echo $LMT_USER $LTM_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
         run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
