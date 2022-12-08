@@ -34,7 +34,10 @@ public enum Browsers {
      * Remote Grid / cloud Edge browser.
      */
     REMOTE_EDGE,
-
+    /**
+     * LambdaTest Firefox Browser
+     */
+    REMOTE_FIREFOX_LAMBDATEST,
     /**
      * LambdaTest Chrome browser.
      */
