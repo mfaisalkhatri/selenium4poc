@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BStack WebSite Tests">
+    <test name="Bstack auto fill password">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.bstack.BrowserStackAutoSelectPasswordTests"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
