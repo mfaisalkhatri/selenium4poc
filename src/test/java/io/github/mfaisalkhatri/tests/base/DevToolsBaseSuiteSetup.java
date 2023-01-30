@@ -9,15 +9,13 @@ import org.testng.annotations.BeforeClass;
  */
 public class DevToolsBaseSuiteSetup {
 
-    protected DevToolsManager devToolsManager;
-
-    @BeforeClass(alwaysRun = true)
+    @BeforeClass (alwaysRun = true)
     public void setupTest () {
-        devToolsManager = DevToolsManager.builder().build().createDriver();
+        DevToolsManager.createDriver ();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass (alwaysRun = true)
     public void tearDown () {
-        devToolsManager.quitDriver();
+        DevToolsManager.quitDriver ();
     }
 }

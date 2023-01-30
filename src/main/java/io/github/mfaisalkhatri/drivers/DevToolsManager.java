@@ -20,11 +20,7 @@ public class DevToolsManager {
     private static final Logger       LOG = LogManager.getLogger ("DevToolsSetup.class");
     private static       ChromeDriver chromeDriver;
 
-    public static ChromeDriver getDriver () {
-        return chromeDriver;
-    }
-
-    public DevToolsManager createDriver () {
+    public static void createDriver () {
         final boolean isHeadless = Boolean.parseBoolean (
             Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
         WebDriverManager.chromedriver ()
@@ -46,10 +42,13 @@ public class DevToolsManager {
             LOG.error (logEntry.getText ());
             LOG.error (logEntry.getLevel ());
         });
-        return this;
     }
 
-    public void quitDriver () {
+    public static ChromeDriver getDriver () {
+        return chromeDriver;
+    }
+
+    public static void quitDriver () {
         if (null != chromeDriver) {
             chromeDriver.quit ();
         }
