@@ -14,6 +14,14 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import io.github.mfaisalkhatri.pages.theinternet.FormAuthenticationPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import io.github.mfaisalkhatri.pages.theinternet.SecurePage;
@@ -22,98 +30,104 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
 public class FormAuthenticationTests extends BaseSuiteSetup {
 
-    private static final String USERNAME = "tomsmith";
-    private static final String PASSWORD = "SuperSecretPassword!";
-    private FormAuthenticationPage formAuthenticationPage;
-    private SecurePage securePage;
-
-    @BeforeClass
-    public void testSetup () {
-        final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
-        mainPage.clickLink("Form Authentication");
-        formAuthenticationPage = new FormAuthenticationPage();
-        securePage = new SecurePage();
-    }
+    private static final String                 PASSWORD = "SuperSecretPassword!";
+    private static final String                 USERNAME = "tomsmith";
+    private              FormAuthenticationPage formAuthenticationPage;
+    private              SecurePage             securePage;
 
     @Test
-    public void loginWithCorrectCredentials () {
-        formAuthenticationPage.login(USERNAME, PASSWORD);
-        assertTrue(securePage.getFlashMessage().contains("You logged into a secure area!"));
-        assertEquals(securePage.getHeaderText(), "Secure Area");
-        assertEquals(securePage.getSubHeaderText(), "Welcome to the Secure Area. When you are done click logout below.");
-        assertTrue(securePage.logoutBtn().isDisplayed());
-    }
-
-    @Test
-    public void logOutTest () {
-        securePage.logoutBtn().click();
-        assertTrue(formAuthenticationPage.getFlashMessage().contains("You logged out of the secure area!"));
-    }
-
-    @Test
-    public void userNameNotValidTest () {
-        formAuthenticationPage.login(" ", PASSWORD);
-        assertTrue(formAuthenticationPage.getFlashMessage().contains("Your username is invalid!"));
-    }
-
-    @Test
-    public void passwordNotValidTest () {
-        formAuthenticationPage.login(USERNAME, " ");
-        assertTrue(formAuthenticationPage.getFlashMessage().contains("Your password is invalid!"));
+    public void blankUserAndPasswordTest () {
+        this.formAuthenticationPage.login (" ", " ");
+        assertTrue (this.formAuthenticationPage.getFlashMessage ()
+            .contains ("Your username is invalid!"));
     }
 
     @Test
     public void invalidLoginCredentialsTest () {
-        formAuthenticationPage.login(USERNAME, "InvalidPass");
-        assertTrue(formAuthenticationPage.getFlashMessage().contains("Your password is invalid!"));
+        this.formAuthenticationPage.login (USERNAME, "InvalidPass");
+        assertTrue (this.formAuthenticationPage.getFlashMessage ()
+            .contains ("Your password is invalid!"));
     }
 
     @Test
-    public void blankUserAndPasswordTest () {
-        formAuthenticationPage.login(" ", " ");
-        assertTrue(formAuthenticationPage.getFlashMessage().contains("Your username is invalid!"));
+    public void logOutTest () {
+        this.securePage.logoutBtn ()
+            .click ();
+        assertTrue (this.formAuthenticationPage.getFlashMessage ()
+            .contains ("You logged out of the secure area!"));
     }
 
     @DataProvider
     public Iterator<Object[]> loginData () {
-        List<Object[]> testData = new ArrayList<>();
-        testData.add(new Object[]{" ", PASSWORD, false});
-        testData.add(new Object[]{USERNAME, " ", false});
-        testData.add(new Object[]{" ", " ", false});
-        testData.add(new Object[]{USERNAME, "invalid", false});
-        testData.add(new Object[]{USERNAME, PASSWORD, true});
-        return testData.iterator();
+        List<Object[]> testData = new ArrayList<> ();
+        testData.add (new Object[] { " ", PASSWORD, false });
+        testData.add (new Object[] { USERNAME, " ", false });
+        testData.add (new Object[] { " ", " ", false });
+        testData.add (new Object[] { USERNAME, "invalid", false });
+        testData.add (new Object[] { USERNAME, PASSWORD, true });
+        return testData.iterator ();
     }
 
-
-    @Test(dataProvider = "loginData")
+    @Test (dataProvider = "loginData")
     public void loginTests (String userName, String password, boolean isValid) {
-        formAuthenticationPage.login(userName, password);
+        this.formAuthenticationPage.login (userName, password);
 
         if (!isValid) {
-            assertTrue(formAuthenticationPage.getFlashMessage().contains(" is invalid!"));
+            assertTrue (this.formAuthenticationPage.getFlashMessage ()
+                .contains (" is invalid!"));
         } else {
-            assertTrue(securePage.getFlashMessage().contains("You logged into a secure area!"));
-            assertEquals(securePage.getHeaderText(), "Secure Area");
-            assertEquals(securePage.getSubHeaderText(), "Welcome to the Secure Area. When you are done click logout below.");
-            assertTrue(securePage.logoutBtn().isDisplayed());
-            securePage.logoutBtn().click();
-            assertTrue(formAuthenticationPage.getFlashMessage().contains("You logged out of the secure area!"));
+            assertTrue (this.securePage.getFlashMessage ()
+                .contains ("You logged into a secure area!"));
+            assertEquals (this.securePage.getHeaderText (), "Secure Area");
+            assertEquals (this.securePage.getSubHeaderText (),
+                "Welcome to the Secure Area. When you are done click logout below.");
+            assertTrue (this.securePage.logoutBtn ()
+                .isDisplayed ());
+            this.securePage.logoutBtn ()
+                .click ();
+            assertTrue (this.formAuthenticationPage.getFlashMessage ()
+                .contains ("You logged out of the secure area!"));
         }
+    }
+
+    @Test
+    public void loginWithCorrectCredentials () {
+        this.formAuthenticationPage.login (USERNAME, PASSWORD);
+        assertTrue (this.securePage.getFlashMessage ()
+            .contains ("You logged into a secure area!"));
+        assertEquals (this.securePage.getHeaderText (), "Secure Area");
+        assertEquals (this.securePage.getSubHeaderText (),
+            "Welcome to the Secure Area. When you are done click logout below.");
+        assertTrue (this.securePage.logoutBtn ()
+            .isDisplayed ());
+    }
+
+    @Test
+    public void passwordNotValidTest () {
+        this.formAuthenticationPage.login (USERNAME, " ");
+        assertTrue (this.formAuthenticationPage.getFlashMessage ()
+            .contains ("Your password is invalid!"));
+    }
+
+    @BeforeClass
+    public void testSetup () {
+        final String websiteLink = "http://the-internet.herokuapp.com/";
+        getDriver ().get (websiteLink);
+        MainPage mainPage = new MainPage ();
+        mainPage.clickLink ("Form Authentication");
+        this.formAuthenticationPage = new FormAuthenticationPage ();
+        this.securePage = new SecurePage ();
+    }
+
+    @Test
+    public void userNameNotValidTest () {
+        this.formAuthenticationPage.login (" ", PASSWORD);
+        assertTrue (this.formAuthenticationPage.getFlashMessage ()
+            .contains ("Your username is invalid!"));
     }
 }

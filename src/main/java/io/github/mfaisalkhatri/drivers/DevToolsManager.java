@@ -1,5 +1,7 @@
 package io.github.mfaisalkhatri.drivers;
 
+import java.util.Objects;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Builder;
 import org.apache.logging.log4j.LogManager;
@@ -15,36 +17,40 @@ import org.openqa.selenium.devtools.v101.log.Log;
 @Builder
 public class DevToolsManager {
 
-    private static final Logger LOG = LogManager.getLogger("DevToolsSetup.class");
-    private ChromeDriver chromeDriver;
+    private static final Logger       LOG = LogManager.getLogger ("DevToolsSetup.class");
+    private static       ChromeDriver chromeDriver;
 
-    public ChromeDriver getDriver () {
+    public static void createDriver () {
+        final boolean isHeadless = Boolean.parseBoolean (
+            Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
+        WebDriverManager.chromedriver ()
+            .setup ();
+        ChromeOptions options = new ChromeOptions ();
+        options.addArguments ("--no-sandbox");
+        options.addArguments ("--disable-dev-shm-usage");
+        options.addArguments ("--window-size=1050,600");
+        if (isHeadless) {
+            options.addArguments ("--headless");
+        }
+        options.addArguments ("--safebrowsing-disable-download-protection");
+
+        chromeDriver = new ChromeDriver (options);
+        DevTools chromeDevTools = chromeDriver.getDevTools ();
+        chromeDevTools.createSession ();
+        chromeDevTools.send (Log.enable ());
+        chromeDevTools.addListener (Log.entryAdded (), logEntry -> {
+            LOG.error (logEntry.getText ());
+            LOG.error (logEntry.getLevel ());
+        });
+    }
+
+    public static ChromeDriver getDriver () {
         return chromeDriver;
     }
 
-    public DevToolsManager createDriver () {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--window-size=1050,600");
-        options.addArguments("--headless");
-        options.addArguments("--safebrowsing-disable-download-protection");
-
-        chromeDriver = new ChromeDriver(options);
-        DevTools chromeDevTools = chromeDriver.getDevTools();
-        chromeDevTools.createSession();
-        chromeDevTools.send(Log.enable());
-        chromeDevTools.addListener(Log.entryAdded(), logEntry -> {
-            LOG.error(logEntry.getText());
-            LOG.error(logEntry.getLevel());
-        });
-        return this;
-    }
-
-    public void quitDriver () {
+    public static void quitDriver () {
         if (null != chromeDriver) {
-            chromeDriver.quit();
+            chromeDriver.quit ();
         }
     }
 }
