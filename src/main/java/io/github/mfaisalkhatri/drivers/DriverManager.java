@@ -54,6 +54,7 @@ public class DriverManager {
                 break;
             case REMOTE_CHROME_LAMBDATEST:
                 setupChromeInLambdaTest ();
+                break;
             case REMOTE_FIREFOX_LAMBDATEST:
                 setupFirefoxInLambdaTest ();
                 break;
@@ -64,8 +65,8 @@ public class DriverManager {
         setupBrowserTimeouts ();
     }
 
-    public static <D extends WebDriver> D getDriver () {
-        return (D) DriverManager.DRIVER.get ();
+    public static WebDriver getDriver () {
+        return DriverManager.DRIVER.get ();
     }
 
     public static void quitDriver () {
@@ -74,6 +75,19 @@ public class DriverManager {
             getDriver ().quit ();
             DRIVER.remove ();
         }
+    }
+
+    private static HashMap<String, Object> ltOptions () {
+        final HashMap<String, Object> ltOptions = new HashMap<> ();
+        ltOptions.put ("username", LT_USERNAME);
+        ltOptions.put ("accessKey", LT_ACCESS_TOKEN);
+        ltOptions.put ("resolution", "2560x1440");
+        ltOptions.put ("selenium_version", "4.0.0");
+        ltOptions.put ("build", "LambdaTest Playground Build");
+        ltOptions.put ("name", "LambdaTest Playground Tests");
+        ltOptions.put ("w3c", true);
+        ltOptions.put ("plugin", "java-testNG");
+        return ltOptions;
     }
 
     private static void setDriver (final WebDriver driver) {
@@ -122,17 +136,8 @@ public class DriverManager {
     private static void setupChromeInLambdaTest () {
         final ChromeOptions browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("107.0");
-        final HashMap<String, Object> ltOptions = new HashMap<> ();
-        ltOptions.put ("username", LT_USERNAME);
-        ltOptions.put ("accessKey", LT_ACCESS_TOKEN);
-        ltOptions.put ("resolution", "2560x1440");
-        ltOptions.put ("selenium_version", "4.0.0");
-        ltOptions.put ("build", "LambdaTest Playground Build");
-        ltOptions.put ("name", "LambdaTest Playground Tests");
-        ltOptions.put ("w3c", true);
-        ltOptions.put ("plugin", "java-testNG");
-        browserOptions.setCapability ("LT:Options", ltOptions);
+        browserOptions.setBrowserVersion ("108.0");
+        browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
                 new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_TOKEN, GRID_URL)),
@@ -166,17 +171,8 @@ public class DriverManager {
     private static void setupFirefoxInLambdaTest () {
         final FirefoxOptions browserOptions = new FirefoxOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("107.0");
-        final HashMap<String, Object> ltOptions = new HashMap<> ();
-        ltOptions.put ("username", LT_USERNAME);
-        ltOptions.put ("accessKey", LT_ACCESS_TOKEN);
-        ltOptions.put ("resolution", "2560x1440");
-        ltOptions.put ("selenium_version", "4.0.0");
-        ltOptions.put ("build", "LambdaTest Playground Build");
-        ltOptions.put ("name", "LambdaTest Playground Tests");
-        ltOptions.put ("w3c", true);
-        ltOptions.put ("plugin", "java-testNG");
-        browserOptions.setCapability ("LT:Options", ltOptions);
+        browserOptions.setBrowserVersion ("108.0");
+        browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
                 new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_TOKEN, GRID_URL)),
