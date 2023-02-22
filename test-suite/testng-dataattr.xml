@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing data attributes using Selenium">
+    <test name="Data attributes test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.amazon.DataAtrTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

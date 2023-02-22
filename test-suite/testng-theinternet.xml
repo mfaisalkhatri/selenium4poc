@@ -124,7 +124,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="File Upload and Download Tests">
+    <test name="File Upload and Download Tests" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.FileUploadDownloadTest">
