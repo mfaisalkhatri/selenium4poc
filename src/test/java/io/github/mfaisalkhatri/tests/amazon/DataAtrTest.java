@@ -26,6 +26,7 @@ public class DataAtrTest extends BaseSuiteSetup {
 
         System.out.println (homePage.getProductDesc ());
         System.out.println (homePage.getProductPrice ());
-
+        System.out.println (homePage.getProductDescUsingXpath ());
+        System.out.println (homePage.getProductPriceUsingXpath ());
     }
 }

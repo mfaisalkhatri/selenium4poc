@@ -15,8 +15,19 @@ public class HomePage {
             .getText ();
     }
 
+    public String getProductDescUsingXpath () {
+        return getDriver ().findElement (By.xpath ("//*[@data-component-id='2']//h2"))
+            .getText ();
+    }
+
     public String getProductPrice () {
-        return getDriver ().findElement (By.cssSelector (" [data-component-id=\"2\"] .a-price-whole"))
+        return getDriver ().findElement (By.cssSelector ("[data-component-id=\"2\"] .a-price-whole"))
+            .getText ();
+    }
+
+    public String getProductPriceUsingXpath () {
+        return getDriver ().findElement (
+                By.xpath ("//*[@data-component-id=\"2\"]//span[contains(@class,'a-price-whole')]"))
             .getText ();
     }
 
@@ -26,6 +37,5 @@ public class HomePage {
             .sendKeys (product);
         getDriver ().findElement (By.id ("nav-search-submit-button"))
             .click ();
-
     }
 }
