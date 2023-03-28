@@ -14,6 +14,8 @@
 */
 package io.github.mfaisalkhatri.tests.saucedemo;
 
+import io.github.mfaisalkhatri.pages.saucedemo.LoginPage;
+import io.github.mfaisalkhatri.pages.saucedemo.MainPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
