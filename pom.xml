@@ -21,7 +21,7 @@
         <log4japi.version>2.20.0</log4japi.version>
         <orgjson.version>20230227</orgjson.version>
         <javafaker.version>1.0.2</javafaker.version>
-        <seleniumdevtoolsv101.version>4.3.0</seleniumdevtoolsv101.version>
+        <seleniumdevtools.version>4.9.1</seleniumdevtools.version>
         <lombok.version>1.18.26</lombok.version>
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <surefire-version>3.1.0</surefire-version>
@@ -98,8 +98,8 @@
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v101 -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v101</artifactId>
-            <version>${seleniumdevtoolsv101.version}</version>
+            <artifactId>selenium-devtools-v113</artifactId>
+            <version>${seleniumdevtools.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
