@@ -13,7 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.java.version>4.8.3</selenium.java.version>
+        <selenium.java.version>4.9.1</selenium.java.version>
         <testng.version>7.7.1</testng.version>
         <webdrivermanager.version>5.3.2</webdrivermanager.version>
         <commons-io.version>2.11.0</commons-io.version>
@@ -21,10 +21,10 @@
         <log4japi.version>2.20.0</log4japi.version>
         <orgjson.version>20230227</orgjson.version>
         <javafaker.version>1.0.2</javafaker.version>
-        <seleniumdevtoolsv101.version>4.3.0</seleniumdevtoolsv101.version>
+        <seleniumdevtools.version>4.9.1</seleniumdevtools.version>
         <lombok.version>1.18.26</lombok.version>
-        <maven.compiler.version>3.10.1</maven.compiler.version>
-        <surefire-version>3.0.0-M7</surefire-version>
+        <maven.compiler.version>3.11.0</maven.compiler.version>
+        <surefire-version>3.1.0</surefire-version>
         <java.release.version>15</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
@@ -37,7 +37,7 @@
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
         <sonar.java.source>15</sonar.java.source>
-        <jacoco.version>0.8.7</jacoco.version>
+        <jacoco.version>0.8.10</jacoco.version>
         <sonarjacocolistener.version>5.14.0.18788</sonarjacocolistener.version>
         <sonarmavenplugin.version>3.9.1.2184</sonarmavenplugin.version>
     </properties>
@@ -98,8 +98,8 @@
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v101 -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v101</artifactId>
-            <version>${seleniumdevtoolsv101.version}</version>
+            <artifactId>selenium-devtools-v113</artifactId>
+            <version>${seleniumdevtools.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
