@@ -85,6 +85,7 @@ public class DriverManager {
         ltOptions.put ("selenium_version", "4.0.0");
         ltOptions.put ("build", "LambdaTest Playground Build");
         ltOptions.put ("name", "LambdaTest Playground Tests");
+        ltOptions.put("acceptInsecureCerts", true);
         ltOptions.put ("w3c", true);
         ltOptions.put ("plugin", "java-testNG");
         return ltOptions;
@@ -136,7 +137,7 @@ public class DriverManager {
     private static void setupChromeInLambdaTest () {
         final ChromeOptions browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("108.0");
+        browserOptions.setBrowserVersion ("113.0");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
@@ -171,7 +172,7 @@ public class DriverManager {
     private static void setupFirefoxInLambdaTest () {
         final FirefoxOptions browserOptions = new FirefoxOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("108.0");
+        browserOptions.setBrowserVersion ("112.0");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
