@@ -16,6 +16,12 @@ on:
     branches:
       - master
       - issue-*
+
+  push:
+    branches:
+      - master
+      - issue-*
+
   schedule:
     - cron: '41 12 * * 5'
 
