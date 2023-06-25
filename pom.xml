@@ -14,18 +14,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.java.version>4.10.0</selenium.java.version>
-        <testng.version>7.7.1</testng.version>
+        <testng.version>7.8.0</testng.version>
         <webdrivermanager.version>5.4.0</webdrivermanager.version>
         <commons-io.version>2.13.0</commons-io.version>
         <log4jcore.version>2.20.0</log4jcore.version>
         <log4japi.version>2.20.0</log4japi.version>
         <orgjson.version>20230618</orgjson.version>
-        <javafaker.version>1.0.2</javafaker.version>
+        <orgjson.version>20230618</orgjson.version>
         <seleniumdevtools.version>4.10.0</seleniumdevtools.version>
         <lombok.version>1.18.28</lombok.version>
+        <datafaker.version>2.0.1</datafaker.version>
         <maven.compiler.version>3.11.0</maven.compiler.version>
         <surefire-version>3.1.2</surefire-version>
-        <java.release.version>15</java.release.version>
+        <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
         <argLine>-Dfile.encoding=UTF-8 -Xdebug -Xnoagent</argLine>
@@ -93,7 +94,7 @@
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
-            <version>2.0.1</version>
+            <version>${datafaker.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v101 -->
         <dependency>
