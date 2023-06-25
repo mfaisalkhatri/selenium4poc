@@ -16,6 +16,12 @@ on:
     branches:
       - master
       - issue-*
+
+  push:
+    branches:
+      - master
+      - issue-*
+
   schedule:
     - cron: '41 12 * * 5'
 
@@ -42,7 +48,7 @@ jobs:
       - name: Install Java and Maven
         uses: actions/setup-java@v2
         with:
-          java-version: "15"
+          java-version: "17"
           distribution: "adopt"
 
           # Initializes the CodeQL tools for scanning.
