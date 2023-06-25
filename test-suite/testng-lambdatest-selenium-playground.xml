@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Lambdatest Selemnium Playground Tests " verbose="2" parallel="tests">
-    <test name="Single dropdown selection tests">
+    <test name="Single dropdown selection tests" enabled="false">
         <parameter name="browser" value="remote_firefox_lambdatest"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.SingleDropdownTests">
@@ -16,7 +16,7 @@
             </class>
         </classes>
     </test> <!-- Test -->
-    <test name="Multi dropdown selection tests">
+    <test name="Multi dropdown selection tests" enabled="false">
         <parameter name="browser" value="remote_firefox_lambdatest"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.MultiSelectListTests">

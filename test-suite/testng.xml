@@ -8,6 +8,6 @@
         <suite-file path="testng-lambdatestecommerce.xml"/>
         <suite-file path="testng-seleniumgrid-theinternet.xml"/>
         <suite-file path="testng-lambdatest-selenium-playground.xml"/>
-        <!--        <suite-file path="testng-seleniumgrid-juiceshop.xml"/>-->
+<!--        <suite-file path="testng-seleniumgrid-juiceshop.xml"/>-->
     </suite-files>
 </suite> <!-- Suite -->
