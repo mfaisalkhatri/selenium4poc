@@ -1,7 +1,6 @@
 package io.github.mfaisalkhatri.drivers;
 
 import static java.text.MessageFormat.format;
-import static org.openqa.selenium.remote.Browser.CHROME;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,8 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
@@ -34,33 +33,15 @@ public class DriverManager {
 
     public static void createDriver (final Browsers browser) {
         switch (browser) {
-            case FIREFOX:
-                setupFirefoxDriver ();
-                break;
-            case EDGE:
-                setupEdgeDriver ();
-                break;
-            case OPERA:
-                setupOperaDriver ();
-                break;
-            case REMOTE_CHROME:
-                setupRemoteChrome ();
-                break;
-            case REMOTE_FIREFOX:
-                setupRemoteFirefox ();
-                break;
-            case REMOTE_EDGE:
-                setupRemoteEdge ();
-                break;
-            case REMOTE_CHROME_LAMBDATEST:
-                setupChromeInLambdaTest ();
-                break;
-            case REMOTE_FIREFOX_LAMBDATEST:
-                setupFirefoxInLambdaTest ();
-                break;
-            case CHROME:
-            default:
-                setupChromeDriver ();
+            case FIREFOX -> setupFirefoxDriver ();
+            case EDGE -> setupEdgeDriver ();
+            case OPERA -> setupOperaDriver ();
+            case REMOTE_CHROME -> setupRemoteChrome ();
+            case REMOTE_FIREFOX -> setupRemoteFirefox ();
+            case REMOTE_EDGE -> setupRemoteEdge ();
+            case REMOTE_CHROME_LAMBDATEST -> setupChromeInLambdaTest ();
+            case REMOTE_FIREFOX_LAMBDATEST -> setupFirefoxInLambdaTest ();
+            default -> setupChromeDriver ();
         }
         setupBrowserTimeouts ();
     }
@@ -78,7 +59,7 @@ public class DriverManager {
     }
 
     private static HashMap<String, Object> ltOptions () {
-        final HashMap<String, Object> ltOptions = new HashMap<> ();
+        final var ltOptions = new HashMap<String, Object> ();
         ltOptions.put ("username", LT_USERNAME);
         ltOptions.put ("accessKey", LT_ACCESS_TOKEN);
         ltOptions.put ("resolution", "2560x1440");
@@ -99,26 +80,26 @@ public class DriverManager {
         LOG.info ("Setting Browser Timeouts....");
         getDriver ().manage ()
             .timeouts ()
-            .implicitlyWait (Duration.ofSeconds (30));
+            .implicitlyWait (Duration.ofSeconds (20));
         getDriver ().manage ()
             .timeouts ()
-            .pageLoadTimeout (Duration.ofSeconds (30));
+            .pageLoadTimeout (Duration.ofSeconds (20));
         getDriver ().manage ()
             .timeouts ()
-            .scriptTimeout (Duration.ofSeconds (30));
+            .scriptTimeout (Duration.ofSeconds (20));
     }
 
     private static void setupChromeDriver () {
         LOG.info ("Setting up Chrome Driver....");
-        final boolean isHeadless = Boolean.parseBoolean (
+        final var isHeadless = Boolean.parseBoolean (
             Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
-        final HashMap<String, Object> chromePrefs = new HashMap<> ();
+        final var chromePrefs = new HashMap<String, Object> ();
         chromePrefs.put ("safebrowsing.enabled", "true");
         chromePrefs.put ("download.prompt_for_download", "false");
         chromePrefs.put ("download.default_directory",
             String.valueOf (Paths.get (System.getProperty ("user.home"), "Downloads")));
 
-        final ChromeOptions options = new ChromeOptions ();
+        final var options = new ChromeOptions ();
         options.addArguments ("--no-sandbox");
         options.addArguments ("--disable-dev-shm-usage");
         options.addArguments ("--window-size=1050,600");
@@ -135,9 +116,9 @@ public class DriverManager {
     }
 
     private static void setupChromeInLambdaTest () {
-        final ChromeOptions browserOptions = new ChromeOptions ();
+        final var browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("113.0");
+        browserOptions.setBrowserVersion ("114.0");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
@@ -158,7 +139,7 @@ public class DriverManager {
 
     private static void setupFirefoxDriver () {
         LOG.info ("Setting up Firefox Driver....");
-        final FirefoxOptions options = new FirefoxOptions ();
+        final var options = new FirefoxOptions ();
         options.addArguments ("--no-sandbox");
         options.addArguments ("--disable-dev-shm-usage");
         options.addArguments ("--window-size=1050,600");
@@ -170,9 +151,9 @@ public class DriverManager {
     }
 
     private static void setupFirefoxInLambdaTest () {
-        final FirefoxOptions browserOptions = new FirefoxOptions ();
+        final var browserOptions = new FirefoxOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("112.0");
+        browserOptions.setBrowserVersion ("114.0");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
@@ -195,9 +176,10 @@ public class DriverManager {
     private static void setupRemoteChrome () {
         try {
             LOG.info ("Setting up Remote Chrome Driver....");
-            final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName (CHROME.browserName ());
-            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
+            final var options = new ChromeOptions ();
+            options.addArguments ("--no-sandbox");
+            options.addArguments ("--disable-dev-shm-usage");
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), options));
             LOG.info ("Remote Chrome Driver created successfully!");
         } catch (final MalformedURLException e) {
             LOG.error ("Error setting remote_chrome", e);
@@ -207,9 +189,10 @@ public class DriverManager {
     private static void setupRemoteEdge () {
         try {
             LOG.info ("Setting up Remote Edge Driver....");
-            final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName ("MicrosoftEdge");
-            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
+            final var edgeOptions = new EdgeOptions ();
+            edgeOptions.addArguments ("--no-sandbox");
+            edgeOptions.addArguments ("--disable-dev-shm-usage");
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), edgeOptions));
             LOG.info ("Remote Edge Driver created successfully!");
         } catch (final MalformedURLException e) {
             LOG.error ("Error setting remote_edge", e);
@@ -220,9 +203,11 @@ public class DriverManager {
         try {
 
             LOG.info ("Setting up Remote Firefox Driver....");
-            final DesiredCapabilities caps = new DesiredCapabilities ();
-            caps.setBrowserName ("firefox");
-            setDriver (new RemoteWebDriver (new URL (HUB_URL), caps));
+            final var firefoxOptions = new FirefoxOptions ();
+            firefoxOptions.addArguments ("--no-sandbox");
+            firefoxOptions.addArguments ("--disable-dev-shm-usage");
+
+            setDriver (new RemoteWebDriver (new URL (HUB_URL), firefoxOptions));
             LOG.info ("Remote Firefox Driver created successfully!");
         } catch (final MalformedURLException e) {
             LOG.error ("Error setting remote_firefox", e);
