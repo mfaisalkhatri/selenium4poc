@@ -30,6 +30,10 @@ public class DriverManager {
     private static final Logger                 LOG             = LogManager.getLogger ("DriverManager.class");
     private static final String                 LT_ACCESS_TOKEN = System.getProperty ("LT_ACCESS_KEY");
     private static final String                 LT_USERNAME     = System.getProperty ("LT_USERNAME");
+    private static final String NO_SANDBOX = "--no-sandbox";
+    private static final String DISABLE_DEV_SHM = "--disable-dev-shm-usage";
+    private static final String CUSTOM_WINDOW_SIZE = "--window-size=1050,600";
+    private static final String HEADLESS = "--headless";
 
     public static void createDriver (final Browsers browser) {
         switch (browser) {
@@ -100,11 +104,11 @@ public class DriverManager {
             String.valueOf (Paths.get (System.getProperty ("user.home"), "Downloads")));
 
         final var options = new ChromeOptions ();
-        options.addArguments ("--no-sandbox");
-        options.addArguments ("--disable-dev-shm-usage");
-        options.addArguments ("--window-size=1050,600");
+        options.addArguments (NO_SANDBOX);
+        options.addArguments (DISABLE_DEV_SHM);
+        options.addArguments (CUSTOM_WINDOW_SIZE);
         if (isHeadless) {
-            options.addArguments ("--headless");
+            options.addArguments (HEADLESS);
         }
         options.addArguments ("--safebrowsing-disable-download-protection");
         options.setExperimentalOption ("prefs", chromePrefs);
@@ -140,10 +144,10 @@ public class DriverManager {
     private static void setupFirefoxDriver () {
         LOG.info ("Setting up Firefox Driver....");
         final var options = new FirefoxOptions ();
-        options.addArguments ("--no-sandbox");
-        options.addArguments ("--disable-dev-shm-usage");
-        options.addArguments ("--window-size=1050,600");
-        options.addArguments ("--headless");
+        options.addArguments (NO_SANDBOX);
+        options.addArguments (DISABLE_DEV_SHM);
+        options.addArguments (CUSTOM_WINDOW_SIZE);
+        options.addArguments (HEADLESS);
         setDriver (WebDriverManager.firefoxdriver ()
             .capabilities (options)
             .create ());
@@ -177,8 +181,8 @@ public class DriverManager {
         try {
             LOG.info ("Setting up Remote Chrome Driver....");
             final var options = new ChromeOptions ();
-            options.addArguments ("--no-sandbox");
-            options.addArguments ("--disable-dev-shm-usage");
+            options.addArguments (NO_SANDBOX);
+            options.addArguments (DISABLE_DEV_SHM);
             setDriver (new RemoteWebDriver (new URL (HUB_URL), options));
             LOG.info ("Remote Chrome Driver created successfully!");
         } catch (final MalformedURLException e) {
@@ -190,8 +194,8 @@ public class DriverManager {
         try {
             LOG.info ("Setting up Remote Edge Driver....");
             final var edgeOptions = new EdgeOptions ();
-            edgeOptions.addArguments ("--no-sandbox");
-            edgeOptions.addArguments ("--disable-dev-shm-usage");
+            edgeOptions.addArguments (NO_SANDBOX);
+            edgeOptions.addArguments (DISABLE_DEV_SHM);
             setDriver (new RemoteWebDriver (new URL (HUB_URL), edgeOptions));
             LOG.info ("Remote Edge Driver created successfully!");
         } catch (final MalformedURLException e) {
@@ -204,8 +208,8 @@ public class DriverManager {
 
             LOG.info ("Setting up Remote Firefox Driver....");
             final var firefoxOptions = new FirefoxOptions ();
-            firefoxOptions.addArguments ("--no-sandbox");
-            firefoxOptions.addArguments ("--disable-dev-shm-usage");
+            firefoxOptions.addArguments (NO_SANDBOX);
+            firefoxOptions.addArguments (DISABLE_DEV_SHM);
 
             setDriver (new RemoteWebDriver (new URL (HUB_URL), firefoxOptions));
             LOG.info ("Remote Firefox Driver created successfully!");

@@ -62,7 +62,6 @@ jobs:
             ${{ github.workspace }}/target
             ${{ github.workspace }}/reports
 
-
   code_analysis:
     name: Code Analysis
     needs:
