@@ -5,7 +5,7 @@ import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
 import java.time.Duration;
 
-import io.github.mfaisalkhatri.data.BillingData;
+import io.github.mfaisalkhatri.data.lambdatestecommerce.BillingData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

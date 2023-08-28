@@ -6,7 +6,7 @@ import static org.testng.Assert.assertEquals;
 import java.text.MessageFormat;
 import java.time.Duration;
 
-import io.github.mfaisalkhatri.data.BillingData;
+import io.github.mfaisalkhatri.data.lambdatestecommerce.BillingData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
