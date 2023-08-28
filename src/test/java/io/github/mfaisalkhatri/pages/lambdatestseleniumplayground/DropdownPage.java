@@ -1,13 +1,13 @@
 package io.github.mfaisalkhatri.pages.lambdatestseleniumplayground;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * @author Faisal Khatri
@@ -27,31 +27,29 @@ public class DropdownPage {
         multiSelectDropdownList ().deselectAll ();
     }
 
-    public void deselectByIndex (int index) {
-        multiSelectDropdownList ().deselectByIndex (index);
+    public void deselectByIndex(final int index) {
+        multiSelectDropdownList().deselectByIndex(index);
     }
 
-    public void deselectByValue (String value) {
-        multiSelectDropdownList ().deselectByValue (value);
+    public void deselectByValue(final String value) {
+        multiSelectDropdownList().deselectByValue(value);
     }
 
-    public void deselectByVisibleText (String text) {
-        multiSelectDropdownList ().deselectByVisibleText (text);
+    public void deselectByVisibleText(final String text) {
+        multiSelectDropdownList().deselectByVisibleText(text);
     }
 
-    public ArrayList<String> expectedValues (String[] values) {
-        ArrayList<String> expectedOptions = new ArrayList<> ();
-        expectedOptions.addAll (List.of (values));
-        return expectedOptions;
+    public ArrayList<String> expectedValues(final String[] values) {
+        return new ArrayList<>(List.of(values));
     }
 
-    public List<String> getAllSelectedOptions () {
-        final List<WebElement> allOptions = multiSelectDropdownList ().getAllSelectedOptions ();
-        final int size = allOptions.size ();
-        ArrayList<String> options = new ArrayList<> ();
+    public List<String> getAllSelectedOptions() {
+        final List<WebElement> allOptions = multiSelectDropdownList().getAllSelectedOptions();
+        final int size = allOptions.size();
+        final ArrayList<String> options = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            options.add (allOptions.get (i)
-                .getText ());
+            options.add(allOptions.get(i)
+                    .getText());
         }
         return options;
     }
@@ -69,8 +67,8 @@ public class DropdownPage {
 
     public ArrayList<String> getOptions () {
         final List<WebElement> allOptions = singleSelectDropdownList ().getOptions ();
-        final int size = allOptions.size ();
-        ArrayList<String> options = new ArrayList<> ();
+        final int size = allOptions.size();
+        final ArrayList<String> options = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             options.add (allOptions.get (i)
                 .getText ());
@@ -83,10 +81,10 @@ public class DropdownPage {
             .getText ();
     }
 
-    public void multiSelectByValues (String[] values) {
-        refreshPage ();
+    public void multiSelectByValues(final String[] values) {
+        refreshPage();
         for (int i = 0; i < values.length; i++) {
-            multiSelectDropdownList ().selectByValue (values[i]);
+            multiSelectDropdownList().selectByValue(values[i]);
         }
     }
 
@@ -99,17 +97,17 @@ public class DropdownPage {
         singleSelectDropdownList ().selectByVisibleText (visibleText);
     }
 
-    public void selectMultipleOptionByIndex (int[] index) {
-        refreshPage ();
+    public void selectMultipleOptionByIndex(final int[] index) {
+        refreshPage();
         for (int i = 0; i < index.length; i++) {
-            multiSelectDropdownList ().selectByIndex (index[i]);
+            multiSelectDropdownList().selectByIndex(index[i]);
         }
     }
 
-    public void selectMultipleOptionByVisibleText (String[] text) {
-        refreshPage ();
+    public void selectMultipleOptionByVisibleText(final String[] text) {
+        refreshPage();
         for (int i = 0; i < text.length; i++) {
-            multiSelectDropdownList ().selectByVisibleText (text[i]);
+            multiSelectDropdownList().selectByVisibleText(text[i]);
         }
     }
 
@@ -130,7 +128,7 @@ public class DropdownPage {
     }
 
     private Select multiSelectDropdownList () {
-        WebElement multiSelectDropdown = getDriver ().findElement (By.id ("multi-select"));
+        final WebElement multiSelectDropdown = getDriver().findElement(By.id("multi-select"));
         return new Select (multiSelectDropdown);
     }
 

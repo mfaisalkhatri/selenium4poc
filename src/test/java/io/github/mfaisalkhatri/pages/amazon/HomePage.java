@@ -31,7 +31,7 @@ public class HomePage {
             .getText ();
     }
 
-    public void searchProduct (String product) {
+    public void searchProduct (final String product) {
 
         getDriver ().findElement (By.id ("twotabsearchtextbox"))
             .sendKeys (product);

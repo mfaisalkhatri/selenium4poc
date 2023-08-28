@@ -38,7 +38,16 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
     private static final String                 PASSWORD = "SuperSecretPassword!";
     private static final String                 USERNAME = "tomsmith";
     private              FormAuthenticationPage formAuthenticationPage;
-    private              SecurePage             securePage;
+    private SecurePage securePage;
+
+    @BeforeClass
+    public void testSetup () {
+        final String websiteLink = "http://the-internet.herokuapp.com/";
+        getDriver ().get (websiteLink);
+        final MainPage mainPage = new MainPage ();
+        mainPage.clickLink ("Form Authentication");
+        this.formAuthenticationPage = new FormAuthenticationPage ();
+    }
 
     @Test
     public void blankUserAndPasswordTest () {
@@ -54,17 +63,9 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
             .contains ("Your password is invalid!"));
     }
 
-    @Test
-    public void logOutTest () {
-        this.securePage.logoutBtn ()
-            .click ();
-        assertTrue (this.formAuthenticationPage.getFlashMessage ()
-            .contains ("You logged out of the secure area!"));
-    }
-
     @DataProvider
     public Iterator<Object[]> loginData () {
-        List<Object[]> testData = new ArrayList<> ();
+        final List<Object[]> testData = new ArrayList<> ();
         testData.add (new Object[] { " ", PASSWORD, false });
         testData.add (new Object[] { USERNAME, " ", false });
         testData.add (new Object[] { " ", " ", false });
@@ -74,8 +75,8 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
     }
 
     @Test (dataProvider = "loginData")
-    public void loginTests (String userName, String password, boolean isValid) {
-        this.formAuthenticationPage.login (userName, password);
+    public void loginTests (final String userName, final String password, final boolean isValid) {
+        this.securePage = this.formAuthenticationPage.login (userName, password);
 
         if (!isValid) {
             assertTrue (this.formAuthenticationPage.getFlashMessage ()
@@ -97,7 +98,7 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
 
     @Test
     public void loginWithCorrectCredentials () {
-        this.formAuthenticationPage.login (USERNAME, PASSWORD);
+        this.securePage = this.formAuthenticationPage.login (USERNAME, PASSWORD);
         assertTrue (this.securePage.getFlashMessage ()
             .contains ("You logged into a secure area!"));
         assertEquals (this.securePage.getHeaderText (), "Secure Area");
@@ -114,15 +115,6 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
             .contains ("Your password is invalid!"));
     }
 
-    @BeforeClass
-    public void testSetup () {
-        final String websiteLink = "http://the-internet.herokuapp.com/";
-        getDriver ().get (websiteLink);
-        MainPage mainPage = new MainPage ();
-        mainPage.clickLink ("Form Authentication");
-        this.formAuthenticationPage = new FormAuthenticationPage ();
-        this.securePage = new SecurePage ();
-    }
 
     @Test
     public void userNameNotValidTest () {

@@ -1,13 +1,13 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-
-import java.text.MessageFormat;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.text.MessageFormat;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 26-07-2022
@@ -29,9 +29,8 @@ public class ProductPage {
         return this;
     }
 
-    public CheckoutPage checkoutProduct () {
+    public void checkoutProduct () {
         checkoutBtn ().click ();
-        return CheckoutPage.checkoutPage ();
     }
 
     public ProductPage verifySuccessMessage () {

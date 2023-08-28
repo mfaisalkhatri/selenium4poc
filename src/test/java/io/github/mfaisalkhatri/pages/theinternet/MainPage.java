@@ -15,10 +15,10 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 13-12-2021

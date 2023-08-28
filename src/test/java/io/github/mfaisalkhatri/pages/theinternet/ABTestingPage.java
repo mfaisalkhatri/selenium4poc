@@ -15,9 +15,9 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import org.openqa.selenium.By;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 13-12-2021

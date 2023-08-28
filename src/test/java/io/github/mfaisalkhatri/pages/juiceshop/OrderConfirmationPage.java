@@ -1,8 +1,8 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import org.openqa.selenium.By;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 19-04-2022

@@ -30,11 +30,11 @@ import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
  */
 public class JSAlertPage {
 
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
     private Alert alert;
 
     public JSAlertPage () {
-        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
     }
 
     public WebElement jsAlertButton () {
@@ -50,24 +50,24 @@ public class JSAlertPage {
     }
 
     public void checkForAlert () {
-        wait.until(ExpectedConditions.alertIsPresent());
-        alert = getDriver().switchTo().alert();
+        this.wait.until(ExpectedConditions.alertIsPresent());
+        this.alert = getDriver().switchTo().alert();
     }
 
     public void acceptAlert () {
-        alert.accept();
+        this.alert.accept();
     }
 
     public void dismissAlert () {
-        alert.dismiss();
+        this.alert.dismiss();
     }
 
     public String getAlertText () {
-        return alert.getText();
+        return this.alert.getText();
     }
 
-    public void typeTextInAlert (String text) {
-        alert.sendKeys(text);
+    public void typeTextInAlert (final String text) {
+        this.alert.sendKeys(text);
     }
 
     public String resultText () {

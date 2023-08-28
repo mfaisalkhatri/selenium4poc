@@ -15,11 +15,11 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 20-12-2021
