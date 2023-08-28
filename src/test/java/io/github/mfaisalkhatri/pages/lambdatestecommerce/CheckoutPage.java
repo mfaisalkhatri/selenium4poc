@@ -1,16 +1,16 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static io.github.mfaisalkhatri.utilities.Helper.enterText;
-
-import java.time.Duration;
-
-import io.github.mfaisalkhatri.data.BillingData;
+import io.github.mfaisalkhatri.data.lambdatestecommerce.BillingData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
 /**
  * Created By Faisal Khatri on 26-07-2022
@@ -27,10 +27,9 @@ public class CheckoutPage {
         this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (10));
     }
 
-    public ConfirmOrderPage checkoutProduct () {
+    public void checkoutProduct () {
         agreeTermsAndConditionsField ().click ();
         continueBtn ().click ();
-        return new ConfirmOrderPage ();
     }
 
     public String getUnitPriceOfCameraLens () {

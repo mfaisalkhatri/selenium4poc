@@ -1,11 +1,11 @@
 package io.github.mfaisalkhatri.tests.amazon;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import io.github.mfaisalkhatri.pages.amazon.HomePage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * @author Faisal Khatri
@@ -21,7 +21,7 @@ public class DataAtrTest extends BaseSuiteSetup {
 
     @Test
     public void testDataAttr () {
-        HomePage homePage = new HomePage ();
+        final HomePage homePage = new HomePage();
         homePage.searchProduct ("Mobile Phone");
 
         System.out.println (homePage.getProductDesc ());

@@ -14,14 +14,14 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-
 import io.github.mfaisalkhatri.pages.theinternet.ABTestingPage;
 import io.github.mfaisalkhatri.pages.theinternet.MainPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 09-12-2021
@@ -32,20 +32,20 @@ public class BrowserTests extends BaseSuiteSetup {
 
     @Test
     public void browserNavigationTests () {
-        MainPage mainPage = new MainPage ();
-        mainPage.clickLink ("Challenging DOM");
-        ABTestingPage abTestingPage = new ABTestingPage ();
-        String abTestingPageHeader = abTestingPage.pageHeader ();
-        assertEquals (abTestingPageHeader, "Challenging DOM");
+        final MainPage mainPage = new MainPage();
+        mainPage.clickLink("Challenging DOM");
+        final ABTestingPage abTestingPage = new ABTestingPage();
+        final String abTestingPageHeader = abTestingPage.pageHeader();
+        assertEquals(abTestingPageHeader, "Challenging DOM");
 
-        getDriver ().navigate ()
-            .back ();
-        String mainPageHeader = mainPage.mainPageHeader ();
-        assertEquals (mainPageHeader, "Available Examples");
+        getDriver().navigate()
+                .back();
+        final String mainPageHeader = mainPage.mainPageHeader();
+        assertEquals(mainPageHeader, "Available Examples");
 
-        getDriver ().navigate ()
-            .forward ();
-        assertEquals (abTestingPageHeader, "Challenging DOM");
+        getDriver().navigate()
+                .forward();
+        assertEquals(abTestingPageHeader, "Challenging DOM");
 
         getDriver ().navigate ()
             .refresh ();
@@ -55,11 +55,11 @@ public class BrowserTests extends BaseSuiteSetup {
     @Test
     public void checkTitleAndWebsiteUrlTest () {
         final String title = "The Internet";
-        String actualWebsiteLink = getDriver ().getCurrentUrl ();
-        String actualTitle = getDriver ().getTitle ();
+        final String actualWebsiteLink = getDriver().getCurrentUrl();
+        final String actualTitle = getDriver().getTitle();
 
-        assertEquals (actualWebsiteLink, websiteLink);
-        assertEquals (actualTitle, title);
+        assertEquals(actualWebsiteLink, websiteLink);
+        assertEquals(actualTitle, title);
 
     }
 

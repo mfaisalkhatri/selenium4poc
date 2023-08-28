@@ -1,10 +1,10 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static io.github.mfaisalkhatri.utilities.Helper.enterText;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
 /**
  * Created By Faisal Khatri on 25-07-2022

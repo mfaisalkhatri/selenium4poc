@@ -1,75 +1,39 @@
 package io.github.mfaisalkhatri.tests.juiceshop;
 
+import io.github.mfaisalkhatri.data.juiceshop.UserData;
+import io.github.mfaisalkhatri.pages.juiceshop.*;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.data.juiceshop.UserDataBuilder.getUserData;
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import io.github.mfaisalkhatri.pages.juiceshop.CheckoutPage;
-import io.github.mfaisalkhatri.pages.juiceshop.DeliverySelection;
-import io.github.mfaisalkhatri.pages.juiceshop.LoginPage;
-import io.github.mfaisalkhatri.pages.juiceshop.MainPage;
-import io.github.mfaisalkhatri.pages.juiceshop.OrderConfirmationPage;
-import io.github.mfaisalkhatri.pages.juiceshop.OrderSummaryPage;
-import io.github.mfaisalkhatri.pages.juiceshop.PaymentPage;
-import io.github.mfaisalkhatri.pages.juiceshop.ProductPage;
-import io.github.mfaisalkhatri.pages.juiceshop.RegistrationPage;
-import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
-import net.datafaker.Faker;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
-public class JuiceShopTests extends BaseSuiteSetup {
-
-    private String address;
+public class RefactoredJuiceShopTests extends BaseSuiteSetup {
     private String appleJuicePrice;
     private String appleJuiceText;
     private String bananaJuicePrice;
     private String bananaJuiceText;
-    private String city;
-    private String country;
-    private String email;
-    private LoginPage loginPage;
     private MainPage mainPage;
-    private int mobileNumber;
-    private String name;
-    private String pass;
     private ProductPage productPage;
-    private String state;
-    private String zipcode;
+    private UserData userData;
 
     @BeforeClass
     public void setupTests() {
         final String globalWebsiteLink = "https://juice-shop.herokuapp.com/#/";
         //final String dockerWebsiteLink = "http://host.docker.internal:3000/#/";
         final String websiteLink = "http://localhost:3000/#/";
-        System.out.println(getDriver().toString());
         if (getDriver().toString().contains("RemoteWebDriver")) {
             getDriver().get(globalWebsiteLink);
         } else {
             getDriver().get(websiteLink);
         }
-        final Faker faker = new Faker();
         this.mainPage = new MainPage();
-        this.loginPage = new LoginPage();
         this.productPage = new ProductPage();
-        this.email = faker.internet()
-                .emailAddress();
-        this.pass = faker.internet()
-                .password(6, 12);
-        this.country = faker.address()
-                .country();
-        this.name = faker.name()
-                .fullName();
-        this.mobileNumber = faker.number()
-                .numberBetween(99900000, 99988888);
-        this.zipcode = faker.number()
-                .digits(6);
-        this.address = faker.address()
-                .streetAddress();
-        this.city = faker.address()
-                .city();
-        this.state = faker.address()
-                .state();
+        this.userData = getUserData();
     }
 
     @Test(dependsOnMethods = "testLogin")
@@ -87,17 +51,18 @@ public class JuiceShopTests extends BaseSuiteSetup {
 
     @Test
     public void testLogin() {
-        this.loginPage.loginIntoJuiceShop(this.email, this.pass);
+        final var loginPage = new LoginPage();
+        loginPage.loginIntoJuiceShop(this.userData.getEmail(), this.userData.getPass());
         this.mainPage.accountLink()
                 .click();
-        assertTrue(this.loginPage.logOutLink()
+        assertTrue(loginPage.logOutLink()
                 .isDisplayed());
     }
 
     @Test(dependsOnMethods = "testSelectDelivery")
     public void testMakePayment() {
         final PaymentPage paymentPage = new PaymentPage();
-        paymentPage.makePayment(this.name, "4012888888881881", "2", "2080");
+        paymentPage.makePayment(this.userData.getName(), "4012888888881881", "2", "2080");
     }
 
     @Test(dependsOnMethods = "testOrderSummary")
@@ -113,13 +78,13 @@ public class JuiceShopTests extends BaseSuiteSetup {
     @Test(dependsOnMethods = "testMakePayment")
     public void testOrderSummary() {
         final OrderSummaryPage orderSummaryPage = new OrderSummaryPage();
-        final String addressLineTwo = this.address + ", " + this.city + ", " + this.state + ", " + this.zipcode;
-        assertEquals(orderSummaryPage.getDeliveryAddressCustomerName(), this.name);
+        final String addressLineTwo = this.userData.getAddress() + ", " + this.userData.getCity() + ", " + this.userData.getState() + ", " + this.userData.getZipcode();
+        assertEquals(orderSummaryPage.getDeliveryAddressCustomerName(), this.userData.getName());
         assertEquals(orderSummaryPage.getDeliveryAddress(), addressLineTwo);
-        assertEquals(orderSummaryPage.getDeliveryAddressCountry(), this.country);
-        assertEquals(orderSummaryPage.getDeliveryAddressPhoneNumber(), "Phone Number " + this.mobileNumber);
+        assertEquals(orderSummaryPage.getDeliveryAddressCountry(), this.userData.getCountry());
+        assertEquals(orderSummaryPage.getDeliveryAddressPhoneNumber(), "Phone Number " + this.userData.getMobileNumber());
         assertEquals(orderSummaryPage.getPaymentmethodCardEnding(), "Card ending in 1881");
-        assertEquals(orderSummaryPage.getPaymentmethodCardHolderName(), "Card Holder " + this.name);
+        assertEquals(orderSummaryPage.getPaymentmethodCardHolderName(), "Card Holder " + this.userData.getName());
         assertEquals(orderSummaryPage.getItemsPrice(), "3.98¤");
         assertEquals(orderSummaryPage.getDeliveryAmount(), "0.99¤");
         assertEquals(orderSummaryPage.getTotalPrice(), "4.97¤");
@@ -145,26 +110,28 @@ public class JuiceShopTests extends BaseSuiteSetup {
         assertEquals(checkoutPage.bananaJuicePrice(), this.bananaJuicePrice);
         assertEquals(checkoutPage.totalPrice(), "Total Price: 3.98¤");
         checkoutPage.checkoutProduct();
-        checkoutPage.addAddressForDelivery(this.country, this.name, this.mobileNumber, this.zipcode, this.address,
-                this.city, this.state);
+        checkoutPage.addAddressForDelivery(this.userData.getCountry(), this.userData.getName(), this.userData.getMobileNumber(), this.userData.getZipcode(), this.userData.getAddress(),
+                this.userData.getCity(), this.userData.getState());
+
     }
 
     @Test
     public void testRegisterUser() {
         final RegistrationPage registrationPage = new RegistrationPage();
         this.mainPage.openLoginPage();
-        registrationPage.registerUser(this.email, this.pass, "Mother's maiden name?", "Jane Doe");
+        registrationPage.registerUser(this.userData.getEmail(), this.userData.getPass(), "Mother's maiden name?", "Jane Doe");
         assertEquals(registrationPage.successMessage(), "Registration completed successfully. You can now log in.");
     }
 
     @Test(dependsOnMethods = "testProductCheckout")
     public void testSelectDelivery() {
         final DeliverySelection deliverySelection = new DeliverySelection();
-        final String addressLineTwo = this.address + ", " + this.city + ", " + this.state + ", " + this.zipcode;
-        assertEquals(deliverySelection.getDeliveryAddressName(), this.name);
+        final String addressLineTwo = this.userData.getAddress() + ", " + this.userData.getCity() + ", " + this.userData.getState() + ", " + this.userData
+                .getZipcode();
+        assertEquals(deliverySelection.getDeliveryAddressName(), this.userData.getName());
         assertEquals(deliverySelection.getDeliveryAddress(), addressLineTwo);
-        assertEquals(deliverySelection.getDeliveryAddressCountry(), this.country);
-        assertEquals(deliverySelection.getDeliveryAddressPhoneNumber(), "Phone Number " + this.mobileNumber);
+        assertEquals(deliverySelection.getDeliveryAddressCountry(), this.userData.getCountry());
+        assertEquals(deliverySelection.getDeliveryAddressPhoneNumber(), "Phone Number " + this.userData.getMobileNumber());
         deliverySelection.selectDeliveryOption();
     }
 }

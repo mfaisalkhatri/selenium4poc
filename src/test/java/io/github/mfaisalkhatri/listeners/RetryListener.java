@@ -1,10 +1,10 @@
 package io.github.mfaisalkhatri.listeners;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 /**
  * @author Faisal Khatri

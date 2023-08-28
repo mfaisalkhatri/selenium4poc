@@ -1,16 +1,16 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-
-import java.text.MessageFormat;
-import java.time.Duration;
-
-import io.github.mfaisalkhatri.data.BillingData;
+import io.github.mfaisalkhatri.data.lambdatestecommerce.BillingData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.text.MessageFormat;
+import java.time.Duration;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 28-07-2022
@@ -21,9 +21,8 @@ public class ConfirmOrderPage {
         return new ConfirmOrderPage ();
     }
 
-    public OrderSuccessPage confirmOrder () {
-        confirmOrderBtn ().click ();
-        return new OrderSuccessPage ();
+    public void confirmOrder() {
+        confirmOrderBtn().click();
     }
 
     public ConfirmOrderPage verifyPageHeader () {

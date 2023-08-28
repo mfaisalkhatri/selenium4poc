@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Juice shop Website Tests ">
-    <test name="Juice Shop end to End automation tests ">
+    <test name="Juice Shop end to End automation tests " enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.JuiceShopTests">
@@ -18,4 +18,22 @@
             </class>
         </classes>
     </test> <!-- Test -->
+    <test name="Juice Shop end to End automation tests " enabled="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.juiceshop.RefactoredJuiceShopTests">
+                <methods>
+                    <include name="testRegisterUser"/>
+                    <include name="testLogin"/>
+                    <include name="testAddProductToCart"/>
+                    <include name="testProductCheckout"/>
+                    <include name="testSelectDelivery"/>
+                    <include name="testMakePayment"/>
+                    <include name="testOrderSummary"/>
+                    <include name="testOrderConfirmation"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+
 </suite> <!-- Suite -->

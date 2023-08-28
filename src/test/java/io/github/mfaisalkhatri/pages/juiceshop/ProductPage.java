@@ -1,14 +1,14 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 public class ProductPage {
 
@@ -68,7 +68,7 @@ public class ProductPage {
     }
 
     public String successMessage () {
-        return wait.until (
+        return this.wait.until (
                 ExpectedConditions.visibilityOfElementLocated (By.cssSelector (".mat-simple-snack-bar-content")))
             .getText ();
     }

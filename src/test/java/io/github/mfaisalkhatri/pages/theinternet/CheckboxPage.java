@@ -15,12 +15,12 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 21-12-2021

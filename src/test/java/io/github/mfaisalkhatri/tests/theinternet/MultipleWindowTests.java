@@ -20,13 +20,13 @@ public class MultipleWindowTests extends BaseSuiteSetup {
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("Multiple Windows");
     }
 
     @Test
     public void testMultipleWindows () throws InterruptedException {
-        MultipleWindowsPage multipleWindowPage = new MultipleWindowsPage();
+        final MultipleWindowsPage multipleWindowPage = new MultipleWindowsPage();
         multipleWindowPage.openLinkInNewWindow("Click Here");
         assertTrue(multipleWindowPage.checkNewWindowTitle("New Window"));
     }

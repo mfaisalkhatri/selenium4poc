@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.data;
+package io.github.mfaisalkhatri.data.lambdatestecommerce;
 
 
 import net.datafaker.Faker;
@@ -6,7 +6,7 @@ import net.datafaker.Faker;
 /**
  * Created By Faisal Khatri on 25-07-2022
  */
-public class TestDataBuilder {
+public final class TestDataBuilder {
 
     private static final Faker FAKER = new Faker();
 

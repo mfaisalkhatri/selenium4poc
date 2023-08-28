@@ -23,7 +23,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  * @author Faisal Khatri
  * @since 24/07/2022
  */
-public class DriverManager {
+public final class DriverManager {
     private static final ThreadLocal<WebDriver> DRIVER          = new ThreadLocal<> ();
     private static final String                 GRID_URL        = "@hub.lambdatest.com/wd/hub";
     private static final String                 HUB_URL         = "http://localhost:4444/wd/hub";

@@ -1,9 +1,9 @@
 package io.github.mfaisalkhatri.pages.lambdatestseleniumplayground;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * @author Faisal Khatri

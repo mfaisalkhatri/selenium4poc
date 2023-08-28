@@ -1,12 +1,12 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.time.Duration;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 19-04-2022

@@ -26,7 +26,7 @@ public class PaymentPage {
         expiryYearField ().selectByValue (expiryYear);
         submitBtn ().click ();
         selectAddressRadioBtn ().click ();
-        Actions actions = new Actions (getDriver ());
+        final Actions actions = new Actions (getDriver ());
         actions.moveToElement (continueBtn ()).click ().perform ();
     }
 
@@ -40,7 +40,7 @@ public class PaymentPage {
     }
 
     private WebElement continueBtn () {
-        WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (20));
+        final WebDriverWait wait = new WebDriverWait (getDriver (), Duration.ofSeconds (20));
         return wait.until (ExpectedConditions.elementToBeClickable (By.cssSelector (".btn.nextButton")));
     }
 

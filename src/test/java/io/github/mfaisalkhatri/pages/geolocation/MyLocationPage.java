@@ -1,9 +1,9 @@
 package io.github.mfaisalkhatri.pages.geolocation;
 
-import static io.github.mfaisalkhatri.drivers.DevToolsManager.getDriver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DevToolsManager.getDriver;
 
 /**
  * @author Faisal Khatri

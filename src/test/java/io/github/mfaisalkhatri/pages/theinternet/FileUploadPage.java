@@ -1,14 +1,14 @@
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
-import java.io.File;
-import java.nio.file.Paths;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.io.File;
+import java.nio.file.Paths;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 21-01-2022

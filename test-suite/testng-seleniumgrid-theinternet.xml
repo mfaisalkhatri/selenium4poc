@@ -6,13 +6,12 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.FormAuthenticationTests">
                 <methods>
-                    <include name="loginWithCorrectCredentials"/>
-                    <include name="logOutTest"/>
                     <include name="userNameNotValidTest"/>
                     <include name="passwordNotValidTest"/>
                     <include name="invalidLoginCredentialsTest"/>
                     <include name="blankUserAndPasswordTest"/>
                     <include name="loginTests"/>
+                    <include name="loginWithCorrectCredentials"/>
                 </methods>
             </class>
         </classes>

@@ -15,11 +15,11 @@
 
 package io.github.mfaisalkhatri.pages.automationpractice;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 /**
  * Created By Faisal Khatri on 09-12-2021

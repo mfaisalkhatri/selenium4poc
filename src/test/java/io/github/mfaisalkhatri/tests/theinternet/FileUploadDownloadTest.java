@@ -20,25 +20,25 @@ public class FileUploadDownloadTest extends BaseSuiteSetup {
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        mainPage = new MainPage();
+        this.mainPage = new MainPage();
     }
 
     @Test
     public void testFileDownload () throws InterruptedException {
-        DownloadPage downloadPage = new DownloadPage();
-        mainPage.clickLink("File Download");
-        fileName = downloadPage.getDownloadLinkText();
+        final DownloadPage downloadPage = new DownloadPage();
+        this.mainPage.clickLink("File Download");
+        this.fileName = downloadPage.getDownloadLinkText();
         downloadPage.downloadFile();
-        assertTrue(downloadPage.checkFileDownload(fileName));
+        assertTrue(downloadPage.checkFileDownload(this.fileName));
         getDriver().navigate().back();
     }
 
     @Test
     public void testFileUpload () {
-        mainPage.clickLink("File Upload");
-        FileUploadPage uploadPage = new FileUploadPage();
-        uploadPage.uploadFile(fileName);
+        this.mainPage.clickLink("File Upload");
+        final FileUploadPage uploadPage = new FileUploadPage();
+        uploadPage.uploadFile(this.fileName);
         assertEquals(uploadPage.successHeader(), "File Uploaded!");
-        assertEquals(uploadPage.uploadedFileName(), fileName);
+        assertEquals(uploadPage.uploadedFileName(), this.fileName);
     }
 }

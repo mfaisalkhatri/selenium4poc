@@ -1,8 +1,5 @@
 package io.github.mfaisalkhatri.tests.retrytests;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-
 import io.github.mfaisalkhatri.listeners.Retry;
 import io.github.mfaisalkhatri.pages.lambdatestecommerce.HomePage;
 import io.github.mfaisalkhatri.pages.lambdatestecommerce.LoginPage;
@@ -10,6 +7,9 @@ import io.github.mfaisalkhatri.pages.lambdatestecommerce.SearchResultPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
 
 /**
  * @author Faisal Khatri

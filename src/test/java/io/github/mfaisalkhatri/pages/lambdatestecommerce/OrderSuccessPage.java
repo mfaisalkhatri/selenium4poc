@@ -1,14 +1,14 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 28-07-2022

@@ -15,7 +15,7 @@ import org.openqa.selenium.devtools.v113.log.Log;
  * Created By Faisal Khatri on 21-03-2022
  */
 @Builder
-public class DevToolsManager {
+public final class DevToolsManager {
 
     private static final Logger LOG = LogManager.getLogger("DevToolsSetup.class");
     private static ChromeDriver chromeDriver;
@@ -25,7 +25,7 @@ public class DevToolsManager {
                 Objects.requireNonNullElse(System.getProperty("headless"), "true"));
         WebDriverManager.chromedriver()
                 .setup();
-        ChromeOptions options = new ChromeOptions();
+        final ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1050,600");
@@ -35,7 +35,7 @@ public class DevToolsManager {
         options.addArguments("--safebrowsing-disable-download-protection");
 
         chromeDriver = new ChromeDriver(options);
-        DevTools chromeDevTools = chromeDriver.getDevTools();
+        final DevTools chromeDevTools = chromeDriver.getDevTools();
         chromeDevTools.createSession();
         chromeDevTools.send(Log.enable());
         chromeDevTools.addListener(Log.entryAdded(), logEntry -> {
@@ -52,5 +52,9 @@ public class DevToolsManager {
         if (null != chromeDriver) {
             chromeDriver.quit();
         }
+    }
+
+    private DevToolsManager() {
+
     }
 }

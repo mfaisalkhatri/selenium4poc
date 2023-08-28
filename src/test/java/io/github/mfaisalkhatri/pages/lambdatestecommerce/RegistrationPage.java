@@ -1,14 +1,14 @@
 package io.github.mfaisalkhatri.pages.lambdatestecommerce;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static io.github.mfaisalkhatri.utilities.Helper.enterText;
-import static org.testng.Assert.assertEquals;
-
-import io.github.mfaisalkhatri.data.RegisterUserData;
-import io.github.mfaisalkhatri.data.TestDataBuilder;
+import io.github.mfaisalkhatri.data.lambdatestecommerce.RegisterUserData;
+import io.github.mfaisalkhatri.data.lambdatestecommerce.TestDataBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.enterText;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created By Faisal Khatri on 25-07-2022

@@ -15,13 +15,13 @@ public class DataTableTests extends BaseSuiteSetup {
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("Sortable Data Tables");
     }
 
     @Test
     public void testDataTable () {
-        DataTablesPage dataTablesPage = new DataTablesPage();
+        final DataTablesPage dataTablesPage = new DataTablesPage();
         dataTablesPage.printTableRecords();
         assertEquals(dataTablesPage.getTableData().get(0).get("Last Name"), "Smith");
         assertEquals(dataTablesPage.getTableData().get(1).get("First Name"), "Frank");

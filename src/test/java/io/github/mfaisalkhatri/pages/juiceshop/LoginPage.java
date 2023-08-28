@@ -1,10 +1,10 @@
 package io.github.mfaisalkhatri.pages.juiceshop;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static io.github.mfaisalkhatri.utilities.Helper.enterText;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static io.github.mfaisalkhatri.utilities.Helper.enterText;
 
 public class LoginPage {
 

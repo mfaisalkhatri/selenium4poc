@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.data;
+package io.github.mfaisalkhatri.data.lambdatestecommerce;
 
 import lombok.Builder;
 import lombok.Getter;
