@@ -1,12 +1,12 @@
 package io.github.mfaisalkhatri.tests.base;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.createDriver;
-import static io.github.mfaisalkhatri.drivers.DriverManager.quitDriver;
-
 import io.github.mfaisalkhatri.enums.Browsers;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.createDriver;
+import static io.github.mfaisalkhatri.drivers.DriverManager.quitDriver;
 
 /**
  * Created By Faisal Khatri on 24-07-2022

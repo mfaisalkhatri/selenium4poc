@@ -35,13 +35,13 @@ public class KeyPressTests extends BaseSuiteSetup {
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("Key Presses");
     }
 
     @Test
     public void keyPressTest () {
-        KeyPressPage keyPressPage = new KeyPressPage();
+        final KeyPressPage keyPressPage = new KeyPressPage();
         keyPressPage.pressKeys(Keys.ARROW_DOWN);
         assertEquals(keyPressPage.resultText(), "You entered: DOWN");
         keyPressPage.pressKeys(Keys.F3);

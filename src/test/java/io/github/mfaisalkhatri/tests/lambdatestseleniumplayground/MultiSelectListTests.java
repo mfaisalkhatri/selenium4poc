@@ -1,14 +1,14 @@
 package io.github.mfaisalkhatri.tests.lambdatestseleniumplayground;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import io.github.mfaisalkhatri.pages.lambdatestseleniumplayground.DropdownPage;
 import io.github.mfaisalkhatri.pages.lambdatestseleniumplayground.MainPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * @author Faisal Khatri

@@ -35,13 +35,13 @@ public class SauceDemoTests extends BaseSuiteSetup {
 
     @Test
     public void loginSauceDemoTest () {
-        LoginPage loginPage = new LoginPage();
+        final LoginPage loginPage = new LoginPage();
         loginPage.websiteLogin("standard_user", "secret_sauce");
     }
 
     @Test
     public void logOutSauceDemoTest () {
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.logoutFromWebSite();
     }
 }

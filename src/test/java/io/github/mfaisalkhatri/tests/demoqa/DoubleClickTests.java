@@ -14,13 +14,13 @@
 */
 package io.github.mfaisalkhatri.tests.demoqa;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import io.github.mfaisalkhatri.pages.demoqa.ButtonsPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * Created By Faisal Khatri on 30-12-2021

@@ -1,11 +1,11 @@
 package io.github.mfaisalkhatri.tests.bstack;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-
 import io.github.mfaisalkhatri.pages.bstack.LoginPage;
 import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 /**
  * @author Faisal Khatri

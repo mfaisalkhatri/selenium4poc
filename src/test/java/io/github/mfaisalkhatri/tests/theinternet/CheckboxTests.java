@@ -32,14 +32,14 @@ public class CheckboxTests extends BaseSuiteSetup {
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("Checkboxes");
     }
 
     @Test
     public void testCheckboxes () {
-        CheckboxPage checkboxPage = new CheckboxPage();
-        String pageHeader = checkboxPage.pageHeader();
+        final CheckboxPage checkboxPage = new CheckboxPage();
+        final String pageHeader = checkboxPage.pageHeader();
         assertEquals(pageHeader, "Checkboxes");
 
         checkboxPage.checkboxOne().click();

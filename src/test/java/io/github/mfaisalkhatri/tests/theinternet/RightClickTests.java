@@ -32,13 +32,13 @@ public class RightClickTests extends BaseSuiteSetup {
     public void testSetup () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("Context Menu");
     }
 
     @Test
     public void testRightClick () {
-        ContextMenuPage contextMenuPage = new ContextMenuPage();
+        final ContextMenuPage contextMenuPage = new ContextMenuPage();
         contextMenuPage.rightClick();
         contextMenuPage.checkForAlert();
         assertEquals(contextMenuPage.getAlertText(), "You selected a context menu");

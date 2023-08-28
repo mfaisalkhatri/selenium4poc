@@ -34,60 +34,60 @@ public class JSAlertTests extends BaseSuiteSetup {
     private void setupTest () {
         final String websiteLink = "http://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("JavaScript Alerts");
-        jsAlertPage = new JSAlertPage();
+        this.jsAlertPage = new JSAlertPage();
     }
 
     @Test
     public void alertTest () {
-        jsAlertPage.jsAlertButton().click();
-        jsAlertPage.checkForAlert();
-        String alertText = jsAlertPage.getAlertText();
+        this.jsAlertPage.jsAlertButton().click();
+        this.jsAlertPage.checkForAlert();
+        final String alertText = this.jsAlertPage.getAlertText();
         assertEquals(alertText, "I am a JS Alert");
-        jsAlertPage.acceptAlert();
-        assertEquals(jsAlertPage.resultText(), "You successfully clicked an alert");
+        this.jsAlertPage.acceptAlert();
+        assertEquals(this.jsAlertPage.resultText(), "You successfully clicked an alert");
     }
 
     @Test
     public void confirmAlertTest () {
-        jsAlertPage.jsConfirmButton().click();
-        jsAlertPage.checkForAlert();
-        String alertText = jsAlertPage.getAlertText();
+        this.jsAlertPage.jsConfirmButton().click();
+        this.jsAlertPage.checkForAlert();
+        final String alertText = this.jsAlertPage.getAlertText();
         assertEquals(alertText, "I am a JS Confirm");
-        jsAlertPage.acceptAlert();
-        assertEquals(jsAlertPage.resultText(), "You clicked: Ok");
+        this.jsAlertPage.acceptAlert();
+        assertEquals(this.jsAlertPage.resultText(), "You clicked: Ok");
     }
 
     @Test
     public void dismissAlertTest () {
-        jsAlertPage.jsConfirmButton().click();
-        jsAlertPage.checkForAlert();
-        String alertText = jsAlertPage.getAlertText();
+        this.jsAlertPage.jsConfirmButton().click();
+        this.jsAlertPage.checkForAlert();
+        final String alertText = this.jsAlertPage.getAlertText();
         assertEquals(alertText, "I am a JS Confirm");
-        jsAlertPage.dismissAlert();
-        assertEquals(jsAlertPage.resultText(), "You clicked: Cancel");
+        this.jsAlertPage.dismissAlert();
+        assertEquals(this.jsAlertPage.resultText(), "You clicked: Cancel");
     }
 
     @Test
     public void jsPromptTypeAndAcceptTest () {
-        jsAlertPage.jspromptButton().click();
-        jsAlertPage.checkForAlert();
-        String alertText = jsAlertPage.getAlertText();
+        this.jsAlertPage.jspromptButton().click();
+        this.jsAlertPage.checkForAlert();
+        final String alertText = this.jsAlertPage.getAlertText();
         assertEquals(alertText, "I am a JS prompt");
         final String text = "Testing by typing text in JS Alert";
-        jsAlertPage.typeTextInAlert(text);
-        jsAlertPage.acceptAlert();
-        assertEquals(jsAlertPage.resultText(), "You entered: " + text);
+        this.jsAlertPage.typeTextInAlert(text);
+        this.jsAlertPage.acceptAlert();
+        assertEquals(this.jsAlertPage.resultText(), "You entered: " + text);
     }
 
     @Test
     public void jsPromptDismissTest () {
-        jsAlertPage.jspromptButton().click();
-        jsAlertPage.checkForAlert();
-        String alertText = jsAlertPage.getAlertText();
+        this.jsAlertPage.jspromptButton().click();
+        this.jsAlertPage.checkForAlert();
+        final String alertText = this.jsAlertPage.getAlertText();
         assertEquals(alertText, "I am a JS prompt");
-        jsAlertPage.dismissAlert();
-        assertEquals(jsAlertPage.resultText(), "You entered: null");
+        this.jsAlertPage.dismissAlert();
+        assertEquals(this.jsAlertPage.resultText(), "You entered: null");
     }
 }

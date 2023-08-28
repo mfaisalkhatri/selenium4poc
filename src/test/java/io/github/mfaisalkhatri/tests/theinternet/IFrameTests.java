@@ -32,14 +32,14 @@ public class IFrameTests extends BaseSuiteSetup {
     public void setupTests () {
         final String website = "http://the-internet.herokuapp.com/";
         getDriver().get(website);
-        MainPage mainPage = new MainPage();
+        final MainPage mainPage = new MainPage();
         mainPage.clickLink("Frames");
         mainPage.clickLink("iFrame");
     }
 
     @Test
     public void testIFrame () {
-        IFramePage iframe = new IFramePage();
+        final IFramePage iframe = new IFramePage();
         iframe.switchToiFrame();
         final String text = "Hello 123, entering value in iFrame!!";
         iframe.enterTextInIFrame(text);
