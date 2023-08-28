@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public final class Helper {
 
-    private static final Logger LOG = LogManager.getLogger (Helper.class);
-
     public static void enterText (final WebElement element, final String text) {
         element.click ();
         element.clear ();
