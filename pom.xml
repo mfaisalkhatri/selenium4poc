@@ -19,7 +19,7 @@
         <commons-io.version>2.13.0</commons-io.version>
         <log4jcore.version>2.20.0</log4jcore.version>
         <log4japi.version>2.20.0</log4japi.version>
-        <orgjson.version>20230618</orgjson.version>
+        <orgjson.version>20231013</orgjson.version>
         <orgjson.version>20230618</orgjson.version>
         <seleniumdevtools.version>4.11.0</seleniumdevtools.version>
         <lombok.version>1.18.28</lombok.version>
