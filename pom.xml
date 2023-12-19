@@ -20,7 +20,7 @@
         <log4jcore.version>2.20.0</log4jcore.version>
         <log4japi.version>2.20.0</log4japi.version>
         <orgjson.version>20231013</orgjson.version>
-        <seleniumdevtools.version>4.11.0</seleniumdevtools.version>
+        <seleniumdevtools.version>4.16.1</seleniumdevtools.version>
         <lombok.version>1.18.30</lombok.version>
         <datafaker.version>2.0.2</datafaker.version>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
@@ -99,7 +99,7 @@
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v101 -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v113</artifactId>
+            <artifactId>selenium-devtools-v120</artifactId>
             <version>${seleniumdevtools.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
