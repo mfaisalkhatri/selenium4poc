@@ -122,7 +122,6 @@ public final class DriverManager {
     private static void setupChromeInLambdaTest () {
         final var browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("114.0");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
@@ -157,7 +156,6 @@ public final class DriverManager {
     private static void setupFirefoxInLambdaTest () {
         final var browserOptions = new FirefoxOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion ("114.0");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (

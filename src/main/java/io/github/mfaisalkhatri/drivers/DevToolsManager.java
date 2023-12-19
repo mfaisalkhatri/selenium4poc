@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v113.log.Log;
+import org.openqa.selenium.devtools.v120.log.Log;
 
 /**
  * Created By Faisal Khatri on 21-03-2022
