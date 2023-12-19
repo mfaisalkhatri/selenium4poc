@@ -22,9 +22,10 @@
         <orgjson.version>20231013</orgjson.version>
         <seleniumdevtools.version>4.11.0</seleniumdevtools.version>
         <lombok.version>1.18.30</lombok.version>
-        <datafaker.version>2.0.1</datafaker.version>
-        <maven.compiler.version>3.11.0</maven.compiler.version>
-        <surefire-version>3.1.2</surefire-version>
+        <datafaker.version>2.0.2</datafaker.version>
+        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+        <maven.compiler.version>3.12.0</maven.compiler.version>
+        <surefire-version>3.2.3</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
@@ -37,9 +38,9 @@
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
         <sonar.java.source>15</sonar.java.source>
-        <jacoco.version>0.8.10</jacoco.version>
+        <jacoco.version>0.8.11</jacoco.version>
         <sonarjacocolistener.version>5.14.0.18788</sonarjacocolistener.version>
-        <sonarmavenplugin.version>3.9.1.2184</sonarmavenplugin.version>
+        <sonarmavenplugin.version>3.10.0.2594</sonarmavenplugin.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -108,7 +109,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
@@ -146,6 +146,26 @@
                     </suiteXmlFiles>
                     <argLine>${argLine}</argLine>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.2.5</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
