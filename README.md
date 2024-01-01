@@ -32,6 +32,24 @@
 13. How do I double-click using Selenium WebDriver?
 14. How to check for chrome generated logs when selenium tests are run?
 
+## :writing_hand: Blog Links
+ 
+- [Selenium 4 WebDriver Hierarchy: A Detailed Explanation](https://medium.com/@iamfaisalkhatri/selenium-4-webdriver-hierarchy-a-detailed-explanation-lambdatest-18771c5fd3e9)
+- [Understanding CSS Selectors in Selenium](https://medium.com/@iamfaisalkhatri/understanding-css-selectors-in-selenium-pcloudy-blog-3e4b09672264)
+- [End to End testing using Selenium WebDriver and Java](https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca)
+- [Writing Selenium Web Automation tests in Fluent way!](https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a)
+- [How To Automate Shadow DOM In Selenium WebDriver?](https://medium.com/@iamfaisalkhatri/how-to-automate-shadow-dom-in-selenium-webdriver-lambdatest-blog-3884698b995)
+- [How to setup GitHub Actions for Java with Maven project?](https://mfaisalkhatri.github.io/2022/04/26/githubactions-for-java-maven-project/)
+- [How to Automate ServiceNOw with Selenium](https://medium.com/@iamfaisalkhatri/how-to-automate-servicenow-with-selenium-511e41172161)
+- [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
+
+## :movie_camera: Tutorial Videos
+
+[![Watch the video](https://img.youtube.com/vi/bhZX7apMqR8/hqdefault.jpg)]( https://www.youtube.com/live/bhZX7apMqR8?si=4n0u5YiMuz5vTiHd)
+[![Watch the video](https://img.youtube.com/vi/uHLYoJmZxWc/hqdefault.jpg)](https://youtu.be/uHLYoJmZxWc?si=3nevAn0Z3QZycdG8)
+[![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
+
+
 ## End-to-End Tests for OWASP-Juice-Shop
 
 - End-to-End tests for Juice Shop Website are running on `http://localhost:3000` inside the container in GitHub actions.
@@ -162,16 +180,6 @@
 
       `mvn clean install -Dsuite-xml=test-suite\testng-lambdatestecommerce.xml -Dheadless=false`
 
-## :writing_hand: Blog Links
- 
-- [Selenium 4 WebDriver Hierarchy: A Detailed Explanation](https://medium.com/@iamfaisalkhatri/selenium-4-webdriver-hierarchy-a-detailed-explanation-lambdatest-18771c5fd3e9)
-- [Understanding CSS Selectors in Selenium](https://medium.com/@iamfaisalkhatri/understanding-css-selectors-in-selenium-pcloudy-blog-3e4b09672264)
-- [End to End testing using Selenium WebDriver and Java](https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca)
-- [Writing Selenium Web Automation tests in Fluent way!](https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a)
-- [How To Automate Shadow DOM In Selenium WebDriver?](https://medium.com/@iamfaisalkhatri/how-to-automate-shadow-dom-in-selenium-webdriver-lambdatest-blog-3884698b995)
-- [How to setup GitHub Actions for Java with Maven project?](https://mfaisalkhatri.github.io/2022/04/26/githubactions-for-java-maven-project/)
-- [How to Automate ServiceNOw with Selenium](https://medium.com/@iamfaisalkhatri/how-to-automate-servicenow-with-selenium-511e41172161)
-- [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
 
 ## :question: Need Assistance?
 
