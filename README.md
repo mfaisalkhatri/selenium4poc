@@ -10,7 +10,7 @@
 - This repo has example codes with Selenium 4 features.
 - Websites used for testing are: [automationpractice.com](http://automationpractice.com/index.php), [saucedemo.com](https://www.saucedemo.com),
   [the-internet](http://the-internet.herokuapp.com/) [owasp-juice-shop](https://github.com/juice-shop/juice-shop)
-  and [LambdaTest E-Commerce Playground](https://ecommerce-playground.lambdatest.io/)
+  and [LambdaTest e-commerce Playground](https://ecommerce-playground.lambdatest.io/)
 - This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests.
 
 ## Talking more about the Scenarios Covered in this project:
@@ -36,6 +36,9 @@
  
 - [Selenium 4 WebDriver Hierarchy: A Detailed Explanation](https://medium.com/@iamfaisalkhatri/selenium-4-webdriver-hierarchy-a-detailed-explanation-lambdatest-18771c5fd3e9)
 - [Selenium Manager in Selenium 4.11.0: New Features and Improvements](https://medium.com/@iamfaisalkhatri/selenium-manager-in-selenium-4-11-0-new-features-and-improvements-lambdatest-761593a7f009)
+- [Different Types of Locators in Selenium WebDriver](https://www.lambdatest.com/blog/locators-in-selenium-webdriver-with-examples/)
+- [How to Locate Elements Using CSS Selectors in Selenium](https://www.lambdatest.com/learning-hub/css-selectors)
+- [How to Use @FindBy Annotation in Selenium Java](https://www.lambdatest.com/blog/findby-annotation-selenium-java/)
 - [Understanding CSS Selectors in Selenium](https://medium.com/@iamfaisalkhatri/understanding-css-selectors-in-selenium-pcloudy-blog-3e4b09672264)
 - [End to End testing using Selenium WebDriver and Java](https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca)
 - [Writing Selenium Web Automation tests in Fluent way!](https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a)
@@ -44,13 +47,14 @@
 - [How to Automate ServiceNow with Selenium](https://medium.com/@iamfaisalkhatri/how-to-automate-servicenow-with-selenium-511e41172161)
 - [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
 - [How to Handle ElementClickInterceptedException in Selenium Java](https://www.lambdatest.com/blog/elementclickinterceptedexception-in-selenium-java/)
-- [How to Use @FindBy Annotation in Selenium Java](https://www.lambdatest.com/blog/findby-annotation-selenium-java/)
 
 ## :movie_camera: Tutorial Videos
 
 [![Watch the video](https://img.youtube.com/vi/bhZX7apMqR8/hqdefault.jpg)]( https://www.youtube.com/live/bhZX7apMqR8?si=4n0u5YiMuz5vTiHd)
 [![Watch the video](https://img.youtube.com/vi/uHLYoJmZxWc/hqdefault.jpg)](https://youtu.be/uHLYoJmZxWc?si=3nevAn0Z3QZycdG8)
+[![Watch the video](https://img.youtube.com/vi/_hlXjVTa-jo/hqdefault.jpg)](https://youtu.be/_hlXjVTa-jo?si=PfOfU7ihb8eEgduh)
 [![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
+
 
 
 ## End-to-End Tests for OWASP-Juice-Shop
