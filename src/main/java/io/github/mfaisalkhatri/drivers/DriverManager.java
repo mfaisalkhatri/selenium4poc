@@ -28,8 +28,8 @@ public final class DriverManager {
     private static final String                 GRID_URL        = "@hub.lambdatest.com/wd/hub";
     private static final String                 HUB_URL         = "http://localhost:4444/wd/hub";
     private static final Logger                 LOG             = LogManager.getLogger ("DriverManager.class");
-    private static final String                 LT_ACCESS_TOKEN = System.getProperty ("LT_ACCESS_KEY");
-    private static final String                 LT_USERNAME     = System.getProperty ("LT_USERNAME");
+    private static final String                 LT_ACCESS_KEY = System.getenv ("LT_ACCESS_KEY");
+    private static final String                 LT_USERNAME     = System.getenv ("LT_USERNAME");
     private static final String NO_SANDBOX = "--no-sandbox";
     private static final String DISABLE_DEV_SHM = "--disable-dev-shm-usage";
     private static final String CUSTOM_WINDOW_SIZE = "--window-size=1050,600";
@@ -64,8 +64,6 @@ public final class DriverManager {
 
     private static HashMap<String, Object> ltOptions () {
         final var ltOptions = new HashMap<String, Object> ();
-        ltOptions.put ("username", LT_USERNAME);
-        ltOptions.put ("accessKey", LT_ACCESS_TOKEN);
         ltOptions.put ("resolution", "2560x1440");
         ltOptions.put ("selenium_version", "4.0.0");
         ltOptions.put ("build", "LambdaTest Playground Build");
@@ -122,13 +120,14 @@ public final class DriverManager {
     private static void setupChromeInLambdaTest () {
         final var browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
+        browserOptions.setBrowserVersion("latest");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
-                new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_TOKEN, GRID_URL)),
+                new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_KEY, GRID_URL)),
                     browserOptions));
         } catch (final MalformedURLException e) {
-            LOG.error ("Error setting up cloud browser in LambdaTest", e);
+            LOG.error ("Error setting up Chrome browser in LambdaTest", e);
         }
 
     }
@@ -156,13 +155,14 @@ public final class DriverManager {
     private static void setupFirefoxInLambdaTest () {
         final var browserOptions = new FirefoxOptions ();
         browserOptions.setPlatformName ("Windows 10");
+        browserOptions.setBrowserVersion("latest");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
-                new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_TOKEN, GRID_URL)),
+                new RemoteWebDriver (new URL (format ("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_KEY, GRID_URL)),
                     browserOptions));
         } catch (final MalformedURLException e) {
-            LOG.error ("Error setting up firefox  browser in LambdaTest", e);
+            LOG.error ("Error setting up firefox browser in LambdaTest", e);
         }
 
     }

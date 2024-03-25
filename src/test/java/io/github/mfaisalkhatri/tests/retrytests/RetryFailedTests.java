@@ -29,7 +29,7 @@ public class RetryFailedTests extends BaseSuiteSetup {
     @Test (retryAnalyzer = Retry.class)
     public void testNavigationToLoginPage () {
         final LoginPage loginPage = this.homePage.navigateToLoginPage ();
-        assertEquals (loginPage.loginBoxTitle (), "Returning Customers");
+        assertEquals (loginPage.loginBoxTitle (), "Returning Customer");
     }
 
     @Test
