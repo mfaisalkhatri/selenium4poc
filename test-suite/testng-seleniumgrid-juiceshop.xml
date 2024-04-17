@@ -17,8 +17,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-
+    </test>
     <test name="Juice Shop end to End automation tests on Remote Firefox ">
         <parameter name="browser" value="remote_firefox"/>
         <classes>
@@ -35,7 +34,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="Juice Shop end to End automation tests on Remote Edge">
         <parameter name="browser" value="remote_edge"/>
         <classes>
@@ -52,5 +51,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
 </suite>

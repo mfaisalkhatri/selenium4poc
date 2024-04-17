@@ -6,5 +6,5 @@
         <classes>
             <class name="io.github.mfaisalkhatri.tests.geolocation.GeolocationTests"/>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>

@@ -14,7 +14,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="selenium 4 Tests on Lambdatest ecommerce Website" enabled="false">
         <parameter name="browser" value="remote_chrome_lambdatest"/>
         <classes>
@@ -28,5 +28,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>
