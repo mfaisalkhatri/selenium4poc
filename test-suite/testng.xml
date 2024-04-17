@@ -10,4 +10,4 @@
 <!--        <suite-file path="testng-seleniumgrid-juiceshop.xml"/>-->
 <!--        <suite-file path="testng-lambdatestecommerce.xml"/>-->
     </suite-files>
-</suite> <!-- Suite -->
+</suite>

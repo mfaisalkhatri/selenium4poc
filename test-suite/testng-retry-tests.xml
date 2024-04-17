@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LambdaTest ecommerce playground website test suite ">
+<suite name="Retry Tests example using TestNG ">
     <listeners>
         <listener class-name="io.github.mfaisalkhatri.listeners.RetryListener"/>
     </listeners>
@@ -14,5 +14,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>

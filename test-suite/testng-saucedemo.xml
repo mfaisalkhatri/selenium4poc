@@ -11,7 +11,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="selenium 4 Tests with Firefox Browser">
         <parameter name="browser" value="firefox"/>
         <classes>
@@ -33,7 +33,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="selenium 4 Tests with Opera Browser" enabled="false">
         <parameter name="browser" value="opera"/>
         <classes>
@@ -44,5 +44,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>

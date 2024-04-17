@@ -15,7 +15,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="Multi dropdown selection tests">
         <parameter name="browser" value="remote_firefox_lambdatest"/>
         <classes>
@@ -33,6 +33,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-
-</suite> <!-- Suite -->
+    </test>
+</suite>

@@ -17,7 +17,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
     <test name="Juice Shop end to End automation tests " enabled="true">
         <parameter name="browser" value="chrome"/>
         <classes>
@@ -34,6 +34,5 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Test -->
-
-</suite> <!-- Suite -->
+    </test>
+</suite>
