@@ -207,6 +207,15 @@ mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn](https://www.
 - [LambdaTest Blogs](https://www.lambdatest.com/blog/author/mfaisalkhatri/)
 - [My Website](https://mfaisalkhatri.github.io)
 
+## :computer: Recommended Proxies
+
+There are cases when proxies may be required to run the tests, this may happen when the software teams are working in isolation at different places.
+Residential proxies help in keeping the user’s information safe and help in hiding the real location of the user
+It acts as a middleman between the device and the internet and keep the users safe from being tracked.
+
+[NodeMaven](https://go.nodemaven.com/automation_proxy) provides high quality proxies with industry-first filtering, super sticky sessions and best customer support.
+Try out [NodeMaven](https://go.nodemaven.com/automation_proxy) now(_Use F86 at checkout to get extra 2GB of proxy_)
+
 ## :bulb: Cloud platform supporter
 
 ### Big thanks to **LambdaTest** for their support to the project with their open source license:
