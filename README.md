@@ -50,11 +50,13 @@
 
 ## :movie_camera: Tutorial Videos
 
+[![Watch the video](https://img.youtube.com/vi/JYosKUL0aZU/hqdefault.jpg)]( https://youtu.be/JYosKUL0aZU?si=qjHlpkHUxwZtITED)
+[![Watch the video](https://img.youtube.com/vi/1Bw2JHoOg5U/hqdefault.jpg)]( https://youtu.be/1Bw2JHoOg5U?si=mdbGd7XAfbJ3VNbO)
 [![Watch the video](https://img.youtube.com/vi/bhZX7apMqR8/hqdefault.jpg)]( https://www.youtube.com/live/bhZX7apMqR8?si=4n0u5YiMuz5vTiHd)
 [![Watch the video](https://img.youtube.com/vi/uHLYoJmZxWc/hqdefault.jpg)](https://youtu.be/uHLYoJmZxWc?si=3nevAn0Z3QZycdG8)
 [![Watch the video](https://img.youtube.com/vi/_hlXjVTa-jo/hqdefault.jpg)](https://youtu.be/_hlXjVTa-jo?si=PfOfU7ihb8eEgduh)
+[![Watch the video](https://img.youtube.com/vi/wSxnk3XkG58/hqdefault.jpg)](https://youtu.be/wSxnk3XkG58)
 [![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
-
 
 
 ## End-to-End Tests for OWASP-Juice-Shop
