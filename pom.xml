@@ -13,17 +13,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.java.version>4.18.1</selenium.java.version>
-        <testng.version>7.9.0</testng.version>
-        <webdrivermanager.version>5.7.0</webdrivermanager.version>
-        <commons-io.version>2.15.1</commons-io.version>
+        <selenium.java.version>4.21.0</selenium.java.version>
+        <testng.version>7.10.2</testng.version>
+        <webdrivermanager.version>5.8.0</webdrivermanager.version>
+        <commons-io.version>2.16.1</commons-io.version>
         <log4jcore.version>2.23.1</log4jcore.version>
         <log4japi.version>2.23.1</log4japi.version>
         <orgjson.version>20240303</orgjson.version>
-        <seleniumdevtools.version>4.18.1</seleniumdevtools.version>
+        <seleniumdevtools.version>4.21.0</seleniumdevtools.version>
         <lombok.version>1.18.32</lombok.version>
-        <datafaker.version>2.1.0</datafaker.version>
-        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+        <datafaker.version>2.2.2</datafaker.version>
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <maven.compiler.version>3.13.0</maven.compiler.version>
         <surefire-version>3.2.5</surefire-version>
         <java.release.version>17</java.release.version>
@@ -99,7 +99,7 @@
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v101 -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v120</artifactId>
+            <artifactId>selenium-devtools-v125</artifactId>
             <version>${seleniumdevtools.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
