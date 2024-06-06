@@ -113,7 +113,7 @@
             </class>
         </classes>
     </test>
-    <test name="iFrame Tests">
+    <test name="iFrame Tests" enabled="false"> <!--Disabled as the demo web page has errors and does not allow to type in the frame-->
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.IFrameTests">

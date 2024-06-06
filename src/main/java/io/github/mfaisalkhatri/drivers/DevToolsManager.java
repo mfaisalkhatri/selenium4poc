@@ -1,7 +1,5 @@
 package io.github.mfaisalkhatri.drivers;
 
-import java.util.Objects;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Builder;
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v120.log.Log;
+import org.openqa.selenium.devtools.v125.log.Log;
+
+import java.util.Objects;
 
 /**
  * Created By Faisal Khatri on 21-03-2022

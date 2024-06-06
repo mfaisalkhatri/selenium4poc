@@ -50,11 +50,13 @@
 
 ## :movie_camera: Tutorial Videos
 
+[![Watch the video](https://img.youtube.com/vi/JYosKUL0aZU/hqdefault.jpg)]( https://youtu.be/JYosKUL0aZU?si=qjHlpkHUxwZtITED)
+[![Watch the video](https://img.youtube.com/vi/1Bw2JHoOg5U/hqdefault.jpg)]( https://youtu.be/1Bw2JHoOg5U?si=mdbGd7XAfbJ3VNbO)
 [![Watch the video](https://img.youtube.com/vi/bhZX7apMqR8/hqdefault.jpg)]( https://www.youtube.com/live/bhZX7apMqR8?si=4n0u5YiMuz5vTiHd)
 [![Watch the video](https://img.youtube.com/vi/uHLYoJmZxWc/hqdefault.jpg)](https://youtu.be/uHLYoJmZxWc?si=3nevAn0Z3QZycdG8)
 [![Watch the video](https://img.youtube.com/vi/_hlXjVTa-jo/hqdefault.jpg)](https://youtu.be/_hlXjVTa-jo?si=PfOfU7ihb8eEgduh)
+[![Watch the video](https://img.youtube.com/vi/wSxnk3XkG58/hqdefault.jpg)](https://youtu.be/wSxnk3XkG58)
 [![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
-
 
 
 ## End-to-End Tests for OWASP-Juice-Shop
@@ -204,6 +206,15 @@ mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn](https://www.
 - [Medium Blogs](https://medium.com/@iamfaisalkhatri)
 - [LambdaTest Blogs](https://www.lambdatest.com/blog/author/mfaisalkhatri/)
 - [My Website](https://mfaisalkhatri.github.io)
+
+## :computer: Recommended Proxies
+
+There are cases when proxies may be required to run the tests, this may happen when the software teams are working in isolation at different places.
+Residential proxies help in keeping the user’s information safe and help in hiding the real location of the user
+It acts as a middleman between the device and the internet and keep the users safe from being tracked.
+
+[NodeMaven](https://go.nodemaven.com/automation_proxy) provides high quality proxies with industry-first filtering, super sticky sessions and best customer support.
+Try out [NodeMaven](https://go.nodemaven.com/automation_proxy) now(_Use F86 at checkout to get extra 2GB of proxy_)
 
 ## :bulb: Cloud platform supporter
 
