@@ -20,17 +20,17 @@ jobs:
 
     steps:
       - name: checkout Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Java and Maven
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'adopt'
           cache: maven
 
       - name: Setup Juice Shop using docker compose
-        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
 
       - name: Start Selenium Grid 4
         run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
@@ -52,10 +52,10 @@ jobs:
           mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
-        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
 
       - name: Upload target folder
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: target
           path: |
@@ -71,19 +71,19 @@ jobs:
 
     steps:
       - name: checkout Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Install Java and Maven
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'adopt'
           cache: maven
 
       - name: Setup Juice Shop using docker compose
-        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
 
       - name: Start Selenium Grid 4
         run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
@@ -95,21 +95,21 @@ jobs:
         uses: browser-actions/setup-firefox@latest
 
       - name: Cache SonarCloud packages
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Cache Maven packages
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
       - name: Download target folder
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: target
 
@@ -125,7 +125,7 @@ jobs:
             -Dsonar.projectKey=$SONAR_KEY -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
-        run: docker-compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
 
       - name: Test Report
         uses: dorny/test-reporter@v1

@@ -30,7 +30,7 @@ public class HoverTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void testSetup () {
-        final String websiteLink = "http://the-internet.herokuapp.com/";
+        final String websiteLink = "https://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
         final MainPage mainPage = new MainPage();
         mainPage.clickLink("Hovers");

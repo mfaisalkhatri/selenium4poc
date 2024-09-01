@@ -18,7 +18,7 @@ public class FileUploadDownloadTest extends BaseSuiteSetup {
 
     @BeforeClass
     public void testSetup () {
-        final String websiteLink = "http://the-internet.herokuapp.com/";
+        final String websiteLink = "https://the-internet.herokuapp.com/";
         getDriver().get(websiteLink);
         this.mainPage = new MainPage();
     }

@@ -30,7 +30,7 @@ public class IFrameTests extends BaseSuiteSetup {
 
     @BeforeClass
     public void setupTests () {
-        final String website = "http://the-internet.herokuapp.com/";
+        final String website = "https://the-internet.herokuapp.com/";
         getDriver().get(website);
         final MainPage mainPage = new MainPage();
         mainPage.clickLink("Frames");

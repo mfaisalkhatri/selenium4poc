@@ -100,6 +100,7 @@ public final class DriverManager {
         chromePrefs.put ("download.prompt_for_download", "false");
         chromePrefs.put ("download.default_directory",
             String.valueOf (Paths.get (System.getProperty ("user.home"), "Downloads")));
+        chromePrefs.put("profile.password_manager_leak_detection", false);
 
         final var options = new ChromeOptions ();
         options.addArguments (NO_SANDBOX);

@@ -28,7 +28,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class BrowserTests extends BaseSuiteSetup {
 
-    private static final String websiteLink = "http://the-internet.herokuapp.com/";
+    private static final String websiteLink = "https://the-internet.herokuapp.com/";
 
     @Test
     public void browserNavigationTests () {
