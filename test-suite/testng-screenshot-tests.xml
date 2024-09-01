@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Taking Screenshots using Selenium WebDriver  " verbose="2">
+    <test name="Test Full page screenshot">
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.screenshottests.FullPageScreenshotTest">
+                <methods>
+                    <include name="testTakeFullPageScreenshotFirefox"/>
+                    <include name="testTakeScreenshotUsingAShot"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Test Screenshot using new methods exposed by Selenium 4">
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.screenshottests.ScreenshotWithSeleniumTest">
+                <methods>
+                    <include name="testTakeScreenshot"/>
+                    <include name="testTakeElementScreenshot"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Test Viewable screenshot ">
+        <classes>
+            <class name="io.github.mfaisalkhatri.tests.screenshottests.ViewableScreenshotExample">
+                <methods>
+                    <include name="testTakeViewableScreenshot"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

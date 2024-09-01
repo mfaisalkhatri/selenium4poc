@@ -23,9 +23,10 @@
         <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
         <lombok.version>1.18.34</lombok.version>
         <datafaker.version>2.3.1</datafaker.version>
+        <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <maven.compiler.version>3.13.0</maven.compiler.version>
-        <surefire-version>3.2.5</surefire-version>
+        <surefire-version>3.5.0</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
@@ -109,6 +110,13 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!--https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot-->
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>${ashot.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

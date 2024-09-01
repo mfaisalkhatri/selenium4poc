@@ -67,17 +67,8 @@
                     <include name="passwordNotValidTest"/>
                     <include name="invalidLoginCredentialsTest"/>
                     <include name="blankUserAndPasswordTest"/>
-                    <include name="loginWithCorrectCredentials"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Form Authentication tests with data provider">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="io.github.mfaisalkhatri.tests.theinternet.FormAuthenticationTests">
-                <methods>
                     <include name="loginTests"/>
+                    <include name="loginWithCorrectCredentials"/>
                 </methods>
             </class>
         </classes>

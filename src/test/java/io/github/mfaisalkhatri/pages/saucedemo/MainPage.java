@@ -41,7 +41,7 @@ public class MainPage {
     }
 
     private WebElement logoutLink () {
-        return this.wait.until (ExpectedConditions.elementToBeClickable ((By.cssSelector ("#logout_sidebar_link"))));
+        return this.wait.until (ExpectedConditions.elementToBeClickable ((By.id ("logout_sidebar_link"))));
     }
 
     private WebElement menuBtn () {

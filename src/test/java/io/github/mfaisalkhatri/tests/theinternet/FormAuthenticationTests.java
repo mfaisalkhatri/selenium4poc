@@ -99,7 +99,6 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
 
     @Test
     public void loginWithCorrectCredentials () {
-        getDriver().navigate().to("https://the-internet.herokuapp.com/login");
         this.securePage = this.formAuthenticationPage.login (USERNAME, PASSWORD);
         assertTrue (this.securePage.getFlashMessage ()
                 .contains("You logged into a secure area!"));
