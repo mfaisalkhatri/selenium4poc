@@ -41,10 +41,6 @@ jobs:
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
 
-      - name: Create screenshots dir
-        working-directory: ${{ github.workspace }}
-        run: mkdir screenshots
-
       - name: Build the Project
         run: mvn clean install -DskipTests
 
@@ -97,10 +93,6 @@ jobs:
 
       - name: Install Firefox
         uses: browser-actions/setup-firefox@latest
-
-      - name: Create screenshots dir
-        working-directory: ${{ github.workspace }}
-        run: mkdir screenshots
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v2

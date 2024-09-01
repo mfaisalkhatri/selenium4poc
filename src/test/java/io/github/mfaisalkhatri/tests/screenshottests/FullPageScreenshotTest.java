@@ -23,7 +23,9 @@ public class FullPageScreenshotTest {
 
     @Test
     public void testTakeFullPageScreenshotFirefox() {
+
         driver = new FirefoxDriver();
+
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
