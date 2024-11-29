@@ -8,8 +8,8 @@
 ## :question: What is this Repository about?
 
 - This repo has example codes with Selenium 4 features.
-- Websites used for testing are: [automationpractice.com](http://automationpractice.com/index.php), [saucedemo.com](https://www.saucedemo.com),
-  [the-internet](http://the-internet.herokuapp.com/) [owasp-juice-shop](https://github.com/juice-shop/juice-shop)
+- Websites used for testing are: [saucedemo.com](https://www.saucedemo.com),
+  [the-internet](http://the-internet.herokuapp.com/) [owasp-juice-shop](https://github.com/juice-shop/juice-shop) 
   and [LambdaTest e-commerce Playground](https://ecommerce-playground.lambdatest.io/)
 - This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests.
 
@@ -47,6 +47,10 @@
 - [How to Automate ServiceNow with Selenium](https://medium.com/@iamfaisalkhatri/how-to-automate-servicenow-with-selenium-511e41172161)
 - [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
 - [How to Handle ElementClickInterceptedException in Selenium Java](https://www.lambdatest.com/blog/elementclickinterceptedexception-in-selenium-java/)
+- [How To Download & Upload Files Using Selenium With Java](https://www.lambdatest.com/blog/how-to-download-upload-files-using-selenium-with-java/)
+- [ExpectedConditions In Selenium: Types And Examples](https://www.lambdatest.com/blog/expected-conditions-in-selenium-examples/)
+- [How to Handle StaleElementReferenceException in Selenium](https://www.lambdatest.com/blog/handling-stale-element-exceptions-in-selenium-java/)
+- [How To Take Full Page Screenshots In Selenium WebDriver](https://www.lambdatest.com/blog/screenshots-with-selenium-webdriver/)
 
 ## :movie_camera: Tutorial Videos
 
@@ -57,7 +61,7 @@
 [![Watch the video](https://img.youtube.com/vi/_hlXjVTa-jo/hqdefault.jpg)](https://youtu.be/_hlXjVTa-jo?si=PfOfU7ihb8eEgduh)
 [![Watch the video](https://img.youtube.com/vi/wSxnk3XkG58/hqdefault.jpg)](https://youtu.be/wSxnk3XkG58)
 [![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
-
+[![Watch the video](https://img.youtube.com/vi/boG5ZqVXOSs/hqdefault.jpg)]( https://youtu.be/boG5ZqVXOSs?si=qtQNOYENQwB2F3zL))
 
 ## End-to-End Tests for OWASP-Juice-Shop
 
