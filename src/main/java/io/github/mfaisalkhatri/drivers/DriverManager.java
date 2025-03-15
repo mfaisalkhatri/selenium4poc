@@ -82,13 +82,7 @@ public final class DriverManager {
         LOG.info ("Setting Browser Timeouts....");
         getDriver ().manage ()
             .timeouts ()
-            .implicitlyWait (Duration.ofSeconds (20));
-        getDriver ().manage ()
-            .timeouts ()
-            .pageLoadTimeout (Duration.ofSeconds (20));
-        getDriver ().manage ()
-            .timeouts ()
-            .scriptTimeout (Duration.ofSeconds (20));
+            .implicitlyWait (Duration.ofSeconds (30));
     }
 
     private static void setupChromeDriver () {

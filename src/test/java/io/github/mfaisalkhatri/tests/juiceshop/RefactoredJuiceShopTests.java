@@ -26,6 +26,7 @@ public class RefactoredJuiceShopTests extends BaseSuiteSetup {
         final String globalWebsiteLink = "https://juice-shop.herokuapp.com/#/";
         //final String dockerWebsiteLink = "http://host.docker.internal:3000/#/";
         final String websiteLink = "http://localhost:3000/#/";
+        getDriver ().manage ().window ().maximize ();
         if (getDriver().toString().contains("RemoteWebDriver")) {
             getDriver().get(globalWebsiteLink);
         } else {

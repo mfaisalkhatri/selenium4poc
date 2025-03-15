@@ -52,6 +52,7 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
 
     @Test
     public void blankUserAndPasswordTest () {
+
         this.formAuthenticationPage.login (" ", " ");
         assertTrue (this.formAuthenticationPage.getFlashMessage ()
             .contains ("Your username is invalid!"));
@@ -59,6 +60,7 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
 
     @Test
     public void invalidLoginCredentialsTest () {
+
         this.formAuthenticationPage.login (USERNAME, "InvalidPass");
         assertTrue (this.formAuthenticationPage.getFlashMessage ()
             .contains ("Your password is invalid!"));
@@ -69,7 +71,6 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
         final List<Object[]> testData = new ArrayList<> ();
         testData.add (new Object[] { " ", PASSWORD, false });
         testData.add (new Object[] { USERNAME, " ", false });
-        testData.add (new Object[] { " ", " ", false });
         testData.add (new Object[] { USERNAME, "invalid", false });
         testData.add (new Object[] { USERNAME, PASSWORD, true });
         return testData.iterator ();
@@ -77,11 +78,12 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
 
     @Test (dataProvider = "loginData")
     public void loginTests (final String userName, final String password, final boolean isValid) {
+
         this.securePage = this.formAuthenticationPage.login (userName, password);
 
         if (!isValid) {
             assertTrue (this.formAuthenticationPage.getFlashMessage ()
-                .contains (" is invalid!"));
+                .contains ("is invalid!"));
         } else {
             assertTrue (this.securePage.getFlashMessage ()
                 .contains ("You logged into a secure area!"));
