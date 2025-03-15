@@ -34,7 +34,7 @@ public class FileUploadPage {
         LOG.info ("Starting File Upload");
         final File directory = new File (String.valueOf (Paths.get (System.getProperty ("user.home"), "Downloads")));
         final File uploadPath = new File (directory, filename);
-        LOG.info ("Uploading File from path " + uploadPath);
+        LOG.info ("Uploading File from path {} ", uploadPath);
         chooseFile ().sendKeys (uploadPath.toString ());
         btnUpload ().click ();
         LOG.info ("File Uploaded Successfully!!");

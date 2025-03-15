@@ -11,9 +11,9 @@ import org.testng.ITestResult;
  **/
 public class Retry implements IRetryAnalyzer {
 
-    private static final Logger LOG    = LogManager.getLogger ("Retry.class");
-    private static final int    maxTry = 3;
-    private              int    count  = 0;
+    private static final Logger LOG     = LogManager.getLogger ("Retry.class");
+    private static final int    MAX_TRY = 3;
+    private              int    count   = 0;
 
     public String getResultStatusName (final int status) {
         String resultName = null;
@@ -32,12 +32,11 @@ public class Retry implements IRetryAnalyzer {
     @Override
     public boolean retry (final ITestResult iTestResult) {
         if (!iTestResult.isSuccess ()) {
-            if (this.count < maxTry) {
-                LOG.info ("Retrying test " + iTestResult.getName () + " with status " + getResultStatusName (
-                    iTestResult.getStatus ()) + " for the " + (this.count + 1) + " time(s).");
-                this.count++;
-                return true;
-            }
+            if (this.count >= MAX_TRY) {return false;}
+            LOG.info ("Retrying test {} with status {} for the {} time(s)", iTestResult.getName (),
+                getResultStatusName (iTestResult.getStatus ()), this.count + 1);
+            this.count++;
+            return true;
         }
         return false;
     }

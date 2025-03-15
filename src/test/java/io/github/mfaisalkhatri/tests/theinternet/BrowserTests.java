@@ -28,7 +28,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class BrowserTests extends BaseSuiteSetup {
 
-    private static final String websiteLink = "https://the-internet.herokuapp.com/";
+    private static final String WEBSITE_LINK = "https://the-internet.herokuapp.com/";
 
     @Test
     public void browserNavigationTests () {
@@ -58,14 +58,14 @@ public class BrowserTests extends BaseSuiteSetup {
         final String actualWebsiteLink = getDriver().getCurrentUrl();
         final String actualTitle = getDriver().getTitle();
 
-        assertEquals(actualWebsiteLink, websiteLink);
+        assertEquals(actualWebsiteLink, WEBSITE_LINK);
         assertEquals(actualTitle, title);
 
     }
 
     @BeforeClass
     public void testSetup () {
-        getDriver ().get (websiteLink);
+        getDriver ().get (WEBSITE_LINK);
     }
 
 }
