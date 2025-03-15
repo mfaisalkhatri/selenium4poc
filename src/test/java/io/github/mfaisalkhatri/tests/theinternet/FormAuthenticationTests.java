@@ -82,11 +82,9 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
         this.securePage = this.formAuthenticationPage.login (userName, password);
 
         if (!isValid) {
-            System.out.println (formAuthenticationPage.getFlashMessage ());
             assertTrue (this.formAuthenticationPage.getFlashMessage ()
                 .contains ("is invalid!"));
         } else {
-            System.out.println (securePage.getFlashMessage ());
             assertTrue (this.securePage.getFlashMessage ()
                 .contains ("You logged into a secure area!"));
             assertEquals (this.securePage.getHeaderText (), "Secure Area");

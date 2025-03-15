@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout Git repository
+      - name: Checkout Git repository
         uses: actions/checkout@v4
 
       - name: Install Java and Maven

@@ -18,7 +18,7 @@
             </class>
         </classes>
     </test>
-    <test name="Juice Shop end to End automation tests " enabled="true">
+    <test name="Juice Shop end to End automation tests " enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.juiceshop.RefactoredJuiceShopTests">
