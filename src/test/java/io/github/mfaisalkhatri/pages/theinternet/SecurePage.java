@@ -17,17 +17,26 @@ package io.github.mfaisalkhatri.pages.theinternet;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
+import java.time.Duration;
 
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
 public class SecurePage {
 
+    private WebDriverWait wait;
+
+    public SecurePage () {
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (30));
+    }
+
     public String getFlashMessage () {
-        return getDriver ().findElement (By.id ("flash"))
-            .getText ();
+        return wait.until (ExpectedConditions.presenceOfElementLocated (By.id ("flash"))).getText ();
     }
     
     public String getHeaderText () {

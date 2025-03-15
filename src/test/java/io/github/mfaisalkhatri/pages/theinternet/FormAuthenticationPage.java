@@ -15,22 +15,32 @@
 
 package io.github.mfaisalkhatri.pages.theinternet;
 
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created By Faisal Khatri on 24-12-2021
  */
 public class FormAuthenticationPage {
 
+    private WebDriverWait wait;
+
+    public FormAuthenticationPage () {
+        this.wait = new WebDriverWait (getDriver (), Duration.ofSeconds (30));
+    }
+
     public String getFlashMessage () {
-        return getDriver ().findElement (By.id ("flash"))
-            .getText ();
+        return wait.until (ExpectedConditions.presenceOfElementLocated (By.id ("flash"))).getText ();
     }
     
     public SecurePage login (final String userName, final String password) {
+        getDriver ().navigate ().refresh ();
         userNameField ().click ();
         userNameField ().clear ();
         userNameField ().sendKeys (userName);
