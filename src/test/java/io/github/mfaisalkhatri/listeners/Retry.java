@@ -1,10 +1,7 @@
 package io.github.mfaisalkhatri.listeners;
 
-import java.text.MessageFormat;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.devtools.Message;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
