@@ -13,20 +13,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.java.version>4.24.0</selenium.java.version>
-        <testng.version>7.10.2</testng.version>
-        <webdrivermanager.version>5.9.2</webdrivermanager.version>
-        <commons-io.version>2.16.1</commons-io.version>
+        <selenium.java.version>4.29.0</selenium.java.version>
+        <testng.version>7.11.0</testng.version>
+        <webdrivermanager.version>5.9.3</webdrivermanager.version>
+        <commons-io.version>2.18.0</commons-io.version>
         <log4jcore.version>2.23.1</log4jcore.version>
         <log4japi.version>2.23.1</log4japi.version>
-        <orgjson.version>20240303</orgjson.version>
+        <orgjson.version>20250107</orgjson.version>
         <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
-        <lombok.version>1.18.34</lombok.version>
-        <datafaker.version>2.3.1</datafaker.version>
+        <lombok.version>1.18.36</lombok.version>
+        <datafaker.version>2.4.2</datafaker.version>
         <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
-        <maven.compiler.version>3.13.0</maven.compiler.version>
-        <surefire-version>3.5.0</surefire-version>
+        <maven.compiler.version>3.14.0</maven.compiler.version>
+        <surefire-version>3.5.2</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
