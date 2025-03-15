@@ -1,18 +1,18 @@
 package io.github.mfaisalkhatri.pages.theinternet;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
 
 import java.io.File;
 import java.nio.file.Paths;
 import java.time.Duration;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static io.github.mfaisalkhatri.utilities.Helper.pause;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DownloadPage {
 
@@ -32,28 +32,30 @@ public class DownloadPage {
             for (int i = 0; i < fileList.length; i++) {
                 final String fileName = fileList[i];
                 if (fileName.equalsIgnoreCase (downloadedFileName)) {
-                    LOG.info ("Downloaded file Found: " + directory + " " + fileName);
+                    LOG.info ("Downloaded file Found:  {} {}", directory, fileName);
                     flag = 1;
                 }
             }
         } else {
-            LOG.info ("Downloads directory is Empty!" + directory);
+            LOG.info ("Downloads directory {} is Empty!", directory);
             return false;
         }
         if (flag == 0) {
-            LOG.info ("Error: Downloaded File not found in the path!!" + directory);
+            LOG.info ("Error: Downloaded File not found in the path! - {}", directory);
             return false;
         }
         return true;
     }
 
-    public void downloadFile () throws InterruptedException {
+    public void downloadFile ()  {
         downloadLink ().click ();
-        pause (5000);
+        Actions actions = new Actions (getDriver ());
+        actions.pause (5000)
+            .perform ();
     }
     
     public String getDownloadLinkText () {
-        LOG.info ("Downloading File :" + downloadLink ().getText ());
+        LOG.info ("Downloading File : {} ", downloadLink ().getText ());
         return downloadLink ().getText ();
     }
 

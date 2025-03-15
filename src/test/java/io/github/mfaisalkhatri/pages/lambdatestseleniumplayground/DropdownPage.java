@@ -122,7 +122,7 @@ public class DropdownPage {
     private WebElement btnFirstSelected () {
         return getDriver ().findElement (By.id ("printMe"));
     }
-    
+
     private Select multiSelectDropdownList () {
         final WebElement multiSelectDropdown = getDriver().findElement(By.id("multi-select"));
         return new Select (multiSelectDropdown);
