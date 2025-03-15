@@ -14,22 +14,21 @@
 */
 package io.github.mfaisalkhatri.tests.theinternet;
 
-import io.github.mfaisalkhatri.pages.theinternet.FormAuthenticationPage;
-import io.github.mfaisalkhatri.pages.theinternet.MainPage;
-import io.github.mfaisalkhatri.pages.theinternet.SecurePage;
-import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
-import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static io.github.mfaisalkhatri.drivers.DriverManager.getDriver;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import io.github.mfaisalkhatri.pages.theinternet.FormAuthenticationPage;
+import io.github.mfaisalkhatri.pages.theinternet.MainPage;
+import io.github.mfaisalkhatri.pages.theinternet.SecurePage;
+import io.github.mfaisalkhatri.tests.base.BaseSuiteSetup;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 /**
  * Created By Faisal Khatri on 24-12-2021
@@ -39,16 +38,7 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
     private static final String                 PASSWORD = "SuperSecretPassword!";
     private static final String                 USERNAME = "tomsmith";
     private              FormAuthenticationPage formAuthenticationPage;
-    private SecurePage securePage;
-
-    @BeforeClass
-    public void testSetup () {
-        final String websiteLink = "https://the-internet.herokuapp.com/";
-        getDriver ().get (websiteLink);
-        final MainPage mainPage = new MainPage ();
-        mainPage.clickLink ("Form Authentication");
-        this.formAuthenticationPage = new FormAuthenticationPage ();
-    }
+    private              SecurePage             securePage;
 
     @Test
     public void blankUserAndPasswordTest () {
@@ -103,14 +93,14 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
     public void loginWithCorrectCredentials () {
         this.securePage = this.formAuthenticationPage.login (USERNAME, PASSWORD);
         assertTrue (this.securePage.getFlashMessage ()
-                .contains("You logged into a secure area!"));
+            .contains ("You logged into a secure area!"));
         assertEquals (this.securePage.getHeaderText (), "Secure Area");
         assertEquals (this.securePage.getSubHeaderText (),
             "Welcome to the Secure Area. When you are done click logout below.");
         assertTrue (this.securePage.logoutBtn ()
             .isDisplayed ());
-        this.securePage.logoutBtn()
-                .click();
+        this.securePage.logoutBtn ()
+            .click ();
     }
 
     @Test
@@ -120,6 +110,14 @@ public class FormAuthenticationTests extends BaseSuiteSetup {
             .contains ("Your password is invalid!"));
     }
 
+    @BeforeClass
+    public void testSetup () {
+        final String websiteLink = "https://the-internet.herokuapp.com/";
+        getDriver ().get (websiteLink);
+        final MainPage mainPage = new MainPage ();
+        mainPage.clickLink ("Form Authentication");
+        this.formAuthenticationPage = new FormAuthenticationPage ();
+    }
 
     @Test
     public void userNameNotValidTest () {

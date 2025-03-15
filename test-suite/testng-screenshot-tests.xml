@@ -23,7 +23,7 @@
     </test>
     <test name="Test Viewable screenshot ">
         <classes>
-            <class name="io.github.mfaisalkhatri.tests.screenshottests.ViewableScreenshotExample">
+            <class name="io.github.mfaisalkhatri.tests.screenshottests.ViewableScreenshotExampleTest">
                 <methods>
                     <include name="testTakeViewableScreenshot"/>
                 </methods>
