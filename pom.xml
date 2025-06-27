@@ -13,20 +13,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium.java.version>4.29.0</selenium.java.version>
+        <selenium.java.version>4.33.0</selenium.java.version>
         <testng.version>7.11.0</testng.version>
         <webdrivermanager.version>6.1.0</webdrivermanager.version>
-        <commons-io.version>2.18.0</commons-io.version>
-        <log4jcore.version>2.23.1</log4jcore.version>
-        <log4japi.version>2.23.1</log4japi.version>
-        <orgjson.version>20250107</orgjson.version>
+        <commons-io.version>2.19.0</commons-io.version>
+        <log4jcore.version>2.25.0</log4jcore.version>
+        <log4japi.version>2.25.0</log4japi.version>
+        <orgjson.version>20250517</orgjson.version>
         <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
-        <lombok.version>1.18.36</lombok.version>
-        <datafaker.version>2.4.2</datafaker.version>
+        <lombok.version>1.18.38</lombok.version>
+        <datafaker.version>2.4.3</datafaker.version>
         <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <maven.compiler.version>3.14.0</maven.compiler.version>
-        <surefire-version>3.5.2</surefire-version>
+        <surefire-version>3.5.3</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
@@ -39,9 +39,9 @@
         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
         <sonar.java.source>17</sonar.java.source>
-        <jacoco.version>0.8.11</jacoco.version>
+        <jacoco.version>0.8.13</jacoco.version>
         <sonarjacocolistener.version>5.14.0.18788</sonarjacocolistener.version>
-        <sonarmavenplugin.version>3.10.0.2594</sonarmavenplugin.version>
+        <sonarmavenplugin.version>5.1.0.4751</sonarmavenplugin.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
