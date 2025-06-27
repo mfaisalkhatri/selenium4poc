@@ -5,7 +5,7 @@ version: 2
 updates:
   - package-ecosystem: "maven"
     directory: "/"
-    target-branch: main
+    target-branch: master
     open-pull-requests-limit: 20
     schedule:
       interval: "weekly"
@@ -16,7 +16,7 @@ updates:
 
   - package-ecosystem: "github-actions"
     directory: "/"
-    target-branch: main
+    target-branch: master
     open-pull-requests-limit: 20
     schedule:
       interval: "weekly"
