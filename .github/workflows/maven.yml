@@ -52,7 +52,10 @@ jobs:
           mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
-        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+          docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down --remove-orphans
+
 
       - name: Upload target folder
         uses: actions/upload-artifact@v4
@@ -125,7 +128,9 @@ jobs:
             -Dsonar.projectKey=$SONAR_KEY -Dheadless=true -DLT_USERNAME=$LMT_USER -DLT_ACCESS_KEY=$LMT_ACCESS
 
       - name: Stop docker compose for Juice Shop and Selenium grid
-        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
+          docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down --remove-orphans
 
       - name: Test Report
         uses: dorny/test-reporter@v2
