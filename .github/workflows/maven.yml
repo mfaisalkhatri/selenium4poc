@@ -56,7 +56,6 @@ jobs:
           docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml down --remove-orphans
           docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down --remove-orphans
 
-
       - name: Upload target folder
         uses: actions/upload-artifact@v4
         with:
@@ -71,7 +70,7 @@ jobs:
       - build_and_test
 
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: checkout Git repository
         uses: actions/checkout@v4
