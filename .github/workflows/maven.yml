@@ -70,7 +70,7 @@ jobs:
       - build_and_test
 
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: checkout Git repository
         uses: actions/checkout@v4
