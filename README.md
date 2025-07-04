@@ -9,7 +9,7 @@
 
 - This repo has example codes with Selenium 4 features.
 - Websites used for testing are: [saucedemo.com](https://www.saucedemo.com),
-  [the-internet](http://the-internet.herokuapp.com/) [owasp-juice-shop](https://github.com/juice-shop/juice-shop) 
+  [the-internet](http://the-internet.herokuapp.com/) [owasp-juice-shop](https://github.com/juice-shop/juice-shop)
   and [LambdaTest e-commerce Playground](https://ecommerce-playground.lambdatest.io/)
 - This repo uses `Maven` as build tool and `TestNG` testing framework to run the tests.
 
@@ -33,7 +33,7 @@
 14. How to check for chrome generated logs when selenium tests are run?
 
 ## :writing_hand: Blog Links
- 
+
 - [Selenium 4 WebDriver Hierarchy: A Detailed Explanation](https://medium.com/@iamfaisalkhatri/selenium-4-webdriver-hierarchy-a-detailed-explanation-lambdatest-18771c5fd3e9)
 - [Selenium Manager in Selenium 4.11.0: New Features and Improvements](https://medium.com/@iamfaisalkhatri/selenium-manager-in-selenium-4-11-0-new-features-and-improvements-lambdatest-761593a7f009)
 - [Different Types of Locators in Selenium WebDriver](https://www.lambdatest.com/blog/locators-in-selenium-webdriver-with-examples/)
@@ -43,12 +43,12 @@
 - [End to End testing using Selenium WebDriver and Java](https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca)
 - [Writing Selenium Web Automation tests in Fluent way!](https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a)
 - [How To Automate Shadow DOM In Selenium WebDriver?](https://medium.com/@iamfaisalkhatri/how-to-automate-shadow-dom-in-selenium-webdriver-lambdatest-blog-3884698b995)
-- [How to setup GitHub Actions for Java with Maven project?](https://mfaisalkhatri.github.io/2022/04/26/githubactions-for-java-maven-project/)
+- [How to setup GitHub Actions for Java with Maven project?](https://medium.com/@iamfaisalkhatri/how-to-setup-github-actions-for-java-with-maven-project-b6fe394be508)
 - [How to Automate ServiceNow with Selenium](https://medium.com/@iamfaisalkhatri/how-to-automate-servicenow-with-selenium-511e41172161)
 - [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
 - [How to Handle ElementClickInterceptedException in Selenium Java](https://www.lambdatest.com/blog/elementclickinterceptedexception-in-selenium-java/)
-- [How To Download & Upload Files Using Selenium With Java](https://www.lambdatest.com/blog/how-to-download-upload-files-using-selenium-with-java/)
-- [ExpectedConditions In Selenium: Types And Examples](https://www.lambdatest.com/blog/expected-conditions-in-selenium-examples/)
+- [How to Handle File Upload in Selenium](https://www.lambdatest.com/blog/how-to-download-upload-files-using-selenium-with-java/)
+- [ExpectedConditions In Selenium: Types And Examples](https://medium.com/gitconnected/expectedconditions-in-selenium-types-and-examples-2bde43f2d651)
 - [How to Handle StaleElementReferenceException in Selenium](https://www.lambdatest.com/blog/handling-stale-element-exceptions-in-selenium-java/)
 - [How To Take Full Page Screenshots In Selenium WebDriver](https://www.lambdatest.com/blog/screenshots-with-selenium-webdriver/)
 
@@ -193,17 +193,16 @@
 
       `mvn clean install -Dsuite-xml=test-suite\testng-lambdatestecommerce.xml -Dheadless=false`
 
-
 ## :question: Need Assistance?
 
 - Discuss your queries by writing to me @ `mohammadfaisalkhatri@gmail.com`
   OR ping me on any of the social media sites using the below link:
     - [Linktree](https://linktr.ee/faisalkhatri)
-  
+
 ## :computer: Paid Trainings
 
 - Contact me for Paid trainings related to Test Automation and Software Testing,
-mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn](https://www.linkedin.com/in/faisalkhatri/)
+  mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn](https://www.linkedin.com/in/faisalkhatri/)
 
 ## :thought_balloon: Checkout the blogs related to Testing written by me on the following links:
 
@@ -213,11 +212,13 @@ mail me @ `mohammadfaisalkhatri@gmail.com` or ping me on [LinkedIn](https://www.
 
 ## :computer: Recommended Proxies
 
-There are cases when proxies may be required to run the tests, this may happen when the software teams are working in isolation at different places.
+There are cases when proxies may be required to run the tests, this may happen when the software teams are working in
+isolation at different places.
 Residential proxies help in keeping the user’s information safe and help in hiding the real location of the user
 It acts as a middleman between the device and the internet and keep the users safe from being tracked.
 
-[NodeMaven](https://go.nodemaven.com/automation_proxy) provides high quality proxies with industry-first filtering, super sticky sessions and best customer support.
+[NodeMaven](https://go.nodemaven.com/automation_proxy) provides high quality proxies with industry-first filtering,
+super sticky sessions and best customer support.
 Try out [NodeMaven](https://go.nodemaven.com/automation_proxy) now(_Use F86 at checkout to get extra 2GB of proxy_)
 
 ## :bulb: Cloud platform supporter

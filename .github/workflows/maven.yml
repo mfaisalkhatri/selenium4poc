@@ -14,8 +14,8 @@ on:
       - issue-*
 
 jobs:
-  build_and_test:
-    name: Build and Test
+  build_and_test_coverage:
+    name: Build Project and Test Coverage
     runs-on: ubuntu-latest
 
     steps:
@@ -29,17 +29,10 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Setup Juice Shop using docker compose
-        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
-
-      - name: Start Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
-
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@latest
-
-      - name: Install Firefox
-        uses: browser-actions/setup-firefox@latest
+      - name: Start Juice Shop and Selenium Grid 4 in Docker Containers
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+          docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
 
       - name: Build the Project
         run: mvn clean install -DskipTests
@@ -75,7 +68,7 @@ jobs:
       - name: checkout Git repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
 
       - name: Install Java and Maven
         uses: actions/setup-java@v4
@@ -84,17 +77,10 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Setup Juice Shop using docker compose
-        run: docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
-
-      - name: Start Selenium Grid 4
-        run: docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
-
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@latest
-
-      - name: Install Firefox
-        uses: browser-actions/setup-firefox@latest
+      - name: Start Juice Shop and Selenium Grid 4 in Docker Containers
+        run: |
+          docker compose -f ${{ github.workspace }}/docker-compose-v3-juiceshop.yml up -d
+          docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml up --scale chrome=4 -d
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
