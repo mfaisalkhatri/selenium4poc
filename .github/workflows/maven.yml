@@ -60,7 +60,7 @@ jobs:
   code_analysis:
     name: Code Analysis
     needs:
-      - build_and_test
+      - build_and_test_coverage
 
     runs-on: ubuntu-latest
 
