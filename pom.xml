@@ -15,14 +15,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.java.version>4.34.0</selenium.java.version>
         <testng.version>7.11.0</testng.version>
-        <webdrivermanager.version>6.1.0</webdrivermanager.version>
+        <webdrivermanager.version>6.1.1</webdrivermanager.version>
         <commons-io.version>2.19.0</commons-io.version>
-        <log4jcore.version>2.25.0</log4jcore.version>
-        <log4japi.version>2.25.0</log4japi.version>
+        <log4jcore.version>2.25.1</log4jcore.version>
+        <log4japi.version>2.25.1</log4japi.version>
         <orgjson.version>20250517</orgjson.version>
         <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
         <lombok.version>1.18.38</lombok.version>
-        <datafaker.version>2.4.3</datafaker.version>
+        <datafaker.version>2.4.4</datafaker.version>
         <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.6.0</maven-enforcer-plugin.version>
         <maven.compiler.version>3.14.0</maven.compiler.version>
