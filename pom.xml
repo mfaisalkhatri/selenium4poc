@@ -22,7 +22,7 @@
         <orgjson.version>20250517</orgjson.version>
         <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
         <lombok.version>1.18.42</lombok.version>
-        <datafaker.version>2.5.0</datafaker.version>
+        <datafaker.version>2.5.1</datafaker.version>
         <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.6.1</maven-enforcer-plugin.version>
         <maven.compiler.version>3.14.1</maven.compiler.version>
