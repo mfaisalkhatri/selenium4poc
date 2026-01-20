@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Lambdatest Selemnium Playground Tests " verbose="2" parallel="tests">
     <test name="Single dropdown selection tests">
-        <parameter name="browser" value="remote_firefox_lambdatest"/>
+        <parameter name="browser" value="remote_chrome_lambdatest"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.SingleDropdownTests">
                 <methods>
@@ -17,7 +17,7 @@
         </classes>
     </test>
     <test name="Multi dropdown selection tests">
-        <parameter name="browser" value="remote_firefox_lambdatest"/>
+        <parameter name="browser" value="remote_chrome_lambdatest"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.lambdatestseleniumplayground.MultiSelectListTests">
                 <methods>

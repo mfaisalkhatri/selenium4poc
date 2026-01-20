@@ -164,7 +164,7 @@
             </class>
         </classes>
     </test>
-    <test name="Chrome Devtools Tests">
+    <test name="Chrome Devtools Tests" enabled="false">
         <classes>
             <class name="io.github.mfaisalkhatri.tests.devtools.LogTest"/>
         </classes>

@@ -27,7 +27,7 @@
         </classes>
     </test>
     <test name="Data table Tests">
-        <parameter name="browser" value="remote_firefox"/>
+        <parameter name="browser" value="remote_chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.tests.theinternet.DataTableTests">
                 <methods>
