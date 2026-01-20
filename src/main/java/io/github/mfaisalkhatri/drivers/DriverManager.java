@@ -1,5 +1,14 @@
 package io.github.mfaisalkhatri.drivers;
 
+import static java.text.MessageFormat.format;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Objects;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.mfaisalkhatri.enums.Browsers;
 import org.apache.logging.log4j.LogManager;
@@ -10,30 +19,21 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Objects;
-
-import static java.text.MessageFormat.format;
-
 /**
  * @author Faisal Khatri
  * @since 24/07/2022
  */
 public final class DriverManager {
-    private static final ThreadLocal<WebDriver> DRIVER          = new ThreadLocal<> ();
-    private static final String                 GRID_URL        = "@hub.lambdatest.com/wd/hub";
-    private static final String                 HUB_URL         = "http://localhost:4444/wd/hub";
-    private static final Logger                 LOG             = LogManager.getLogger ("DriverManager.class");
-    private static final String LT_ACCESS_KEY = System.getProperty("LT_ACCESS_KEY");
-    private static final String LT_USERNAME = System.getProperty("LT_USERNAME");
-    private static final String NO_SANDBOX = "--no-sandbox";
-    private static final String DISABLE_DEV_SHM = "--disable-dev-shm-usage";
-    private static final String CUSTOM_WINDOW_SIZE = "--window-size=1050,600";
-    private static final String HEADLESS = "--headless";
+    private static final String                 CUSTOM_WINDOW_SIZE = "--window-size=1050,600";
+    private static final String                 DISABLE_DEV_SHM    = "--disable-dev-shm-usage";
+    private static final ThreadLocal<WebDriver> DRIVER             = new ThreadLocal<> ();
+    private static final String                 GRID_URL           = "@hub.lambdatest.com/wd/hub";
+    private static final String                 HEADLESS           = "--headless";
+    private static final String                 HUB_URL            = "http://localhost:4444/wd/hub";
+    private static final Logger                 LOG                = LogManager.getLogger ("DriverManager.class");
+    private static final String                 LT_ACCESS_KEY      = System.getProperty ("LT_ACCESS_KEY");
+    private static final String                 LT_USERNAME        = System.getProperty ("LT_USERNAME");
+    private static final String                 NO_SANDBOX         = "--no-sandbox";
 
     public static void createDriver (final Browsers browser) {
         switch (browser) {
@@ -68,7 +68,7 @@ public final class DriverManager {
         ltOptions.put ("selenium_version", "4.0.0");
         ltOptions.put ("build", "LambdaTest Playground Build");
         ltOptions.put ("name", "LambdaTest Playground Tests");
-        ltOptions.put("acceptInsecureCerts", true);
+        ltOptions.put ("acceptInsecureCerts", true);
         ltOptions.put ("w3c", true);
         ltOptions.put ("plugin", "java-testNG");
         return ltOptions;
@@ -94,7 +94,7 @@ public final class DriverManager {
         chromePrefs.put ("download.prompt_for_download", "false");
         chromePrefs.put ("download.default_directory",
             String.valueOf (Paths.get (System.getProperty ("user.home"), "Downloads")));
-        chromePrefs.put("profile.password_manager_leak_detection", false);
+        chromePrefs.put ("profile.password_manager_leak_detection", false);
 
         final var options = new ChromeOptions ();
         options.addArguments (NO_SANDBOX);
@@ -115,7 +115,7 @@ public final class DriverManager {
     private static void setupChromeInLambdaTest () {
         final var browserOptions = new ChromeOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion("latest");
+        browserOptions.setBrowserVersion ("latest");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
@@ -136,11 +136,16 @@ public final class DriverManager {
 
     private static void setupFirefoxDriver () {
         LOG.info ("Setting up Firefox Driver....");
+        final var isHeadless = Boolean.parseBoolean (
+            Objects.requireNonNullElse (System.getProperty ("headless"), "true"));
+
         final var options = new FirefoxOptions ();
         options.addArguments (NO_SANDBOX);
         options.addArguments (DISABLE_DEV_SHM);
         options.addArguments (CUSTOM_WINDOW_SIZE);
-        options.addArguments (HEADLESS);
+        if (isHeadless) {
+            options.addArguments (HEADLESS);
+        }
         setDriver (WebDriverManager.firefoxdriver ()
             .capabilities (options)
             .create ());
@@ -150,7 +155,7 @@ public final class DriverManager {
     private static void setupFirefoxInLambdaTest () {
         final var browserOptions = new FirefoxOptions ();
         browserOptions.setPlatformName ("Windows 10");
-        browserOptions.setBrowserVersion("latest");
+        browserOptions.setBrowserVersion ("latest");
         browserOptions.setCapability ("LT:Options", ltOptions ());
         try {
             setDriver (
@@ -198,7 +203,6 @@ public final class DriverManager {
 
     private static void setupRemoteFirefox () {
         try {
-
             LOG.info ("Setting up Remote Firefox Driver....");
             final var firefoxOptions = new FirefoxOptions ();
             firefoxOptions.addArguments (NO_SANDBOX);
