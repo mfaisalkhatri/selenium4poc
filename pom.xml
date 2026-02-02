@@ -25,7 +25,7 @@
         <datafaker.version>2.5.3</datafaker.version>
         <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
-        <maven.compiler.version>3.14.1</maven.compiler.version>
+        <maven.compiler.version>3.15.0</maven.compiler.version>
         <surefire-version>3.5.4</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
