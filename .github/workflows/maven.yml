@@ -50,7 +50,7 @@ jobs:
           docker compose -f  ${{ github.workspace }}/docker-compose-v3-seleniumgrid.yml down --remove-orphans
 
       - name: Upload target folder
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: target
           path: |
@@ -97,7 +97,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Download target folder
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: target
 
