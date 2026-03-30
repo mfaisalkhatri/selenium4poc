@@ -17,8 +17,8 @@
         <testng.version>7.12.0</testng.version>
         <webdrivermanager.version>6.3.3</webdrivermanager.version>
         <commons-io.version>2.21.0</commons-io.version>
-        <log4jcore.version>2.25.3</log4jcore.version>
-        <log4japi.version>2.25.3</log4japi.version>
+        <log4jcore.version>2.25.4</log4jcore.version>
+        <log4japi.version>2.25.4</log4japi.version>
         <orgjson.version>20251224</orgjson.version>
         <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
         <lombok.version>1.18.44</lombok.version>
