@@ -20,13 +20,13 @@
         <log4jcore.version>2.26.1</log4jcore.version>
         <log4japi.version>2.26.1</log4japi.version>
         <orgjson.version>20260814</orgjson.version>
-        <seleniumdevtools.version>4.23.1</seleniumdevtools.version>
+        <seleniumdevtools.version>4.48.0</seleniumdevtools.version>
         <lombok.version>1.18.48</lombok.version>
         <datafaker.version>2.7.0</datafaker.version>
         <ashot.version>1.5.4</ashot.version>
         <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
         <maven.compiler.version>3.15.0</maven.compiler.version>
-        <surefire-version>3.6.0</surefire-version>
+        <surefire-version>3.5.6</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>test-suite/testng.xml</suite-xml>
@@ -93,7 +93,7 @@
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v125</artifactId>
+            <artifactId>selenium-devtools-v152</artifactId>
             <version>${seleniumdevtools.version}</version>
         </dependency>
         <dependency>
