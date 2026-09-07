@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-java@v6
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: maven
 
       - name: Start Juice Shop and Selenium Grid 4 in Docker Containers
@@ -74,7 +74,7 @@ jobs:
         uses: actions/setup-java@v6
         with:
           java-version: '17'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: maven
 
       - name: Start Juice Shop and Selenium Grid 4 in Docker Containers
